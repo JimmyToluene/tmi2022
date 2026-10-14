@@ -340,7 +340,7 @@ const DATA = /*__DATA__*/null;
     if (r.dup_of) h += `<span class="tag">重复帧 = f${r.dup_of}</span>`;
     if (r.pending) h += `<span class="tag">标注进行中</span>`;
     if (sig.beat) h += `<span class="tag"><span class="dot" style="background:var(--cl)"></span>节拍</span>`;
-    h += `<span class="tag mono">缩放 ×${(sig.zoom || 1).toFixed(3)} · 滚转 ${(sig.roll || 0).toFixed(1)}° · ${(sig.rms ?? 0).toFixed(1)} dB</span></div>`;
+    h += `<span class="tag mono">${sig.lens ? sig.lens.toFixed(0) + " mm · 俯角 " + sig.pitch.toFixed(1) + "° · 滚转 " + sig.roll.toFixed(1) + "° · 距主体 " + sig.dist.toFixed(2) + " m · " : ""}${(sig.rms ?? 0).toFixed(1)} dB</span></div>`;
     if (r.pending) { h += `</div><p class="pending">这一帧所在的块还在标注中，完成后这里会显示逐帧记录。</p>`; $("#log").innerHTML = h; return; }
     h += `<div class="cam-line"><b>镜头：</b>${esc(r.cam?.size)} · ${esc(r.cam?.angle)} · ${esc(r.cam?.move)}${r.cam?.focus ? " · 焦点 " + esc(r.cam.focus) : ""}</div>`;
     h += `<div class="delta-line"><b>相对上一张：</b>${esc(r.delta)}</div>`;

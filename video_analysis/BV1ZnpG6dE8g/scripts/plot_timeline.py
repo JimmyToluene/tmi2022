@@ -1,6 +1,10 @@
 """Measured timeline of BV1ZnpG6dE8g as small multiples on one shared time axis.
 
-Usage: python plot_timeline.py <frame_signals.json> <shots.json> <audio_metrics.json> <out_png>
+Usage: python plot_timeline.py <frame_signals.json> <shots.json> <audio_metrics.json> <camera_solved.json> <out_png>
+
+Camera panels use the solved shot cameras (camera_solved.json from blender/camera_curves.py). The raw
+frame-to-frame ORB similarity in frame_signals.json is not used for camera motion: it follows DS's body,
+her hair and the dancing crowd as much as the camera.
 """
 import json
 import sys
@@ -11,11 +15,13 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
 INK, INK2, MUTED, GRID, AXIS = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
-BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
+BLUE, ORANGE, AQUA, VIOLET = "#2a78d6", "#eb6834", "#1baf7a", "#6250d6"
 SURF = "#fcfcfb"
 
 
-def main(sig_json, shots_json, audio_json, out_png):
+def main(sig_json, shots_json, audio_json, cam_json, out_png):
+    if not out_png.lower().endswith((".png", ".svg", ".pdf")):
+        raise SystemExit(f"output must be an image path, got {out_png}")
     font_manager.fontManager.addfont("/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc")
     plt.rcParams.update({"font.family": "WenQuanYi Zen Hei", "font.size": 9, "axes.edgecolor": AXIS,
                          "axes.labelcolor": INK2, "xtick.color": MUTED, "ytick.color": MUTED,
@@ -23,39 +29,22 @@ def main(sig_json, shots_json, audio_json, out_png):
     sig = json.load(open(sig_json))
     shots = json.load(open(shots_json))
     au = json.load(open(audio_json))
+    cam = json.load(open(cam_json))
     t = [s["t"] for s in sig]
-
-    # cumulative camera zoom / roll, reset at each cut
-    zoom, roll = [], []
-    z = r = 1.0
-    rr = 0.0
-    prev_shot = None
-    for s in sig:
-        if s["shot"] != prev_shot:
-            z, rr, prev_shot = 1.0, 0.0, s["shot"]
-        c = s["cam"]
-        if c and c["inlier_ratio"] > 0.4:
-            z *= c["scale"]
-            rr += c["rot_deg"]
-        zoom.append(z)
-        roll.append(rr)
-    resid = [s["residual_flow_mean"] for s in sig]
     rms = [s["audio"]["rms_db"] for s in sig]
-    dm = [len(s["danmaku_here"]) for s in sig]
-    # danmaku density per 0.5 s
     bins = [0] * 31
     for s in sig:
         bins[int(s["t"] // 0.5)] += len(s["danmaku_here"])
 
-    fig, ax = plt.subplots(5, 1, figsize=(10, 8.6), sharex=True, facecolor=SURF,
-                           gridspec_kw={"height_ratios": [0.55, 1, 1, 1, 0.9], "hspace": 0.38})
+    fig, ax = plt.subplots(5, 1, figsize=(10, 9.2), sharex=True, facecolor=SURF,
+                           gridspec_kw={"height_ratios": [0.55, 1, 1.1, 1, 0.9], "hspace": 0.42})
     for a in ax:
         a.set_facecolor(SURF)
         a.grid(axis="y", color=GRID, linewidth=0.6)
         for s in shots[1:]:
             a.axvline(s["start_t"], color=INK2, linewidth=1, linestyle=(0, (3, 3)))
 
-    names = {1: "镜头1  DS 倚栏 · 推近", 2: "镜头2  DS 背影俯瞰 · 舞台上的 CL", 3: "镜头3  CL 近景 · 扭胯直视镜头"}
+    names = {1: "镜头1  推轨靠近 DS · 50 mm", 2: "镜头2  DS 肩后俯视舞池 · 36 mm", 3: "镜头3  同一位置长焦 · 235 mm"}
     cols = {1: BLUE, 2: "#7a8fb0", 3: ORANGE}
     for s in shots:
         ax[0].barh(0, s["end_t"] - s["start_t"] + 1 / 30, left=s["start_t"], height=0.7, color=cols[s["shot"]],
@@ -65,16 +54,28 @@ def main(sig_json, shots_json, audio_json, out_png):
     ax[0].set_yticks([])
     ax[0].set_title("镜头结构（硬切 f149 = 4.933 s，f304 = 10.100 s）", loc="left", color=INK, fontsize=10)
 
-    ax[1].plot(t, zoom, color=BLUE, linewidth=2)
-    ax[1].set_ylabel("累计缩放 ×")
-    ax[1].set_title("摄影机推拉：镜头内累计缩放（ORB+RANSAC 相似变换），镜头1 推近 2.10×", loc="left", color=INK, fontsize=10)
-    ax[1].annotate("×2.10", (shots[0]["end_t"], zoom[shots[0]["end_frame"] - 1]), xytext=(-46, -16),
-                   textcoords="offset points", color=INK2)
+    for s in (1, 2, 3):
+        r = [c for c in cam if c["shot"] == s]
+        ax[1].plot([(c["f"] - 1) / 30 for c in r], [c["distance_m"] for c in r],
+                   color=VIOLET if s == 2 else cols[s], linewidth=2)
+    d1 = [c for c in cam if c["shot"] == 1]
+    ax[1].annotate(f"{d1[0]['distance_m']:.2f} m → {d1[-1]['distance_m']:.2f} m（推轨，不是变焦）",
+                   ((d1[-1]["f"] - 1) / 30, d1[-1]["distance_m"]), xytext=(-170, 22), textcoords="offset points",
+                   color=INK2)
+    ax[1].set_ylabel("米")
+    ax[1].set_title("摄影机到主体的距离（镜头1 量到 DS 面部，镜头2/3 量到 CL 头部）", loc="left", color=INK, fontsize=10)
 
-    ax[2].plot(t, roll, color=AQUA, linewidth=2)
+    for key, lab, colr in (("yaw_rel", "偏航（相对镜头起点）", AQUA), ("pitch_down_deg", "俯角", VIOLET),
+                           ("roll_deg", "滚转", ORANGE)):
+        for s in (1, 2, 3):
+            r = [c for c in cam if c["shot"] == s]
+            y0 = r[0]["yaw_deg"]
+            vals = [(c["yaw_deg"] - y0) if key == "yaw_rel" else c[key] for c in r]
+            ax[2].plot([(c["f"] - 1) / 30 for c in r], vals, color=colr, linewidth=2, label=lab if s == 1 else None)
     ax[2].axhline(0, color=AXIS, linewidth=0.8)
-    ax[2].set_ylabel("累计滚转 °")
-    ax[2].set_title("摄影机滚转：镜头2 绕轴 +12°（揭示舞台），镜头3 手持式左右摇摆", loc="left", color=INK, fontsize=10)
+    ax[2].legend(loc="lower left", frameon=False, ncol=3, fontsize=8.5)
+    ax[2].set_ylabel("度")
+    ax[2].set_title("摄影机角度（勘测解算）：镜头2 左摇 16°、下俯 5°，滚转始终在 ±2° 以内", loc="left", color=INK, fontsize=10)
 
     ax[3].plot(t, rms, color=INK2, linewidth=1.6)
     for b in au["beat_times_s"]:
@@ -93,4 +94,4 @@ def main(sig_json, shots_json, audio_json, out_png):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:5])
+    main(*sys.argv[1:6])

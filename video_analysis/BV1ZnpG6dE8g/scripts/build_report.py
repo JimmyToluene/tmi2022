@@ -43,17 +43,20 @@ def main(final_dir, template, out_html):
                 c.pop("bbox", None)
             frames.append(keep)
 
+    cam = load(d, "camera_solved.json") if (Path(d) / "camera_solved.json").exists() else None
     signals = []
-    for s, z, ro in zip(sig, meas["camera"]["zoom"], meas["camera"]["roll"]):
-        signals.append({"zoom": z, "roll": ro, "rms": s["audio"]["rms_db"], "beat": s["audio"]["beat"],
-                        "danmaku": s["danmaku_here"]})
+    for i, s in enumerate(sig):
+        c = cam[i] if cam else {}
+        signals.append({"lens": c.get("lens_mm"), "yaw": c.get("yaw_deg"), "pitch": c.get("pitch_down_deg"),
+                        "roll": c.get("roll_deg"), "dist": c.get("distance_m"), "rms": s["audio"]["rms_db"],
+                        "beat": s["audio"]["beat"], "danmaku": s["danmaku_here"]})
 
     tr = kin["tracks"]
     ds, cl = tr.get("DS", []), tr.get("CL", [])
     blue, orange, slate = "var(--ds)", "var(--cl)", "var(--crowd)"
     panels = [
-        {"title": "摄影机累计缩放", "unit": "×", "dp": 2,
-         "series": [{"label": "缩放", "color": "var(--cam)", "points": [[i + 1, z] for i, z in enumerate(meas["camera"]["zoom"])]}]},
+        {"title": "摄影机到主体距离（解算）", "unit": "米", "dp": 1,
+         "series": [{"label": "距离", "color": "var(--cam)", "points": [[c["f"], c["distance_m"]] for c in (cam or [])]}]},
         {"title": "DS 头部偏航 yaw（MediaPipe 实测）", "unit": "°", "dp": 0, "zero": True,
          "series": [{"label": "DS yaw", "color": blue, "points": meas["ds_head_yaw_mp"]}]},
         {"title": "头部滚转 roll（标注估计）", "unit": "°", "dp": 0, "zero": True,
