@@ -86,6 +86,8 @@ def main(final_dir, template, out_html):
         "method": load(d, "method_cards.json"),
         "start_frame": 1,
     }
+    if (Path(d) / "status.json").exists():
+        data["status"] = load(d, "status.json")
     html = open(template, encoding="utf-8").read()
     blob = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     html = html.replace("/*__DATA__*/null", blob)

@@ -96,25 +96,23 @@ def main(raw_dir, signals_json, out_dir):
             e["chunk"] = a["chunk"]
             e["verified"] = p is not None
         events.extend(evs)
-    # expand duplicates: frame n with dup_of_prev copies the nearest earlier annotated frame
+    # expand duplicates: frame n with dup_of_prev copies its source frame; a non-duplicate frame with no
+    # annotation (its chunk is still being annotated) becomes an explicit pending record, never a neighbour copy
     full, missing = [], []
     for n in range(1, len(sig) + 1):
         if n in frames and not sig[n]["dup_of_prev"]:
             r = frames[n]
             r["dup_of"] = None
-        else:
-            src = n - 1
-            while src >= 1 and src not in frames:
-                src -= 1
-            if src < 1:
-                missing.append(n)
-                continue
-            r = copy.deepcopy(frames[src])
+        elif sig[n]["dup_of_prev"] and (n - 1) in frames:
+            r = copy.deepcopy(frames[n - 1])
             r["f"] = n
-            r["dup_of"] = src
-            r["delta"] = "identical to frame %d (24->30 fps pad)" % src if sig[n]["dup_of_prev"] else r.get("delta", "")
-            if not sig[n]["dup_of_prev"]:
-                missing.append(n)
+            r["dup_of"] = frames[n - 1].get("dup_of") or (n - 1)
+            r["delta"] = "identical to frame %d (24->30 fps pad)" % r["dup_of"]
+        else:
+            missing.append(n)
+            r = {"f": n, "pending": True, "dup_of": None, "cam": {}, "chars": [], "inter": [], "env": "",
+                 "delta": "annotation for this frame is still in progress"}
+        frames[n] = r
         r["t"] = round((n - 1) / 30, 4)
         r["shot"] = sig[n]["shot"]
         full.append(r)
@@ -123,7 +121,7 @@ def main(raw_dir, signals_json, out_dir):
     json.dump(events, open(out / "events_verified.json", "w"), ensure_ascii=False, indent=1)
     json.dump(log, open(out / "patch_log.json", "w"), ensure_ascii=False, indent=1)
     print(f"{len(full)} frames, {len(events)} events, {len(log)} patches applied; "
-          f"non-duplicate frames filled from neighbours (annotator skipped them): {missing}")
+          f"pending (not yet annotated) frames: {len(missing)} {missing[:3]}...{missing[-3:]}" if missing else "no pending frames")
 
 
 if __name__ == "__main__":

@@ -69,6 +69,10 @@ header { display: grid; gap: 14px; }
 .fact b { font-family: var(--font-data); font-weight: 500; font-size: 20px; font-variant-numeric: tabular-nums; }
 .fact span { font-size: 12px; color: var(--muted); }
 .thesis { max-width: 72ch; font-size: 16.5px; }
+.status { border: 1px solid var(--rule); border-left: 4px solid var(--cl); background: var(--surface); border-radius: 8px; padding: 12px 14px; display: grid; gap: 6px; max-width: 80ch; }
+.status h3 { font-size: 14px; }
+.status ul { margin: 0; padding-left: 18px; display: grid; gap: 2px; font-size: 13.5px; color: var(--ink-2); }
+.pending { color: var(--muted); font-style: italic; }
 
 /* relationship map */
 .relmap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
@@ -149,6 +153,7 @@ details summary { cursor: pointer; color: var(--ink-2); }
     <p class="lede">一条 15 秒 AI 生成动画的逐帧拆解：三个镜头、452 帧，每一帧的姿势、表情、视线、镜头运动和人物之间的关系。下方舞台里的线条人是从关键点重建的姿势模型，不是原画面。</p>
     <div class="facts" id="facts"></div>
     <p class="thesis" id="thesis"></p>
+    <div class="status" id="status" hidden></div>
   </header>
 
   <section id="rel">
@@ -265,6 +270,11 @@ const DATA = /*__DATA__*/null;
   ];
   $("#facts").innerHTML = facts.map(([b, s]) => `<div class="fact"><b>${b}</b><span>${s}</span></div>`).join("");
   $("#thesis").textContent = DATA.analysis.thesis;
+  if (DATA.status) {
+    const st = $("#status");
+    st.innerHTML = `<h3>${esc(DATA.status.title)}</h3><ul>${DATA.status.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
+    st.hidden = false;
+  }
 
   // ---------- frame cursor ----------
   let cur = 1, playing = false, timer = null;
@@ -328,8 +338,10 @@ const DATA = /*__DATA__*/null;
     const evs = DATA.events.filter(e => e.start <= f && f <= e.end);
     let h = `<div class="frame-meta"><span class="big">f${f}</span><span class="mono">${r.t.toFixed(3)} s</span><span class="tag">镜头 ${r.shot}</span>`;
     if (r.dup_of) h += `<span class="tag">重复帧 = f${r.dup_of}</span>`;
+    if (r.pending) h += `<span class="tag">标注进行中</span>`;
     if (sig.beat) h += `<span class="tag"><span class="dot" style="background:var(--cl)"></span>节拍</span>`;
     h += `<span class="tag mono">缩放 ×${(sig.zoom || 1).toFixed(3)} · 滚转 ${(sig.roll || 0).toFixed(1)}° · ${(sig.rms ?? 0).toFixed(1)} dB</span></div>`;
+    if (r.pending) { h += `</div><p class="pending">这一帧所在的块还在标注中，完成后这里会显示逐帧记录。</p>`; $("#log").innerHTML = h; return; }
     h += `<div class="cam-line"><b>镜头：</b>${esc(r.cam?.size)} · ${esc(r.cam?.angle)} · ${esc(r.cam?.move)}${r.cam?.focus ? " · 焦点 " + esc(r.cam.focus) : ""}</div>`;
     h += `<div class="delta-line"><b>相对上一张：</b>${esc(r.delta)}</div>`;
     if (r.env) h += `<div class="env-line"><b>环境：</b>${esc(r.env)}</div>`;
@@ -537,6 +549,7 @@ const DATA = /*__DATA__*/null;
       g.addEventListener("mousemove", ev => showTip(ev, `<b>${esc(n.label)}</b><br>${esc(n.desc)}`)); g.addEventListener("mouseleave", hideTip);
     });
     const list = $("#edges");
+    if (!A.edges.length) { list.innerHTML = `<p class="pending">人物关系模型（四个视角分析 + 对抗验证）会在全部逐帧标注完成后生成。下方“时间轴”里已经可以看到逐帧统计出的视线、空间与构图关系。</p>`; el("text", { x: 320, y: 280, "text-anchor": "middle", "font-size": 14 }, svg).textContent = "关系模型生成中"; return; }
     const order = { confirmed: 0, plausible: 1, refuted: 2 };
     list.innerHTML = A.edges.slice().sort((a, b) => (order[a.verdict] ?? 1) - (order[b.verdict] ?? 1) || (b.strength ?? 0) - (a.strength ?? 0)).map(e => `
       <div class="edge" tabindex="0" data-id="${esc(e.id)}">
@@ -556,7 +569,8 @@ const DATA = /*__DATA__*/null;
   })();
 
   // ---------- phases ----------
-  $("#phases").innerHTML = (DATA.analysis.phases || []).map(p => `
+  if (!(DATA.analysis.phases || []).length) $("#phases").innerHTML = `<p class="pending">分段解读会和人物关系模型一起生成。</p>`;
+  else $("#phases").innerHTML = (DATA.analysis.phases || []).map(p => `
     <div class="phase"><div class="when"><a onclick="__jump(${p.start})">f${p.start}–${p.end}</a><br>${((p.start - 1) / 30).toFixed(2)}–${(p.end / 30).toFixed(2)} s</div>
       <div><h3>${esc(p.title)}</h3><p>${esc(p.relationship_state)}</p><p class="small" style="margin-top:4px"><b>主导：</b>${esc(p.who_dominates)}　<b>证据：</b>${esc(p.evidence)}</p></div></div>`).join("");
 
