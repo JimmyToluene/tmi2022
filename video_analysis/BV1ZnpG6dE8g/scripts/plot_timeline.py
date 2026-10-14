@@ -44,7 +44,7 @@ def main(sig_json, shots_json, audio_json, cam_json, out_png):
         for s in shots[1:]:
             a.axvline(s["start_t"], color=INK2, linewidth=1, linestyle=(0, (3, 3)))
 
-    names = {1: "镜头1  推轨靠近 DS · 50 mm", 2: "镜头2  DS 肩后俯视舞池 · 36 mm", 3: "镜头3  同一位置长焦 · 235 mm"}
+    names = {1: "镜头1  推轨靠近 DS · 50 mm", 2: "镜头2  DS 肩后俯视舞池 · 36 mm", 3: "镜头3  同一位置长焦 · 247 mm"}
     cols = {1: BLUE, 2: "#7a8fb0", 3: ORANGE}
     for s in shots:
         ax[0].barh(0, s["end_t"] - s["start_t"] + 1 / 30, left=s["start_t"], height=0.7, color=cols[s["shot"]],

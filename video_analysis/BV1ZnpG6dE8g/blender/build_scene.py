@@ -371,7 +371,8 @@ def build_crowd(spec, root):
         ob = mesh_object(f"crowd_v{k:02d}", mannequin_bmesh(1.75, up, seated), vc, cmat)
         if not seated:
             phase = (k // 3) * period / 4
-            for f in range(1, 453, max(1, period // 2)):
+            # sample well inside the period: a half-period step lands every key on sin(n*pi) = 0 for even periods
+            for f in range(1, 453, max(1, period // 6)):
                 t = (f - 1 - phase) / period * 2 * math.pi
                 ob.location.z = anim.get("bounce_m", 0.03) * max(0.0, math.sin(t))
                 ob.rotation_euler.y = math.radians(anim.get("sway_deg", 4)) * math.sin(t / 2)
@@ -477,6 +478,20 @@ def unwrap(prev, ang):
     return ang
 
 
+def focus_at(dof, f):
+    """Focus point at frame f from dof.focus_keys (linear between keys, held outside), or None."""
+    keys = sorted(dof.get("focus_keys", []), key=lambda k: k["f"])
+    if not keys:
+        return None
+    if f <= keys[0]["f"]:
+        return keys[0]["focus"]
+    for a, b in zip(keys, keys[1:]):
+        if f <= b["f"]:
+            t = (f - a["f"]) / (b["f"] - a["f"])
+            return [pa + (pb - pa) * t for pa, pb in zip(a["focus"], b["focus"])]
+    return keys[-1]["focus"]
+
+
 def build_cameras(spec, root):
     col = collection("Cameras", root)
     scene = bpy.context.scene
@@ -506,7 +521,7 @@ def build_cameras(spec, root):
             ob.keyframe_insert("rotation_euler", frame=k["f"])
             cd.keyframe_insert("lens", frame=k["f"])
             if dof.get("enabled"):
-                focus = Vector(dof.get("focus", k["target"]))
+                focus = Vector(focus_at(dof, k["f"]) or dof.get("focus", k["target"]))
                 cd.dof.focus_distance = (focus - Vector(k["location"])).length
                 cd.keyframe_insert("dof.focus_distance", frame=k["f"])
         for fc in list(_fcurves(ob)) + list(_fcurves(cd)):
