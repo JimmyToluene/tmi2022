@@ -534,6 +534,29 @@ def _fcurves(idblock):
     return out
 
 
+def bake_cadence_holds(cams, spec):
+    """Re-key every camera channel once per frame with CONSTANT interpolation, repeating the previous frame's
+    value on the frames the source video repeats (meta.hold_residues: {shot: [f % 5 residues]}). Without this
+    the rebuilt cameras move smoothly at 30 fps while the source moves on only 4 (shots 2-3) or 3 (shot 1)
+    of every 5 frames, and frame-by-frame comparisons drift by up to a frame."""
+    rule = spec["meta"].get("hold_residues")
+    if not rule:
+        return
+    for C in spec["cameras"]:
+        ob = cams[C["shot"]]
+        holds = set(rule.get(str(C["shot"]), []))
+        a, b = C["frames"]
+        for fc in list(_fcurves(ob)) + list(_fcurves(ob.data)):
+            vals = {}
+            for f in range(a, b + 1):
+                vals[f] = vals[f - 1] if (f % 5 in holds and f - 1 in vals) else fc.evaluate(f)
+            fc.keyframe_points.clear()
+            for f, v in vals.items():
+                kp = fc.keyframe_points.insert(f, v, options={"FAST"})
+                kp.interpolation = "CONSTANT"
+            fc.update()
+
+
 def attach_plates(cams, plates_dir):
     """Show the user's own extracted source frames (plates_dir/f0001.jpg ...) behind every shot camera in the
     viewport, frame-locked to the timeline. Only the path is stored; no frames are packed into the file."""
@@ -650,6 +673,7 @@ def build(spec_path, out_blend, pose_path=None, engine="EEVEE", plates_dir=None)
     build_crowd(spec, root)
     build_characters(spec, root)
     cams = build_cameras(spec, root)
+    bake_cadence_holds(cams, spec)
     if plates_dir and os.path.exists(os.path.join(plates_dir, "f0001.jpg")):
         attach_plates(cams, plates_dir)
     for m in spec.get("markers", []):

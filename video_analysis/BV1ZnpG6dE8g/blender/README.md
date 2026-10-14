@@ -12,7 +12,7 @@
 | `pose_reference.py` | 生成上面的文件。 |
 | `render_checks.py` | 渲染指定帧，与原片并排、半透明叠加、描边对比。 |
 | `camera_math.py` | 统一的摄影机约定与投影函数；与 Blender 的 `world_to_camera_view` 误差 < 0.002 px。 |
-| `checks/` | 对位检查图（原片｜渲染｜50% 叠加｜渲染边缘描在原片上）。 |
+| `checks/` | 重建场景各关键帧的渲染图和对位误差表。含原片的对比图不放进仓库；用自己拆出的原片帧运行 `render_checks.py` 即可在本地生成（原片｜渲染｜50% 叠加｜渲染边缘描在原片上）。 |
 
 生成（Blender 4.2 以上，或 `pip install bpy`）：
 
@@ -26,7 +26,12 @@ python build_scene.py scene_spec.json BV1ZnpG6dE8g_set.blend --pose pose_referen
 
 - 1 Blender 单位 = 1 米，Z 轴向上。
 - 原点在圆形舞台中心的舞池地面（z = 0）。+Y 从 DS 的包厢指向对面，包厢在 −Y 一侧。
-- 帧率 30 fps，帧号与原视频完全一致（f1–f452）。原片以 24 fps 生成，补帧到 30 fps：每 5 帧中 `f % 5 == 2` 的那一帧是复制帧。
+- 帧率 30 fps，帧号与原视频完全一致（f1–f452）。原片不是每帧都在动：
+  - 镜头 2、3：每 5 帧中 `f % 5 == 2` 那一帧重复上一帧，相当于 24 fps。
+  - 镜头 1：`f % 5` 余 2 和余 3 两帧都重复，每 5 帧只有 3 张新画面，相当于 18 fps。
+
+  `scene_spec.json` 的 `meta.hold_residues` 记录了这套规则，摄影机在这些帧会停住，与原片逐帧对齐。想要平滑运动就删掉这一项再重新生成。
+- 用原片做背景对位：用 `ffmpeg -i 原视频.mp4 -vsync 0 -q:v 2 plates/f%04d.jpg` 拆帧，生成时加 `--plates plates`。三台摄影机的视口背景会显示对应帧（只记录路径，不打包进 .blend）。
 - 时间轴标记 `Shot1` / `Shot2` / `Shot3` 分别位于 f1、f149、f304，并绑定了对应摄影机，播放时会自动切换镜头。`beat` 标记是配乐节拍（120 BPM，每 15 帧一拍）。
 - 摄影机使用 36 mm 竖向传感器（`sensor_fit = VERTICAL`），竖向视角 = 2·atan(18 / 焦距)。
 
