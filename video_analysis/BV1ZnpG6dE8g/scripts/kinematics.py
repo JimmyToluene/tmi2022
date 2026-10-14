@@ -84,7 +84,8 @@ def main(ann_json, out_json):
     for r in ann:
         for c in r.get("chars", []):
             cid = c.get("id")
-            if not cid or cid in ("CROWD", "CAM"):
+            # audience ids (AUD_n) are numbered per annotation chunk, so they are not tracks across the video
+            if cid not in ("DS", "CL"):
                 continue
             kp = c.get("kp") or {}
             rec = {"f": r["f"], "t": r["t"], "shot": r["shot"], "dup": r.get("dup_of") is not None,

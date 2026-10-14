@@ -534,6 +534,26 @@ def _fcurves(idblock):
     return out
 
 
+def attach_plates(cams, plates_dir):
+    """Show the user's own extracted source frames (plates_dir/f0001.jpg ...) behind every shot camera in the
+    viewport, frame-locked to the timeline. Only the path is stored; no frames are packed into the file."""
+    first = os.path.join(os.path.abspath(plates_dir), "f0001.jpg")
+    img = bpy.data.images.load(first, check_existing=True)
+    img.source = "SEQUENCE"
+    for ob in cams.values():
+        cd = ob.data
+        cd.show_background_images = True
+        bg = cd.background_images.new()
+        bg.image = img
+        bg.image_user.frame_start = 1
+        bg.image_user.frame_duration = 452
+        bg.image_user.frame_offset = 0
+        bg.image_user.use_auto_refresh = True
+        bg.alpha = 0.5
+        bg.display_depth = "FRONT"
+        bg.frame_method = "FIT"
+
+
 def build_world(spec):
     w = bpy.context.scene.world or bpy.data.worlds.new("World")
     bpy.context.scene.world = w
@@ -609,7 +629,7 @@ def render_settings(spec, engine):
                     pass
 
 
-def build(spec_path, out_blend, pose_path=None, engine="EEVEE"):
+def build(spec_path, out_blend, pose_path=None, engine="EEVEE", plates_dir=None):
     spec = json.load(open(spec_path, encoding="utf-8"))
     bpy.ops.wm.read_factory_settings(use_empty=True)
     root = collection("BV1ZnpG6dE8g_Set")
@@ -629,7 +649,9 @@ def build(spec_path, out_blend, pose_path=None, engine="EEVEE"):
     build_lights(spec, root, cut_frames)
     build_crowd(spec, root)
     build_characters(spec, root)
-    build_cameras(spec, root)
+    cams = build_cameras(spec, root)
+    if plates_dir and os.path.exists(os.path.join(plates_dir, "f0001.jpg")):
+        attach_plates(cams, plates_dir)
     for m in spec.get("markers", []):
         if m["name"].lower().startswith("beat"):
             bpy.context.scene.timeline_markers.new(m["name"], frame=m["f"])
@@ -652,4 +674,4 @@ if __name__ == "__main__":
         else:
             pos.append(argv[i])
             i += 1
-    build(pos[0], pos[1], opts.get("--pose"), opts.get("--engine", "EEVEE"))
+    build(pos[0], pos[1], opts.get("--pose"), opts.get("--engine", "EEVEE"), opts.get("--plates"))
