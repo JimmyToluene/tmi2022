@@ -33,9 +33,14 @@
 1. 打开 `BV1ZnpG6dE8g_set_with_mannequins.blend`。
 2. 导入角色：文件 › 导入 › MikuMikuDance Model (.pmx)，缩放保持 0.08。
 3. 先选中 MMD Tools 生成的模型根物体，再加选 `MMD_DS_Root`，执行 物体 › 父级 › 物体（无反向）；然后把模型根物体的位置和旋转清零。CL 同样处理，父级改为 `MMD_CL_Root`。
-4. 选中模型，在 MMD Tools 面板里选"导入 VMD"，选择 `DS.vmd` 或 `CL.vmd`。缩放 0.08，帧偏移 0。
+4. **先把时间轴的当前帧设回第 1 帧**（mmd_tools 以当前帧作为 VMD 的第 0 帧，停在别的帧导入，动作会整体错位）。然后选中模型，在 MMD Tools 面板里选"导入 VMD"，选择 `DS.vmd` 或 `CL.vmd`，Scale 0.08，Margin 0。
 5. 隐藏或删除对应的灰色人台，即整个 `DS_mannequin` 层级（包括 `DS_mannequin_arm` 和 `DS_mannequin_mesh`）。CL 同理。注意只隐藏父级空物体不会隐藏子物体。
-6. 可选：如果想用 MMD 相机代替场景里的 `CAM_Shot1/2/3`，新建一个相机，用 MMD Tools 导入 `camera.vmd`。它和场景相机逐帧一致：回读校验误差中位数 0.21 px，最大 0.94 px。
+6. 可选：如果想用 MMD 相机代替场景里的 `CAM_Shot1/2/3`：
+   1. 同样先回到第 1 帧，新建一个相机，用 MMD Tools 导入 `camera.vmd`。
+   2. 解除时间轴标记和场景相机的绑定：删除 `Shot1`/`Shot2`/`Shot3` 三个标记，或在 Python 控制台执行 `for m in C.scene.timeline_markers: m.camera = None`。否则播放和渲染时 Blender 仍会切回 `CAM_Shot1/2/3`。
+   3. 把 MMD 相机设为活动相机。
+
+   MMD 相机和场景相机在主体附近逐帧一致，回读误差中位数 0.21 px，最大 0.94 px。但 VMD 只存整数视角，这是靠调整相机距离补偿的，所以离主体较远的前景和背景在画面边缘会有偏差：镜头 1 约 10 px，镜头 3 约 20–37 px。
 
 三个镜头共用同一个落位点，所以"全ての親"全程为零。镜头 1 里 DS 头部约 4 cm 的横移、镜头 2 里她探身越过栏杆的动作，都写在センター、上半身等姿势骨骼里。模型挂到落位点一次即可，不需要按镜头移动。
 
@@ -72,7 +77,7 @@
 
 ## 需要知道的局限
 
-- **静止姿势假设**：VMD 里的旋转是相对模型静止姿势的。这里假设手臂静止时向下约 40°。如果你们的模型静止时手臂角度不同，手臂会整体差这个角度。最准的做法是把两个角色的 `.pmx` 发来，用它们自己的骨架重新拟合（`pose_fit.py` 可以换骨架）。
+- **静止姿势假设**：VMD 里的旋转是相对模型静止姿势的。这里假设手臂静止时向下约 40°。如果你们的模型静止时手臂角度不同，手臂会整体差这个角度。最准的做法是用两个角色自己的 `.pmx` 骨架重新拟合。目前 `pose_fit.py` 用的是 `mmd_skeleton.py` 里写死的标准骨架，要换成 .pmx 的骨架，需要先读出它的骨骼静止位置；这一步还没有实现。
 - **表情名称**：表情用的是标准 morph 名（まばたき、あ、笑い、にこり、∧、困る）。模型里没有的 morph 会被跳过；名字不同的，在 MMD Tools 的 morph 列表里改名即可。
 - **深度精度**：动作来自单目画面。头部、躯干、手臂的大方向可靠，前后深度和手指细节是近似值。画面上看不到的部分（镜头 1 里 DS 的腿、镜头 3 里 CL 膝盖以下）保持站立，由足ＩＫ固定。
 - **原片本身不一致**：原片是 AI 生成的，三个镜头在几何上并不完全一致。为了拼成同一个空间，做了这些取舍：
@@ -101,7 +106,11 @@
 
 ## 重新生成
 
-依赖：`pip install bpy`（5.2）；mmd_tools 源码，路径记为 `<mmd_tools>`，还需要安装它自带的 `opencc` wheel。
+依赖：
+
+- `pip install bpy`（5.2）、numpy、scipy、opencv-python。
+- mmd_tools 源码：`git clone https://github.com/MMD-Blender/blender_mmd_tools`（本项目用的是提交 e321bd02）。下面的 `<mmd_tools>` 指这个克隆目录本身，不是里面的 `mmd_tools/` 包。还需要 `pip install` 它 `mmd_tools/wheels/` 里自带的 `opencc` wheel。
+- 系统包：ffmpeg，以及 fonts-dejavu 和 fonts-wqy-zenhei。`render_video.py` 默认会给画面加帧号，要用这两种字体；不想加帧号可以传 `--label 0`。
 
 ```bash
 python build_scene.py scene_spec.json blend/BV1ZnpG6dE8g_set.blend                                    # 场景
