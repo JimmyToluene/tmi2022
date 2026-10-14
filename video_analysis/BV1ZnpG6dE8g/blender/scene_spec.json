@@ -1137,7 +1137,7 @@
    "name": "GalleryDownlight_00",
    "center": [
     -4.25,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1150,7 +1150,7 @@
    "name": "GalleryDownlight_01",
    "center": [
     -3.45,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1163,7 +1163,7 @@
    "name": "GalleryDownlight_02",
    "center": [
     -2.65,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1176,7 +1176,7 @@
    "name": "GalleryDownlight_03",
    "center": [
     -1.85,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1189,7 +1189,7 @@
    "name": "GalleryDownlight_04",
    "center": [
     -1.05,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1202,7 +1202,7 @@
    "name": "GalleryDownlight_05",
    "center": [
     -0.25,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1215,7 +1215,7 @@
    "name": "GalleryDownlight_06",
    "center": [
     0.55,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1228,7 +1228,7 @@
    "name": "GalleryDownlight_07",
    "center": [
     1.35,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1241,7 +1241,7 @@
    "name": "GalleryDownlight_08",
    "center": [
     2.15,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1254,7 +1254,7 @@
    "name": "GalleryDownlight_09",
    "center": [
     2.95,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1267,7 +1267,7 @@
    "name": "GalleryDownlight_10",
    "center": [
     3.75,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -1280,7 +1280,7 @@
    "name": "GalleryDownlight_11",
    "center": [
     4.55,
-    10.45,
+    10.35,
     3.788
    ],
    "radius": 0.04,
@@ -2884,12 +2884,12 @@
    "type": "SPOT",
    "location": [
     -4.25,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     -4.25,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -2907,12 +2907,12 @@
    "type": "SPOT",
    "location": [
     -3.45,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     -3.45,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -2930,12 +2930,12 @@
    "type": "SPOT",
    "location": [
     -2.65,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     -2.65,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -2953,12 +2953,12 @@
    "type": "SPOT",
    "location": [
     -1.85,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     -1.85,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -2976,12 +2976,12 @@
    "type": "SPOT",
    "location": [
     -1.05,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     -1.05,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -2999,12 +2999,12 @@
    "type": "SPOT",
    "location": [
     -0.25,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     -0.25,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -3022,12 +3022,12 @@
    "type": "SPOT",
    "location": [
     0.55,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     0.55,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -3045,12 +3045,12 @@
    "type": "SPOT",
    "location": [
     1.35,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     1.35,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -3068,12 +3068,12 @@
    "type": "SPOT",
    "location": [
     2.15,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     2.15,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -3091,12 +3091,12 @@
    "type": "SPOT",
    "location": [
     2.95,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     2.95,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -3114,12 +3114,12 @@
    "type": "SPOT",
    "location": [
     3.75,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     3.75,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -3137,12 +3137,12 @@
    "type": "SPOT",
    "location": [
     4.55,
-    10.45,
+    10.35,
     3.76
    ],
    "target": [
     4.55,
-    10.2,
+    10.1,
     2.4
    ],
    "color": "#e6edff",
@@ -3752,7 +3752,7 @@
     "rect": [
      3.34,
      3.97,
-     4.65,
+     4.35,
      5.57
     ],
     "z": 0.6,
@@ -4353,7 +4353,7 @@
      -3.75,
      9.34,
      -2.15,
-     10.35
+     10.1
     ],
     "z": 2.4,
     "exclude_circles": [
@@ -4633,7 +4633,7 @@
      -4.5,
      8.95,
      4.5,
-     10.35
+     10.1
     ],
     "z": 2.4,
     "exclude_circles": [
@@ -5592,12 +5592,12 @@
     {
      "f": 1,
      "location": [
-      -0.5112,
+      -0.5146,
       -5.668,
       5.4792
      ],
      "target": [
-      -0.5112,
+      -0.5146,
       -7.1491,
       5.2587
      ],
@@ -5607,12 +5607,12 @@
     {
      "f": 7,
      "location": [
-      -0.5114,
+      -0.5143,
       -5.6907,
       5.4822
      ],
      "target": [
-      -0.5114,
+      -0.5143,
       -7.15,
       5.265
      ],
@@ -5622,12 +5622,12 @@
     {
      "f": 13,
      "location": [
-      -0.5031,
+      -0.511,
       -5.7193,
       5.4838
      ],
      "target": [
-      -0.5031,
+      -0.511,
       -7.1509,
       5.2706
      ],
@@ -5637,12 +5637,12 @@
     {
      "f": 19,
      "location": [
-      -0.4906,
+      -0.5097,
       -5.7518,
       5.4815
      ],
      "target": [
-      -0.4906,
+      -0.5097,
       -7.1514,
       5.2737
      ],
@@ -5652,12 +5652,12 @@
     {
      "f": 25,
      "location": [
-      -0.4806,
+      -0.5076,
       -5.7885,
       5.4834
      ],
      "target": [
-      -0.4806,
+      -0.5076,
       -7.1531,
       5.283
      ],
@@ -5667,12 +5667,12 @@
     {
      "f": 31,
      "location": [
-      -0.4696,
+      -0.5019,
       -5.8274,
       5.4846
      ],
      "target": [
-      -0.4696,
+      -0.5019,
       -7.1552,
       5.2932
      ],
@@ -5682,12 +5682,12 @@
     {
      "f": 37,
      "location": [
-      -0.4626,
+      -0.4989,
       -5.8676,
       5.4859
      ],
      "target": [
-      -0.4626,
+      -0.4989,
       -7.1574,
       5.304
      ],
@@ -5697,12 +5697,12 @@
     {
      "f": 43,
      "location": [
-      -0.458,
+      -0.4962,
       -5.9082,
       5.4875
      ],
      "target": [
-      -0.458,
+      -0.4962,
       -7.1592,
       5.3139
      ],
@@ -5712,12 +5712,12 @@
     {
      "f": 49,
      "location": [
-      -0.4536,
+      -0.4939,
       -5.9487,
       5.488
      ],
      "target": [
-      -0.4536,
+      -0.4939,
       -7.1605,
       5.3216
      ],
@@ -5727,12 +5727,12 @@
     {
      "f": 55,
      "location": [
-      -0.4511,
+      -0.493,
       -5.9892,
       5.4905
      ],
      "target": [
-      -0.4511,
+      -0.493,
       -7.162,
       5.3308
      ],
@@ -5742,12 +5742,12 @@
     {
      "f": 61,
      "location": [
-      -0.4488,
+      -0.4952,
       -6.0292,
       5.4915
      ],
      "target": [
-      -0.4488,
+      -0.4952,
       -7.1634,
       5.3393
      ],
@@ -5757,12 +5757,12 @@
     {
      "f": 67,
      "location": [
-      -0.4489,
+      -0.4948,
       -6.0685,
       5.491
      ],
      "target": [
-      -0.4489,
+      -0.4948,
       -7.165,
       5.3475
      ],
@@ -5772,12 +5772,12 @@
     {
      "f": 73,
      "location": [
-      -0.4513,
+      -0.4948,
       -6.1071,
       5.4901
      ],
      "target": [
-      -0.4513,
+      -0.4948,
       -7.1667,
       5.3556
      ],
@@ -5787,12 +5787,12 @@
     {
      "f": 74,
      "location": [
-      -0.4518,
+      -0.4952,
       -6.1134,
       5.4902
      ],
      "target": [
-      -0.4518,
+      -0.4952,
       -7.167,
       5.3571
      ],
@@ -5802,12 +5802,12 @@
     {
      "f": 79,
      "location": [
-      -0.4545,
+      -0.4974,
       -6.1451,
       5.4914
      ],
      "target": [
-      -0.4545,
+      -0.4974,
       -7.1684,
       5.3652
      ],
@@ -5817,12 +5817,12 @@
     {
      "f": 85,
      "location": [
-      -0.4571,
+      -0.4985,
       -6.1819,
       5.4909
      ],
      "target": [
-      -0.4571,
+      -0.4985,
       -7.1697,
       5.3722
      ],
@@ -5832,12 +5832,12 @@
     {
      "f": 91,
      "location": [
-      -0.4577,
+      -0.4991,
       -6.2176,
       5.4892
      ],
      "target": [
-      -0.4577,
+      -0.4991,
       -7.1706,
       5.3774
      ],
@@ -5847,12 +5847,12 @@
     {
      "f": 97,
      "location": [
-      -0.457,
+      -0.4984,
       -6.2525,
       5.4899
      ],
      "target": [
-      -0.457,
+      -0.4984,
       -7.1717,
       5.3841
      ],
@@ -5862,12 +5862,12 @@
     {
      "f": 103,
      "location": [
-      -0.4567,
+      -0.4981,
       -6.2866,
       5.494
      ],
      "target": [
-      -0.4567,
+      -0.4981,
       -7.173,
       5.394
      ],
@@ -5877,12 +5877,12 @@
     {
      "f": 109,
      "location": [
-      -0.4569,
+      -0.4983,
       -6.3189,
       5.4963
      ],
      "target": [
-      -0.4569,
+      -0.4983,
       -7.1741,
       5.4018
      ],
@@ -5892,12 +5892,12 @@
     {
      "f": 111,
      "location": [
-      -0.4568,
+      -0.4982,
       -6.3292,
       5.4966
      ],
      "target": [
-      -0.4568,
+      -0.4982,
       -7.1744,
       5.4038
      ],
@@ -5907,12 +5907,12 @@
     {
      "f": 115,
      "location": [
-      -0.456,
+      -0.4974,
       -6.3493,
       5.4979
      ],
      "target": [
-      -0.456,
+      -0.4974,
       -7.1751,
       5.4085
      ],
@@ -5922,12 +5922,12 @@
     {
      "f": 121,
      "location": [
-      -0.4551,
+      -0.4965,
       -6.3775,
       5.5028
      ],
      "target": [
-      -0.4551,
+      -0.4965,
       -7.1763,
       5.4181
      ],
@@ -5937,12 +5937,12 @@
     {
      "f": 127,
      "location": [
-      -0.4542,
+      -0.4956,
       -6.4025,
       5.5074
      ],
      "target": [
-      -0.4542,
+      -0.4956,
       -7.1774,
       5.427
      ],
@@ -5952,12 +5952,12 @@
     {
      "f": 133,
      "location": [
-      -0.4532,
+      -0.4946,
       -6.4232,
       5.5093
      ],
      "target": [
-      -0.4532,
+      -0.4946,
       -7.1782,
       5.4327
      ],
@@ -5967,12 +5967,12 @@
     {
      "f": 139,
      "location": [
-      -0.4526,
+      -0.494,
       -6.4387,
       5.5116
      ],
      "target": [
-      -0.4526,
+      -0.494,
       -7.1789,
       5.4382
      ],
@@ -5982,12 +5982,12 @@
     {
      "f": 145,
      "location": [
-      -0.4527,
+      -0.4941,
       -6.4475,
       5.5135
      ],
      "target": [
-      -0.4527,
+      -0.4941,
       -7.1794,
       5.4426
      ],
@@ -5997,12 +5997,12 @@
     {
      "f": 148,
      "location": [
-      -0.453,
+      -0.4944,
       -6.449,
       5.5142
      ],
      "target": [
-      -0.453,
+      -0.4944,
       -7.1797,
       5.4442
      ],
@@ -6031,8 +6031,8 @@
     {
      "f": 149,
      "location": [
-      -0.748,
-      -7.236,
+      -0.569,
+      -7.325,
       5.456
      ],
      "target": [
@@ -6046,8 +6046,8 @@
     {
      "f": 150,
      "location": [
-      -0.745,
-      -7.243,
+      -0.566,
+      -7.332,
       5.457
      ],
      "target": [
@@ -6061,8 +6061,8 @@
     {
      "f": 151,
      "location": [
-      -0.742,
-      -7.25,
+      -0.563,
+      -7.339,
       5.458
      ],
      "target": [
@@ -6076,8 +6076,8 @@
     {
      "f": 153,
      "location": [
-      -0.739,
-      -7.256,
+      -0.56,
+      -7.345,
       5.46
      ],
      "target": [
@@ -6091,8 +6091,8 @@
     {
      "f": 154,
      "location": [
-      -0.735,
-      -7.263,
+      -0.556,
+      -7.352,
       5.461
      ],
      "target": [
@@ -6106,8 +6106,8 @@
     {
      "f": 155,
      "location": [
-      -0.732,
-      -7.269,
+      -0.553,
+      -7.358,
       5.462
      ],
      "target": [
@@ -6121,8 +6121,8 @@
     {
      "f": 156,
      "location": [
-      -0.729,
-      -7.275,
+      -0.55,
+      -7.364,
       5.464
      ],
      "target": [
@@ -6136,8 +6136,8 @@
     {
      "f": 158,
      "location": [
-      -0.725,
-      -7.281,
+      -0.546,
+      -7.37,
       5.465
      ],
      "target": [
@@ -6151,8 +6151,8 @@
     {
      "f": 159,
      "location": [
-      -0.721,
-      -7.285,
+      -0.542,
+      -7.374,
       5.466
      ],
      "target": [
@@ -6166,8 +6166,8 @@
     {
      "f": 160,
      "location": [
-      -0.717,
-      -7.29,
+      -0.538,
+      -7.379,
       5.467
      ],
      "target": [
@@ -6181,8 +6181,8 @@
     {
      "f": 161,
      "location": [
-      -0.713,
-      -7.295,
+      -0.534,
+      -7.384,
       5.468
      ],
      "target": [
@@ -6196,8 +6196,8 @@
     {
      "f": 163,
      "location": [
-      -0.71,
-      -7.301,
+      -0.531,
+      -7.39,
       5.469
      ],
      "target": [
@@ -6211,8 +6211,8 @@
     {
      "f": 164,
      "location": [
-      -0.706,
-      -7.308,
+      -0.527,
+      -7.397,
       5.47
      ],
      "target": [
@@ -6226,8 +6226,8 @@
     {
      "f": 165,
      "location": [
-      -0.703,
-      -7.313,
+      -0.524,
+      -7.402,
       5.472
      ],
      "target": [
@@ -6241,8 +6241,8 @@
     {
      "f": 166,
      "location": [
-      -0.699,
-      -7.318,
+      -0.52,
+      -7.407,
       5.473
      ],
      "target": [
@@ -6256,8 +6256,8 @@
     {
      "f": 168,
      "location": [
-      -0.694,
-      -7.322,
+      -0.515,
+      -7.411,
       5.473
      ],
      "target": [
@@ -6271,8 +6271,8 @@
     {
      "f": 169,
      "location": [
-      -0.689,
-      -7.324,
+      -0.51,
+      -7.413,
       5.474
      ],
      "target": [
@@ -6286,8 +6286,8 @@
     {
      "f": 170,
      "location": [
-      -0.683,
-      -7.325,
+      -0.504,
+      -7.414,
       5.474
      ],
      "target": [
@@ -6301,8 +6301,8 @@
     {
      "f": 171,
      "location": [
-      -0.677,
-      -7.325,
+      -0.498,
+      -7.414,
       5.474
      ],
      "target": [
@@ -6316,8 +6316,8 @@
     {
      "f": 173,
      "location": [
-      -0.671,
-      -7.325,
+      -0.492,
+      -7.414,
       5.474
      ],
      "target": [
@@ -6331,8 +6331,8 @@
     {
      "f": 174,
      "location": [
-      -0.665,
-      -7.326,
+      -0.486,
+      -7.415,
       5.474
      ],
      "target": [
@@ -6346,8 +6346,8 @@
     {
      "f": 175,
      "location": [
-      -0.659,
-      -7.329,
+      -0.48,
+      -7.418,
       5.475
      ],
      "target": [
@@ -6361,8 +6361,8 @@
     {
      "f": 176,
      "location": [
-      -0.654,
-      -7.332,
+      -0.475,
+      -7.421,
       5.475
      ],
      "target": [
@@ -6376,8 +6376,8 @@
     {
      "f": 178,
      "location": [
-      -0.649,
-      -7.336,
+      -0.474,
+      -7.423,
       5.476
      ],
      "target": [
@@ -6391,8 +6391,8 @@
     {
      "f": 179,
      "location": [
-      -0.644,
-      -7.339,
+      -0.471,
+      -7.425,
       5.476
      ],
      "target": [
@@ -6406,8 +6406,8 @@
     {
      "f": 180,
      "location": [
-      -0.639,
-      -7.341,
+      -0.468,
+      -7.426,
       5.477
      ],
      "target": [
@@ -6421,8 +6421,8 @@
     {
      "f": 181,
      "location": [
-      -0.633,
-      -7.343,
+      -0.464,
+      -7.427,
       5.478
      ],
      "target": [
@@ -6436,8 +6436,8 @@
     {
      "f": 183,
      "location": [
-      -0.628,
-      -7.345,
+      -0.463,
+      -7.427,
       5.478
      ],
      "target": [
@@ -6451,8 +6451,8 @@
     {
      "f": 184,
      "location": [
-      -0.622,
-      -7.346,
+      -0.459,
+      -7.427,
       5.478
      ],
      "target": [
@@ -6466,8 +6466,8 @@
     {
      "f": 185,
      "location": [
-      -0.617,
-      -7.347,
+      -0.456,
+      -7.427,
       5.479
      ],
      "target": [
@@ -6481,8 +6481,8 @@
     {
      "f": 186,
      "location": [
-      -0.611,
-      -7.349,
+      -0.452,
+      -7.428,
       5.479
      ],
      "target": [
@@ -6496,8 +6496,8 @@
     {
      "f": 188,
      "location": [
-      -0.606,
-      -7.351,
+      -0.45,
+      -7.429,
       5.479
      ],
      "target": [
@@ -6511,8 +6511,8 @@
     {
      "f": 189,
      "location": [
-      -0.601,
-      -7.353,
+      -0.446,
+      -7.43,
       5.48
      ],
      "target": [
@@ -6526,8 +6526,8 @@
     {
      "f": 190,
      "location": [
-      -0.596,
-      -7.355,
+      -0.443,
+      -7.431,
       5.48
      ],
      "target": [
@@ -6541,8 +6541,8 @@
     {
      "f": 191,
      "location": [
-      -0.591,
-      -7.357,
+      -0.439,
+      -7.433,
       5.48
      ],
      "target": [
@@ -6556,8 +6556,8 @@
     {
      "f": 193,
      "location": [
-      -0.586,
-      -7.36,
+      -0.436,
+      -7.434,
       5.48
      ],
      "target": [
@@ -6571,8 +6571,8 @@
     {
      "f": 194,
      "location": [
-      -0.581,
-      -7.362,
+      -0.432,
+      -7.436,
       5.48
      ],
      "target": [
@@ -6586,8 +6586,8 @@
     {
      "f": 195,
      "location": [
-      -0.575,
-      -7.364,
+      -0.427,
+      -7.437,
       5.479
      ],
      "target": [
@@ -6601,8 +6601,8 @@
     {
      "f": 196,
      "location": [
-      -0.57,
-      -7.366,
+      -0.423,
+      -7.439,
       5.479
      ],
      "target": [
@@ -6616,8 +6616,8 @@
     {
      "f": 198,
      "location": [
-      -0.564,
-      -7.367,
+      -0.419,
+      -7.439,
       5.478
      ],
      "target": [
@@ -6631,8 +6631,8 @@
     {
      "f": 199,
      "location": [
-      -0.558,
-      -7.369,
+      -0.415,
+      -7.44,
       5.477
      ],
      "target": [
@@ -6646,8 +6646,8 @@
     {
      "f": 200,
      "location": [
-      -0.552,
-      -7.37,
+      -0.41,
+      -7.441,
       5.477
      ],
      "target": [
@@ -6661,8 +6661,8 @@
     {
      "f": 201,
      "location": [
-      -0.546,
-      -7.372,
+      -0.406,
+      -7.442,
       5.477
      ],
      "target": [
@@ -6676,8 +6676,8 @@
     {
      "f": 203,
      "location": [
-      -0.54,
-      -7.374,
+      -0.403,
+      -7.442,
       5.476
      ],
      "target": [
@@ -6691,8 +6691,8 @@
     {
      "f": 204,
      "location": [
-      -0.535,
-      -7.376,
+      -0.4,
+      -7.443,
       5.476
      ],
      "target": [
@@ -6706,8 +6706,8 @@
     {
      "f": 205,
      "location": [
-      -0.529,
-      -7.378,
+      -0.396,
+      -7.444,
       5.477
      ],
      "target": [
@@ -6721,8 +6721,8 @@
     {
      "f": 206,
      "location": [
-      -0.524,
-      -7.38,
+      -0.393,
+      -7.445,
       5.477
      ],
      "target": [
@@ -6736,8 +6736,8 @@
     {
      "f": 208,
      "location": [
-      -0.519,
-      -7.382,
+      -0.392,
+      -7.445,
       5.477
      ],
      "target": [
@@ -6751,8 +6751,8 @@
     {
      "f": 209,
      "location": [
-      -0.514,
-      -7.383,
+      -0.389,
+      -7.445,
       5.478
      ],
      "target": [
@@ -6766,8 +6766,8 @@
     {
      "f": 210,
      "location": [
-      -0.51,
-      -7.384,
+      -0.387,
+      -7.445,
       5.478
      ],
      "target": [
@@ -6781,8 +6781,8 @@
     {
      "f": 211,
      "location": [
-      -0.505,
-      -7.385,
+      -0.384,
+      -7.445,
       5.478
      ],
      "target": [
@@ -6796,8 +6796,8 @@
     {
      "f": 213,
      "location": [
-      -0.5,
-      -7.386,
+      -0.383,
+      -7.444,
       5.478
      ],
      "target": [
@@ -6811,8 +6811,8 @@
     {
      "f": 214,
      "location": [
-      -0.494,
-      -7.388,
+      -0.379,
+      -7.445,
       5.478
      ],
      "target": [
@@ -6826,8 +6826,8 @@
     {
      "f": 215,
      "location": [
-      -0.489,
-      -7.389,
+      -0.376,
+      -7.445,
       5.478
      ],
      "target": [
@@ -6841,8 +6841,8 @@
     {
      "f": 216,
      "location": [
-      -0.484,
-      -7.391,
+      -0.373,
+      -7.446,
       5.479
      ],
      "target": [
@@ -6856,8 +6856,8 @@
     {
      "f": 218,
      "location": [
-      -0.48,
-      -7.393,
+      -0.373,
+      -7.446,
       5.479
      ],
      "target": [
@@ -6871,8 +6871,8 @@
     {
      "f": 219,
      "location": [
-      -0.475,
-      -7.395,
+      -0.37,
+      -7.447,
       5.479
      ],
      "target": [
@@ -6886,8 +6886,8 @@
     {
      "f": 220,
      "location": [
-      -0.47,
-      -7.397,
+      -0.367,
+      -7.448,
       5.48
      ],
      "target": [
@@ -6901,8 +6901,8 @@
     {
      "f": 221,
      "location": [
-      -0.465,
-      -7.399,
+      -0.364,
+      -7.449,
       5.48
      ],
      "target": [
@@ -6916,8 +6916,8 @@
     {
      "f": 223,
      "location": [
-      -0.461,
-      -7.401,
+      -0.363,
+      -7.449,
       5.481
      ],
      "target": [
@@ -6931,8 +6931,8 @@
     {
      "f": 224,
      "location": [
-      -0.456,
-      -7.403,
+      -0.36,
+      -7.451,
       5.481
      ],
      "target": [
@@ -6946,8 +6946,8 @@
     {
      "f": 225,
      "location": [
-      -0.452,
-      -7.405,
+      -0.358,
+      -7.452,
       5.482
      ],
      "target": [
@@ -6961,8 +6961,8 @@
     {
      "f": 226,
      "location": [
-      -0.447,
-      -7.407,
+      -0.355,
+      -7.453,
       5.482
      ],
      "target": [
@@ -6976,8 +6976,8 @@
     {
      "f": 228,
      "location": [
-      -0.443,
-      -7.409,
+      -0.354,
+      -7.453,
       5.483
      ],
      "target": [
@@ -6991,8 +6991,8 @@
     {
      "f": 229,
      "location": [
-      -0.439,
-      -7.411,
+      -0.352,
+      -7.454,
       5.484
      ],
      "target": [
@@ -7006,8 +7006,8 @@
     {
      "f": 230,
      "location": [
-      -0.434,
-      -7.412,
+      -0.349,
+      -7.454,
       5.484
      ],
      "target": [
@@ -7021,8 +7021,8 @@
     {
      "f": 231,
      "location": [
-      -0.429,
-      -7.414,
+      -0.346,
+      -7.455,
       5.485
      ],
      "target": [
@@ -7036,8 +7036,8 @@
     {
      "f": 233,
      "location": [
-      -0.425,
-      -7.415,
+      -0.346,
+      -7.454,
       5.485
      ],
      "target": [
@@ -7051,8 +7051,8 @@
     {
      "f": 234,
      "location": [
-      -0.42,
-      -7.417,
+      -0.343,
+      -7.455,
       5.486
      ],
      "target": [
@@ -7066,8 +7066,8 @@
     {
      "f": 235,
      "location": [
-      -0.416,
-      -7.418,
+      -0.341,
+      -7.455,
       5.486
      ],
      "target": [
@@ -7081,8 +7081,8 @@
     {
      "f": 236,
      "location": [
-      -0.412,
-      -7.42,
+      -0.339,
+      -7.456,
       5.487
      ],
      "target": [
@@ -7096,8 +7096,8 @@
     {
      "f": 238,
      "location": [
-      -0.407,
-      -7.422,
+      -0.338,
+      -7.456,
       5.487
      ],
      "target": [
@@ -7111,8 +7111,8 @@
     {
      "f": 239,
      "location": [
-      -0.403,
-      -7.424,
+      -0.336,
+      -7.457,
       5.488
      ],
      "target": [
@@ -7126,8 +7126,8 @@
     {
      "f": 240,
      "location": [
-      -0.399,
-      -7.426,
+      -0.335,
+      -7.458,
       5.488
      ],
      "target": [
@@ -7141,8 +7141,8 @@
     {
      "f": 241,
      "location": [
-      -0.395,
-      -7.428,
+      -0.332,
+      -7.459,
       5.489
      ],
      "target": [
@@ -7156,8 +7156,8 @@
     {
      "f": 243,
      "location": [
-      -0.391,
-      -7.429,
+      -0.331,
+      -7.459,
       5.489
      ],
      "target": [
@@ -7171,8 +7171,8 @@
     {
      "f": 244,
      "location": [
-      -0.386,
-      -7.431,
+      -0.328,
+      -7.46,
       5.49
      ],
      "target": [
@@ -7186,8 +7186,8 @@
     {
      "f": 245,
      "location": [
-      -0.382,
-      -7.432,
+      -0.325,
+      -7.46,
       5.49
      ],
      "target": [
@@ -7201,8 +7201,8 @@
     {
      "f": 246,
      "location": [
-      -0.378,
-      -7.434,
+      -0.323,
+      -7.461,
       5.491
      ],
      "target": [
@@ -7216,8 +7216,8 @@
     {
      "f": 248,
      "location": [
-      -0.374,
-      -7.435,
+      -0.322,
+      -7.461,
       5.491
      ],
      "target": [
@@ -7231,8 +7231,8 @@
     {
      "f": 249,
      "location": [
-      -0.37,
-      -7.436,
+      -0.319,
+      -7.461,
       5.492
      ],
      "target": [
@@ -7246,8 +7246,8 @@
     {
      "f": 250,
      "location": [
-      -0.367,
-      -7.437,
+      -0.318,
+      -7.461,
       5.492
      ],
      "target": [
@@ -7261,8 +7261,8 @@
     {
      "f": 251,
      "location": [
-      -0.363,
-      -7.439,
+      -0.316,
+      -7.462,
       5.492
      ],
      "target": [
@@ -7276,8 +7276,8 @@
     {
      "f": 253,
      "location": [
-      -0.359,
-      -7.441,
+      -0.316,
+      -7.462,
       5.492
      ],
      "target": [
@@ -7291,8 +7291,8 @@
     {
      "f": 254,
      "location": [
-      -0.352,
-      -7.446,
+      -0.311,
+      -7.466,
       5.494
      ],
      "target": [
@@ -7306,8 +7306,8 @@
     {
      "f": 255,
      "location": [
-      -0.346,
-      -7.451,
+      -0.307,
+      -7.47,
       5.497
      ],
      "target": [
@@ -7321,8 +7321,8 @@
     {
      "f": 256,
      "location": [
-      -0.339,
-      -7.458,
+      -0.302,
+      -7.476,
       5.501
      ],
      "target": [
@@ -7336,8 +7336,8 @@
     {
      "f": 258,
      "location": [
-      -0.335,
-      -7.464,
+      -0.302,
+      -7.48,
       5.506
      ],
      "target": [
@@ -7351,8 +7351,8 @@
     {
      "f": 259,
      "location": [
-      -0.334,
-      -7.47,
+      -0.303,
+      -7.485,
       5.512
      ],
      "target": [
@@ -7366,8 +7366,8 @@
     {
      "f": 260,
      "location": [
-      -0.334,
-      -7.474,
+      -0.305,
+      -7.488,
       5.519
      ],
      "target": [
@@ -7381,8 +7381,8 @@
     {
      "f": 261,
      "location": [
-      -0.338,
-      -7.476,
+      -0.31,
+      -7.49,
       5.526
      ],
      "target": [
@@ -7396,8 +7396,8 @@
     {
      "f": 263,
      "location": [
-      -0.343,
-      -7.478,
+      -0.317,
+      -7.491,
       5.533
      ],
      "target": [
@@ -7411,8 +7411,8 @@
     {
      "f": 264,
      "location": [
-      -0.349,
-      -7.479,
+      -0.324,
+      -7.491,
       5.539
      ],
      "target": [
@@ -7426,8 +7426,8 @@
     {
      "f": 265,
      "location": [
-      -0.355,
-      -7.479,
+      -0.331,
+      -7.491,
       5.544
      ],
      "target": [
@@ -7441,8 +7441,8 @@
     {
      "f": 266,
      "location": [
-      -0.36,
-      -7.479,
+      -0.337,
+      -7.491,
       5.548
      ],
      "target": [
@@ -7456,8 +7456,8 @@
     {
      "f": 268,
      "location": [
-      -0.362,
-      -7.48,
+      -0.341,
+      -7.491,
       5.551
      ],
      "target": [
@@ -7471,8 +7471,8 @@
     {
      "f": 269,
      "location": [
-      -0.36,
-      -7.482,
+      -0.339,
+      -7.492,
       5.553
      ],
      "target": [
@@ -7486,8 +7486,8 @@
     {
      "f": 270,
      "location": [
-      -0.353,
-      -7.487,
+      -0.333,
+      -7.497,
       5.554
      ],
      "target": [
@@ -7501,8 +7501,8 @@
     {
      "f": 271,
      "location": [
-      -0.343,
-      -7.493,
+      -0.324,
+      -7.502,
       5.555
      ],
      "target": [
@@ -7516,8 +7516,8 @@
     {
      "f": 273,
      "location": [
-      -0.332,
-      -7.5,
+      -0.315,
+      -7.508,
       5.557
      ],
      "target": [
@@ -7531,8 +7531,8 @@
     {
      "f": 274,
      "location": [
-      -0.321,
-      -7.507,
+      -0.305,
+      -7.515,
       5.558
      ],
      "target": [
@@ -7546,8 +7546,8 @@
     {
      "f": 275,
      "location": [
-      -0.312,
-      -7.513,
+      -0.297,
+      -7.521,
       5.559
      ],
      "target": [
@@ -7561,8 +7561,8 @@
     {
      "f": 276,
      "location": [
-      -0.306,
-      -7.517,
+      -0.292,
+      -7.524,
       5.561
      ],
      "target": [
@@ -7576,8 +7576,8 @@
     {
      "f": 278,
      "location": [
-      -0.302,
-      -7.519,
+      -0.289,
+      -7.525,
       5.563
      ],
      "target": [
@@ -7591,8 +7591,8 @@
     {
      "f": 279,
      "location": [
-      -0.301,
-      -7.52,
+      -0.289,
+      -7.526,
       5.565
      ],
      "target": [
@@ -7606,8 +7606,8 @@
     {
      "f": 280,
      "location": [
-      -0.303,
-      -7.521,
+      -0.292,
+      -7.526,
       5.568
      ],
      "target": [
@@ -7621,8 +7621,8 @@
     {
      "f": 281,
      "location": [
-      -0.308,
-      -7.521,
+      -0.297,
+      -7.526,
       5.572
      ],
      "target": [
@@ -7636,8 +7636,8 @@
     {
      "f": 283,
      "location": [
-      -0.315,
-      -7.522,
+      -0.305,
+      -7.527,
       5.579
      ],
      "target": [
@@ -7651,8 +7651,8 @@
     {
      "f": 284,
      "location": [
-      -0.324,
-      -7.524,
+      -0.314,
+      -7.529,
       5.587
      ],
      "target": [
@@ -7666,8 +7666,8 @@
     {
      "f": 285,
      "location": [
-      -0.334,
-      -7.526,
+      -0.324,
+      -7.531,
       5.597
      ],
      "target": [
@@ -7681,8 +7681,8 @@
     {
      "f": 286,
      "location": [
-      -0.344,
-      -7.53,
+      -0.335,
+      -7.535,
       5.607
      ],
      "target": [
@@ -7696,8 +7696,8 @@
     {
      "f": 288,
      "location": [
-      -0.353,
-      -7.533,
+      -0.344,
+      -7.537,
       5.617
      ],
      "target": [
@@ -7711,8 +7711,8 @@
     {
      "f": 289,
      "location": [
-      -0.362,
-      -7.536,
+      -0.353,
+      -7.54,
       5.627
      ],
      "target": [
@@ -7726,8 +7726,8 @@
     {
      "f": 290,
      "location": [
-      -0.369,
-      -7.539,
+      -0.361,
+      -7.543,
       5.634
      ],
      "target": [
@@ -7741,8 +7741,8 @@
     {
      "f": 291,
      "location": [
-      -0.373,
-      -7.541,
+      -0.365,
+      -7.545,
       5.639
      ],
      "target": [
@@ -7756,8 +7756,8 @@
     {
      "f": 293,
      "location": [
-      -0.374,
-      -7.543,
+      -0.366,
+      -7.547,
       5.641
      ],
      "target": [
@@ -7771,8 +7771,8 @@
     {
      "f": 294,
      "location": [
-      -0.372,
-      -7.544,
+      -0.365,
+      -7.548,
       5.641
      ],
      "target": [
@@ -7786,8 +7786,8 @@
     {
      "f": 295,
      "location": [
-      -0.368,
-      -7.547,
+      -0.361,
+      -7.551,
       5.642
      ],
      "target": [
@@ -7801,8 +7801,8 @@
     {
      "f": 296,
      "location": [
-      -0.362,
-      -7.55,
+      -0.355,
+      -7.553,
       5.642
      ],
      "target": [
@@ -7816,8 +7816,8 @@
     {
      "f": 298,
      "location": [
-      -0.353,
-      -7.554,
+      -0.346,
+      -7.557,
       5.64
      ],
      "target": [
@@ -7831,8 +7831,8 @@
     {
      "f": 299,
      "location": [
-      -0.341,
-      -7.558,
+      -0.335,
+      -7.561,
       5.637
      ],
      "target": [
@@ -7846,8 +7846,8 @@
     {
      "f": 300,
      "location": [
-      -0.327,
-      -7.562,
+      -0.321,
+      -7.565,
       5.633
      ],
      "target": [
@@ -7861,8 +7861,8 @@
     {
      "f": 301,
      "location": [
-      -0.311,
-      -7.566,
+      -0.305,
+      -7.569,
       5.628
      ],
      "target": [
@@ -7876,8 +7876,8 @@
     {
      "f": 303,
      "location": [
-      -0.292,
-      -7.572,
+      -0.287,
+      -7.575,
       5.622
      ],
      "target": [
@@ -7901,17 +7901,17 @@
      {
       "f": 149,
       "focus": [
-       -0.502,
-       -6.692,
-       5.344
+       -0.336,
+       -6.775,
+       5.345
       ]
      },
      {
       "f": 176,
       "focus": [
-       -0.502,
-       -6.692,
-       5.344
+       -0.336,
+       -6.778,
+       5.346
       ]
      },
      {
@@ -8011,7 +8011,7 @@
     5.5
    ],
    "height_m": 1.58,
-   "lean_note": "VIP balcony prow, floor z 4.05; feet 0.14 m to -X of the prow corner post (-0.32,-7.105), 0.18 m behind the front rail axis (y -7.105, tube top z 5.115). Faces +Y (the pit/stage). SHOT 1 (f1-148): near-upright, torso tipped 5-10 deg forward, forearms crossed on the rail, hands hanging over the pit side; face-box centre (between eyes and nose tip) MUST be at F=(-0.46,-7.185,5.50) = feet+(0,0.10,1.45) - the whole CAM_Shot1 rig is anchored to it. If an upright 1.58 m MMD model puts that point at ~1.42 m, raise the root 0.03 m (do not move the rail). Head turned ~14 deg to her left (screen-right) at f1, facing the lens by ~f45; +2.4 deg body roll f15-60; ~3 cm drift to screen-right f1-50 and ~4 cm sink f100-148 are already absorbed by the camera keys - keep her head still. SHOT 2 (f149-303): same feet, she leans ~40-45 deg over the rail to watch the stage, forearms on the rail (right wrist ~(-0.33,-7.10,5.12)); her right hair bow must sit at (-0.50,-6.69,5.34) (+-5 cm, f149-258) and the head centre near (-0.58,-6.67,5.38), facing ~13 deg right of +Y. CAM_Shot2 sits where an upright head would be, so the upright stand-in must be hidden for shot 2. SHOT 3: off-screen (CAM_Shot3 is her point of view).",
+   "lean_note": "VIP balcony prow, floor z 4.05; feet 0.14 m to -X of the prow corner post (-0.32,-7.105), 0.18 m behind the front rail axis (y -7.105, tube top z 5.115). Faces +Y (the pit/stage). SHOT 1 (f1-148): near-upright, torso tipped 5-10 deg forward, forearms crossed on the rail (her hands stay ~0.10 m from the corner clamp post all shot). CAM_Shot1 is locked to that post, so her own drift is HER animation: face-box centre (between eyes and nose tip) at F=(-0.46,-7.185,5.50) = feet+(0,0.10,1.45) at f1-13, then head/upper body slide to her left (-X) by shot1_face_drift_x: -0.020 m f19, -0.037 m f37, -0.041..-0.047 m f49-148, forearms staying on the rail. If an upright 1.58 m MMD model puts F at ~1.42 m, raise the root 0.03 m (do not move the rail). Head turned ~14 deg to her left (screen-right) at f1, facing the lens by ~f45; +2.4 deg body roll f15-60; the ~4 cm sink f100-148 is still absorbed by the camera keys. SHOT 2 (f149-303): same feet, leaning ~40-45 deg over the rail, right forearm on the rail at the prow corner (right wrist ~(-0.33,-7.10,5.12); the visible rail disappears under this sleeve in every frame); the right hair bow follows shot2_anchor_points.right_hair_bow_track (+-5 cm): (-0.336,-6.775,5.345) f150-175 -> (-0.371,-6.762,5.347) f200 -> (-0.424,-6.735,5.345) f230 -> (-0.467,-6.706,5.350) f258, i.e. her head slides ~13 cm to her left; head centre ~bow+(-0.08,+0.02,+0.04), facing ~13 deg right of +Y. CAM_Shot2 sits just behind/above where an upright head would be, so hide the upright stand-in for shot 2. SHOT 3: off-screen (CAM_Shot3 looks past her from behind).",
    "shot1_face_point": [
     -0.46,
     -7.185,
@@ -8032,8 +8032,152 @@
      -0.33,
      -7.1,
      5.12
+    ],
+    "right_hair_bow_track": [
+     [
+      150,
+      [
+       -0.336,
+       -6.775,
+       5.345
+      ]
+     ],
+     [
+      175,
+      [
+       -0.336,
+       -6.778,
+       5.346
+      ]
+     ],
+     [
+      200,
+      [
+       -0.371,
+       -6.762,
+       5.347
+      ]
+     ],
+     [
+      230,
+      [
+       -0.424,
+       -6.735,
+       5.345
+      ]
+     ],
+     [
+      258,
+      [
+       -0.467,
+       -6.706,
+       5.35
+      ]
+     ]
     ]
-   }
+   },
+   "shot1_face_drift_x": [
+    [
+     1,
+     -0.003
+    ],
+    [
+     7,
+     -0.001
+    ],
+    [
+     13,
+     -0.005
+    ],
+    [
+     19,
+     -0.02
+    ],
+    [
+     25,
+     -0.026
+    ],
+    [
+     31,
+     -0.035
+    ],
+    [
+     37,
+     -0.037
+    ],
+    [
+     43,
+     -0.037
+    ],
+    [
+     49,
+     -0.041
+    ],
+    [
+     55,
+     -0.042
+    ],
+    [
+     61,
+     -0.047
+    ],
+    [
+     67,
+     -0.044
+    ],
+    [
+     73,
+     -0.044
+    ],
+    [
+     79,
+     -0.042
+    ],
+    [
+     85,
+     -0.041
+    ],
+    [
+     91,
+     -0.042
+    ],
+    [
+     97,
+     -0.04
+    ],
+    [
+     103,
+     -0.042
+    ],
+    [
+     109,
+     -0.04
+    ],
+    [
+     115,
+     -0.042
+    ],
+    [
+     121,
+     -0.043
+    ],
+    [
+     127,
+     -0.041
+    ],
+    [
+     133,
+     -0.043
+    ],
+    [
+     139,
+     -0.044
+    ],
+    [
+     145,
+     -0.043
+    ]
+   ]
   },
   "CL": {
    "location": [
@@ -8242,12 +8386,12 @@
   "WORLD: Blender Z-up metres; origin = stage-disc centre on the pit floor (z 0); +Y from DS's VIP balcony (-Y) toward the far tiers. Cameras use camera_math conventions (36 mm VERTICAL sensor, roll_deg > 0 = content clockwise). All anchor checks in this spec were run with camera_math.project on the hold-baked camera (meta.hold_residues).",
   "SCALE CHAIN: the venue is metric in CAM_Shot2's bundle-adjusted frame (CL 1.60 m, standing crowd 1.65 m, lens 36 mm), which fixes the stage, tiers, tables, galleries and the VIP rail. Shot 1 is tied to it through DS's face point F and the shared handrail. In shot 1 the anime-face detector box is ~0.23 m (crown-to-chin), NOT the 0.17 m prior: the rail is drawn at DS's waist, 1.92 box-widths below her face centre, which is 0.44 m with a 0.23 m box (rail top 1.065 m above the floor, tube 0.032 m) but only 0.33 m with 0.17 m (rail at chest height 1.165 m, tube 0.024 m). The same box reads ~0.215 m on CL in shot 3. If the imported DS head (crown-to-chin) is h m, CAM_Shot1's offsets from F scale by h/0.23.",
   "VENUE (one model): hall x -8.2..8.2, y -12.0..14.0, ceiling 9.5. Sunken dance pit z 0 (|x|<=3.2, y -8.15..4.4) with the stage disc r 0.85, top 0.15 at the origin. Back seating bank: 4 tiers rise 0.6 / tread 1.5 (tops 0.6-2.4, y 4.4-10.4, |x|<=4.7) with 17 cocktail/lounge tables + lamps placed on measured lamp rays (median 3 px). Side terraces z 0.6 / 1.2, corner lounges z 1.2. U-shaped mezzanine gallery: floor 4.48, fascia 3.80-4.48, 1.05 m glass balustrade with chrome top rail z 5.55, soffit downlights, back-wall sconces; mirror-slat riser wall behind the top tier. DS's VIP balcony at the -Y end: floor 4.05 (a sunken VIP box 0.43 m below the gallery ring), trapezoidal prow (front along X at y -7.105, x -2.32..-0.32; wings +-26.4 deg back to y -8.15), chrome tube rail dia 0.032 top z 5.115 with bottle clamp posts and frameless glass; VIP lounge behind (sofas, 3 lamp tables, banquette), window wall at y -12.0 (mullions every 2.4 m, one at x -1.66), emissive city skyline 190x140 m at y -150.",
-  "CAM_Shot1 (f1-148): the shot-1 solve (made around an assumed F (0,-8,4.95)) translated by (-0.46,+0.815,+0.55) onto F = (-0.46,-7.185,5.50); no rotation (DS's rail segment runs along X, perpendicular to the dolly). 50 mm (plausible 40-65), roll +1.0 constant, pure horizontal dolly toward -Y at DS eye level: 1.52 m -> 0.74 m from F (0.10 -> 0.20 -> 0.19 -> 0.05 m/s), pitch -8.5 -> -5.5 deg, +0.06 m sideways drift in f1-49. The camera hangs over the pit void 1.44 m -> 0.66 m in front of the rail, 1.43-1.46 m above the VIP floor (crane/drone position) - keep that air empty. DOF f/2.8 on F. Other lenses: offsets x lens/50 and pitch -atan(397 px / f_px).",
-  "CAM_Shot2 (f149-303): bundle-adjusted keys on every unique frame (the f%5==2 duplicates are re-created by hold_residues), 36 mm fixed. The move is mostly rotation - pan left 16.1 deg, tilt down 5.1 deg (pitch -23.0 -> -28.1), roll +1.66 -> -1.25 - plus a 0.6 m arc of the camera body from behind DS's left over her head to her right (needed only by the parallax of her hair bow). The camera is 1.41-1.57 m above the VIP floor, 0.13-0.47 m behind the rail, 0.61 -> 0.95 m from DS's hair bow. The x1.15 push / +12 deg roll / 390 px drift in measured.json are ORB features on DS's hair and the dancing crowd, not the camera (background lamps give x1.03, +3.45 deg image rotation).",
-  "CAM_Shot2 depth of field: dof.focus_keys (extension) holds the rack focus DS hair (f149-176) -> CL (f200-303). build_scene.py reads only dof.focus (= CL, (0.12,0.42,1.40)); to get the pull, key Camera.dof.focus_distance 0.61 m at f176 -> 8.9 m at f200.",
+  "CAM_Shot1 (f1-148): the shot-1 solve translated onto F = (-0.46,-7.185,5.50), then re-locked laterally to the rigid set: every key is shifted in X (location and target together) so the rail clamp post at the prow corner (-0.32,-7.105) lands on its measured column (184 f1, 145 f49, 81 f73, 34 f85; shift -0.003 -> -0.047 m, held at -0.041 m after f85 when the post leaves frame). 50 mm, roll +1.0 constant, horizontal dolly toward -Y at DS eye level: 1.52 m -> 0.74 m from F, pitch -8.5 -> -5.5 deg, camera x -0.515 -> -0.494. DS's ~4 cm sideways head drift is character motion (characters.DS.shot1_face_drift_x), not camera motion. The camera hangs over the pit void 1.44 m -> 0.66 m in front of the rail, 1.43-1.46 m above the VIP floor (crane/drone position) - keep that air empty. DOF f/2.8 on F. Other lenses: offsets x lens/50 and pitch -atan(397 px / f_px).",
+  "CAM_Shot2 (f149-303): bundle-adjusted orientations on every unique frame (f%5==2 duplicates re-created by hold_residues), 36 mm fixed: pan left 16.1 deg, tilt down 5.1 deg (pitch -23.0 -> -28.1), roll +1.66 -> -1.25. Positions re-solved against the rigid VIP rail: each bundle-adjusted location moved along the prow right-wing direction u=(0.896,-0.445,0) by s = 0.20 m (f149-176) -> 0.159 (f200) -> 0.095 (f230) -> 0.032 (f260) -> 0.006 (f303), targets unchanged, so the wing rail top matches the measured rail edge f170-f303 (median 4-5 px; the old arc put it 130-390 px low / out of frame in f170-220) and the prow corner (DS's right wrist) sits at the visible rail end under her sleeve. The camera now travels ~0.3 m (x -0.57 -> -0.29), 1.41-1.57 m above the VIP floor, 0.22-0.47 m behind the rail; the remaining hair-bow parallax is DS's head motion (shot2_anchor_points.right_hair_bow_track). The x1.15 push / +12 deg roll / 390 px drift in measured.json are ORB features on DS's hair and the dancing crowd, not the camera (background lamps give x1.03, +3.45 deg image rotation).",
+  "CAM_Shot2 depth of field: dof.focus_keys (extension) holds the rack focus DS hair bow (f149-176) -> CL (f200-303). build_scene.py reads only dof.focus (= CL, (0.12,0.42,1.40)); to get the pull, key Camera.dof.focus_distance 0.61 m at f149, 0.67 m at f176 -> 8.87 m at f200.",
   "CAM_Shot3 (f304-452): locked-off 247.4 mm telephoto from (-0.30,-7.60,5.55) - DS's vantage, 7 cm from where CAM_Shot2 ends, pitch -28.2 deg, yaw +2.9 deg (a punch-in on the end of shot 2: what DS sees). 8.95 m to CL's face point (0.12,0.42,1.60), which projects to (566,491). Lens = 1474 px/m x distance x 36/1920 (head/body compromise; 210-275 mm also defensible). Background-only tracking shows no camera roll: the '+5 -> -8 -> +3 deg handheld roll' is CL's hip sway, and the face residuals (median 12 px, ~40 px slow upward drift) are her head motion. DOF f/11 on CL. Optional: ramp lens 247 -> 252 over f380-396 for the possible +2% push.",
   "CADENCE: meta.hold_residues = shot 1 holds f%5 in {2,3} (18 new images per second), shots 2-3 hold f%5==2 (24 fps). build_scene.py bakes these as CONSTANT keys so renders line up frame-for-frame; delete the key for smooth motion.",
-  "CHARACTERS: DS root (-0.46,-7.285,4.05) facing +Y; shot-1 face point F (-0.46,-7.185,5.50) = root+(0,0.10,1.45) is the anchor of CAM_Shot1 (rail axis 0.08 m in front of F, rail top 0.385 m below it). Shot 2 needs her leaning ~40-45 deg over the rail with the right hair bow at (-0.50,-6.69,5.34). CL root (0.12,0.42,0.15) on the disc top, 0.42 m behind the disc centre, facing the balcony; shot-2 head point (0.12,0.41,1.50) (bent forward), shot-3 face point (0.12,0.42,1.60). If an MMD model's proportions put these points elsewhere, move the model root, not the cameras.",
+  "CHARACTERS: DS root (-0.46,-7.285,4.05) facing +Y; shot-1 face point F (-0.46,-7.185,5.50) = root+(0,0.10,1.45) at f1-13, drifting by shot1_face_drift_x (to x ~-0.50 from f37); rail axis 0.08 m in front of F, rail top 0.385 m below it. Shot 2 needs her leaning ~40-45 deg over the rail, right forearm on the prow corner, with the right hair bow on right_hair_bow_track ((-0.336,-6.775,5.345) at f150 -> (-0.467,-6.706,5.350) at f258). CL root (0.12,0.42,0.15) on the disc top, 0.42 m behind the disc centre, facing the balcony; shot-2 head point (0.12,0.41,1.50) (bent forward), shot-3 face point (0.12,0.42,1.60). If an MMD model's proportions put these points elsewhere, move the model root, not the cameras.",
   "LIGHTING: deep-blue overhead LED washes, one white beam spot over the stage (StageSpot, on the measured beam line through the disc centre, direction (0.039,0.30,1), 17 deg off vertical toward the balcony; fixture lowered on a drop rod to z 7.2-7.6 because the beam width growth puts the cone apex at z 7.1-7.5), warm table lamps (shade #ffc890 x30 + one 20 W point per table; 2 in the VIP lounge), gallery soffit downlights, dim blue VIP wash, skyline. Per-shot lights carry 'shots' (keyed hide_render): DS_Key/DS_Rim shot 1; BlueWash_Pit/Tiers, GalleryBlue, GalleryDown*, StageSpot shot 2; BlueWash_Shot3, StageSpot_Shot3Top, CL_Rim, CL_Fill shot 3; CL_FollowSpot shots 2-3; VIPBlue always. Energies are calibrated in Cycles with AgX 'Punchy', exposure 0.",
   "CYCLES vs EEVEE: Cycles ignores Light.volume_factor. StageSpot uses volume_factor 20 and every wash/key uses 0; without the patched build_lights (scratchpad/light/build_scene_patched.py: a volume-only twin with (vf-1)x energy, visible_volume_scatter=False for vf<=0) the beam is ~20x too faint and the washes fog the room in Cycles. EEVEE honours it natively but renders the darks at 0.55-0.7x: for EEVEE use world bg_strength 0.9, BlueWash_Shot3 3600 W and DS_Key ~600 W.",
   "HAZE: one Principled Volume box x -8.2..8.2, y -7.0..14.0, z 0..9.5, density 0.015, #c8d4ff, anisotropy 0.15. The VIP box (y < -7.0) is haze-free, so CAM_Shot2/3 sit outside it; CAM_Shot1 is inside it but looks back into the clear VIP box.",
@@ -8256,9 +8400,9 @@
   "BUILDER EXTENSIONS that build_scene.py ignores (kept as documentation): dof.focus_keys (CAM_Shot2), geometry 'shots' (Sparkles, meant for shot 3; sub-pixel elsewhere), characters.*.shot*_point / shot2_anchor_points, world.view_transform/look (the builder already sets AgX Punchy; gamma 1, sRGB display), and every marker not named 'beat' (the builder creates Shot1/2/3 markers from the cameras).",
   "SPEED: Pit_UnderBalcony (22 members) is never in frame; Terrace2_*, CornerLounge_* and Gallery_Side_* are at most frame-edge glimpses in f149-200 and can be dropped for test renders.",
   "CHEAT: Shot 1: CAM_Shot1 floats over the pit void outside the balustrade (crane/drone position). The blurred dark crowd head at the lower left of f1-50 (0.5-0.8 m from the lens) cannot exist there and is not built; parent a dark blurred card to CAM_Shot1 for f1-50 if needed.",
-  "CHEAT: Shot 1: DS's own ~3 cm drift to screen-right (f1-50) and ~4 cm sink (f100-148) are folded into the camera keys so a still head matches; the sharp rail clamp post is off by up to ~20-45 px in f1-69 as a result. Her +2.4 deg roll is body roll, not camera roll.",
+  "CHEAT: Shot 1: the camera is locked to the rigid set (rail clamp post <=6 px), so DS's own ~4 cm drift to screen-right (f13-40, kept to f148) must be keyed on her upper body/head (shot1_face_drift_x); with a still head the face box would be off by ~110-155 px from f55. The ~4 cm sink f100-148 is still folded into the camera keys (rail out of frame by then). Her +2.4 deg roll is body roll, not camera roll. The rail tube renders 15-25 px above the source tube in f1-103 and leaves frame ~f110 instead of ~f105.",
   "CHEAT: Shot 1: the AI-drawn VIP guests behind DS drift ~100 px against the dolly; the built guests match them only to 50-130 px.",
-  "CHEAT: Shot 2: CAM_Shot2 occupies the space of an upright DS head for f149-260; DS must lean ~40-45 deg over the rail (hair bow at (-0.50,-6.69,5.34)). If the MMD pose cannot reach that, move CAM_Shot2 back ~0.35 m in -Y for f149-260 and re-check the rail lines.",
+  "CHEAT: Shot 2: CAM_Shot2 sits 0.2-0.5 m behind/above where an upright DS head would be for f149-260; DS must lean ~40-45 deg over the rail with her right forearm on the prow corner and the hair bow on right_hair_bow_track. If the MMD pose cannot reach that, adjust the pose rather than the camera: the near rail and the corner pin CAM_Shot2's position to a few cm (moving it 0.35 m in -Y would put the rail far off).",
   "CHEAT: Shot 2: the AI image stacks the left table rows more steeply than a buildable bank; upper-tier lamps render 15-25% smaller than the source (raise lamp size of Table_10..15 by 1.2x if it matters). Defocused early frames f149-200 drift 15-25 px on lamps.",
   "CHEAT: Shot 2/3 cut: one dancer seen right behind CL's head at ~(0.50,1.45) in f303 is omitted so that no torso fills the shot-3 frame edge; the front-centre crowd strip has no raised arms so no hands rise over CL's skirt in shot 3.",
   "CHEAT: Shot 2/3 lighting: the stage spot pool is bright white in shot 2 but the disc reads dark glossy blue behind CL in shot 3, so the beam spot is shot-2 only and shot 3 uses a narrowed top spot without haze scatter plus a front follow spot.",
