@@ -1,0 +1,570 @@
+<title>大肥鱼逐帧拆解</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+XiaoWei&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an animation exposure sheet. A sticky 9:16 stage (pose skeletons) sits beside the per-frame log;
+   every timeline below shares one time axis and drives the same frame cursor. */
+:root {
+  --paper: #f5f6f8;
+  --surface: #fcfcfb;
+  --ink: #141826;
+  --ink-2: #4c5266;
+  --muted: #858b9c;
+  --rule: #dfe2e9;
+  --axis: #c3c6d0;
+  --ds: #2a78d6;
+  --cl: #eb6834;
+  --crowd: #6f7f99;
+  --cam: #1baf7a;
+  --hl: rgba(42, 120, 214, 0.10);
+  --stage: #10131d;
+  --stage-rule: #2a3042;
+  --stage-ink: #c9cede;
+  --font-display: "ZCOOL XiaoWei", "Noto Serif SC", "Songti SC", serif;
+  --font-body: "Noto Sans SC", system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e1018; --surface: #151824; --ink: #e9ebf2; --ink-2: #b4b9c9; --muted: #868c9e;
+    --rule: #262b3a; --axis: #383e50; --ds: #3987e5; --cl: #d95926; --crowd: #8293ad; --cam: #199e70;
+    --hl: rgba(57, 135, 229, 0.16); --stage: #080a10; --stage-rule: #232838; --stage-ink: #c9cede;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e1018; --surface: #151824; --ink: #e9ebf2; --ink-2: #b4b9c9; --muted: #868c9e;
+  --rule: #262b3a; --axis: #383e50; --ds: #3987e5; --cl: #d95926; --crowd: #8293ad; --cam: #199e70;
+  --hl: rgba(57, 135, 229, 0.16); --stage: #080a10; --stage-rule: #232838; --stage-ink: #c9cede;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 56px; }
+h1, h2 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; margin: 0; line-height: 1.25; }
+h1 { font-size: clamp(28px, 4.6vw, 46px); }
+h2 { font-size: clamp(22px, 3vw, 30px); }
+h3 { font-size: 16px; margin: 0; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; }
+.lede { max-width: 68ch; color: var(--ink-2); font-size: 16px; }
+.mono { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--ink-2); white-space: nowrap; }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
+.ds { color: var(--ds); } .cl { color: var(--cl); }
+section { display: grid; gap: 18px; min-width: 0; }
+.sec-head { display: grid; gap: 6px; }
+.sec-head p { max-width: 70ch; color: var(--ink-2); }
+
+/* header */
+header { display: grid; gap: 14px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 28px; padding-top: 6px; border-top: 1px solid var(--rule); }
+.fact { display: grid; gap: 0; min-width: 0; }
+.fact b { font-family: var(--font-data); font-weight: 500; font-size: 20px; font-variant-numeric: tabular-nums; }
+.fact span { font-size: 12px; color: var(--muted); }
+.thesis { max-width: 72ch; font-size: 16.5px; }
+
+/* relationship map */
+.relmap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.relmap svg { width: 100%; height: auto; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
+.edge-list { display: grid; gap: 8px; max-height: 640px; overflow: auto; padding-right: 4px; }
+.edge { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; background: var(--surface); display: grid; gap: 4px; cursor: pointer; }
+.edge:hover, .edge.on { border-color: var(--ink-2); }
+.edge .hd { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+.edge .rel { font-weight: 700; }
+.edge .ev { font-size: 13px; color: var(--ink-2); }
+.edge .ev a { color: inherit; text-decoration: underline dotted; cursor: pointer; }
+.conf { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+.verdict-confirmed { color: var(--cam); } .verdict-plausible { color: var(--muted); } .verdict-refuted { color: var(--cl); text-decoration: line-through; }
+
+/* inspector */
+.inspector { display: grid; grid-template-columns: minmax(240px, 340px) minmax(0, 1fr); gap: 22px; align-items: start; }
+.stage-col { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 10px; }
+.stage { background: var(--stage); border-radius: 10px; overflow: hidden; aspect-ratio: 9 / 16; max-width: 100%; position: relative; }
+.stage svg { width: 100%; height: 100%; display: block; }
+.stage .hud { position: absolute; left: 10px; top: 8px; right: 10px; display: flex; justify-content: space-between; font-family: var(--font-data); font-size: 11.5px; color: var(--stage-ink); pointer-events: none; }
+.controls { display: grid; grid-template-columns: auto auto 1fr auto; gap: 8px; align-items: center; }
+button { font: inherit; font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--axis); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+button:hover { border-color: var(--ink-2); }
+button:focus-visible, input:focus-visible, .edge:focus-visible { outline: 2px solid var(--ds); outline-offset: 2px; }
+input[type=range] { width: 100%; accent-color: var(--ds); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--ink-2); }
+.frame-log { display: grid; gap: 14px; min-width: 0; }
+.frame-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: baseline; }
+.frame-meta .big { font-family: var(--font-data); font-size: 26px; font-weight: 500; }
+.cam-line, .delta-line, .env-line { font-size: 14px; color: var(--ink-2); }
+.char-card { border: 1px solid var(--rule); border-radius: 10px; background: var(--surface); overflow: hidden; min-width: 0; }
+.char-card > .hd { display: flex; gap: 10px; align-items: center; padding: 8px 12px; border-bottom: 1px solid var(--rule); }
+.char-card > .hd .act { font-weight: 500; }
+.xs { overflow-x: auto; }
+table.xsheet { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+table.xsheet th { text-align: left; font-weight: 500; color: var(--muted); width: 82px; vertical-align: top; padding: 5px 10px; white-space: nowrap; font-size: 12.5px; }
+table.xsheet td { padding: 5px 12px 5px 0; vertical-align: top; }
+table.xsheet tr + tr th, table.xsheet tr + tr td { border-top: 1px dashed var(--rule); }
+.inter-list { display: grid; gap: 4px; font-size: 13.5px; }
+.inter-list div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px; }
+.inter-list .who { font-family: var(--font-data); font-size: 12px; color: var(--ink-2); }
+
+/* timelines */
+.tl { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px; overflow-x: auto; }
+.tl svg { display: block; min-width: 720px; width: 100%; height: auto; }
+.tl text { font-family: var(--font-body); font-size: 11px; fill: var(--ink-2); }
+.tl .lab { fill: var(--muted); font-size: 11px; }
+.tl .axis { stroke: var(--axis); }
+.tl .grid { stroke: var(--rule); }
+.tip { position: fixed; z-index: 10; pointer-events: none; background: var(--ink); color: var(--paper); font-size: 12.5px; padding: 6px 9px; border-radius: 6px; max-width: 320px; line-height: 1.5; }
+
+/* narrative */
+.phases { display: grid; gap: 14px; }
+.phase { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.phase .when { font-family: var(--font-data); font-size: 13px; color: var(--muted); }
+.phase .when a { color: inherit; cursor: pointer; text-decoration: underline dotted; }
+.phase h3 { margin-bottom: 4px; }
+.cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; min-width: 0; }
+.panel ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.small { font-size: 13px; color: var(--ink-2); }
+.src a { color: var(--ink-2); word-break: break-all; }
+details summary { cursor: pointer; color: var(--ink-2); }
+
+@media (max-width: 820px) {
+  .relmap, .inspector { grid-template-columns: minmax(0, 1fr); }
+  .stage-col { position: static; max-width: 340px; margin: 0 auto; width: 100%; }
+  .phase { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .inter-list div { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow" id="hdr-eyebrow"></div>
+    <h1>意气风发啊大肥鱼，但可别高兴得太早</h1>
+    <p class="lede">一条 15 秒 AI 生成动画的逐帧拆解：三个镜头、452 帧，每一帧的姿势、表情、视线、镜头运动和人物之间的关系。下方舞台里的线条人是从关键点重建的姿势模型，不是原画面。</p>
+    <div class="facts" id="facts"></div>
+    <p class="thesis" id="thesis"></p>
+  </header>
+
+  <section id="rel">
+    <div class="sec-head">
+      <div class="eyebrow">人物关系模型</div>
+      <h2>谁在看谁，谁压过谁</h2>
+      <p>节点是画面内外的所有角色；连线是一条可追溯到具体帧的关系。点击连线或右侧条目，舞台会跳到证据帧。被对抗验证推翻的说法单独列在最后。</p>
+    </div>
+    <div class="relmap">
+      <svg id="relsvg" viewBox="0 0 640 560" role="img" aria-label="人物关系图"></svg>
+      <div class="edge-list" id="edges"></div>
+    </div>
+  </section>
+
+  <section id="sheet">
+    <div class="sec-head">
+      <div class="eyebrow">逐帧摄影表</div>
+      <h2>每一帧发生了什么</h2>
+      <p>拖动滑块或按方向键逐帧查看。原片以 24 fps 生成后补帧到 30 fps，每 5 帧中有 1 帧是上一帧的复制（标记为“重复帧”）。浅色残影是前 6 张独立画面的姿势，用来看运动轨迹。</p>
+    </div>
+    <div class="inspector">
+      <div class="stage-col">
+        <div class="stage"><svg id="stage" viewBox="0 0 1080 1920" aria-label="姿势模型舞台"></svg><div class="hud"><span id="hud-l"></span><span id="hud-r"></span></div></div>
+        <div class="controls">
+          <button id="prev" aria-label="上一帧">◀</button>
+          <button id="play" aria-label="播放">播放</button>
+          <input id="scrub" type="range" min="1" max="452" value="1" aria-label="帧">
+          <button id="next" aria-label="下一帧">▶</button>
+        </div>
+        <div class="legend" id="stage-legend"></div>
+      </div>
+      <div class="frame-log" id="log"></div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="sec-head">
+      <div class="eyebrow">时间轴</div>
+      <h2>微动作、关系与节拍</h2>
+      <p>同一条时间轴上排列镜头、节拍、每个角色的微事件（眨眼、视线转移、手指、扭胯……）以及每一对关系持续的帧区间。悬停看说明，点击跳帧。</p>
+    </div>
+    <div class="tl"><svg id="tl-events"></svg></div>
+    <div class="tl"><svg id="tl-rel"></svg></div>
+  </section>
+
+  <section id="pose">
+    <div class="sec-head">
+      <div class="eyebrow">姿态建模</div>
+      <h2>身体在怎么动</h2>
+      <p>把关键点换算到以脖子为原点、肩宽为单位的身体坐标系后计算关节角，与镜头推拉无关。曲线断开处是该角色不在画面或关节不可见。</p>
+    </div>
+    <div class="tl"><svg id="tl-kin"></svg></div>
+    <div class="cols2" id="pose-cards"></div>
+  </section>
+
+  <section id="story">
+    <div class="sec-head">
+      <div class="eyebrow">分段解读</div>
+      <h2>关系怎样随镜头翻转</h2>
+    </div>
+    <div class="phases" id="phases"></div>
+  </section>
+
+  <section id="ctx">
+    <div class="sec-head">
+      <div class="eyebrow">语境</div>
+      <h2>弹幕和现实里的这两位</h2>
+    </div>
+    <div class="cols2" id="ctx-cards"></div>
+  </section>
+
+  <section id="method">
+    <div class="sec-head">
+      <div class="eyebrow">方法与局限</div>
+      <h2>这些数字从哪来</h2>
+    </div>
+    <div class="cols2" id="method-cards"></div>
+  </section>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+const DATA = /*__DATA__*/null;
+(function () {
+  const $ = s => document.querySelector(s);
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs = {}, parent) => {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  };
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const M = DATA.meta, FR = DATA.frames, N = FR.length;
+  const byF = f => FR[f - 1];
+  const resolve = f => { let r = byF(f); return r && r.dup_of ? Object.assign({}, byF(r.dup_of), { f: r.f, t: r.t, dup_of: r.dup_of }) : r; };
+  const COLOR = id => id === "DS" ? "var(--ds)" : id === "CL" ? "var(--cl)" : id === "CAM" ? "var(--cam)" : "var(--crowd)";
+  const NAME = { DS: "DS 大肥鱼", CL: "CL 克劳德", CROWD: "观众群", AUD: "单个观众", CAM: "镜头/观看者" };
+  const nameOf = id => NAME[id] || NAME[(id || "").replace(/_\d+$/, "")] || id;
+  const tip = $("#tip");
+  const showTip = (ev, html) => { tip.innerHTML = html; tip.hidden = false; const x = Math.min(ev.clientX + 14, innerWidth - 330); tip.style.left = x + "px"; tip.style.top = (ev.clientY + 14) + "px"; };
+  const hideTip = () => { tip.hidden = true; };
+
+  // ---------- header ----------
+  $("#hdr-eyebrow").textContent = `${M.bvid} · ${M.uploader} · ${M.upload_date} · ${M.duration_s.toFixed(2)} s · 播放 ${M.views.toLocaleString()}`;
+  const facts = [
+    [M.shots.length, "个镜头（硬切于 f149、f304）"],
+    [`${N}`, "帧 @30 fps"],
+    [`${M.unique_frames}`, "张独立画面（24 fps 生成）"],
+    [`×${M.pushin.toFixed(2)}`, "镜头1 推近倍数"],
+    [`${Math.round(M.tempo)}`, "BPM 配乐"],
+    [`${M.danmaku.length}`, "条弹幕"],
+  ];
+  $("#facts").innerHTML = facts.map(([b, s]) => `<div class="fact"><b>${b}</b><span>${s}</span></div>`).join("");
+  $("#thesis").textContent = DATA.analysis.thesis;
+
+  // ---------- frame cursor ----------
+  let cur = 1, playing = false, timer = null;
+  const listeners = [];
+  const go = f => { cur = Math.max(1, Math.min(N, f)); listeners.forEach(fn => fn(cur)); };
+  window.__go = go;
+
+  // ---------- stage ----------
+  const stage = $("#stage");
+  const BONES = [["head_top", "nose"], ["nose", "chin"], ["chin", "neck"], ["neck", "l_shoulder"], ["neck", "r_shoulder"],
+    ["l_shoulder", "l_elbow"], ["l_elbow", "l_wrist"], ["l_wrist", "l_hand_tip"], ["r_shoulder", "r_elbow"], ["r_elbow", "r_wrist"],
+    ["r_wrist", "r_hand_tip"], ["l_shoulder", "l_hip"], ["r_shoulder", "r_hip"], ["l_hip", "r_hip"], ["l_hip", "l_knee"],
+    ["l_knee", "l_ankle"], ["r_hip", "r_knee"], ["r_knee", "r_ankle"]];
+  const P = (kp, j) => kp && kp[j] && kp[j].length >= 2 ? [kp[j][0] * 1080, kp[j][1] * 1920] : null;
+  function drawSkeleton(g, c, opacity, width) {
+    const kp = c.kp || {}, col = COLOR(c.id);
+    for (const [a, b] of BONES) {
+      const p = P(kp, a), q = P(kp, b);
+      if (p && q) el("line", { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: col, "stroke-width": width, "stroke-linecap": "round", opacity }, g);
+    }
+    const top = P(kp, "head_top"), chin = P(kp, "chin");
+    if (top && chin) {
+      const cx = (top[0] + chin[0]) / 2, cy = (top[1] + chin[1]) / 2, r = Math.hypot(top[0] - chin[0], top[1] - chin[1]) / 2;
+      el("circle", { cx, cy, r, fill: "none", stroke: col, "stroke-width": width, opacity }, g);
+    }
+    if (opacity === 1) for (const j in kp) { const p = P(kp, j); if (p) el("circle", { cx: p[0], cy: p[1], r: width * 1.1, fill: col }, g); }
+  }
+  function renderStage(f) {
+    stage.textContent = "";
+    const r = resolve(f);
+    const sc = css("--stage-rule");
+    for (let x = 1; x < 3; x++) el("line", { x1: x * 360, y1: 0, x2: x * 360, y2: 1920, stroke: sc, "stroke-width": 2 }, stage);
+    for (let y = 1; y < 3; y++) el("line", { x1: 0, y1: y * 640, x2: 1080, y2: y * 640, stroke: sc, "stroke-width": 2 }, stage);
+    // onion skin: previous 6 unique frames in the same shot
+    const ghosts = [];
+    for (let g = f - 1; g >= 1 && ghosts.length < 6; g--) { const q = byF(g); if (q.shot !== r.shot) break; if (!q.dup_of) ghosts.push(q); }
+    ghosts.reverse().forEach((q, i) => { const g = el("g", {}, stage); (q.chars || []).forEach(c => { if (c.id === "DS" || c.id === "CL") drawSkeleton(g, c, 0.08 + i * 0.04, 6); }); });
+    const g = el("g", {}, stage);
+    (r.chars || []).forEach(c => { if (c.id !== "CROWD") drawSkeleton(g, c, 1, c.id === "DS" || c.id === "CL" ? 9 : 5); });
+    // gaze lines between on-screen entities
+    (r.inter || []).filter(i => /gaze/.test(i.channel)).forEach(i => {
+      const a = (r.chars || []).find(c => c.id === i.from), b = (r.chars || []).find(c => c.id === i.to);
+      const pa = a && (P(a.kp, "nose") || P(a.kp, "head_top"));
+      if (!pa) return;
+      let pb = b && (P(b.kp, "nose") || P(b.kp, "chin"));
+      if (!pb && i.to === "CAM") { el("circle", { cx: pa[0], cy: pa[1], r: 34, fill: "none", stroke: "var(--cam)", "stroke-width": 5, "stroke-dasharray": "10 8" }, g); return; }
+      if (pb) el("line", { x1: pa[0], y1: pa[1], x2: pb[0], y2: pb[1], stroke: "var(--cam)", "stroke-width": 4, "stroke-dasharray": "14 10", opacity: 0.9 }, g);
+    });
+    $("#hud-l").textContent = `f${String(f).padStart(3, "0")} · ${r.t.toFixed(3)} s`;
+    $("#hud-r").textContent = `镜头${r.shot}${r.dup_of ? " · 重复帧" : ""}`;
+  }
+  $("#stage-legend").innerHTML = [["DS", "DS 大肥鱼"], ["CL", "CL 克劳德"], ["AUD", "观众个体"], ["CAM", "视线（虚线；圆圈 = 直视镜头）"]]
+    .map(([id, t]) => `<span><span class="dot" style="background:${COLOR(id)}"></span> ${t}</span>`).join("");
+  listeners.push(renderStage);
+
+  // ---------- frame log ----------
+  const FIELDS = [["vis", "可见部分"], ["facing", "朝向"], ["head_ypr", "头部 y/p/r°"], ["gaze", "视线"], ["eyes", "眼睛"], ["brows", "眉"], ["mouth", "嘴"], ["expr", "表情"],
+    ["torso", "躯干"], ["l_arm", "左臂（本人）"], ["r_arm", "右臂（本人）"], ["hands", "手/手指"], ["legs", "腿/站姿"], ["hair_cloth", "头发/衣料"], ["kp_src", "关键点来源"]];
+  function renderLog(f) {
+    const r = resolve(f), sig = DATA.signals[f - 1] || {};
+    const evs = DATA.events.filter(e => e.start <= f && f <= e.end);
+    let h = `<div class="frame-meta"><span class="big">f${f}</span><span class="mono">${r.t.toFixed(3)} s</span><span class="tag">镜头 ${r.shot}</span>`;
+    if (r.dup_of) h += `<span class="tag">重复帧 = f${r.dup_of}</span>`;
+    if (sig.beat) h += `<span class="tag"><span class="dot" style="background:var(--cl)"></span>节拍</span>`;
+    h += `<span class="tag mono">缩放 ×${(sig.zoom || 1).toFixed(3)} · 滚转 ${(sig.roll || 0).toFixed(1)}° · ${(sig.rms ?? 0).toFixed(1)} dB</span></div>`;
+    h += `<div class="cam-line"><b>镜头：</b>${esc(r.cam?.size)} · ${esc(r.cam?.angle)} · ${esc(r.cam?.move)}${r.cam?.focus ? " · 焦点 " + esc(r.cam.focus) : ""}</div>`;
+    h += `<div class="delta-line"><b>相对上一张：</b>${esc(r.delta)}</div>`;
+    if (r.env) h += `<div class="env-line"><b>环境：</b>${esc(r.env)}</div>`;
+    const dm = (DATA.signals[f - 1] || {}).danmaku || [];
+    if (dm.length) h += `<div class="env-line"><b>此刻弹幕：</b>${dm.map(esc).join(" ｜ ")}</div>`;
+    for (const c of (r.chars || [])) {
+      const rows = FIELDS.map(([k, lab]) => {
+        let v = c[k];
+        if (v == null || v === "") return "";
+        if (Array.isArray(v)) v = v.map(x => typeof x === "number" ? x.toFixed(0) : x).join(" / ");
+        return `<tr><th>${lab}</th><td>${esc(v)}</td></tr>`;
+      }).join("");
+      h += `<div class="char-card"><div class="hd"><span class="dot" style="background:${COLOR(c.id)}"></span><b>${esc(nameOf(c.id))}</b><span class="mono small">${esc(c.id)}</span><span class="act">${esc(c.action)}</span></div><div class="xs"><table class="xsheet">${rows}</table></div></div>`;
+    }
+    if ((r.inter || []).length) h += `<div class="char-card"><div class="hd"><b>本帧关系</b></div><div class="inter-list" style="padding:8px 12px">${r.inter.map(i => `<div><span class="who">${esc(i.from)} → ${esc(i.to)} · ${esc(i.channel)}</span><span>${esc(i.desc)}</span></div>`).join("")}</div></div>`;
+    if (evs.length) h += `<div class="char-card"><div class="hd"><b>进行中的微事件</b></div><div class="inter-list" style="padding:8px 12px">${evs.map(e => `<div><span class="who">f${e.start}–${e.end} · ${esc(e.who)} · ${esc(e.type)}</span><span>${esc(e.desc)}</span></div>`).join("")}</div></div>`;
+    $("#log").innerHTML = h;
+  }
+  listeners.push(renderLog);
+
+  const scrub = $("#scrub");
+  scrub.max = N;
+  scrub.addEventListener("input", () => go(+scrub.value));
+  listeners.push(f => { scrub.value = f; });
+  $("#prev").onclick = () => go(cur - 1);
+  $("#next").onclick = () => go(cur + 1);
+  $("#play").onclick = () => {
+    playing = !playing; $("#play").textContent = playing ? "暂停" : "播放";
+    clearInterval(timer);
+    if (playing) timer = setInterval(() => { if (cur >= N) go(1); else go(cur + 1); }, 1000 / 30);
+  };
+  document.addEventListener("keydown", e => {
+    if (e.target.closest("input, textarea")) return;
+    if (e.key === "ArrowRight") { go(cur + 1); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { go(cur - 1); e.preventDefault(); }
+  });
+  const jump = f => { go(f); $("#sheet").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); };
+  window.__jump = jump;
+
+  // ---------- shared time axis ----------
+  const W = 1100, L = 150, R = 12, X = f => L + (f - 1) / (N - 1) * (W - L - R);
+  function axis(svg, y0, y1) {
+    for (let s = 0; s <= 15; s++) {
+      const x = L + (s * 30) / (N - 1) * (W - L - R);
+      el("line", { x1: x, y1: y0, x2: x, y2: y1, class: "grid" }, svg);
+      el("text", { x, y: y1 + 14, "text-anchor": "middle" }, svg).textContent = s + "s";
+    }
+    M.shots.slice(1).forEach(s => el("line", { x1: X(s.start_frame), y1: y0 - 4, x2: X(s.start_frame), y2: y1, stroke: "var(--ink-2)", "stroke-dasharray": "4 4" }, svg));
+  }
+  function cursorLine(svg, y0, y1) {
+    const c = el("line", { y1: y0, y2: y1, stroke: "var(--ink)", "stroke-width": 1.5 }, svg);
+    listeners.push(f => { c.setAttribute("x1", X(f)); c.setAttribute("x2", X(f)); });
+    svg.addEventListener("click", ev => {
+      const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+      const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+      if (p.x >= L) go(Math.round((p.x - L) / (W - L - R) * (N - 1)) + 1);
+    });
+  }
+
+  // events timeline: lanes by who x type family
+  (function () {
+    const svg = $("#tl-events");
+    const whoKey = w => /^DS/.test(w) ? "DS" : /^CL/.test(w) ? "CL" : /CAM|camera|镜头/i.test(w) ? "CAM" : "CROWD";
+    const lanes = [["shots", "镜头"], ["beats", "节拍 / 弹幕"], ["DS", "DS 微事件"], ["CL", "CL 微事件"], ["CROWD", "观众"], ["CAM", "摄影机/光"]];
+    const laneH = { shots: 18, beats: 18 };
+    const evs = DATA.events.map(e => Object.assign({ lane: whoKey(e.who + " " + e.type) === "CAM" || /camera|cut|lighting/.test(e.type) ? "CAM" : whoKey(e.who) }, e));
+    // pack each lane into rows so overlapping events do not collide
+    const rowsOf = {};
+    const placed = evs.sort((a, b) => a.start - b.start).map(e => {
+      const rows = rowsOf[e.lane] = rowsOf[e.lane] || [];
+      let k = rows.findIndex(end => end < e.start - 1);
+      if (k < 0) { k = rows.length; rows.push(0); }
+      rows[k] = e.end;
+      return Object.assign({ row: k }, e);
+    });
+    let y = 8; const laneY = {};
+    lanes.forEach(([id, lab]) => {
+      const h = laneH[id] || Math.max(1, (rowsOf[id] || []).length) * 9 + 8;
+      laneY[id] = [y, h];
+      el("text", { x: 4, y: y + Math.min(h, 18) / 2 + 4, class: "lab" }, svg).textContent = lab;
+      el("line", { x1: L, y1: y + h + 3, x2: W - R, y2: y + h + 3, class: "grid" }, svg);
+      y += h + 8;
+    });
+    svg.setAttribute("viewBox", `0 0 ${W} ${y + 22}`);
+    axis(svg, 4, y);
+    const shotCol = { 1: "var(--ds)", 2: "var(--crowd)", 3: "var(--cl)" };
+    M.shots.forEach(s => {
+      const [yy, h] = laneY.shots;
+      el("rect", { x: X(s.start_frame), y: yy, width: Math.max(1, X(s.end_frame) - X(s.start_frame) - 2), height: h, rx: 3, fill: shotCol[s.shot] }, svg);
+      el("text", { x: X(s.start_frame) + 6, y: yy + 13, fill: "#fff", style: "fill:#fff" }, svg).textContent = `镜头${s.shot}  f${s.start_frame}–${s.end_frame}`;
+    });
+    M.beat_frames.forEach(b => { const [yy, h] = laneY.beats; el("line", { x1: X(b), y1: yy, x2: X(b), y2: yy + h / 2, stroke: "var(--cl)", "stroke-width": 2 }, svg); });
+    M.danmaku.forEach(d => { const [yy, h] = laneY.beats; const f = Math.round(d.t * 30) + 1; const c = el("circle", { cx: X(f), cy: yy + h * 0.78, r: 2.6, fill: "var(--ds)", opacity: 0.7 }, svg);
+      c.addEventListener("mousemove", ev => showTip(ev, `${d.t.toFixed(2)} s 弹幕：${esc(d.text)}`)); c.addEventListener("mouseleave", hideTip); });
+    placed.forEach(e => {
+      const [yy] = laneY[e.lane];
+      const col = e.lane === "DS" ? "var(--ds)" : e.lane === "CL" ? "var(--cl)" : e.lane === "CAM" ? "var(--cam)" : "var(--crowd)";
+      const r = el("rect", { x: X(e.start), y: yy + e.row * 9, width: Math.max(3, X(e.end) - X(e.start)), height: 7, rx: 2, fill: col, opacity: 0.85 }, svg);
+      r.style.cursor = "pointer";
+      r.addEventListener("mousemove", ev => showTip(ev, `<b>f${e.start}–${e.end}</b> · ${esc(e.who)} · ${esc(e.type)}<br>${esc(e.desc)}`));
+      r.addEventListener("mouseleave", hideTip);
+      r.addEventListener("click", ev => { ev.stopPropagation(); jump(e.start); });
+    });
+    cursorLine(svg, 4, y);
+  })();
+
+  // relation intervals timeline
+  (function () {
+    const svg = $("#tl-rel");
+    const rels = DATA.relations.filter(r => r.n_frames >= 6).slice(0, 22);
+    const rowH = 15; let y = 8;
+    rels.forEach(r => {
+      const lab = `${r.from}→${r.to} ${r.channel.replace("spatial-hierarchy", "空间高低").replace("framing/occlusion", "构图/遮挡").replace("address-to-camera", "对镜头").replace("timing/response", "时序呼应").replace("attention", "注意").replace("gaze", "视线").replace("proximity", "远近").replace("other", "其他")}`;
+      el("text", { x: 4, y: y + 10, class: "lab" }, svg).textContent = lab;
+      const col = r.from === "DS" ? "var(--ds)" : r.from === "CL" ? "var(--cl)" : r.from === "CAM" ? "var(--cam)" : "var(--crowd)";
+      r.intervals.forEach(([a, b]) => {
+        const rect = el("rect", { x: X(a), y, width: Math.max(2, X(b) - X(a)), height: 10, rx: 2, fill: col, opacity: 0.8 }, svg);
+        rect.addEventListener("mousemove", ev => { const ex = r.examples.filter(x => x[0] >= a && x[0] <= b).slice(0, 2); showTip(ev, `<b>${esc(lab)}</b> f${a}–${b}<br>${ex.map(x => `f${x[0]}：${esc(x[1])}`).join("<br>")}`); });
+        rect.addEventListener("mouseleave", hideTip);
+      });
+      y += rowH;
+    });
+    svg.setAttribute("viewBox", `0 0 ${W} ${y + 26}`);
+    axis(svg, 4, y + 4);
+    cursorLine(svg, 4, y + 4);
+  })();
+
+  // kinematics small multiples (one axis per panel, shared x)
+  (function () {
+    const svg = $("#tl-kin");
+    const panels = DATA.kin_panels;
+    const ph = 64, gap = 22; let y = 8;
+    panels.forEach(p => {
+      const vals = p.series.flatMap(s => s.points.map(q => q[1])).filter(v => v != null);
+      let lo = Math.min(...vals), hi = Math.max(...vals);
+      if (p.zero) { lo = Math.min(lo, 0); hi = Math.max(hi, 0); }
+      if (hi - lo < 1e-6) { hi += 1; lo -= 1; }
+      const Y = v => y + ph - (v - lo) / (hi - lo) * ph;
+      el("text", { x: 4, y: y + 10, class: "lab" }, svg).textContent = p.title;
+      el("text", { x: 4, y: y + 24, class: "lab" }, svg).textContent = `${hi.toFixed(p.dp ?? 0)} … ${lo.toFixed(p.dp ?? 0)} ${p.unit || ""}`;
+      el("line", { x1: L, y1: y + ph, x2: W - R, y2: y + ph, class: "axis" }, svg);
+      if (p.zero && lo < 0 && hi > 0) el("line", { x1: L, y1: Y(0), x2: W - R, y2: Y(0), class: "grid" }, svg);
+      if (p.beats) M.beat_frames.forEach(b => el("line", { x1: X(b), y1: y + ph - 6, x2: X(b), y2: y + ph, stroke: "var(--cl)", "stroke-width": 1.5 }, svg));
+      p.series.forEach(s => {
+        let d = "", prev = null;
+        s.points.forEach(([f, v]) => { if (v == null) { prev = null; return; } d += (prev && f - prev <= 3 ? "L" : "M") + X(f).toFixed(1) + " " + Y(v).toFixed(1); prev = f; });
+        el("path", { d, fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round" }, svg);
+      });
+      if (p.series.length > 1) { let lx = W - R - 4; p.series.slice().reverse().forEach(s => { const t = el("text", { x: lx, y: y + 10, "text-anchor": "end" }, svg); t.textContent = s.label; t.style.fill = s.color.startsWith("var") ? "" : s.color; lx -= s.label.length * 12 + 18; }); }
+      y += ph + gap;
+    });
+    svg.setAttribute("viewBox", `0 0 ${W} ${y + 6}`);
+    axis(svg, 4, y - gap + 2);
+    cursorLine(svg, 4, y - gap + 2);
+  })();
+
+  // pose signature cards
+  $("#pose-cards").innerHTML = (DATA.analysis.per_character || []).map(c => `
+    <div class="panel"><h3><span class="dot" style="background:${COLOR(c.id)}"></span> ${esc(nameOf(c.id))}</h3>
+      <p class="small"><b>姿势特征：</b>${esc(c.pose_signature)}</p>
+      <p class="small"><b>表情弧线：</b>${esc(c.expression_arc)}</p>
+      <p class="small"><b>角色弧线：</b>${esc(c.arc)}</p>
+      <p class="small">关键帧：${(c.key_frames || []).map(k => `<a class="mono" onclick="__jump(${k.f})" style="cursor:pointer;text-decoration:underline dotted">f${k.f}</a> ${esc(k.why)}`).join("；")}</p>
+    </div>`).join("");
+
+  // ---------- relationship map ----------
+  (function () {
+    const A = DATA.analysis, svg = $("#relsvg");
+    const kindRing = { "on-screen": 0, "off-screen": 1, "meta": 1, "referent": 2 };
+    const groups = {};
+    A.nodes.forEach(n => (groups[kindRing[n.kind] ?? 1] = groups[kindRing[n.kind] ?? 1] || []).push(n));
+    const pos = {}; const cx = 320, cy = 280, radii = [92, 185, 255];
+    Object.entries(groups).forEach(([ring, ns]) => {
+      ns.forEach((n, i) => {
+        const a = -Math.PI / 2 + (i / ns.length) * 2 * Math.PI + (+ring) * 0.35;
+        const r = radii[+ring];
+        pos[n.id] = [cx + r * Math.cos(a) * 1.12, cy + r * Math.sin(a) * 0.9];
+      });
+    });
+    ["DS", "CL"].forEach((id, i) => { if (pos[id]) pos[id] = [cx + (i ? 95 : -95), cy - 10]; });
+    if (pos.CROWD) pos.CROWD = [cx, cy + 92];
+    if (pos.CAM) pos.CAM = [cx, cy - 115];
+    radii.forEach((r, i) => el("ellipse", { cx, cy, rx: r * 1.12, ry: r * 0.9, fill: "none", stroke: "var(--rule)", "stroke-dasharray": i ? "3 5" : "" }, svg));
+    const edgeEls = {};
+    A.edges.forEach((e, k) => {
+      const a = pos[e.from], b = pos[e.to]; if (!a || !b) return;
+      const bend = ((k % 3) - 1) * 26 + (e.from > e.to ? 14 : -14);
+      const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy) || 1;
+      const qx = mx - dy / len * bend, qy = my + dx / len * bend;
+      const col = e.verdict === "refuted" ? "var(--axis)" : e.from === "DS" ? "var(--ds)" : e.from === "CL" ? "var(--cl)" : e.from === "CAM" ? "var(--cam)" : "var(--crowd)";
+      const p = el("path", { d: `M${a[0]} ${a[1]} Q${qx} ${qy} ${b[0]} ${b[1]}`, fill: "none", stroke: col, "stroke-width": 1 + 3 * (e.strength ?? 0.5), opacity: e.verdict === "refuted" ? 0.5 : 0.75, "stroke-dasharray": e.verdict === "plausible" ? "6 5" : e.verdict === "refuted" ? "2 4" : "" }, svg);
+      p.style.cursor = "pointer";
+      p.addEventListener("mousemove", ev => showTip(ev, `<b>${esc(e.from)} → ${esc(e.to)}：${esc(e.relation)}</b><br>${esc(e.interpretation)}`));
+      p.addEventListener("mouseleave", hideTip);
+      p.addEventListener("click", () => selectEdge(e.id));
+      edgeEls[e.id] = p;
+    });
+    A.nodes.forEach(n => {
+      const [x, y] = pos[n.id] || [cx, cy];
+      const g = el("g", {}, svg);
+      el("circle", { cx: x, cy: y, r: n.kind === "on-screen" ? 22 : 15, fill: "var(--surface)", stroke: COLOR(n.id), "stroke-width": n.kind === "on-screen" ? 3 : 1.5 }, g);
+      const t = el("text", { x, y: y + (n.kind === "on-screen" ? 38 : 30), "text-anchor": "middle", "font-size": 12.5 }, g);
+      t.textContent = n.label; t.style.fill = "var(--ink)";
+      el("text", { x, y: y + 4, "text-anchor": "middle", "font-size": 10.5, "font-family": "IBM Plex Mono, monospace" }, g).textContent = n.id.length <= 5 ? n.id : "";
+      g.addEventListener("mousemove", ev => showTip(ev, `<b>${esc(n.label)}</b><br>${esc(n.desc)}`)); g.addEventListener("mouseleave", hideTip);
+    });
+    const list = $("#edges");
+    const order = { confirmed: 0, plausible: 1, refuted: 2 };
+    list.innerHTML = A.edges.slice().sort((a, b) => (order[a.verdict] ?? 1) - (order[b.verdict] ?? 1) || (b.strength ?? 0) - (a.strength ?? 0)).map(e => `
+      <div class="edge" tabindex="0" data-id="${esc(e.id)}">
+        <div class="hd"><span class="mono small">${esc(e.from)} → ${esc(e.to)}</span><span class="rel">${esc(e.relation)}</span><span class="tag">${esc(e.type)}</span><span class="conf verdict-${esc(e.verdict)}">${e.verdict === "confirmed" ? "已验证" : e.verdict === "refuted" ? "被推翻" : "可能"} · 置信 ${(e.confidence ?? 0).toFixed(2)}</span></div>
+        <div>${esc(e.interpretation)}</div>
+        <div class="ev">${(e.evidence || []).map(v => `<a onclick="event.stopPropagation();__jump(${parseInt(String(v.frames).split(/[–-]/)[0])})">f${esc(v.frames)}</a> ${esc(v.what)}`).join("；")}</div>
+      </div>`).join("");
+    function selectEdge(id) {
+      list.querySelectorAll(".edge").forEach(d => d.classList.toggle("on", d.dataset.id === id));
+      Object.entries(edgeEls).forEach(([k, p]) => p.setAttribute("opacity", k === id ? 1 : 0.25));
+      const e = A.edges.find(x => x.id === id);
+      const f = e && e.evidence && e.evidence[0] ? parseInt(String(e.evidence[0].frames).split(/[–-]/)[0]) : null;
+      if (f) go(f);
+      const card = list.querySelector(`[data-id="${CSS.escape(id)}"]`); if (card) card.scrollIntoView({ block: "nearest" });
+    }
+    list.querySelectorAll(".edge").forEach(d => { d.onclick = () => selectEdge(d.dataset.id); d.onkeydown = ev => { if (ev.key === "Enter") selectEdge(d.dataset.id); }; });
+  })();
+
+  // ---------- phases ----------
+  $("#phases").innerHTML = (DATA.analysis.phases || []).map(p => `
+    <div class="phase"><div class="when"><a onclick="__jump(${p.start})">f${p.start}–${p.end}</a><br>${((p.start - 1) / 30).toFixed(2)}–${(p.end / 30).toFixed(2)} s</div>
+      <div><h3>${esc(p.title)}</h3><p>${esc(p.relationship_state)}</p><p class="small" style="margin-top:4px"><b>主导：</b>${esc(p.who_dominates)}　<b>证据：</b>${esc(p.evidence)}</p></div></div>`).join("");
+
+  // ---------- context & method ----------
+  $("#ctx-cards").innerHTML = (DATA.context || []).map(c => `
+    <div class="panel"><h3>${esc(c.title)}</h3><p class="small">${esc(c.body)}</p>${(c.sources || []).length ? `<div class="small src">来源：${c.sources.map(s => `<a href="${esc(s)}" target="_blank" rel="noopener">${esc(s.replace(/^https?:\/\//, "").slice(0, 60))}</a>`).join("　")}</div>` : ""}${c.confidence ? `<div class="conf">置信：${esc(c.confidence)}</div>` : ""}</div>`).join("");
+  $("#method-cards").innerHTML = (DATA.method || []).map(c => `<div class="panel"><h3>${esc(c.title)}</h3><ul>${c.items.map(i => `<li class="small">${esc(i)}</li>`).join("")}</ul></div>`).join("");
+
+  go(DATA.start_frame || 1);
+})();
+</script>
