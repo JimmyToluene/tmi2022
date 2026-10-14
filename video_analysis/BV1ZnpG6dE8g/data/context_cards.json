@@ -1,0 +1,66 @@
+[
+ {
+  "title": "这条视频属于哪股潮流",
+  "body": "B 站把同一模板被大量翻拍的现象叫“渲染大赛”。这是第三波“宿命对视”：夜店舞池，一个角色在顶光下慢慢扭动，另一个角色从人群或高处与她对视。源头是 10 月 10 日上午发布的性转马尔福视频，本片在约 14 小时后上传。弹幕“世界第三次渲染大赛正式开始”指的就是这一波。",
+  "sources": [
+   "https://www.bilibili.com/video/BV1Ygpo6GEyz",
+   "https://www.bilibili.com/video/BV1Fqpe6xEph"
+  ],
+  "confidence": "中高"
+ },
+ {
+  "title": "大肥鱼是谁",
+  "body": "“大肥鱼”是网友对 DeepSeek 鲸鱼标志的戏称。蓝发鲸鳍女仆的形象来自画师上善无形的原创角色“溟月”（2025 年 6 月发布，以 CC BY-NC-SA 4.0 开放二创）；2026 年 4 月，UP 主 ZipZipPipe 把她改成了 DeepSeek 的女仆。DeepSeek 官方从未发布过拟人形象。弹幕里的 lwf / 梁文峰指 DeepSeek 创始人梁文锋。",
+  "sources": [
+   "https://www.gcores.com/articles/220351",
+   "https://www.sohu.com/a/1084639984_122562377",
+   "https://en.wikipedia.org/wiki/Liang_Wenfeng"
+  ],
+  "confidence": "高"
+ },
+ {
+  "title": "为什么克劳德是“亲妈”",
+  "body": "“蒸馏”指用强模型的输出训练弱模型：被蒸馏的强模型像“老师”或“家长”。Anthropic 在 2026 年 2 月 23 日的公告和 9 月 10 日的威胁报告中，都点名 DeepSeek 等中国实验室通过大量账号提取 Claude 的输出。这一点被网友玩成“克劳德是大肥鱼的亲妈 / 严母”。评论区“蒸馏ing勿扰”则把“蒸馏”当成两人亲密关系的隐语。",
+  "sources": [
+   "https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks",
+   "https://thehackernews.com/2026/09/anthropic-says-seven-china-based-ai.html"
+  ],
+  "confidence": "高（事实）/ 中（梗的含义）"
+ },
+ {
+  "title": "“看什么，中国人？”和“敢说中文吗”",
+  "body": "前者对应 Anthropic 自 2025 年 9 月起停止向中国控股实体销售的政策，以及中国用户频繁被封号的经历。后者是一个反向梗：有报道称 Claude 在中文环境下会自称 DeepSeek，所以“让她说中文就露馅了”。",
+  "sources": [
+   "https://www.anthropic.com/news/updating-restrictions-of-sales-to-unsupported-regions",
+   "https://m.huxiu.com/article/4838305.html"
+  ],
+  "confidence": "高（政策）/ 推断（梗的指向）"
+ },
+ {
+  "title": "标题和咒术回战",
+  "body": "“意气风发啊……”套用的是《咒术回战》里五条悟意气风发奔赴新宿决战、随后败给宿傩的梗；“可别高兴得太早”就是在预告失败。弹幕“现代最强”是五条悟的称号，“只不过是生在没有我时代的凡夫”是宿傩对五条悟说的话。对应关系是：DS = 五条悟，CL = 宿傩。",
+  "sources": [
+   "https://www.bilibili.com/video/BV1edaD6SESZ",
+   "https://ciatr.jp/topics/326268"
+  ],
+  "confidence": "高（出处）/ 中（角色对应）"
+ },
+ {
+  "title": "为什么有人以为是豆包",
+  "body": "前两波渲染大赛里，DS 的对手一直是豆包，例如《新宿决战》DeepSeek 娘 VS 豆包，以及琵琶曲大肥鱼 vs 豆包，所以开头弹幕在等豆包登场。“豆包上不了桌吧”是说这一次换成了更强的对手。",
+  "sources": [
+   "https://www.bilibili.com/video/BV1dsai6CErz"
+  ],
+  "confidence": "中高"
+ },
+ {
+  "title": "现实时间线（仅作背景）",
+  "body": "上传前后：DeepSeek 在 9 月发布 V4.1 Flash，并有基准成绩接近、融资传闻等消息；Anthropic 在 9 月 22 日发布 Opus 5.5，9 月 28 日发布 Sonnet 5.5，10 月 7 日发布 Haiku 5.5。视频简介为空，没有证据表明它在回应某一具体事件，标题首先是一个梗模板。",
+  "sources": [
+   "https://www.chinastarmarket.cn/detail/2479030",
+   "https://www.macrumors.com/2026/09/22/anthropic-claude-opus-5-5/",
+   "https://releasebot.io/updates/anthropic/claude"
+  ],
+  "confidence": "低（与本片的关联）"
+ }
+]

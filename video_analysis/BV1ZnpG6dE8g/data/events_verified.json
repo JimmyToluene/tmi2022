@@ -1,0 +1,2756 @@
+[
+ {
+  "start": 1,
+  "end": 36,
+  "who": "DS",
+  "type": "other",
+  "desc": "The head drifts toward screen-right more than the body: nose x 0.378 to 0.474 and chin x 0.421 to 0.491 over the chunk. This is partly the push-in (expansion centre left of frame centre) and partly the head turning and shifting toward the lens. Torso, arms and hands move essentially only with the zoom.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 1,
+  "end": 36,
+  "who": "DS",
+  "type": "hand-move",
+  "desc": "No finger articulation. The right hand (forearm on top) stays draped over the rail and the left hand hangs below it at screen-left of centre; positions change only with the push-in.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 1,
+  "end": 36,
+  "who": "DS",
+  "type": "hair-sway",
+  "desc": "No distinct sway; only faint shimmer at the edges of the hair ends. Ahoge, ear fins, bows and whale tail are static.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 1,
+  "end": 36,
+  "who": "AUD_1",
+  "type": "other",
+  "desc": "Defocused foreground head sinks toward the bottom edge with the push-in (head top y about 0.786 to 0.87). Face profile visible f1-10, cut by the frame edge f11-18, only hair from about f19, crown only by f33-36.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 1,
+  "end": 36,
+  "who": "CROWD",
+  "type": "lighting",
+  "desc": "Overall frame luma rises slightly, 59.5 to 63.3.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 4,
+  "end": 36,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Slow stepped push-in toward DS. Cumulative scale is about 1.15 (digest), or about 1.16-1.17 measured on DS and the rail, by f36. The rail top moves down (y about 0.642 to 0.718) while DS's headdress moves up, so the expansion centre sits at about y 0.2 (DS's eye/forehead height). Its x is poorly constrained (about 0.25-0.4, left of frame centre). Motion comes in bursts at 4-6, 9-11, 14-16, 19-21, 24-26, 29-31 and 34-36, with near-static frames 8, 13, 18, 23, 28 and 33. There is no measurable camera roll: the rail slope (higher at screen-left, about 1.3-1.5 deg) changes by less than 0.3 deg, so the digest's per-frame rot_deg values (summing to about +2.3 deg) do not come from the camera.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 9,
+  "end": 11,
+  "who": "DS",
+  "type": "head-tilt",
+  "desc": "Chin lowers about 6-8 deg (pitch about +8 to 0) as the eyes drop. The eyes move down on screen even though the push-in moves content up.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 9,
+  "end": 14,
+  "who": "DS",
+  "type": "gaze-shift",
+  "desc": "Gaze moves from up and off-screen left down toward the lens. At f10-13 the irises are lowered and near-centred under half-closed lids. Eye contact is settled with open eyes at f14-15.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 9,
+  "end": 16,
+  "who": "DS",
+  "type": "head-turn",
+  "desc": "Face yaw eases from about -24 to -12 toward the camera. The nose dash moves from x about 0.379 (f10) to 0.404 (f16), about +27 px.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 10,
+  "end": 13,
+  "who": "DS",
+  "type": "brow",
+  "desc": "Low confidence: the brows are mostly hidden by the bangs. The lid creases and brow area appear to lower slightly with the squint.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 10,
+  "end": 15,
+  "who": "DS",
+  "type": "other",
+  "desc": "Partial eyelid closure (smiling squint): upper lids about 50% at f10-13, reopening to about 80-85% at f14, fully open at f15. Not a full blink. No blinks anywhere else in the chunk.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 13,
+  "end": 19,
+  "who": "DS",
+  "type": "mouth",
+  "desc": "Open grin showing teeth and pink inner mouth narrows to a thin crescent smile with only a line of teeth. Main steps are f13 to f14 and f18 to f19.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 13,
+  "end": 25,
+  "who": "DS",
+  "type": "head-tilt",
+  "desc": "Head straightens: roll eases from about +6 to +2 (approximate).",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 14,
+  "end": 26,
+  "who": "AUD_2",
+  "type": "other",
+  "desc": "Profile drifts right with the push-in and leaves frame at the right edge: a sliver at f24 (maybe f25), gone by f26.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 15,
+  "end": 36,
+  "who": "AUD_5",
+  "type": "crowd-motion",
+  "desc": "Skin-toned clapping hands appear at lower-left at f15, replacing a grey blurred hand. A dark head sliver is at the left edge from f15, and her smiling face is clear at f19-24. She keeps clapping through f36.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 16,
+  "end": 21,
+  "who": "AUD_3",
+  "type": "other",
+  "desc": "Generative morph: AUD_3's dim face brightens from f16, gains a pink highlight at f19, and reads as a lit, smiling dark-haired man (AUD_4) in the same spot by f20-21.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 16,
+  "end": 36,
+  "who": "DS",
+  "type": "head-turn",
+  "desc": "Slow continued turn toward the camera, yaw about -12 to -6. The nose moves x 0.404 (f16), 0.426 (f24), 0.457 (f30), 0.474 (f36). The f29-31 part is boosted by the camera step.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 19,
+  "end": 25,
+  "who": "DS",
+  "type": "other",
+  "desc": "Second light-blue bow at her right temple (screen-left) comes into view as the face turns frontal: edge first visible at f19, growing through f20-25, clearly a bow from f25 on.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 24,
+  "end": 36,
+  "who": "AUD_4",
+  "type": "smile-onset",
+  "desc": "Broad open smile showing teeth is clear from about f24 and stronger by f29-36.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 28,
+  "end": 29,
+  "who": "DS",
+  "type": "mouth",
+  "desc": "Lips close: the thin parted smile (f28) becomes a closed-lip smile with upturned corners at f29, held to f36.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 29,
+  "end": 31,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Largest step of the chunk: scale +1.0% (f29), +1.1% (f30), +0.47% (f31), about 2.6% in total, with content shifting about 13 px right and 15 px up. No visible roll: the digest's +0.43/+0.21/+0.21 deg are not confirmed by the rail.",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 30,
+  "end": 36,
+  "who": "AUD_5",
+  "type": "hand-move",
+  "desc": "One hand rises from chest level to about x 0.13-0.2, y 0.41-0.44 (beside DS's hair curl) at f30-31 and is held raised near chin height through f34-36. The other hand stays at the chest (x about 0.04-0.11, y about 0.44-0.49).",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 34,
+  "end": 36,
+  "who": "AUD_4",
+  "type": "hand-move",
+  "desc": "A hand with a light wristband rises at the right edge below his face: x about 0.91-0.95, y about 0.47 (f34) to 0.43-0.45 (f36).",
+  "chunk": 1,
+  "verified": true
+ },
+ {
+  "start": 38,
+  "end": 46,
+  "who": "DS",
+  "type": "head-turn",
+  "desc": "slight squaring of the face toward the lens (est. yaw ~-8 -> ~-4 deg; low confidence, based mainly on the nose-highlight shift, MediaPipe shows no clear trend); near-frontal (~-2 to -3) thereafter; head otherwise fixed in the scene",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 38,
+  "end": 54,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "bare arm rises from chin height beside AUD_1's cheek (hand y~0.40, 38-43), through her eye/forehead height (44-46), to overhead by 49, hand ending under/behind DS's right (screen-left) fin tip (y~0.31); elbow near the left edge from 44",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 38,
+  "end": 59,
+  "who": "AUD_4",
+  "type": "other",
+  "desc": "defocused foreground back-of-head sinks out of the bottom edge (top 0.875 -> 0.99), gone at 60",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 38,
+  "end": 60,
+  "who": "CROWD",
+  "type": "arm-move",
+  "desc": "forearm with white wristband at the right edge (fist raised) enlarges, blurs into a pale out-of-focus limb and slides right; still a large blur at 53-55, a shrinking sliver at 56-60, gone at 61",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 38,
+  "end": 71,
+  "who": "DS",
+  "type": "other",
+  "desc": "confirmed absences: no blink (eyes fully open in all frames), no gaze shift (irises centred on CAM), no hand/finger motion (R hand draped over the L forearm and rail, L hand hanging over the rail), no independent hair/fin/ribbon/tail sway; all apparent motion is the camera",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 38,
+  "end": 71,
+  "who": "CAM",
+  "type": "other",
+  "desc": "no lighting change; mean luma rises 63.4 -> 73.0 and blue fraction 0.318 -> 0.398 only because DS fills more of the frame",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 39,
+  "end": 70,
+  "who": "CAM",
+  "type": "other",
+  "desc": "audio: onsets at 39-40, 47, 54-55, 69-70; beats at 47 and 62 fall on dup frames; loudness trough -27.4 dB at 66, back to -10.2 dB at 70; no visible character motion answers any beat/onset",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 39,
+  "end": 71,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "continuous slow push-in, dolly-like with parallax (foreground AUD_4 sinks faster and background AUD_3 drifts outward less than DS scales): cumulative scale x1.21 by 71, ~+1% per new 24p image; effective anchor ~(0.42,0.21) on DS's upper head; holds (dup + near-dup) at 42-43, 47-48, 52-53, 57-58, 62-63, 67-68; 38 is a near-hold (x1.0002)",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 41,
+  "end": 71,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "small roll drift: cumulative +0.10 deg at 41, peak +0.77 deg at 61-63, unwinding to +0.36 deg at 71",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 44,
+  "end": 49,
+  "who": "AUD_1",
+  "type": "other",
+  "desc": "face morphs/shifts up (hairline jumps up at 44), then dims as AUD_2's forearm crosses her lower face (46); not discernible from 49",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 49,
+  "end": 55,
+  "who": "CROWD",
+  "type": "hand-move",
+  "desc": "extra raised hand (fingers up) appears above DS's right (screen-left) fin tip at 49 ~(0.19-0.26,0.23-0.30), clearly visible through 53, fades behind the enlarging fin at 54-55, gone by 56",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 54,
+  "end": 61,
+  "who": "AUD_3",
+  "type": "mouth",
+  "desc": "laugh opens wide with upper teeth visible (widest ~56-61); face heavily defocused, low confidence",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 54,
+  "end": 63,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "small out-of-focus hands at the far-left edge (0.0-0.04,0.52-0.56); dim mid-right figure with hands up ~(0.85-0.88,0.38-0.45) at 54-59",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 55,
+  "end": 71,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "arm held overhead with the hand behind DS's right (screen-left) fin tip, slight drift only",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 59,
+  "end": 71,
+  "who": "DS",
+  "type": "smile-offset",
+  "desc": "partial smile relaxation: closed-lip U smile narrows (~25-30%) and flattens; first visible at 59 (58 is a near-dup of 56), clearer 61-66, shortest/flattest 69-71; lips never part",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 64,
+  "end": 64,
+  "who": "CROWD",
+  "type": "other",
+  "desc": "viewer danmaku timed here: '大肥鱼！' and 'claude：看什么，中国人？'",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 69,
+  "end": 71,
+  "who": "AUD_3",
+  "type": "mouth",
+  "desc": "laugh closes toward a smile (mouth less open); low confidence (defocused)",
+  "chunk": 2,
+  "verified": true
+ },
+ {
+  "start": 73,
+  "end": 108,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "continuous slow push-in, fixed point ~(0.575,0.20) (top of DS's head/hairline): cumulative scale x1.237 from f73 to f108. Per-frame steps ~+1.1% / +0.6% / +1.2% on f%5 in {4,0,1}. f%5==2 frames are exact duplicates and f%5==3 frames are near-static (24->30 fps cadence). Content drifts up-left 3-10 px per moving frame.",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 73,
+  "end": 108,
+  "who": "DS",
+  "type": "other",
+  "desc": "held pose: no blink, no gaze shift (eye contact with CAM throughout), no measurable head turn/tilt (<1 deg relative roll drift), no hand/finger/torso motion, no hair/fin/ribbon sway. Camera-compensated differences on her body show only edge outlines.",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 73,
+  "end": 108,
+  "who": "CAM",
+  "type": "lighting",
+  "desc": "no lighting cue; mean luma rises 72.9 -> 81.0 only because the push-in crops the dark background and DS's white blouse/apron fills more of the frame",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 74,
+  "end": 86,
+  "who": "DS",
+  "type": "smile-offset",
+  "desc": "closed-mouth U smile fades gradually: clear U at 73-76, biggest drop 76->78 to a weak U, faint residual upturn (corners slightly above centre) 78-85, level line by 86. Width ~0.088 -> ~0.075 face-widths.",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 76,
+  "end": 86,
+  "who": "AUD_1",
+  "type": "other",
+  "desc": "smiling dark-haired woman's face becomes visible at the left edge (from 76) and clearer as the arm stops covering it",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 77,
+  "end": 77,
+  "who": "CAM",
+  "type": "other",
+  "desc": "beat on duplicate frame; no motion response",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 79,
+  "end": 81,
+  "who": "CAM",
+  "type": "other",
+  "desc": "audio: loudness step rms -27 -> -13 dB with onsets at 80/81, during the late (residual) phase of DS's smile fade; no visible motion response",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 79,
+  "end": 86,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "strongest scene residual motion of the chunk is at the left-edge crowd (AUD_1 arm/face region, compensated diff peak at 78->79), decaying after f86",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 79,
+  "end": 88,
+  "who": "AUD_1",
+  "type": "arm-move",
+  "desc": "raised arm at the left edge morphs from a diagonal forearm (elbow at left edge) to a more vertical one, with the hand lower (~y0.31 -> ~y0.37). It then fades behind DS's hair and is no longer distinguishable from f89.",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 80,
+  "end": 86,
+  "who": "DS",
+  "type": "other",
+  "desc": "framing: ahoge loop leaves through the top edge (push-in), only the stem is left",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 80,
+  "end": 108,
+  "who": "DS",
+  "type": "other",
+  "desc": "framing: draped left hand is progressively cut by the bottom edge (tips at 80, wrist out by ~101). A sliver of the back of the hand stays visible at the bottom edge through 108.",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 86,
+  "end": 91,
+  "who": "CAM",
+  "type": "other",
+  "desc": "framing: chrome rail post (lower-left) and curled hair-strand tip (left edge) leave frame",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 89,
+  "end": 108,
+  "who": "DS",
+  "type": "mouth",
+  "desc": "mouth corners drift into a very faint downturn (each half of the line arches down at its outer end). Barely there from ~89, consistent from ~98/99, strongest 104-108. It is continuous and does not flicker on and off.",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 91,
+  "end": 100,
+  "who": "AUD_2",
+  "type": "hand-move",
+  "desc": "a pale raised hand appears above-left of AUD_2's face at the right edge (faint 91-93, clear 94-100) and is gone at 101",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 91,
+  "end": 103,
+  "who": "AUD_3",
+  "type": "crowd-motion",
+  "desc": "warm-lit blurred head/hand with bright orange specks appears at the left beside AUD_1 (~0.03-0.08, 0.36-0.42), then blends into the warm crowd",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 92,
+  "end": 92,
+  "who": "CAM",
+  "type": "other",
+  "desc": "beat on duplicate frame; no motion response; danmaku 大肥鱼！ around 91-95",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 99,
+  "end": 100,
+  "who": "DS",
+  "type": "other",
+  "desc": "framing: right fingertips leave the bottom edge",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 99,
+  "end": 101,
+  "who": "AUD_2",
+  "type": "lighting",
+  "desc": "AUD_2's face turns warm orange-lit (background generation morph): onset at 99, fully warm by 101, stays warm through 108",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 101,
+  "end": 105,
+  "who": "CAM",
+  "type": "other",
+  "desc": "framing: railing shrinks to a thin band at the bottom edge and leaves frame by 105",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 104,
+  "end": 108,
+  "who": "AUD_4",
+  "type": "arm-move",
+  "desc": "a raised forearm/hand appears just below DS's right ear fin at the left (~0.06-0.12, 0.36-0.40); more forearm visible by 106",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 107,
+  "end": 107,
+  "who": "CAM",
+  "type": "other",
+  "desc": "beat on duplicate frame; no motion response",
+  "chunk": 3,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 111,
+  "who": "AUD_1",
+  "type": "crowd-motion",
+  "desc": "raised hand at upper-left edge: full 109, half 110, gone 111 (replaced by AUD_3 warm-lit head; generative morph)",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 114,
+  "who": "DS",
+  "type": "other",
+  "desc": "framing: white left cuff peeks under the right wrist at the bottom edge 109-113 and shrinks with the push-in; out of frame from 114",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 144,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "continuous slow push-in with its fixed point near DS head-top (solved fixed point x~0.43-0.47, y~0.06-0.10; head_top y stays ~0.077): cumulative scale ~x1.19 (SIFT 1.190, digest 1.185). Content below moves down (nose y 0.361->0.414, chin 0.458->0.530), slight rightward drift (~+0.014 x)",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 144,
+  "who": "DS",
+  "type": "other",
+  "desc": "no blink and no gaze shift for all 36 frames (1.2 s): eyes fully open, irises centred on lens (checked on every non-dup frame)",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 144,
+  "who": "DS",
+  "type": "mouth",
+  "desc": "no mouth articulation: closed two-stroke lip line throughout; only render shimmer of the stroke",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 144,
+  "who": "DS",
+  "type": "head-tilt",
+  "desc": "none: head roll fixed at about -2.5 deg (top toward screen-left), yaw/pitch unchanged; head rigid over torso",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 144,
+  "who": "DS",
+  "type": "hair-sway",
+  "desc": "none: locks, ahoge, fins, frills static; only small edge shimmer on push-in step frames",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 109,
+  "end": 144,
+  "who": "CAM",
+  "type": "lighting",
+  "desc": "no light change on DS; frame luma 82.3 -> 91.7 (136) -> 89.0 and blue fraction 0.396 -> 0.455 come only from reframing onto bright costume and blue hair",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 111,
+  "end": 111,
+  "who": "AUD_3",
+  "type": "crowd-motion",
+  "desc": "warm-lit head top appears at left edge",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 111,
+  "end": 129,
+  "who": "DS",
+  "type": "other",
+  "desc": "framing: right hand leaves frame through the push-in. Fingertips cut at 111, dorsum only 114-118, cuff + top of dorsum 119-123, sliver 124-128, gone at 129. Hand and fingers never move on their own (forearms rest on the off-frame barrier railing)",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 112,
+  "end": 113,
+  "who": "CAM",
+  "type": "other",
+  "desc": "cadence hold: 112 exact dup, 113 near-dup (absdiff 0.87); same pattern at 117-118, 122-123, 127-128, 132-133, 137-138, 142-143. Big steps on frames ending 4/9, ~+0.3-0.5% steps on frames ending 0/1 and 5/6",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 113,
+  "end": 114,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "push-in step ~+2.0%",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 113,
+  "end": 115,
+  "who": "CROWD",
+  "type": "other",
+  "desc": "audio: loud onset (rms -20.7 -> -12.5 dB, onsets 114-115); no visible reaction by DS or crowd",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 114,
+  "end": 114,
+  "who": "DS",
+  "type": "other",
+  "desc": "framing: both fin tips now cut by side edges",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 118,
+  "end": 119,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "push-in step ~+1.8-1.9%",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 123,
+  "end": 124,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "push-in step ~+1.75-1.9% (on music beat 124, cadence coincidence)",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 124,
+  "end": 144,
+  "who": "AUD_4",
+  "type": "crowd-motion",
+  "desc": "push-in parallax gradually cuts AUD_4 with DS screen-right hair and the right edge. Partial face (~60 px) at 124-129, blurrier at 134, faint sliver by 139-144",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 128,
+  "end": 129,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "push-in step ~+1.75-1.85%",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 133,
+  "end": 134,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "push-in step ~+1.4%; framing becomes chest-up",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 138,
+  "end": 139,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "push-in step ~+1.4% (on music beat 139, cadence coincidence)",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 139,
+  "end": 139,
+  "who": "DS",
+  "type": "other",
+  "desc": "framing: lower corset button row leaves bottom edge",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 143,
+  "end": 144,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "push-in step ~+1.1%",
+  "chunk": 4,
+  "verified": true
+ },
+ {
+  "start": 145,
+  "end": 148,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "tail of the shot-1 slow push-in on DS's face: scale x1.0026/frame at 145, x1.0027 at 146, x1.0002 at 148 (settling); ~1 px up-left drift",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 145,
+  "end": 148,
+  "who": "DS",
+  "type": "other",
+  "desc": "sustained direct eye contact with the lens: eyes fully open with irises centred, no blink, small closed mouth, no head motion (a hold before the cut)",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 148,
+  "end": 149,
+  "who": "CAM",
+  "type": "cut",
+  "desc": "hard cut: frontal MCU of DS facing camera -> rear over-the-shoulder view of DS facing into the club; luma 90->35, blue fraction 0.46->0.63",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 149,
+  "end": 161,
+  "who": "DS",
+  "type": "other",
+  "desc": "camera-induced exit of DS's left-side features through the left frame edge: the left fin (always edge-cropped) shrinks from 149 to ~156, is a sliver at 158 and is gone by ~159. The left hair bow is visible to ~158, appears as slivers 159-161 and is gone by 163 (only the headdress frill stays at the edge). The left shoulder ruffle sliver (149-154) and the left pale-blue strands (to ~158) also leave the frame",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 149,
+  "end": 180,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "continuous rightward arc around DS: DS slides ~235 px left (hair-region tracking); the mid-ground crowd/bokeh lights slide ~150 px right and ~30 px up (warm-light tracking); cumulative clockwise image roll ~+1.5-2.5 deg; net push-in ~x1.006. Per-frame steps follow a fixed 5-frame cadence (largest on 154,159,164,169,174,179), a frame-rate-conversion artefact that does not follow the 15-frame beat grid",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 149,
+  "end": 180,
+  "who": "DS",
+  "type": "other",
+  "desc": "DS completely static: no head turn, limb, fin, hair or ruffle motion detectable beyond rigid camera-induced translation/roll. The apparent yaw drifts ~178->~166 deg only because of the camera arc",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 154,
+  "end": 154,
+  "who": "CAM",
+  "type": "other",
+  "desc": "music beat; no character motion aligned to it (the coincident large step is the 5-frame camera cadence)",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 156,
+  "end": 180,
+  "who": "DS",
+  "type": "other",
+  "desc": "the rim-lit outer contour of DS's right sleeve comes fully inside the right frame edge (~156) and the sleeve widens. The pale-blue under-layer of her right-side hair becomes more exposed and brighter as the camera arcs to her right. This is a view change, not independent hair sway",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 159,
+  "end": 180,
+  "who": "AUD_2",
+  "type": "crowd-motion",
+  "desc": "blue-lit audience member emerges from behind DS's right-side pale strands. A faint blue glow is present at 158; the figure is faint 159-163 and distinct from 164. It drifts right and grows with parallax; an arm appears raised from ~176. No independent motion is separable from parallax",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 159,
+  "end": 180,
+  "who": "AUD_3",
+  "type": "crowd-motion",
+  "desc": "audience member with both arms raised overhead in an arch/ring. Barely discernible at 159; clearly readable from ~161 next to a warm light; drifts right to the right frame edge (touching it at 180). No pose change is separable from parallax",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 159,
+  "end": 180,
+  "who": "CAM",
+  "type": "other",
+  "desc": "a metal balcony railing tube enters at the bottom-right corner at f159 (x~0.97-1.0, y~0.93-0.94; warm glints of a lower rail visible at the very corner from ~156). It lengthens leftward to x~0.85-0.87 by f180, showing DS standing at a balcony railing above the crowd",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 164,
+  "end": 180,
+  "who": "CROWD",
+  "type": "lighting",
+  "desc": "more warm lights and blue-lit figures enter frame as DS slides left; frame luma 36->39, blue fraction ~0.646->0.655-0.665",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 164,
+  "end": 180,
+  "who": "CAM",
+  "type": "other",
+  "desc": "progressive focus/depth-of-field change: the crowd becomes noticeably sharper (raised arms, heads, blue-lit figures legible by 174-180) while DS stays sharp",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 169,
+  "end": 169,
+  "who": "CAM",
+  "type": "other",
+  "desc": "music beat; no character motion aligned to it (the coincident large step is the 5-frame camera cadence)",
+  "chunk": 5,
+  "verified": true
+ },
+ {
+  "start": 181,
+  "end": 216,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Continuous truck/arc to the right around DS, with a slow push-in and tilt. DS (foreground) slides screen-left ~280 px at the bow/fin (template tracking) and rises ~17 px. Against the digest at frame 180, the far background shifts +43 px right and 179 px up, with cumulative scale 1.083 and roll ~6.8 deg. The floor crowd around CL moves only ~+52/-21 px in frame from 199 to 216 (parallax between the floor and the far balconies). The sweep gradually uncovers CL",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 181,
+  "end": 216,
+  "who": "DS",
+  "type": "other",
+  "desc": "DS holds completely still: template tracking shows only translation (no head turn or roll), consistent with camera motion alone",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 181,
+  "end": 216,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "continuous dancing/swaying with several raised arms; soft-focused until 198, sharp from ~205",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 185,
+  "end": 190,
+  "who": "CROWD",
+  "type": "other",
+  "desc": "Audio: the music energy hits, rms -27 dB (183) -> -16.6 (185) -> -9.8 (186) -> -5.6 (188), with onsets at 187-190. The crowd is already dancing; no visible sync change",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 188,
+  "end": 191,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "strongest camera step: background up 34 px, roll +1.4 deg, scale +1.6% between 190 and 191 (plus +0.8 deg roll at 188)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 189,
+  "end": 193,
+  "who": "CL",
+  "type": "other",
+  "desc": "CL first glimpse: an orange hair crown peeks between DS's light-blue hair strands at x 0.433->0.415, y~0.55, with a pale face sliver from ~191. The patch drifts ~25 px left with DS while the background moves right (generation artefact)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 189,
+  "end": 216,
+  "who": "DS",
+  "type": "hair-sway",
+  "desc": "DS's light-blue inner strands below the fin spread into looser wavy lines (subtle; partly camera parallax); her head, bow, fin and headband otherwise rigid",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 191,
+  "end": 216,
+  "who": "CAM",
+  "type": "lighting",
+  "desc": "A ceiling spotlight beam emerges at top centre as DS's head slides away. From 199 there is a warm haze glow and a bright floor pool around CL. Mean luma rises 39.1 -> 44.0",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 191,
+  "end": 216,
+  "who": "AUD_3",
+  "type": "arm-move",
+  "desc": "AUD_3 (facing the camera, glasses) keeps his LEFT arm, on the screen-right of his head, raised straight up with a clenched fist throughout; he drifts with the camera",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 194,
+  "end": 196,
+  "who": "CL",
+  "type": "other",
+  "desc": "Generation morph: the peeking head patch turns into an elongated orange hand-like form with a whitish base at (0.385-0.415, 0.54-0.58). It could read as a raised right hand, palm to camera, but it is hair-coloured and at 196-198 it collapses into the orange lock on her screen-left side. Her white blouse appears ~45 px to the right at 194-195, and at 196 her real head reappears at (0.45, 0.547) behind a DS strand",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 196,
+  "end": 199,
+  "who": "CL",
+  "type": "other",
+  "desc": "CL's head/face resolves: black ribbon (196), closed eyes + gold flower + bow tie (198), full clear face above DS's ruffle (199)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 198,
+  "end": 211,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Rack focus from the DS foreground plane to the dance floor/CL plane. Crowd edge energy rises 35 (198) -> 79 (199) -> 146 (201) -> 225 (205) -> 355 (211), and DS's ruffle becomes visibly soft",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 198,
+  "end": 216,
+  "who": "CL",
+  "type": "other",
+  "desc": "eyes stay closed in every frame (dark lash arcs, no iris); no blink, no opening",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 199,
+  "end": 216,
+  "who": "CL",
+  "type": "other",
+  "desc": "CL stays in place. Her in-frame head displacement from 199 to 216 is (+52,-21) px, matching neighbours AUD_1 (+57,-26), AUD_2 (+54,-24) and AUD_3 (+64,-14), so there is no measurable advance toward the balcony. Her legs are hidden by the long skirt",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 199,
+  "end": 216,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "slight progressive head roll toward screen-left (her right), from ~-1 deg to ~-6 deg (head-top vs chin offset 1 px -> 6.5 px)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 199,
+  "end": 216,
+  "who": "AUD_1",
+  "type": "hand-move",
+  "desc": "AUD_1 keeps both hands at her waist handling a small object, head bowed; slight sway",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 199,
+  "end": 216,
+  "who": "AUD_2",
+  "type": "hand-move",
+  "desc": "AUD_2 (bald, dark suit, in profile toward screen-left) holds a hand out at waist height next to AUD_1's hands; both look down at them (apparent hand-off of a small object/drink)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 201,
+  "end": 211,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "A long orange lock on her screen-left side fans outward. Its outer edge moves from x~0.40 at 199 to ~0.375 at 204-206",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 204,
+  "end": 206,
+  "who": "AUD_5",
+  "type": "other",
+  "desc": "AUD_5 (glasses, lower-right foreground): the top of her head is visible from ~201 behind DS's blurred strand, and her face/glasses are clear from 204. AUD_6 (hands raised to face) is uncovered at ~205-206",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 209,
+  "end": 216,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "skirt: orange front panel and black-trimmed side flap swung toward screen-right; looks more vertical at 214-216 once the full skirt is uncovered (partly a disocclusion effect)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 209,
+  "end": 216,
+  "who": "CL",
+  "type": "finger",
+  "desc": "left hand (screen-right) keeps its fingers curled around the dangling black-and-gold charm at the skirt front; steady hold",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 211,
+  "end": 216,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "The left (screen-right) elbow/sleeve flares outward ~10-14 px relative to her neck. The wrist cuff stays nearly in place (~5 px)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 211,
+  "end": 216,
+  "who": "AUD_4",
+  "type": "other",
+  "desc": "AUD_4's dark head (back to camera) appears at 211 in front of CL's skirt hem as DS's sleeve slides past, and stays there, occluding the hem centre",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 213,
+  "end": 216,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "the screen-left locks fall back toward her body (outer edge x ~0.41 -> 0.42)",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 214,
+  "end": 216,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "Her right forearm and cuff are uncovered at 214 on the skirt's screen-left side by the hip; the hand is blurred behind DS's out-of-focus ruffle edge at 214-215. At 216 the hand is clearly visible resting open on the front of her right thigh, fingers spread downward (0.444-0.46, 0.60-0.615). The cuff stays at x~0.44-0.446, so the change is mostly disocclusion rather than travel",
+  "chunk": 6,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "slow arc right + tilt down + push-in: bg +58px x, -91px y, scale x1.043, roll +1.55deg; parallax: DS slides left ~170-205px (fin tip 204, shoulder 179, elbow 171), CL drifts right/up ~80/48px; cadence frames 220,225,...,250 carry half motion",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "DS",
+  "type": "other",
+  "desc": "DS fully static at rail (bow/fin/ruffle layout fixed); no head turn, no hair sway; white sleeve cuff at elbow corner becomes more visible from ~229 (camera-arc reveal only)",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "DS",
+  "type": "other",
+  "desc": "composition, camera-induced: the static fin axis comes into line with CL (angle gap ~45deg at 218, ~18deg at 236, ~9deg at 244, ~3deg at 251); fin effectively aimed at CL from ~244",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "R hand slides from outer skirt edge to front of R thigh: wrist rel x -45 -> -27px, fingertips -42 -> -15px; hand-tip separation 71 -> 52px; fingers stay spread downward throughout; L hand stays on gold ornament/tassel",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "CL",
+  "type": "other",
+  "desc": "eyes closed throughout: no blink, no gaze shift, no visible mouth change (checked on face crops of all 28 unique frames)",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "AUD_2 = man with glasses, light grey-blue shirt, upper-right of CL (head ~(0.79,0.52)->(0.87,0.49)); holds L fist raised above head throughout, fist ~fixed relative to head (slight sway only); face turned screen-left toward CL, a little more in profile by 251",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "AUD_3",
+  "type": "other",
+  "desc": "AUD_3 = bowed figure with slicked-back dark hair and bright crown highlights, lower right next to DS sleeve (head ~(0.69,0.84)->(0.75,0.81)); both fists held at nose/mouth, static, no measurable rise",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "continuous dancing; black-dress dancers behind CL step and sway; raised arms mid-crowd; a dancer's hand reaches in above-right of CL at 244-251",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 218,
+  "end": 251,
+  "who": "CROWD",
+  "type": "lighting",
+  "desc": "gradual brightening luma 44.0 -> 46.6; spot beam + haze steady; lamp-lit left mezzanine revealed as DS slides left",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 219,
+  "end": 223,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "screen-left overskirt fans out, hem rel x -43 -> -100px, black patterned lining + lace petticoat revealed (held to ~234)",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 219,
+  "end": 226,
+  "who": "CL",
+  "type": "hip-sway",
+  "desc": "hidden hips sway (inferred from skirt), driving skirt to screen-left; torso leans slightly to her R",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 219,
+  "end": 228,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "screen-left (her R) hair locks swing out from the sleeve",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 229,
+  "end": 236,
+  "who": "AUD_4",
+  "type": "head-turn",
+  "desc": "AUD_4 (long dark wavy hair, dark dress, right of AUD_1 at clearing edge, head ~(0.63,0.65)) turns her face from profile facing partner AUD_5 (screen-right, faces close) to near-frontal toward camera, chin down; holds that to 251",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 229,
+  "end": 251,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "arms straighten into hands-on-thighs brace; elbows bow out (L rel x 50->60->57) and drop (rel y 93/100 -> 107)",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 231,
+  "end": 238,
+  "who": "AUD_4",
+  "type": "hand-move",
+  "desc": "AUD_4's hand slides from AUD_5's collar down onto his chest, fingers spread; stays there to 251. AUD_5 (light-blue shirt) keeps his head bowed toward her",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 234,
+  "end": 251,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "skirt swing reverses: left fan -96 -> -66px, right hem +74 -> +102px",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 235,
+  "end": 246,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "head becomes more upright/frontal: roll -10 -> -6deg, yaw -9 -> -4deg, still bowed (eyes closed)",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 238,
+  "end": 246,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "side lean straightens into a symmetric forward bend; shoulders slightly hunched",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 240,
+  "end": 251,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "screen-right locks fan further out beyond L arm",
+  "chunk": 7,
+  "verified": true
+ },
+ {
+  "start": 253,
+  "end": 288,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Continuous slow move. Background content rises and drifts right: digest-integrated (+22.6, -56.7) px; template matches give mezzanine (+31,-46) and crowd around CL (+16..+30, -43..-55). Cumulative scale 1.0104 (~1.0% push-in, not 1.2%). The foreground DS moves the opposite way: ruffle -42 px, cuff (-70,-50), fin-like point (-90,-35). That is 65-120 px of leftward parallax relative to the background, not ~45 px. Reads as a slow arc/truck to the right around CL combined with a tilt/crane down.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 253,
+  "end": 288,
+  "who": "CL",
+  "type": "other",
+  "desc": "No blink. The eyes stay narrow, near-closed lash lines; the lash darkness is constant in face-aligned crops and the iris is not resolvable at a ~52 px face. The pale lid highlight above her left eye fades gradually from ~273 with the head roll; this is not a lid movement. No mouth is visible and the expression does not change.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 253,
+  "end": 288,
+  "who": "DS",
+  "type": "other",
+  "desc": "Foreground silhouette drifts left: ruffle centroid x 137 -> 95 px, cuff (460,1530) -> (390,1480), fin-like point tip (250,720) -> (160,685). The parts move by different amounts (head point -90 px, ruffle -42 px), so a slight head/upper-body shift of DS's own cannot be fully excluded. There is no clear gesture, and her face is never visible.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 253,
+  "end": 288,
+  "who": "AUD_1",
+  "type": "other",
+  "desc": "Bob-haired woman in a black dress at the front rim, back to camera, facing CL; no gestures. Her head rises only ~14 px in frame (crown 1200 -> 1186 px) versus ~44 px for CL. Her x goes 657 -> 673 (263) -> 667 px, consistent with near-subject parallax or a slight sway.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 253,
+  "end": 288,
+  "who": "AUD_4",
+  "type": "other",
+  "desc": "Woman in a black mini dress behind-right of CL bobs in place with her feet planted. She stands upright with head bowed and arms hanging slightly out at 253-261, leans a little forward with knees flexing at 264-276, and bends more at 273-283. The bald man on her screen-right keeps a hand reaching toward her left hand/hip throughout.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 253,
+  "end": 288,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "Continuous dancing. Raised arms upper-left (~0.37,0.35) and right of the beam (~0.82,0.38) sway. The curly-haired couple at the front-right rim rocks together, and the long-haired woman at the front-left rim turns slightly from ~273. A man at bottom-centre has both hands at his head.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 253,
+  "end": 288,
+  "who": "CAM",
+  "type": "lighting",
+  "desc": "Gradual darkening, luma 46.4 -> 44.0. It is concentrated in the left half (44.7 -> 40.8; the DS strip 49.9 -> 41.3) as DS's bright headband and frills leave or turn away; the right half is steady (47.9 -> 47.1). Spotlight beam, haze and floor circle are steady.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 254,
+  "end": 254,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Micro jolt: content dx +4.0, dy -6.5 px, rot +0.26 deg, scale +0.21% (largest frame step of the chunk).",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 256,
+  "end": 288,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "Lateral lean toward her own left (screen-right) while the hips go to her right. The head ends ~10 px and the skirt/body ~25 px further screen-left relative to the surrounding crowd, so the head sits over her left side. The shoulder line tilts with her left shoulder lower; the tracker's 9-11 deg is noisy (+/-4 deg, and its r_shoulder sits on the neck). The forward bow itself does not measurably deepen.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 257,
+  "end": 257,
+  "who": "CL",
+  "type": "other",
+  "desc": "Music beat and onset fall on a duplicate frame; no visible accent in any character.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 258,
+  "end": 281,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "Long back hair shows more and more on screen-left (orange px 128 -> 633) and less on screen-right (485 -> 177). This is mostly a visibility change: the right-arm gap opens, the left arm closes and the torso tilts.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 258,
+  "end": 288,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "Left arm lowers and closes in, nearly straight by 278. Relative to the face, the wrist slides ~27 px medially and ~15 px down the front of the left thigh.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 258,
+  "end": 288,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "Counter-roll, top of the head toward screen-left, in two phases. The eye-line angle drops ~3 deg at 258-259, holds through 271, then drops another ~4-5 deg from 273 to 284. Total ~-7 deg, matching the annotated roll going from +3 to -4.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 259,
+  "end": 263,
+  "who": "CROWD",
+  "type": "other",
+  "desc": "The bespectacled man at the front-left rim, just screen-left of AUD_1, shifts relative to CL. From ~260 his head no longer covers CL's right shin and boot.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 259,
+  "end": 273,
+  "who": "DS",
+  "type": "other",
+  "desc": "White frilled headband and blue bow slide out past the left frame edge: cut from 259, a thin sliver at 266-271, effectively out by 273.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 259,
+  "end": 288,
+  "who": "CL",
+  "type": "hip-sway",
+  "desc": "Slow hip/skirt displacement toward her right (screen-left). The skirt-mass centroid goes from +17 to -14.5 px relative to the head axis, and the skirt region moves ~25 px left relative to nearby crowd. Fastest at 266-281, with no reversal inside the chunk.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 259,
+  "end": 288,
+  "who": "CL",
+  "type": "weight-shift",
+  "desc": "Weight onto her right leg, inferred only from the pelvis shift (contrapposto). The right white-stocking shin and dark heeled ankle boot appearing below the hem from ~260 is an occlusion change: the bespectacled man's head at the front-left rim stops covering it. It is not direct evidence of the shift. Her left foot stays behind AUD_1's head.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 259,
+  "end": 288,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "Right arm opens into an akimbo pose. Relative to the face, the elbow moves ~25 px outward and ~7 px up, ending at the outer end of the puff sleeve (~0.516,0.527 at 288). The wrist travels ~32 px outward and ~14 px up, from the front of the thigh onto the right hip.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 259,
+  "end": 288,
+  "who": "CL",
+  "type": "finger",
+  "desc": "Fingers of both hands stay splayed and pressed on the skirt, pointing down, while the hands slide; no finger flexion is visible.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 259,
+  "end": 288,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "Skirt hem swings toward screen-left. The left hem edge goes from -57 to -97 px from the head axis and the right edge from +101 to +63 px. The flower ornament and ribbons hang still.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 261,
+  "end": 261,
+  "who": "CL",
+  "type": "other",
+  "desc": "Audio onset; no visible discrete change.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 261,
+  "end": 286,
+  "who": "CL",
+  "type": "head-turn",
+  "desc": "Tiny yaw drift: ~+5 deg at 264 to ~-7 deg at 286 (face-centre offset). Near the resolution limit.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 269,
+  "end": 288,
+  "who": "DS",
+  "type": "hand-move",
+  "desc": "Right hand progressively revealed above the white-striped cuff. Warm skin-toned knuckles appear from 269 (skin px ~210) and grow to ~640 px by 288; a pale blue-lit knuckle edge is already faintly visible from 253. This is most likely a parallax reveal, not a clear motion of her own.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 272,
+  "end": 272,
+  "who": "CL",
+  "type": "other",
+  "desc": "Music beat falls on a duplicate frame; no visible accent.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 278,
+  "end": 288,
+  "who": "AUD_4",
+  "type": "head-turn",
+  "desc": "Head stays bowed and her face turns slightly toward the bald man on her screen-right. Her right (screen-left) hand rises to waist level, not chest; her left hand stays low near his reaching hand, and her left knee bends and turns inward.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 279,
+  "end": 279,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Small extra tilt/push step: dx -1.1, dy -3.9 px, scale +0.22%.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 283,
+  "end": 286,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "Partial swing-back of hair on screen-right (177 -> 323 px), settling to 264 at 288.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 287,
+  "end": 287,
+  "who": "CL",
+  "type": "other",
+  "desc": "Music beat falls on a duplicate frame; no visible accent.",
+  "chunk": 8,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "slow drift: background content moves up ~1 px/frame (mezzanine lamps +4,-15 px total, phase-correlation verified); foreground DS cuff/railing move slightly more up and left (-3,-18 px), consistent with parallax; scale ~0.9997/frame (marginal pull-back)",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "CL",
+  "type": "other",
+  "desc": "eyes-closed, head-bowed hold (head roll ~-4 deg, top toward screen-left); no blink or eye opening in the shot-2 part",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "skirt hem swings ~12 px to screen-left relative to background (flow: about -12,-9 px relative), in comparable steps at 293-294 and 298-299; small rebound at 295",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "CL",
+  "type": "weight-shift",
+  "desc": "slight sway toward her right (screen-left): head ~-4 px, right hand ~-7 px, hem ~-12 px relative to background",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "DS",
+  "type": "other",
+  "desc": "DS completely static relative to the railing (all apparent motion is camera parallax)",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "AUD_1",
+  "type": "weight-shift",
+  "desc": "sways/bounces in place while dancing, looking down-left and smiling; head drifts ~+7,+3 px relative to the scene; no distinct step visible",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "AUD_2",
+  "type": "torso-lean",
+  "desc": "leans ~4-8 px toward screen-left (toward AUD_1), right hand extended toward her at waist height",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "AUD_4",
+  "type": "torso-lean",
+  "desc": "head bends down-left toward AUD_5 (~-10 to -16,+12 px relative to scene) while his arm stays around her waist (embrace); largest steps at 299 and 301",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "AUD_5",
+  "type": "torso-lean",
+  "desc": "rises ~9 px toward AUD_4, glass/hand held near her chin",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "AUD_6",
+  "type": "other",
+  "desc": "leans in with his face close to AUD_10's head (left profile, glasses toward her), as if speaking into her ear; AUD_10 stays back-to-camera facing the clearing/CL",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "AUD_7",
+  "type": "arm-move",
+  "desc": "fist held high on a nearly straight arm (~15 deg from vertical) throughout; it only rises ~2 px at 293-294 and drifts ~8 px LEFT relative to the scene over 296-303; the arm belongs to the young man with glasses directly below",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 289,
+  "end": 303,
+  "who": "CROWD",
+  "type": "lighting",
+  "desc": "luma 43.7 -> 41.5 (slight darkening of the wide shot)",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 290,
+  "end": 303,
+  "who": "AUD_1",
+  "type": "arm-move",
+  "desc": "hands rise continuously from in front of the waist (~y0.458) to collarbone/upper-chest level (~y0.431), loosely fisted; ~40 px relative rise with steps at 291-294 and 296-303 (not finished at 298)",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 291,
+  "end": 301,
+  "who": "AUD_6",
+  "type": "step",
+  "desc": "head shifts ~18 px right and ~16 px up relative to the background, ending just below-left of CL's feet at the clearing edge; he stays in left profile facing AUD_10, not the stage",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 304,
+  "end": 304,
+  "who": "CAM",
+  "type": "cut",
+  "desc": "hard cut from the high-angle wide over-the-shoulder shot to an eye-level medium-full shot of CL, 2 frames after the beat at 302",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 304,
+  "end": 324,
+  "who": "CL",
+  "type": "gaze-shift",
+  "desc": "sustained eye contact with CAM from the first frame of shot 3; irises stay centred; no blink (eye-region mosaic of all 17 unique frames checked)",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 304,
+  "end": 324,
+  "who": "CL",
+  "type": "other",
+  "desc": "closed asymmetric smirk present from the first frame (no onset in this chunk) and held unchanged",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 304,
+  "end": 324,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "static framing: CL's face template matches 304 at scale 1.000 in every frame and stays within ~7 px; digest scale>1 and rot_deg come from CL's hands spreading vertically and the hip rotation, not from a push-in or roll",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 305,
+  "end": 324,
+  "who": "CL",
+  "type": "hip-sway",
+  "desc": "pelvis/skirt front rotates ~15 deg clockwise in image: right-thigh sunflower ~-52,-69 px, left-thigh sunflower ~-75,+73 px; fastest 306-311, then continues at a slightly lower but steady rate and is still in progress at 324",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 305,
+  "end": 324,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "right hand rides up with the right thigh: cuff ~-29,-70 px; finger spread, ring and index-on-chain contact unchanged",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 305,
+  "end": 324,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "left hand rides down with the left thigh: cuff ~-60,+80 px; fingertips stay on the sunflower bow",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 306,
+  "end": 324,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "rib cage counter-shifts to screen-right: collar brooch +22,-3 px, corset ~+33,-19 px (small drift from 306, clearly visible from 311)",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 306,
+  "end": 324,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "right elbow rises ~40 px and moves in ~30 px; left elbow drops ~40 px and moves in ~45 px",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 306,
+  "end": 324,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "head position held while the body rotates (face drift <=7 px, ~6 px dip at 309-318, back by 324; face scale constant), but the roll deepens ~2.5 deg toward screen-left (about -7 -> -9.5 deg, template-rotation fit) between 304 and ~316, then holds",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 306,
+  "end": 324,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "long side locks follow the torso: screen-left locks lift with the right shoulder, screen-right locks swing down/in; skirt right side swings strongly at 319-321",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 308,
+  "end": 311,
+  "who": "CL",
+  "type": "other",
+  "desc": "loudness surge (rms -5.25 -> -0.87 dB at 310) coincides with the fastest phase of the hip roll; no discrete accent",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 309,
+  "end": 311,
+  "who": "AUD_8",
+  "type": "hand-move",
+  "desc": "hanging hand rotates (pronates) and drops: fingertips go from ~360 to ~400 px down, fingers now pointing down-left",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 310,
+  "end": 324,
+  "who": "CROWD",
+  "type": "lighting",
+  "desc": "luma 91.0 -> 87.8 and blue_frac 0.054 -> 0.067: gradual slight darkening",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 311,
+  "end": 324,
+  "who": "AUD_8",
+  "type": "hand-move",
+  "desc": "drifts right ~150 px to the right frame edge (wrist x ~890 -> ~1045 px) while still sinking (fingertips ~400 -> ~478 px); fastest 318-324; background pillars do not drift, so it is the person moving, not parallax",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 314,
+  "end": 324,
+  "who": "AUD_9",
+  "type": "hand-move",
+  "desc": "pale hanging hand enters at the top-left edge (fingertip at 314), whole hand visible by 319, drifts right to x~0.06-0.17 by 324",
+  "chunk": 9,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 328,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "lit forearm and hand hanging down the right edge (hand tip y~0.25 at 325) swing out to the right; by 328 only a forearm sliver remains at the edge and the hand is off-frame. The dark blob at the top-right corner is AUD_3's gripping hand, not AUD_2's hand",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 336,
+  "who": "CL",
+  "type": "hip-sway",
+  "desc": "right hip lifts further before the transfer: right-hip bow flower moves ~(+20,-35) px while the left bow stays; bow-line tilt ~16 -> 20 deg (hip-cock accentuated)",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 340,
+  "who": "AUD_1",
+  "type": "hand-move",
+  "desc": "top-left hand drifts right along the top edge (x0 0.065 -> ~0.2), fingers down, nail glints, just below/under the watermark",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 345,
+  "who": "AUD_3",
+  "type": "hand-move",
+  "desc": "dark hand grips AUD_2's upper forearm at the top edge (y<0.085) and is carried scr-left with it (x ~0.89-0.995 at 325 -> 0.75-0.88 at 343); the grip loosens and blurs 344-345 and is gone by 346 as AUD_2's arm starts to lift",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "other",
+  "desc": "sustained direct eye contact with CAM: half-lidded eyes, irises centred, no blink anywhere in 325-360 (verified on full-res eye crops of all 29 unique frames)",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "mouth",
+  "desc": "closed-lip smirk held unchanged, no lip parting or teeth; the smile line tilts with the head until ~341, then reads level",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "head roll straightens from about -9 (top of head toward her right shoulder/scr-left; eye line rises ~6-9 deg to scr-right) to ~0 (eyes level by 358-360); slower to ~341, faster 341-356",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "other",
+  "desc": "head translates ~25 px scr-right over the neck (nose x 549->573) and rises ~20 px. The face stays essentially frontal: nose-to-eye-midpoint offset barely changes, so yaw stays within ~0..+3 with no clear turn. Pitch about -11 -> -9 (chin slightly down)",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "rise/straighten: crown y 205->184 px, neck brooch 657->626, waist sash knot 1045->965 (rise ends ~350); neck-to-waist 388->335 px, i.e. torso foreshortening read as a slight forward lean toward CAM; shoulder tilt 7 -> 1 deg",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "right elbow drifts in/down (0.155,0.447)->(0.225,0.48) as the forearm opens, bend 111 -> 136 deg",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "scr-right hair mass is pushed outward by the flaring left elbow: outer mass edge x~0.87 -> 0.93 (peak ~343-351), easing back to ~0.92 by 360; flyaway curl tips reach ~0.96-0.97 around 341-351; scr-left hair stays draped behind the right elbow; no wind flicks",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "teal-drop earring and hair-ribbon tails keep hanging vertical while the head rolls ~9 deg; hair flower moves (0.63,0.17)->(0.68,0.18)",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "ENV",
+  "type": "lighting",
+  "desc": "global luma 87.4 -> 84.1 (341) -> 87.9 (355-360); key light on CL steady; white bokeh particles float throughout; dappled diagonal light on the skirt from ~344",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 325,
+  "end": 360,
+  "who": "ENV",
+  "type": "other",
+  "desc": "audio: tracked beats at 332 and 347 (both duplicate frames); RMS peaks at 325 (-0.2 dB), 340 (-0.2) and 355 (-0.3) on the 120 BPM grid; CL motion is continuous with no accent locked to a beat; AUD_2's lift (~344) begins before beat 347",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 328,
+  "end": 343,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "arm swings back in from the right edge: the lit forearm runs diagonally from AUD_3's grip (~0.92,0.07) to the edge, reaching it at y~0.14 (329) -> ~0.2 (334); the hand re-enters at the edge ~331-336 and hangs at its lowest (tip y~0.21-0.22) 336-343; upper arm visible from x~0.76-0.79 by 341-343",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 331,
+  "end": 351,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "blue-lit elongated strip (garment edge or light-stick) visible at far left (x0.01-0.08, y0.03-0.18), clearest 334-346, shrinking/shifting 350-351, gone by 353",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 333,
+  "end": 360,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "left hand slides up-outward on the left thigh: l_wrist (0.644,0.641)->(0.76,0.591)",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 336,
+  "end": 360,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "left elbow flares outward: l_elbow (0.72,0.50)->(0.84,0.467), elbow bend 157 -> 128 deg",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 338,
+  "end": 360,
+  "who": "CL",
+  "type": "weight-shift",
+  "desc": "weight moves from the right hip to centre: R-hip bow flower ~(185,1240)->(285,1335) px, L-hip bow flower ~(650,1410)->(775,1320); bow-line tilt ~19 -> ~-2 deg (hips level); pelvis offset from neck -140 -> -14 px; fastest 341-351 (~8-13 px/f), slowing 356-360",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 338,
+  "end": 360,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "right hand slides down-inward on the right thigh, riding the skirt: r_wrist (0.212,0.547)->(0.309,0.618)",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 338,
+  "end": 360,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "skirt layers swing with the pelvis: hip bows, flowers and tassels travel ~100+ px; scr-left hem flares; orange front panel and black under-layer shift scr-right; dappled diagonal light bands on the lower skirt from ~344",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 338,
+  "end": 360,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "background dark figures and their lit edges drift slightly (the digest background estimator reads content moving left/down with CCW rotation, cumulative ~-61 px x, +57 px y, -7 deg by 360). CL does not share this motion and scale stays ~1.000, so it is background/crowd motion. The camera is static",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 341,
+  "end": 348,
+  "who": "AUD_1",
+  "type": "hand-move",
+  "desc": "hand turns near-horizontal, fingers pointing down-right",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 341,
+  "end": 360,
+  "who": "CL",
+  "type": "finger",
+  "desc": "right thumb rotates from pointing down-right (~45 deg) to horizontal, toward body centre; fingers stay spread pointing down / slightly down-right; ring stays visible",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 344,
+  "end": 358,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "arm lifts: hand tip rises y 0.21 (343) -> 0.18 (346) -> 0.135 (351) -> 0.068 (356) and leaves frame at the top by 358; only a forearm/elbow band (x~0.73-0.95, y<0.05) remains to 360",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 346,
+  "end": 360,
+  "who": "CL",
+  "type": "finger",
+  "desc": "left middle/ring fingertips, already touching the hip-bow flower from 325, settle onto its centre and curl over it; index angles down-left toward the orange panel edge; thumb points scr-left",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 346,
+  "end": 360,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "dark rounded blue-rimmed shape (head/shoulder-like) becomes visible at right (x~0.80-0.97, y~0.10-0.25), below AUD_2's rising arm; faint at 346, clear from 348",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 349,
+  "end": 354,
+  "who": "AUD_1",
+  "type": "hand-move",
+  "desc": "hand swings left/down into the top-left corner (x0 0.08 -> 0.035, bottom y 0.11 -> 0.137), then hangs nearly still to 360",
+  "chunk": 10,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 366,
+  "who": "AUD_4",
+  "type": "hand-move",
+  "desc": "Faint hand under the watermark (x 0.04-0.15, y 0.05-0.12) drifts right and fades out; no longer distinct by 368.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 371,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "Head held tilted toward her left shoulder: eye-line roll about +2.5 to +4 deg (screen-right eye 6-8 px lower than screen-left), peak at 369-370; chin tucked.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 373,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "Left hand rises ~29 px in frame (ring y 1242 to 1213) while the body moves down, i.e. it slides up the thigh. Highest at 370-373.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 376,
+  "who": "CL",
+  "type": "weight-shift",
+  "desc": "Torso drifts toward screen-left: brooch x 546 to 531, waist knot x 594 to 581.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 376,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "Skirt hem and side panels sway (bottom-band residual flow 1.85-2.9), settling by 375.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 379,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Slow drift: image content moves left (sum dx about -11.6 qpx, ~-46 px) and down (sum dy about +11.2 qpx, ~+45 px); per-frame rot -0.04 to -0.37 deg.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 396,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "Torso straightens and neck extends: nose y stays ~498-505 px while the brooch moves 615 to 703 and the waist knot 975 to 1113. Nose-to-brooch grows 115 to ~198 px; brooch-to-waist 360 to ~410 px. The chin comes out of the collar; the head pitch change itself is modest.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 396,
+  "who": "CL",
+  "type": "other",
+  "desc": "No blink and no gaze shift (irises on CAM throughout). Eyelid aperture (~60%) and the closed-lip smile (~37-40 px wide, tilting only with the head roll) stay constant across 361-396.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 361,
+  "end": 396,
+  "who": "CROWD",
+  "type": "lighting",
+  "desc": "Floating white light particles drift across the upper left and centre throughout.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 363,
+  "end": 369,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Slight pull-out (scale 0.998-0.9995 per frame).",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 363,
+  "end": 375,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "Right hand slides down and toward centre on the right thigh: ring (360,1309) to (399,1363) px. Fingers stay splayed.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 365,
+  "end": 378,
+  "who": "AUD_1",
+  "type": "arm-move",
+  "desc": "Left-edge figure's bare shoulder and arm slide into frame by their own motion (the camera drift runs the other way). Silhouette right edge goes from x 0.03 to 0.13; shoulder top at y ~0.13-0.15.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 365,
+  "end": 381,
+  "who": "CL",
+  "type": "other",
+  "desc": "Lateral head translation toward screen-left: nose x ~576 (365) to ~558 (379-381). It reverses after 381 and returns to ~565 by 393-396. This is translation, not yaw.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 368,
+  "end": 396,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "Long strands on her right side (screen-left) fan steadily outward; outer tips x ~0.21 to ~0.09. As the hair moves away it uncovers her right-ear stud from ~375.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 369,
+  "end": 394,
+  "who": "CL",
+  "type": "other",
+  "desc": "Audio alignment. Loudness peaks at 370 (-0.38 dB), 381 (0.0 dB) and 392 (-0.53 dB); beat flags fall on duplicate frames 362, 377 and 392. CL's maximum head roll is at 369-370. Her lateral head drift reverses at ~379-381, alongside the camera rotation flip at 380. The camera jolt at 394 coincides with an onset. There is no discrete beat-hit gesture and no expression change.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 370,
+  "end": 396,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Slow push-in (scale 1.0003-1.0061 per frame, about +5% cumulative); CL face box grows 294 to 333 px.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 371,
+  "end": 396,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "Head roll swings steadily from about +3.5 to about -9 deg (toward her right shoulder), passing level at ~379. In frame the screen-left eye drops ~32 px and the screen-right eye ~8 px. Steepest steps at 384-385, 389 and 394.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 373,
+  "end": 396,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "Left hand descends ~99 px and moves ~27 px toward screen-left: ring (827,1213) to (801,1312). The thumb keeps pointing left.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 373,
+  "end": 396,
+  "who": "AUD_5",
+  "type": "hand-move",
+  "desc": "Hand at the top edge descends and moves toward screen-left: (0.18-0.33, 0-0.04) to (0.05-0.20, 0.055-0.14). Fingers point down-right. Possibly the same person as AUD_4 (unconfirmed).",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 374,
+  "end": 386,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "Forearm rotates from horizontal (pointing at the right edge, elbow ~(0.81-0.88,0.09-0.11)) to hanging down. The hand enters at 384 and is fully visible at 385.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 374,
+  "end": 396,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "Hair ornament, ribbon tails and tassel follow the head roll (ornament x 741 to ~720 px). The teal crystal earring swings.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 376,
+  "end": 396,
+  "who": "CL",
+  "type": "hip-sway",
+  "desc": "Torso and hips shift toward screen-right (her left): brooch x 531 to 579, waist knot x 581 to 615. Fastest steps at 384, 389 and 394.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 376,
+  "end": 396,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "Right hand drifts back toward screen-left and down with the thigh: ring (399,1366) to (368,1423). It ends ~95 px right of and ~30 px above the screen-left skirt rosette.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 378,
+  "end": 396,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "Skirt fabric presses onto her right thigh/knee (screen-left), showing a lit thigh contour and a shadow line between the legs.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 378,
+  "end": 396,
+  "who": "AUD_1",
+  "type": "arm-move",
+  "desc": "Elbow stays bent in a hand-on-own-hip pose, pointing toward CL. The forearm rotates from angled down-left to near-horizontal toward the left edge, and the pale hand shows at the edge (0-0.03, 0.37-0.41) from ~391.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 378,
+  "end": 396,
+  "who": "AUD_1",
+  "type": "weight-shift",
+  "desc": "Figure keeps sliding right: shoulder top x ~0.01 to 0.07, elbow x ~0.11 to ~0.19 (y ~0.33-0.35).",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 379,
+  "end": 396,
+  "who": "AUD_3",
+  "type": "hand-move",
+  "desc": "Hand gripping a dark flat phone-like object enters at the right edge at 379 (fingertips x ~0.99, y 0.03-0.08, with streaked glowing specks nearby). It travels left and down to ~(0.80-1.0, 0.14-0.21) by 396. It reaches AUD_2's forearm at 389 and overlaps it in projection from ~391.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 380,
+  "end": 396,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Rotation turns positive (+0.01 to +0.20 deg/frame) with a jolt at 394 (rot +0.448 deg, dx +1.56 qpx).",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 384,
+  "end": 395,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "Top-right residual-flow peaks at 385 (4.44), 389 (5.75) and 394 (4.24) come from AUD_2 and AUD_3 hand motion. The rest of the crowd is static and defocused.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 384,
+  "end": 396,
+  "who": "CL",
+  "type": "lighting",
+  "desc": "Stronger highlight on the skirt over the right thigh. Jagged dark cast shadows appear on the orange sash panel from 386.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 386,
+  "end": 396,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "Hanging arm swings toward screen-left: hand x-span 0.90-1.0 to 0.73-0.85 (~170 px). It ends ~30 px from CL's hair tassel at the same height, with no overlap.",
+  "chunk": 11,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 403,
+  "who": "AUD_1",
+  "type": "hand-move",
+  "desc": "Hand at the end of the horizontal forearm exits the left frame edge (fingers visible at x 0.0-0.04, y 0.35-0.39 in 398-401).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 406,
+  "who": "AUD_2",
+  "type": "hand-move",
+  "desc": "Lone hanging hand with pale nail glints exits top-left (from x 0.04-0.17, y 0.05-0.13 to the edge); a single nail glint stays at the edge until about 416.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 413,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "R hand drifts slowly outward on the R thigh (cuff ruffle about 25 px toward screen-left, y nearly constant); fingers stay splayed.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 414,
+  "who": "AUD_3",
+  "type": "arm-move",
+  "desc": "Hanging arm swings from diagonal to vertical and moves right: hand (0.73-0.81,0.23-0.34)->(0.87-0.95,0.32-0.42).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 416,
+  "who": "CL",
+  "type": "other",
+  "desc": "Head rises about 25 px (mouth centre y 550->522 px, chin about 607->575 px) and then holds, about 2 px lower by 431. Yaw stays about -10..-13 (face turned to screen-left).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 416,
+  "who": "AUD_4",
+  "type": "hand-move",
+  "desc": "Spread-finger hand on a dark torso slides down-right, (0.81-0.99,0.15-0.21)->(0.96-1.0,0.24-0.29), and exits the right edge by 416.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "Progressive roll toward her R shoulder (top of head to screen-left), measured from the catchlight line and mouth line: -10 (398), -12 (403), -14 (406), -15.5 (409-411), -16 (413-414), -17 (416-418), -18.5 (419-421), then a plateau near -19 (423-431, -19.5 at 431). Fastest 398-409, then only a slow creep after 414.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CL",
+  "type": "other",
+  "desc": "Gaze held on CAM in every unique frame with no saccade and no blink. Eye apertures are unchanged (no squint).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CL",
+  "type": "mouth",
+  "desc": "Closed, near-symmetric smile held unchanged at about 38-40 px. The mouth line only rotates with the head (-9 -> -20 deg, staying parallel to the eye line); there is no smirk and no lip movement.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "L hand slides down and inward on the L thigh: wrist about (0.72,0.633)->(0.66,0.69), fingertips about (0.69,0.73)->(0.60,0.78). Fingers splayed, ring visible.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "Upper body drifts to screen-right (her left) and up: brooch about +35,-20 px and corset centroid about +37,-31 px. The R shoulder rises relative to the L as the R arm goes akimbo.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "Screen-right flyaway strands travel outward with the upper body: tips at x 0.895 (398), 0.92 (406), 0.94 (414) and 0.95 (431); most of the change happens by 414.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "Hair-ornament ribbon tail, gold tassel and dangling earring stay near-vertical while the head rolls (gravity-follow sway of a few px).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "Glossy vertical highlight at the top drifts left, x about 0.74->0.43. Background bodies shift independently (AUD_3 right, AUD_1 down).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "Framing locked on CL with no measurable zoom (scale about 1.000). The estimator's slow cumulative dy (about -74 px) and rotation (about +4 deg) are dominated by CL's own rise and rotation, so treat the camera as static.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 398,
+  "end": 431,
+  "who": "ENV",
+  "type": "lighting",
+  "desc": "Constant lighting (luma 87.8-89.3). White bokeh specks drift slowly around CL's head (x 0.2-0.45, y 0.05-0.25).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 399,
+  "end": 431,
+  "who": "CL",
+  "type": "hip-sway",
+  "desc": "Hips shift to screen-left (her R hip out) and the pelvis tilts: the skirt rosette on her R side rises about 100 px and moves about 75 px to screen-left, while the bow on her L side drops about 90 px. Two phases, 399-406 and 414-426. This forms an S-curve against the upper-body drift.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 414,
+  "end": 416,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "Skirt swing peaks at 414 (bottom-right residual 4.1): the whole skirt shifts with the hips, the orange panel and black bow move toward centre, and the screen-left skirt edge flares to the frame edge.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 414,
+  "end": 431,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "R hand slides up and out to the R hip: wrist (345,1306)->(272,1208) px, middle fingertip about (0.345,0.778)->(0.284,0.738). Motion is continuous, with larger increments on 414, 419, 424 and 429. Those frames fall every 5th frame, the 24->30 fps resampling cadence; 414 has the largest increment, and 415 and 430 are also larger.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 414,
+  "end": 431,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "R elbow flares outward and up: cuff-top centre about (0.24,0.52)->(0.20,0.49); the forearm becomes steeper.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 414,
+  "end": 431,
+  "who": "AUD_3",
+  "type": "arm-move",
+  "desc": "Hand drifts down to (0.90-0.99,0.35-0.46); the navy short sleeve is clearly visible at top-right from about 409 onward.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 416,
+  "end": 431,
+  "who": "CROWD",
+  "type": "crowd-motion",
+  "desc": "Background figures drift about 0.04-0.06 frame-height downward while CL does not (crowd motion or a slight camera arc).",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 418,
+  "end": 431,
+  "who": "AUD_1",
+  "type": "arm-move",
+  "desc": "Shoulder and arm drift down in frame: shoulder top y 0.153->0.208, elbow y about 0.37->0.44. The drift starts around 418-419.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 419,
+  "end": 431,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "Screen-left hair locks become partly hidden behind the flaring R sleeve.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 421,
+  "end": 431,
+  "who": "AUD_2",
+  "type": "hand-move",
+  "desc": "Hand re-enters at the left edge and grows to x 0.0-0.09, y 0.07-0.17.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 429,
+  "end": 430,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "Second skirt/sleeve motion (bottom cells 2.3-2.8) together with the R-elbow increment. 429 is also a resampling-cadence frame.",
+  "chunk": 12,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 443,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "body rises in frame from the hips up: waist knot -46px, collar -30px, R shoulder -22px, L shoulder -44px (shoulder line 7->10 deg rising to screen-right); head only -16px, about the background drift (-15px). The collar-to-knot distance shrinks ~16px (foreshortening/shrug), so this is a rise plus lateral tilt rather than a visible straightening",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 443,
+  "who": "CL",
+  "type": "weight-shift",
+  "desc": "her right hip hikes: R hip-bow flower (screen-left) rises ~47px (y~1340->1293) while the L hip-bow flower under her left hand stays (<10px); the hip line tilts ~4 deg more, her right side up",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 443,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "hair rides up with the torso (screen-right tips y ~930->899); no independent swing",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 443,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "near-static; background drifts up ~15px (digest dy negative through 443, largest at 434)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "CL",
+  "type": "head-tilt",
+  "desc": "head mostly translates with the body (nose (552,478)->(543,462) by 443, then ~+10px right to ~(553,462) by 451); roll increases slightly, ~-15->-17 deg toward her right shoulder (face midline 13->16 deg, eye line steady ~20 deg); yaw/pitch change too small to measure",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "CL",
+  "type": "other",
+  "desc": "no blink: eyes held open in smiling shape, irises fixed on CAM in every frame",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "CL",
+  "type": "mouth",
+  "desc": "closed-lip smile held constant; no onset/offset, no lip parting",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "CL",
+  "type": "cloth",
+  "desc": "skirt rises with the body, then swings right with the hips (screen-left outer skirt edge ~+50px right by 450-451; screen-left black panel ~+20px); hip bows and tassels ride along, no flutter",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "AUD_1",
+  "type": "hand-move",
+  "desc": "hand at top-left drifts up-right, fingertip glint (90,265)->(220,115); ring visible from ~439",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "AUD_2",
+  "type": "arm-move",
+  "desc": "hanging arm drifts toward frame centre: elbow (990,380)->(909,410), hand x ~1025->975 (ring glint on a finger); from 446-448 the hand meets CL's screen-right hair and goes behind it",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "AUD_3",
+  "type": "hand-move",
+  "desc": "hand hanging from the top edge, already visible with fingers down to y~260 at 433 (overlapping AUD_2's sleeve/upper-arm edge). It moves left out from AUD_2 (fingertip x ~1000->950 by 438, ~905 by 451) and the fingertips lower slightly (y ~260->320 by 439). Nearly still from 444",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "AUD_4",
+  "type": "crowd-motion",
+  "desc": "grey-haired head with blue drop earring slides in from the left edge: visible width ~22px->~88px; grey hair from ~439-441, glasses from 444; face points off-frame left (away from CL)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "AUD_5",
+  "type": "other",
+  "desc": "knee static apart from background drift (+20-26px x; -15px then +23px y)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 433,
+  "end": 451,
+  "who": "CROWD",
+  "type": "lighting",
+  "desc": "lighting constant; sparse white bokeh specks shift/twinkle in the upper centre (x 0.23-0.42, y 0.06-0.28)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 434,
+  "end": 443,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "R hand moves up ~77px in frame (wrist y 1190->1112; largest steps 434 -22px, 439 -17px), but only ~30px of that is sliding up the thigh relative to the R hip-bow flower; the rest is the right hip rising. Fingers stay spread. L hand stays planted on the left hip-bow flower (<15px)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 434,
+  "end": 449,
+  "who": "CL",
+  "type": "other",
+  "desc": "motion advances in larger steps at 434, 439, 444 and 449 (24->30 fps cadence; absdiff 10-13 vs 3-8), with small steps between",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 444,
+  "end": 451,
+  "who": "CL",
+  "type": "hip-sway",
+  "desc": "hips/skirt sway toward screen-right (her left): L hip-bow flower +51px x/-22px y, R hip flower +41px x, waist knot +17px x/-36px y; head nearly fixed (+9px x)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 444,
+  "end": 451,
+  "who": "CL",
+  "type": "hand-move",
+  "desc": "both hands carried right by the sway: L wrist (730,1302)->(785,1266), R wrist (238,1112)->(268,1117); finger spread unchanged",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 444,
+  "end": 451,
+  "who": "CL",
+  "type": "torso-lean",
+  "desc": "lateral counter-tilt: shoulder line 10->19 deg rising to screen-right (L shoulder 39px up, R shoulder 21px down and 38px right); neck-waist axis 1.7->4.1 deg, top toward screen-left",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 444,
+  "end": 451,
+  "who": "CL",
+  "type": "arm-move",
+  "desc": "elbows swing outward-right: R elbow (207,911)->(257,939), L elbow (813,1027)->(849,988)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 444,
+  "end": 451,
+  "who": "CL",
+  "type": "hair-sway",
+  "desc": "screen-right (her left-side) strands drift slightly right/up (outer edge +10-20px x) and fan a little. As AUD_2's hand moves left, a strand touches the hand at 446 and passes in front of it from 448 (clear at 449-451)",
+  "chunk": 13,
+  "verified": true
+ },
+ {
+  "start": 444,
+  "end": 451,
+  "who": "CAM",
+  "type": "camera-move",
+  "desc": "background drifts down ~23px and right ~11px; digest cumulative scale ~0.98 over the chunk (slight pull-back) and roll ~-1.5 deg over 444-451",
+  "chunk": 13,
+  "verified": true
+ }
+]

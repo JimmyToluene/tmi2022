@@ -1,0 +1,128 @@
+{
+ "DS": {
+  "frames": 303,
+  "shots": [
+   1,
+   2
+  ],
+  "shoulder_tilt_deg": {
+   "n": 117,
+   "min": -2.42,
+   "max": 0.0,
+   "mean": -0.81,
+   "std": 0.66
+  },
+  "trunk_lean_deg": null,
+  "hip_offset_sw": null,
+  "hip_tilt_deg": null,
+  "l_elbow_flex_deg": {
+   "n": 80,
+   "min": 80.8,
+   "max": 91.6,
+   "mean": 87.53,
+   "std": 4.33
+  },
+  "r_elbow_flex_deg": {
+   "n": 90,
+   "min": 92.2,
+   "max": 108.6,
+   "mean": 104.32,
+   "std": 3.7
+  },
+  "l_arm_abduction_deg": null,
+  "r_arm_abduction_deg": null,
+  "l_wrist_to_hip_sw": null,
+  "r_wrist_to_hip_sw": null,
+  "head_axis_roll_deg": {
+   "n": 117,
+   "min": -2.33,
+   "max": 15.46,
+   "mean": 2.63,
+   "std": 4.88
+  }
+ },
+ "CL": {
+  "frames": 264,
+  "shots": [
+   2,
+   3
+  ],
+  "shoulder_tilt_deg": {
+   "n": 204,
+   "min": -19.0,
+   "max": 7.7,
+   "mean": -0.38,
+   "std": 4.78
+  },
+  "trunk_lean_deg": {
+   "n": 191,
+   "min": -9.99,
+   "max": 8.23,
+   "mean": 2.22,
+   "std": 3.72
+  },
+  "hip_offset_sw": {
+   "n": 191,
+   "min": -0.23,
+   "max": 0.24,
+   "mean": -0.05,
+   "std": 0.09
+  },
+  "hip_tilt_deg": {
+   "n": 191,
+   "min": -3.98,
+   "max": 22.34,
+   "mean": 5.87,
+   "std": 7.12
+  },
+  "l_elbow_flex_deg": {
+   "n": 195,
+   "min": 5.9,
+   "max": 55.9,
+   "mean": 35.61,
+   "std": 11.98
+  },
+  "r_elbow_flex_deg": {
+   "n": 191,
+   "min": 22.4,
+   "max": 85.1,
+   "mean": 48.53,
+   "std": 14.78
+  },
+  "l_arm_abduction_deg": {
+   "n": 191,
+   "min": 0.2,
+   "max": 43.2,
+   "mean": 20.29,
+   "std": 9.87
+  },
+  "r_arm_abduction_deg": {
+   "n": 191,
+   "min": 6.5,
+   "max": 56.5,
+   "mean": 29.3,
+   "std": 12.56
+  },
+  "l_wrist_to_hip_sw": {
+   "n": 195,
+   "min": 0.13,
+   "max": 0.66,
+   "mean": 0.37,
+   "std": 0.12
+  },
+  "r_wrist_to_hip_sw": {
+   "n": 191,
+   "min": 0.19,
+   "max": 0.64,
+   "mean": 0.43,
+   "std": 0.09
+  },
+  "head_axis_roll_deg": {
+   "n": 205,
+   "min": -7.69,
+   "max": 2.8,
+   "mean": -1.96,
+   "std": 2.44
+  }
+ }
+}

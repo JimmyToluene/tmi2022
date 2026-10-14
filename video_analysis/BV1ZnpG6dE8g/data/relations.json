@@ -1,0 +1,2958 @@
+[
+ {
+  "from": "CL",
+  "to": "CAM",
+  "channel": "address-to-camera",
+  "n_frames": 220,
+  "seconds": 7.33,
+  "intervals": [
+   [
+    198,
+    217
+   ],
+   [
+    253,
+    452
+   ]
+  ],
+  "examples": [
+   [
+    198,
+    "faces lens, eyes closed: no contact"
+   ],
+   [
+    260,
+    "no eye contact"
+   ],
+   [
+    288,
+    "no eye contact"
+   ],
+   [
+    315,
+    "eye contact maintained; danmaku at this frame react to her expression"
+   ],
+   [
+    343,
+    "eye contact + smirk, roll -6"
+   ],
+   [
+    370,
+    "direct eye contact"
+   ],
+   [
+    398,
+    "eye contact + closed smile, head roll -10 deg"
+   ],
+   [
+    425,
+    "eye contact + closed smirk, head roll -20.5 deg"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CROWD",
+  "channel": "spatial-hierarchy",
+  "n_frames": 183,
+  "seconds": 6.1,
+  "intervals": [
+   [
+    1,
+    19
+   ],
+   [
+    21,
+    144
+   ],
+   [
+    149,
+    182
+   ],
+   [
+    189,
+    189
+   ],
+   [
+    199,
+    199
+   ],
+   [
+    209,
+    209
+   ],
+   [
+    214,
+    214
+   ],
+   [
+    216,
+    217
+   ]
+  ],
+  "examples": [
+   [
+    1,
+    "DS is sharp, centred and about 85% of frame width; the crowd behind is small, dim and defocused, and DS's hair masks parts of it on both sides"
+   ],
+   [
+    26,
+    "DS dominant; crowd blurred"
+   ],
+   [
+    49,
+    "dominant (face 0.24W vs 0.09W), occludes centre"
+   ],
+   [
+    71,
+    "dominant (face 0.28W vs 0.09W), occludes centre"
+   ],
+   [
+    94,
+    "DS = sharp centred foreground; crowd small/defocused behind her back, unacknowledged"
+   ],
+   [
+    116,
+    "DS sharp foreground; crowd blurred behind her"
+   ],
+   [
+    139,
+    "DS sharp foreground; crowd blurred behind her"
+   ],
+   [
+    165,
+    "same as f160"
+   ],
+   [
+    216,
+    "balcony above floor; >10x size"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "CROWD",
+  "channel": "spatial-hierarchy",
+  "n_frames": 148,
+  "seconds": 4.93,
+  "intervals": [
+   [
+    218,
+    252
+   ],
+   [
+    304,
+    308
+   ],
+   [
+    310,
+    397
+   ],
+   [
+    433,
+    452
+   ]
+  ],
+  "examples": [
+   [
+    218,
+    "alone in lit circle; brightest"
+   ],
+   [
+    235,
+    "alone in lit circle; brightest"
+   ],
+   [
+    304,
+    "CL is warmly lit and sharp, filling the frame; the crowd is dark and defocused behind and above her shoulders"
+   ],
+   [
+    323,
+    "lit foreground vs dark background"
+   ],
+   [
+    340,
+    "CL lit/sharp in front (92% width); crowd dark behind"
+   ],
+   [
+    358,
+    "CL lit/sharp in front (97% width); crowd dark behind"
+   ],
+   [
+    375,
+    "CL dominant"
+   ],
+   [
+    393,
+    "CL dominant"
+   ],
+   [
+    445,
+    "CL sharp, lit, centred, fills width; crowd dark/blurred behind at edges; ignored"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CL",
+  "channel": "framing/occlusion",
+  "n_frames": 133,
+  "seconds": 4.43,
+  "intervals": [
+   [
+    211,
+    217
+   ],
+   [
+    253,
+    290
+   ],
+   [
+    294,
+    294
+   ],
+   [
+    299,
+    299
+   ],
+   [
+    304,
+    307
+   ],
+   [
+    309,
+    309
+   ],
+   [
+    311,
+    312
+   ],
+   [
+    325,
+    383
+   ],
+   [
+    433,
+    452
+   ]
+  ],
+  "examples": [
+   [
+    211,
+    "occludes CL hem"
+   ],
+   [
+    263,
+    "head hides CL L foot; CL looks her way"
+   ],
+   [
+    279,
+    "head hides CL L foot; CL looks her way"
+   ],
+   [
+    305,
+    "hanging hand at top-right behind CL's head level"
+   ],
+   [
+    336,
+    "hand above CL head, tiny"
+   ],
+   [
+    353,
+    "hand above CL head, tiny"
+   ],
+   [
+    369,
+    "top-right bent arm; no overlap"
+   ],
+   [
+    434,
+    "AUD_1/4/5 frame the screen top-left (CL's right side); AUD_1 hand level with/above her head top"
+   ],
+   [
+    450,
+    "AUD_1/4/5 frame the screen top-left (CL's right side); AUD_1 hand level with/above her head top"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CL",
+  "channel": "spatial-hierarchy",
+  "n_frames": 115,
+  "seconds": 3.83,
+  "intervals": [
+   [
+    189,
+    303
+   ]
+  ],
+  "examples": [
+   [
+    189,
+    "DS high/near, CL low/far below-right of fin; ~10:1 size"
+   ],
+   [
+    203,
+    "DS high/near, CL low/far below-right of fin; ~10:1 size"
+   ],
+   [
+    216,
+    "DS high/near, CL low/far below-right of fin; ~10:1 size"
+   ],
+   [
+    230,
+    "DS above/foreground, 59% width; CL below, 0.14 h"
+   ],
+   [
+    244,
+    "DS above/foreground, 52% width; CL below, 0.14 h"
+   ],
+   [
+    258,
+    "DS fg above (~47% width), CL tiny below"
+   ],
+   [
+    271,
+    "DS fg above (~44% width), CL tiny below"
+   ],
+   [
+    285,
+    "DS fg above (~43% width), CL tiny below"
+   ],
+   [
+    299,
+    "DS foreground above, CL small below at centre"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CAM",
+  "channel": "gaze",
+  "n_frames": 95,
+  "seconds": 3.17,
+  "intervals": [
+   [
+    10,
+    72
+   ],
+   [
+    149,
+    180
+   ]
+  ],
+  "examples": [
+   [
+    10,
+    "first eye contact: irises come onto the lens from half-lowered lids while the face stays turned about 20 deg left"
+   ],
+   [
+    21,
+    "steady eye contact"
+   ],
+   [
+    33,
+    "steady eye contact"
+   ],
+   [
+    44,
+    "eye contact, held"
+   ],
+   [
+    55,
+    "eye contact, held"
+   ],
+   [
+    66,
+    "eye contact, held"
+   ],
+   [
+    154,
+    "same as f149"
+   ],
+   [
+    165,
+    "same as f149"
+   ],
+   [
+    176,
+    "same as f149"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CL",
+  "channel": "proximity",
+  "n_frames": 87,
+  "seconds": 2.9,
+  "intervals": [
+   [
+    218,
+    252
+   ],
+   [
+    296,
+    298
+   ],
+   [
+    384,
+    432
+   ]
+  ],
+  "examples": [
+   [
+    218,
+    "faces CL; head overlaps hem"
+   ],
+   [
+    228,
+    "faces CL; head overlaps hem"
+   ],
+   [
+    238,
+    "faces CL; head overlaps hem"
+   ],
+   [
+    248,
+    "faces CL; head overlaps hem"
+   ],
+   [
+    386,
+    "AUD_2 hand beside CL's head height, ~0.17 width away"
+   ],
+   [
+    396,
+    "AUD_2 hand ends ~30 px from CL's hair-ribbon tassel at the same height; no overlap"
+   ],
+   [
+    406,
+    "hand beside CL head ornament (screen-right), behind her"
+   ],
+   [
+    416,
+    "hand beside CL head ornament (screen-right), behind her"
+   ],
+   [
+    426,
+    "hand beside CL head ornament (screen-right), behind her"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CAM",
+  "channel": "address-to-camera",
+  "n_frames": 80,
+  "seconds": 2.67,
+  "intervals": [
+   [
+    1,
+    3
+   ],
+   [
+    38,
+    38
+   ],
+   [
+    73,
+    148
+   ]
+  ],
+  "examples": [
+   [
+    1,
+    "no eye contact; a 3/4 face is presented to the lens"
+   ],
+   [
+    79,
+    "eye contact with lens, neutral face"
+   ],
+   [
+    88,
+    "eye contact with lens, neutral face"
+   ],
+   [
+    96,
+    "eye contact with lens, neutral face"
+   ],
+   [
+    105,
+    "eye contact with lens, neutral face"
+   ],
+   [
+    114,
+    "unbroken eye contact with lens (5/29)"
+   ],
+   [
+    123,
+    "unbroken eye contact with lens (12/29)"
+   ],
+   [
+    131,
+    "unbroken eye contact with lens (19/29)"
+   ],
+   [
+    140,
+    "unbroken eye contact with lens (26/29)"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "AUD",
+  "channel": "framing/occlusion",
+  "n_frames": 80,
+  "seconds": 2.67,
+  "intervals": [
+   [
+    20,
+    20
+   ],
+   [
+    73,
+    129
+   ],
+   [
+    159,
+    180
+   ]
+  ],
+  "examples": [
+   [
+    20,
+    "DS's left ear fin and hair strands lie just left of and over AUD_4's area"
+   ],
+   [
+    81,
+    "DS's left fin/hair overlap AUD_2 at right edge; his face ~1/7 of hers; he grins toward camera/DS"
+   ],
+   [
+    91,
+    "DS's left fin/hair overlap AUD_2 at right edge; his face ~1/7 of hers; he grins toward camera/DS"
+   ],
+   [
+    101,
+    "DS's left fin/hair overlap AUD_2 at right edge; his face ~1/7 of hers"
+   ],
+   [
+    111,
+    "DS right hair lock frames AUD_4"
+   ],
+   [
+    121,
+    "DS hair partly covers AUD_4"
+   ],
+   [
+    160,
+    "same as f159"
+   ],
+   [
+    170,
+    "same as f164"
+   ],
+   [
+    180,
+    "same as f164"
+   ]
+  ]
+ },
+ {
+  "from": "CAM",
+  "to": "DS",
+  "channel": "proximity",
+  "n_frames": 77,
+  "seconds": 2.57,
+  "intervals": [
+   [
+    14,
+    14
+   ],
+   [
+    73,
+    148
+   ]
+  ],
+  "examples": [
+   [
+    14,
+    "push-in brings the camera closer as DS turns to it"
+   ],
+   [
+    80,
+    "push-in, cum. scale x1.046 vs f73; her face ~0.57 of frame width"
+   ],
+   [
+    89,
+    "push-in, cum. scale x1.106 vs f73; her face ~0.60 of frame width"
+   ],
+   [
+    98,
+    "push-in, cum. scale x1.162 vs f73; her face ~0.63 of frame width"
+   ],
+   [
+    106,
+    "push-in, cum. scale x1.237 vs f73; her face ~0.67 of frame width"
+   ],
+   [
+    115,
+    "camera pushes in +0.5%"
+   ],
+   [
+    124,
+    "camera pushes in +1.9%, DS face grows"
+   ],
+   [
+    133,
+    "camera holds (cadence hold frame)"
+   ],
+   [
+    141,
+    "camera pushes in +0.3-0.5%"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CL",
+  "channel": "framing/occlusion",
+  "n_frames": 65,
+  "seconds": 2.17,
+  "intervals": [
+   [
+    189,
+    252
+   ],
+   [
+    289,
+    289
+   ]
+  ],
+  "examples": [
+   [
+    189,
+    "CL seen only through gaps in DS's blue strands"
+   ],
+   [
+    196,
+    "CL in gap between DS strands (front) and ruffle (below)"
+   ],
+   [
+    204,
+    "DS ruffle cuts CL off at chest; DS strands frame her left"
+   ],
+   [
+    211,
+    "DS ruffle covers only CL's screen-left half"
+   ],
+   [
+    219,
+    "DS frames left; fin tip 304px from CL, not aimed at CL"
+   ],
+   [
+    226,
+    "DS frames left; fin tip 318px from CL, not aimed at CL"
+   ],
+   [
+    234,
+    "DS frames left; fin tip 338px from CL, not aimed at CL"
+   ],
+   [
+    241,
+    "DS frames left; fin tip 378px from CL, turning toward CL"
+   ],
+   [
+    249,
+    "DS frames left; fin tip 431px from CL, aimed at CL"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CL",
+  "channel": "attention",
+  "n_frames": 50,
+  "seconds": 1.67,
+  "intervals": [
+   [
+    218,
+    252
+   ],
+   [
+    289,
+    303
+   ]
+  ],
+  "examples": [
+   [
+    218,
+    "head angled down at CL"
+   ],
+   [
+    224,
+    "head angled down at CL"
+   ],
+   [
+    230,
+    "head angled down at CL"
+   ],
+   [
+    236,
+    "head angled down at CL"
+   ],
+   [
+    243,
+    "head angled down at CL"
+   ],
+   [
+    249,
+    "head angled down at CL"
+   ],
+   [
+    291,
+    "DS oriented toward the clearing"
+   ],
+   [
+    298,
+    "DS oriented toward the clearing"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "DS",
+  "channel": "framing/occlusion",
+  "n_frames": 49,
+  "seconds": 1.63,
+  "intervals": [
+   [
+    1,
+    22
+   ],
+   [
+    24,
+    25
+   ],
+   [
+    30,
+    30
+   ],
+   [
+    36,
+    59
+   ]
+  ],
+  "examples": [
+   [
+    1,
+    "defocused foreground head at bottom-left (closest to camera) overlaps DS's lower apron; AUD_1 faces down and screen-right, not at DS"
+   ],
+   [
+    8,
+    "foreground head overlaps the lower apron"
+   ],
+   [
+    13,
+    "foreground head overlaps the lower apron"
+   ],
+   [
+    18,
+    "foreground head overlaps the apron"
+   ],
+   [
+    24,
+    "crown under the apron"
+   ],
+   [
+    38,
+    "defocused foreground head on the camera side of the rail overlaps the bottom of DS's apron, framing her from below; it sinks faster than DS's plane (parallax of a physical push-in)"
+   ],
+   [
+    43,
+    "FG head overlaps DS apron bottom"
+   ],
+   [
+    48,
+    "FG head overlaps DS apron bottom"
+   ],
+   [
+    53,
+    "FG head overlaps DS apron bottom"
+   ],
+   [
+    58,
+    "FG head overlaps DS apron bottom"
+   ]
+  ]
+ },
+ {
+  "from": "CAM",
+  "to": "DS",
+  "channel": "framing/occlusion",
+  "n_frames": 44,
+  "seconds": 1.47,
+  "intervals": [
+   [
+    4,
+    4
+   ],
+   [
+    181,
+    182
+   ],
+   [
+    189,
+    189
+   ],
+   [
+    199,
+    199
+   ],
+   [
+    209,
+    209
+   ],
+   [
+    214,
+    214
+   ],
+   [
+    216,
+    252
+   ]
+  ],
+  "examples": [
+   [
+    4,
+    "push-in starts, centred near DS's face"
+   ],
+   [
+    209,
+    "OTS; DS fills left to x~0.65"
+   ],
+   [
+    219,
+    "OTS behind DS R shoulder"
+   ],
+   [
+    224,
+    "OTS behind DS R shoulder"
+   ],
+   [
+    229,
+    "OTS behind DS R shoulder"
+   ],
+   [
+    234,
+    "OTS behind DS R shoulder"
+   ],
+   [
+    239,
+    "OTS behind DS R shoulder"
+   ],
+   [
+    244,
+    "OTS behind DS R shoulder"
+   ],
+   [
+    249,
+    "OTS behind DS R shoulder"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CL",
+  "channel": "gaze",
+  "n_frames": 44,
+  "seconds": 1.47,
+  "intervals": [
+   [
+    189,
+    189
+   ],
+   [
+    198,
+    199
+   ],
+   [
+    204,
+    204
+   ],
+   [
+    209,
+    209
+   ],
+   [
+    214,
+    214
+   ],
+   [
+    216,
+    217
+   ],
+   [
+    253,
+    288
+   ]
+  ],
+  "examples": [
+   [
+    189,
+    "head aims at CL's floor area; face hidden"
+   ],
+   [
+    209,
+    "head aims at CL's floor area; face hidden"
+   ],
+   [
+    254,
+    "DS head aimed at CL; DS+rail frame CL"
+   ],
+   [
+    259,
+    "DS head aimed at CL; DS+rail frame CL"
+   ],
+   [
+    264,
+    "DS head aimed at CL; DS+rail frame CL"
+   ],
+   [
+    269,
+    "DS head aimed at CL; DS+rail frame CL"
+   ],
+   [
+    274,
+    "DS head aimed at CL; DS+rail frame CL"
+   ],
+   [
+    279,
+    "DS head aimed at CL; DS+rail frame CL"
+   ],
+   [
+    284,
+    "DS head aimed at CL; DS+rail frame CL"
+   ]
+  ]
+ },
+ {
+  "from": "CAM",
+  "to": "DS",
+  "channel": "timing/response",
+  "n_frames": 42,
+  "seconds": 1.4,
+  "intervals": [
+   [
+    39,
+    40
+   ],
+   [
+    48,
+    48
+   ],
+   [
+    54,
+    55
+   ],
+   [
+    63,
+    63
+   ],
+   [
+    66,
+    67
+   ],
+   [
+    69,
+    70
+   ],
+   [
+    149,
+    180
+   ]
+  ],
+  "examples": [
+   [
+    39,
+    "onset; no character response"
+   ],
+   [
+    55,
+    "onset; camera only"
+   ],
+   [
+    70,
+    "onset; no character motion"
+   ],
+   [
+    153,
+    "same as f149"
+   ],
+   [
+    158,
+    "same as f149"
+   ],
+   [
+    163,
+    "same as f149"
+   ],
+   [
+    168,
+    "same as f149"
+   ],
+   [
+    173,
+    "same as f149"
+   ],
+   [
+    178,
+    "same as f149"
+   ]
+  ]
+ },
+ {
+  "from": "CROWD",
+  "to": "CL",
+  "channel": "attention",
+  "n_frames": 38,
+  "seconds": 1.27,
+  "intervals": [
+   [
+    253,
+    288
+   ],
+   [
+    361,
+    362
+   ]
+  ],
+  "examples": [
+   [
+    253,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    256,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    260,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    264,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    268,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    271,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    275,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    279,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    283,
+    "CL lit, alone; rim faces her, rest dance"
+   ],
+   [
+    286,
+    "CL lit, alone; rim faces her, rest dance"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "CL",
+  "channel": "other",
+  "n_frames": 37,
+  "seconds": 1.23,
+  "intervals": [
+   [
+    361,
+    397
+   ]
+  ],
+  "examples": [
+   [
+    361,
+    "self-contact: both palms on own thighs"
+   ],
+   [
+    365,
+    "palms on thighs"
+   ],
+   [
+    369,
+    "palms on thighs"
+   ],
+   [
+    373,
+    "palms on thighs"
+   ],
+   [
+    376,
+    "palms on thighs"
+   ],
+   [
+    380,
+    "palms on thighs"
+   ],
+   [
+    384,
+    "palms on thighs"
+   ],
+   [
+    388,
+    "palms on thighs"
+   ],
+   [
+    391,
+    "palms on thighs"
+   ],
+   [
+    395,
+    "palms on thighs"
+   ]
+  ]
+ },
+ {
+  "from": "CROWD",
+  "to": "CAM",
+  "channel": "other",
+  "n_frames": 36,
+  "seconds": 1.2,
+  "intervals": [
+   [
+    109,
+    144
+   ]
+  ],
+  "examples": [
+   [
+    109,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    113,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    116,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    120,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    124,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    128,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    131,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    135,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    139,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ],
+   [
+    143,
+    "crowd behind DS faces the lens/stage, the same way DS faces; she is at the front barrier with her back to them; no sign they attend to DS"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CROWD",
+  "channel": "framing/occlusion",
+  "n_frames": 36,
+  "seconds": 1.2,
+  "intervals": [
+   [
+    145,
+    180
+   ]
+  ],
+  "examples": [
+   [
+    145,
+    "DS fills the whole frame and occludes the background crowd; crowd reduced to dark blur at the edges"
+   ],
+   [
+    149,
+    "DS's silhouette spans ~100% of frame width; crowd visible only in gaps right of/above her head, and the visible strip widens as the camera arcs"
+   ],
+   [
+    153,
+    "same as f149"
+   ],
+   [
+    156,
+    "DS's silhouette spans ~98% of frame width; crowd strip widening"
+   ],
+   [
+    160,
+    "same as f159"
+   ],
+   [
+    164,
+    "DS's silhouette spans ~95% of frame width; crowd visible right of her head/fin and below the fin"
+   ],
+   [
+    168,
+    "same as f166"
+   ],
+   [
+    171,
+    "DS's silhouette spans ~91% of frame width; crowd region widening"
+   ],
+   [
+    175,
+    "DS's silhouette spans ~89% of frame width; crowd region widening"
+   ],
+   [
+    179,
+    "DS's silhouette spans ~87% of frame width; crowd now fills the right ~40% beside and below her fin"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CL",
+  "channel": "gaze",
+  "n_frames": 36,
+  "seconds": 1.2,
+  "intervals": [
+   [
+    204,
+    217
+   ],
+   [
+    289,
+    289
+   ],
+   [
+    293,
+    293
+   ],
+   [
+    433,
+    452
+   ]
+  ],
+  "examples": [
+   [
+    204,
+    "head turned ~toward CL (unsure)"
+   ],
+   [
+    208,
+    "head turned ~toward CL (unsure)"
+   ],
+   [
+    211,
+    "head turned ~toward CL (unsure)"
+   ],
+   [
+    215,
+    "head turned ~toward CL (unsure)"
+   ],
+   [
+    293,
+    "AUD_1 looks down-left in CL's direction (target indistinct)"
+   ],
+   [
+    435,
+    "faces away from CL"
+   ],
+   [
+    439,
+    "faces away from CL"
+   ],
+   [
+    443,
+    "faces away from CL"
+   ],
+   [
+    446,
+    "faces away from CL"
+   ],
+   [
+    450,
+    "faces away from CL"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CROWD",
+  "channel": "proximity",
+  "n_frames": 36,
+  "seconds": 1.2,
+  "intervals": [
+   [
+    253,
+    288
+   ]
+  ],
+  "examples": [
+   [
+    253,
+    "bald man reaches to her"
+   ],
+   [
+    256,
+    "bald man reaches to her"
+   ],
+   [
+    260,
+    "bald man reaches to her"
+   ],
+   [
+    264,
+    "bald man reaches to her"
+   ],
+   [
+    268,
+    "bald man reaches to her"
+   ],
+   [
+    271,
+    "bald man reaches to her"
+   ],
+   [
+    275,
+    "bald man reaches to her"
+   ],
+   [
+    279,
+    "bald man reaches to her; she turns to him"
+   ],
+   [
+    283,
+    "bald man reaches to her; she turns to him"
+   ],
+   [
+    286,
+    "bald man reaches to her; she turns to him"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "DS",
+  "channel": "gaze",
+  "n_frames": 35,
+  "seconds": 1.17,
+  "intervals": [
+   [
+    38,
+    72
+   ]
+  ],
+  "examples": [
+   [
+    38,
+    "faces 3/4 to screen-right with open-mouth smile, toward frame centre where DS stands (target indistinct)"
+   ],
+   [
+    41,
+    "3/4 right, toward DS"
+   ],
+   [
+    45,
+    "3/4 right, toward DS"
+   ],
+   [
+    49,
+    "3/4 left, laughing, toward DS"
+   ],
+   [
+    53,
+    "3/4 left, laughing, toward DS"
+   ],
+   [
+    56,
+    "3/4 left, laughing, toward DS"
+   ],
+   [
+    60,
+    "3/4 left, laughing, toward DS"
+   ],
+   [
+    64,
+    "3/4 left, laughing, toward DS"
+   ],
+   [
+    68,
+    "3/4 left, laughing, toward DS"
+   ],
+   [
+    71,
+    "3/4 left, laughing, toward DS"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "DS",
+  "channel": "proximity",
+  "n_frames": 35,
+  "seconds": 1.17,
+  "intervals": [
+   [
+    38,
+    72
+   ]
+  ],
+  "examples": [
+   [
+    38,
+    "raised hand ~0.05-0.1 frame-width left of DS's hair, no overlap; rising toward DS's fin"
+   ],
+   [
+    41,
+    "hand near DS's hair, rising"
+   ],
+   [
+    45,
+    "hand near DS's hair, rising"
+   ],
+   [
+    49,
+    "hand behind DS's right fin tip (2-D contact)"
+   ],
+   [
+    53,
+    "hand behind DS's right fin tip (2-D contact)"
+   ],
+   [
+    56,
+    "hand behind DS's right fin tip (2-D contact)"
+   ],
+   [
+    60,
+    "hand behind DS's right fin tip (2-D contact)"
+   ],
+   [
+    64,
+    "hand behind DS's right fin tip (2-D contact)"
+   ],
+   [
+    68,
+    "hand behind DS's right fin tip (2-D contact)"
+   ],
+   [
+    71,
+    "hand behind DS's right fin tip (2-D contact)"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "CAM",
+  "channel": "gaze",
+  "n_frames": 35,
+  "seconds": 1.17,
+  "intervals": [
+   [
+    218,
+    252
+   ]
+  ],
+  "examples": [
+   [
+    218,
+    "none: eyes closed"
+   ],
+   [
+    221,
+    "none: eyes closed"
+   ],
+   [
+    225,
+    "none: eyes closed"
+   ],
+   [
+    229,
+    "none: eyes closed"
+   ],
+   [
+    233,
+    "none: eyes closed"
+   ],
+   [
+    236,
+    "none: eyes closed"
+   ],
+   [
+    240,
+    "none: eyes closed"
+   ],
+   [
+    244,
+    "none: eyes closed"
+   ],
+   [
+    248,
+    "none: eyes closed"
+   ],
+   [
+    251,
+    "none: eyes closed"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "CROWD",
+  "channel": "framing/occlusion",
+  "n_frames": 35,
+  "seconds": 1.17,
+  "intervals": [
+   [
+    398,
+    432
+   ]
+  ],
+  "examples": [
+   [
+    398,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    401,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    405,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    409,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    413,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    416,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    420,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    424,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    428,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ],
+   [
+    431,
+    "CL sharp lit foreground, occludes dark crowd framing her"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CL",
+  "channel": "spatial-hierarchy",
+  "n_frames": 35,
+  "seconds": 1.17,
+  "intervals": [
+   [
+    398,
+    432
+   ]
+  ],
+  "examples": [
+   [
+    398,
+    "AUD_1 arm (y0.14-0.40) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    401,
+    "AUD_1 arm (y0.14-0.40) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    405,
+    "AUD_1 arm (y0.14-0.41) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    409,
+    "AUD_1 arm (y0.14-0.42) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    413,
+    "AUD_1 arm (y0.14-0.42) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    416,
+    "AUD_1 arm (y0.14-0.42) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    420,
+    "AUD_1 arm (y0.16-0.42) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    424,
+    "AUD_1 arm (y0.18-0.45) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    428,
+    "AUD_1 arm (y0.20-0.48) at CL head-chest height, larger than her head; no overlap"
+   ],
+   [
+    431,
+    "AUD_1 arm (y0.21-0.49) at CL head-chest height, larger than her head; no overlap"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CROWD",
+  "channel": "attention",
+  "n_frames": 32,
+  "seconds": 1.07,
+  "intervals": [
+   [
+    149,
+    180
+   ]
+  ],
+  "examples": [
+   [
+    149,
+    "DS's back is to camera and her head points into the space where the crowd is; camera looks over her shoulder in the same direction (shared point of view)"
+   ],
+   [
+    153,
+    "same as f149"
+   ],
+   [
+    156,
+    "same as f149"
+   ],
+   [
+    160,
+    "same as f149"
+   ],
+   [
+    164,
+    "same as f149"
+   ],
+   [
+    168,
+    "same as f149"
+   ],
+   [
+    171,
+    "same as f149"
+   ],
+   [
+    175,
+    "same as f149"
+   ],
+   [
+    179,
+    "same as f149"
+   ]
+  ]
+ },
+ {
+  "from": "CROWD",
+  "to": "CL",
+  "channel": "proximity",
+  "n_frames": 31,
+  "seconds": 1.03,
+  "intervals": [
+   [
+    198,
+    217
+   ],
+   [
+    289,
+    293
+   ],
+   [
+    295,
+    298
+   ],
+   [
+    300,
+    300
+   ],
+   [
+    303,
+    303
+   ]
+  ],
+  "examples": [
+   [
+    198,
+    "lit open patch; AUD_1-3 not looking"
+   ],
+   [
+    201,
+    "lit open patch; AUD_1-3 not looking"
+   ],
+   [
+    205,
+    "lit open patch; AUD_1-3 not looking"
+   ],
+   [
+    209,
+    "lit open patch; AUD_1-3 not looking"
+   ],
+   [
+    213,
+    "lit open patch; AUD_1-3 not looking"
+   ],
+   [
+    216,
+    "lit open patch; AUD_1-3 not looking"
+   ],
+   [
+    291,
+    "ring around the clearing"
+   ],
+   [
+    296,
+    "ring around the clearing"
+   ],
+   [
+    303,
+    "ring around the clearing; AUD_6 now at its near-left edge"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "AUD",
+  "channel": "proximity",
+  "n_frames": 24,
+  "seconds": 0.8,
+  "intervals": [
+   [
+    1,
+    7
+   ],
+   [
+    9,
+    12
+   ],
+   [
+    14,
+    17
+   ],
+   [
+    289,
+    292
+   ],
+   [
+    294,
+    294
+   ],
+   [
+    298,
+    299
+   ],
+   [
+    301,
+    302
+   ]
+  ],
+  "examples": [
+   [
+    1,
+    "AUD_2 in profile turns toward AUD_3 just to her screen-left; both stand behind DS's left-side hair, which partly covers them"
+   ],
+   [
+    5,
+    "profile oriented to AUD_3"
+   ],
+   [
+    9,
+    "profile oriented to AUD_3"
+   ],
+   [
+    11,
+    "profile oriented to AUD_3"
+   ],
+   [
+    15,
+    "profile oriented to AUD_3"
+   ],
+   [
+    289,
+    "AUD_6, in left profile, holds his face close to AUD_10's head as if speaking into her ear; he is not watching the stage"
+   ],
+   [
+    291,
+    "AUD_6 leans in at AUD_10's head (left profile) while his head drifts up-right toward the clearing edge"
+   ],
+   [
+    298,
+    "couple leaning together"
+   ],
+   [
+    301,
+    "AUD_4 bends further toward AUD_5"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "AUD",
+  "channel": "gaze",
+  "n_frames": 23,
+  "seconds": 0.77,
+  "intervals": [
+   [
+    199,
+    217
+   ],
+   [
+    289,
+    290
+   ],
+   [
+    293,
+    293
+   ],
+   [
+    295,
+    295
+   ]
+  ],
+  "examples": [
+   [
+    199,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    201,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    204,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    206,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    209,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    211,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    214,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    216,
+    "looks screen-left at AUD_1/CL side"
+   ],
+   [
+    290,
+    "AUD_2 faces AUD_1"
+   ],
+   [
+    295,
+    "AUD_2 faces AUD_1"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CROWD",
+  "channel": "other",
+  "n_frames": 22,
+  "seconds": 0.73,
+  "intervals": [
+   [
+    159,
+    180
+   ]
+  ],
+  "examples": [
+   [
+    159,
+    "AUD_3's raised arms match the crowd's raised-arm posture; no visible reaction to DS"
+   ],
+   [
+    161,
+    "same as f159"
+   ],
+   [
+    164,
+    "same as f159"
+   ],
+   [
+    166,
+    "same as f159"
+   ],
+   [
+    169,
+    "same as f159"
+   ],
+   [
+    171,
+    "same as f159"
+   ],
+   [
+    174,
+    "same as f159"
+   ],
+   [
+    176,
+    "same as f159"
+   ],
+   [
+    179,
+    "same as f159"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CAM",
+  "channel": "timing/response",
+  "n_frames": 20,
+  "seconds": 0.67,
+  "intervals": [
+   [
+    9,
+    10
+   ],
+   [
+    18,
+    18
+   ],
+   [
+    29,
+    29
+   ],
+   [
+    33,
+    33
+   ],
+   [
+    76,
+    82
+   ],
+   [
+    91,
+    93
+   ],
+   [
+    106,
+    108
+   ],
+   [
+    114,
+    115
+   ]
+  ],
+  "examples": [
+   [
+    9,
+    "audio onset at f9; DS's gaze change follows at f10"
+   ],
+   [
+    18,
+    "music beat at f18; DS shows no distinct motion on it (mouth only marginally more open)"
+   ],
+   [
+    33,
+    "beat at f32 (duplicate frame); no DS motion on it"
+   ],
+   [
+    78,
+    "beat (f77/92/107) lands on a duplicate frame; no beat-synced DS motion"
+   ],
+   [
+    80,
+    "music jumps (rms -27 -> -13 dB, onsets f80/81) as DS's smile finishes fading; no body motion with it"
+   ],
+   [
+    91,
+    "beat (f77/92/107) lands on a duplicate frame; no beat-synced DS motion"
+   ],
+   [
+    106,
+    "beat (f77/92/107) lands on a duplicate frame; no beat-synced DS motion"
+   ],
+   [
+    114,
+    "loud audio onset (~-12.7 dB), no visible reaction"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "DS",
+  "channel": "attention",
+  "n_frames": 20,
+  "seconds": 0.67,
+  "intervals": [
+   [
+    16,
+    17
+   ],
+   [
+    19,
+    32
+   ],
+   [
+    34,
+    37
+   ]
+  ],
+  "examples": [
+   [
+    16,
+    "clapping hands appear just left of DS's right elbow; the direction of attention cannot be confirmed (face not yet visible)"
+   ],
+   [
+    19,
+    "clapping figure at left edge, body oriented toward screen-right (toward DS/centre)"
+   ],
+   [
+    20,
+    "faces screen-right toward DS/centre while clapping"
+   ],
+   [
+    21,
+    "faces screen-right toward DS/centre, clapping"
+   ],
+   [
+    23,
+    "faces DS/centre, clapping"
+   ],
+   [
+    24,
+    "smiling and clapping while facing DS/centre from the left edge"
+   ],
+   [
+    25,
+    "applauds toward DS/centre"
+   ],
+   [
+    26,
+    "applauds toward DS/centre"
+   ],
+   [
+    28,
+    "applauds toward DS/centre"
+   ],
+   [
+    29,
+    "applauds toward DS/centre"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "AUD",
+  "channel": "framing/occlusion",
+  "n_frames": 20,
+  "seconds": 0.67,
+  "intervals": [
+   [
+    38,
+    47
+   ],
+   [
+    315,
+    319
+   ],
+   [
+    321,
+    322
+   ],
+   [
+    324,
+    324
+   ],
+   [
+    378,
+    378
+   ],
+   [
+    394,
+    394
+   ]
+  ],
+  "examples": [
+   [
+    38,
+    "AUD_2's raised hand/forearm overlaps AUD_1's cheek/head and increasingly covers her face"
+   ],
+   [
+    40,
+    "raised hand beside AUD_1's cheek/chin; her face fully visible, not covered"
+   ],
+   [
+    43,
+    "raised hand beside AUD_1's cheek/chin; her face fully visible, not covered"
+   ],
+   [
+    45,
+    "covers AUD_1's face"
+   ],
+   [
+    315,
+    "background hands now at both upper corners, bracketing CL's head"
+   ],
+   [
+    318,
+    "hands at both top corners"
+   ],
+   [
+    321,
+    "hands at both top corners"
+   ],
+   [
+    378,
+    "AUD_1 (left) and AUD_2 (right) bracket CL symmetrically at head height"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "DS",
+  "channel": "attention",
+  "n_frames": 20,
+  "seconds": 0.67,
+  "intervals": [
+   [
+    198,
+    217
+   ]
+  ],
+  "examples": [
+   [
+    198,
+    "faces/advances toward balcony"
+   ],
+   [
+    200,
+    "faces/advances toward balcony"
+   ],
+   [
+    203,
+    "faces/advances toward balcony"
+   ],
+   [
+    205,
+    "faces/advances toward balcony"
+   ],
+   [
+    208,
+    "faces/advances toward balcony"
+   ],
+   [
+    210,
+    "faces the balcony (stationary)"
+   ],
+   [
+    213,
+    "faces/advances toward balcony"
+   ],
+   [
+    215,
+    "faces/advances toward balcony"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "AUD",
+  "channel": "framing/occlusion",
+  "n_frames": 20,
+  "seconds": 0.67,
+  "intervals": [
+   [
+    433,
+    452
+   ]
+  ],
+  "examples": [
+   [
+    433,
+    "AUD_2 arm frames the screen-right edge (CL's left side), no overlap"
+   ],
+   [
+    435,
+    "AUD_2 arm frames the screen-right edge (CL's left side), no overlap"
+   ],
+   [
+    438,
+    "AUD_2 arm frames the screen-right edge (CL's left side), no overlap"
+   ],
+   [
+    440,
+    "AUD_2 arm frames the screen-right edge (CL's left side), no overlap"
+   ],
+   [
+    443,
+    "AUD_2 arm frames the screen-right edge (CL's left side), no overlap"
+   ],
+   [
+    445,
+    "AUD_2 hand drifting left toward CL's screen-right (her left-side) hair; ~10 px gap, no overlap yet"
+   ],
+   [
+    448,
+    "CL's screen-right (her left-side) hair starts to cross in front of AUD_2's hand edge (CL occludes, slight)"
+   ],
+   [
+    450,
+    "CL's screen-right (her left-side) hair crosses in front of AUD_2's hand (CL occludes)"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "CROWD",
+  "channel": "timing/response",
+  "n_frames": 18,
+  "seconds": 0.6,
+  "intervals": [
+   [
+    189,
+    189
+   ],
+   [
+    226,
+    228
+   ],
+   [
+    241,
+    243
+   ],
+   [
+    258,
+    258
+   ],
+   [
+    273,
+    273
+   ],
+   [
+    288,
+    288
+   ],
+   [
+    294,
+    294
+   ],
+   [
+    406,
+    408
+   ],
+   [
+    414,
+    415
+   ],
+   [
+    429,
+    430
+   ]
+  ],
+  "examples": [
+   [
+    189,
+    "first glimpse 1-4 frames after music hit (185-188)"
+   ],
+   [
+    226,
+    "beat at 227 (dup frame): no accent in CL motion"
+   ],
+   [
+    228,
+    "beat at 227 (dup frame): no accent in CL motion"
+   ],
+   [
+    241,
+    "beat at 242 (dup frame): no accent in CL motion"
+   ],
+   [
+    243,
+    "beat at 242 (dup frame): no accent in CL motion"
+   ],
+   [
+    258,
+    "beat on dup f257; no accent"
+   ],
+   [
+    273,
+    "beat on dup f272; no accent"
+   ],
+   [
+    288,
+    "beat on dup f287; no accent"
+   ],
+   [
+    294,
+    "CL's skirt-swing step coincides with an audio onset (294); no crowd member reacts visibly at this frame"
+   ],
+   [
+    406,
+    "beat 407/loud passage: no motion accent, sway continuous"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "CAM",
+  "channel": "timing/response",
+  "n_frames": 18,
+  "seconds": 0.6,
+  "intervals": [
+   [
+    308,
+    310
+   ],
+   [
+    325,
+    325
+   ],
+   [
+    333,
+    333
+   ],
+   [
+    340,
+    340
+   ],
+   [
+    348,
+    348
+   ],
+   [
+    355,
+    355
+   ],
+   [
+    369,
+    370
+   ],
+   [
+    381,
+    382
+   ],
+   [
+    393,
+    393
+   ],
+   [
+    440,
+    442
+   ],
+   [
+    444,
+    445
+   ]
+  ],
+  "examples": [
+   [
+    308,
+    "hip roll accelerates as loudness rises (rms -5.25 dB)"
+   ],
+   [
+    310,
+    "loudness peak (rms -0.87 dB, onset) lands in the hip roll's fast phase; no discrete accent in her motion"
+   ],
+   [
+    333,
+    "beat at 332 (dup); no beat-locked accent in CL"
+   ],
+   [
+    348,
+    "beat at 347 (dup); no beat-locked accent in CL"
+   ],
+   [
+    369,
+    "audio onset at 369 (rms -1.84 dB); no distinct CL accent, only continuous slow drift"
+   ],
+   [
+    381,
+    "audio onset at rms 0.0 dB (loudest in chunk) coincides with the reversal of CL's lateral head drift (nose x stops at 562 and turns right) and with the camera rotation flip at 380"
+   ],
+   [
+    440,
+    "quiet dip -12 dB, onsets 440/441; rise slows"
+   ],
+   [
+    444,
+    "hip-sway onset 444 = RMS rise -9->-2 dB, onset 445"
+   ]
+  ]
+ },
+ {
+  "from": "CAM",
+  "to": "CL",
+  "channel": "framing/occlusion",
+  "n_frames": 15,
+  "seconds": 0.5,
+  "intervals": [
+   [
+    198,
+    212
+   ]
+  ],
+  "examples": [
+   [
+    198,
+    "rack focus to CL plane (edge 35)"
+   ],
+   [
+    199,
+    "rack focus to CL plane (edge 79)"
+   ],
+   [
+    200,
+    "rack focus to CL plane (edge 95)"
+   ],
+   [
+    201,
+    "rack focus to CL plane (edge 146)"
+   ],
+   [
+    203,
+    "rack focus to CL plane (edge 127)"
+   ],
+   [
+    204,
+    "rack focus to CL plane (edge 180)"
+   ],
+   [
+    205,
+    "rack focus to CL plane (edge 225)"
+   ],
+   [
+    206,
+    "rack focus to CL plane (edge 282)"
+   ],
+   [
+    208,
+    "rack focus to CL plane (edge 232)"
+   ],
+   [
+    209,
+    "rack focus to CL plane (edge 279)"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "OFF-SCREEN-LEFT",
+  "channel": "gaze",
+  "n_frames": 9,
+  "seconds": 0.3,
+  "intervals": [
+   [
+    1,
+    9
+   ]
+  ],
+  "examples": [
+   [
+    1,
+    "DS looks up and off-screen to screen-left with an open smile; the target is not in frame (no CL in this chunk)"
+   ],
+   [
+    4,
+    "keeps looking up and off-screen left"
+   ],
+   [
+    5,
+    "steady off-screen gaze to upper left"
+   ],
+   [
+    6,
+    "steady off-screen gaze to upper left"
+   ],
+   [
+    8,
+    "steady off-screen gaze"
+   ],
+   [
+    9,
+    "still looking off-screen upper left"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CAM",
+  "channel": "attention",
+  "n_frames": 8,
+  "seconds": 0.27,
+  "intervals": [
+   [
+    20,
+    22
+   ],
+   [
+    24,
+    24
+   ],
+   [
+    29,
+    29
+   ],
+   [
+    34,
+    34
+   ],
+   [
+    36,
+    37
+   ]
+  ],
+  "examples": [
+   [
+    20,
+    "face oriented to the front, near the lens direction; gaze indistinct"
+   ],
+   [
+    21,
+    "face oriented toward the lens/front"
+   ],
+   [
+    24,
+    "smiling toward the front"
+   ],
+   [
+    29,
+    "laughing toward the front"
+   ],
+   [
+    34,
+    "smiling to the front, hand raised"
+   ],
+   [
+    36,
+    "laughing toward the front"
+   ]
+  ]
+ },
+ {
+  "from": "CROWD",
+  "to": "DS",
+  "channel": "other",
+  "n_frames": 7,
+  "seconds": 0.23,
+  "intervals": [
+   [
+    90,
+    92
+   ],
+   [
+    94,
+    95
+   ],
+   [
+    99,
+    99
+   ],
+   [
+    105,
+    105
+   ]
+  ],
+  "examples": [
+   [
+    90,
+    "danmaku here: 脸色对了"
+   ],
+   [
+    91,
+    "danmaku here: 大肥鱼！"
+   ],
+   [
+    94,
+    "danmaku here: 大肥鱼！"
+   ],
+   [
+    95,
+    "danmaku here: 大肥鱼！"
+   ],
+   [
+    99,
+    "danmaku here: 脸色对了, 大肥鱼！, 大肥鱼！"
+   ],
+   [
+    105,
+    "danmaku here: 大肥鱼！, 这个好，"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CL",
+  "channel": "other",
+  "n_frames": 7,
+  "seconds": 0.23,
+  "intervals": [
+   [
+    384,
+    384
+   ],
+   [
+    386,
+    387
+   ],
+   [
+    391,
+    392
+   ],
+   [
+    396,
+    397
+   ]
+  ],
+  "examples": [
+   [
+    384,
+    "AUD_1's bent arm with elbow pointing toward CL parallels CL's own flared-elbow pose (shape similarity only)"
+   ],
+   [
+    386,
+    "AUD_1's elbow-out arm echoes CL's elbow-out pose (shape similarity)"
+   ],
+   [
+    391,
+    "AUD_1's elbow-out arm parallels CL's elbows-out pose"
+   ],
+   [
+    396,
+    "AUD_1's elbow-out arm mirrors CL's flared elbows across the frame"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "DS",
+  "channel": "spatial-hierarchy",
+  "n_frames": 5,
+  "seconds": 0.17,
+  "intervals": [
+   [
+    104,
+    108
+   ]
+  ],
+  "examples": [
+   [
+    104,
+    "AUD_4's raised hand sits just below DS's right ear fin in background"
+   ],
+   [
+    105,
+    "AUD_4's raised hand sits just below DS's right ear fin in background"
+   ],
+   [
+    106,
+    "AUD_4's raised hand sits just below DS's right ear fin in background"
+   ],
+   [
+    108,
+    "AUD_4's raised hand sits just below DS's right ear fin in background"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "AUD",
+  "channel": "spatial-hierarchy",
+  "n_frames": 4,
+  "seconds": 0.13,
+  "intervals": [
+   [
+    145,
+    148
+   ]
+  ],
+  "examples": [
+   [
+    145,
+    "DS is the sharp foreground subject; AUD_1 is a tiny, blurred, edge-cropped background figure partly hidden behind DS's right fin/hair"
+   ],
+   [
+    146,
+    "same as f145"
+   ],
+   [
+    148,
+    "same as f145"
+   ]
+  ]
+ },
+ {
+  "from": "CAM",
+  "to": "CL",
+  "channel": "timing/response",
+  "n_frames": 4,
+  "seconds": 0.13,
+  "intervals": [
+   [
+    198,
+    199
+   ],
+   [
+    213,
+    214
+   ]
+  ],
+  "examples": [
+   [
+    198,
+    "rack focus starts on beat 198"
+   ],
+   [
+    199,
+    "rack focus starts on beat 198"
+   ],
+   [
+    213,
+    "beat 212 ~ ruffle uncovers CL's right side"
+   ],
+   [
+    214,
+    "beat 212 ~ ruffle uncovers CL's right side"
+   ]
+  ]
+ },
+ {
+  "from": "CROWD",
+  "to": "CL",
+  "channel": "other",
+  "n_frames": 3,
+  "seconds": 0.1,
+  "intervals": [
+   [
+    363,
+    364
+   ],
+   [
+    394,
+    394
+   ]
+  ],
+  "examples": [
+   [
+    363,
+    "danmaku timed here: '报告总部，事情没我们想的那么糟糕' (overlay not drawn in frame)"
+   ],
+   [
+    364,
+    "danmaku '太骚了' timed here (not drawn)"
+   ],
+   [
+    394,
+    "danmaku '美美美' timed here (not drawn)"
+   ]
+  ]
+ },
+ {
+  "from": "CAM",
+  "to": "CROWD",
+  "channel": "timing/response",
+  "n_frames": 2,
+  "seconds": 0.07,
+  "intervals": [
+   [
+    124,
+    124
+   ],
+   [
+    139,
+    139
+   ]
+  ],
+  "examples": [
+   [
+    124,
+    "music beat lands on this push-in step; steps recur every 5 frames, so this is cadence coincidence; nobody reacts"
+   ],
+   [
+    139,
+    "music beat lands on this push-in step; steps recur every 5 frames, so this is cadence coincidence; nobody reacts"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "AUD",
+  "channel": "spatial-hierarchy",
+  "n_frames": 2,
+  "seconds": 0.07,
+  "intervals": [
+   [
+    385,
+    385
+   ],
+   [
+    389,
+    389
+   ]
+  ],
+  "examples": [
+   [
+    385,
+    "AUD_3 hand just above AUD_2's hand at the right edge"
+   ],
+   [
+    389,
+    "AUD_3 hand above and right of AUD_2's hand, both moving left; AUD_3 reaches AUD_2's forearm in projection"
+   ]
+  ]
+ },
+ {
+  "from": "CROWD",
+  "to": "DS",
+  "channel": "framing/occlusion",
+  "n_frames": 1,
+  "seconds": 0.03,
+  "intervals": [
+   [
+    38,
+    38
+   ]
+  ],
+  "examples": [
+   [
+    38,
+    "background crowd splits into two flanks (AUD_1/AUD_2 screen-left, AUD_3 screen-right) framing DS symmetrically; rail+glass sit between DS and camera, she is on the far side of the rail"
+   ]
+  ]
+ },
+ {
+  "from": "VIEWERS(DANMAKU)",
+  "to": "DS",
+  "channel": "other",
+  "n_frames": 1,
+  "seconds": 0.03,
+  "intervals": [
+   [
+    64,
+    64
+   ]
+  ],
+  "examples": [
+   [
+    64,
+    "danmaku here (overlay, not in image)"
+   ]
+  ]
+ },
+ {
+  "from": "DS",
+  "to": "CL",
+  "channel": "other",
+  "n_frames": 1,
+  "seconds": 0.03,
+  "intervals": [
+   [
+    289,
+    289
+   ]
+  ],
+  "examples": [
+   [
+    289,
+    "relative screen size: DS ~0.9 frame height vs CL ~0.15"
+   ]
+  ]
+ },
+ {
+  "from": "AUD",
+  "to": "CL",
+  "channel": "attention",
+  "n_frames": 1,
+  "seconds": 0.03,
+  "intervals": [
+   [
+    289,
+    289
+   ]
+  ],
+  "examples": [
+   [
+    289,
+    "AUD_10 stands back-to-camera at the near-left edge of the clearing, oriented toward CL (inferred)"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "CAM",
+  "channel": "proximity",
+  "n_frames": 1,
+  "seconds": 0.03,
+  "intervals": [
+   [
+    304,
+    304
+   ]
+  ],
+  "examples": [
+   [
+    304,
+    "CL leans her upper body toward the lens, hands braced on her thighs"
+   ]
+  ]
+ },
+ {
+  "from": "CL",
+  "to": "DS",
+  "channel": "other",
+  "n_frames": 1,
+  "seconds": 0.03,
+  "intervals": [
+   [
+    304,
+    304
+   ]
+  ],
+  "examples": [
+   [
+    304,
+    "DS not in frame; the cut replaces DS's over-the-shoulder view with CL's frontal close view"
+   ]
+  ]
+ }
+]

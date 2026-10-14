@@ -1,0 +1,78 @@
+{
+ "bvid": "BV1ZnpG6dE8g",
+ "title": "意气风发啊大肥鱼，但可别高兴得太早",
+ "uploader": "阿滴指南",
+ "upload_date": "2026-10-10",
+ "duration_s": 15.07,
+ "views": 647425,
+ "likes": 52144,
+ "comments": 1287,
+ "tags": [
+  "deepseek",
+  "AI",
+  "大肥鱼"
+ ],
+ "shots": [
+  {
+   "shot": 1,
+   "start_frame": 1,
+   "end_frame": 148,
+   "start_t": 0.0,
+   "end_t": 4.933,
+   "n_frames": 148
+  },
+  {
+   "shot": 2,
+   "start_frame": 149,
+   "end_frame": 303,
+   "start_t": 4.933,
+   "end_t": 10.1,
+   "n_frames": 155
+  },
+  {
+   "shot": 3,
+   "start_frame": 304,
+   "end_frame": 452,
+   "start_t": 10.1,
+   "end_t": 15.067,
+   "n_frames": 149
+  }
+ ],
+ "unique_frames": 360,
+ "pushin": 2.0972,
+ "tempo": 120.0,
+ "beat_frames": [
+  3,
+  18,
+  32,
+  47,
+  62,
+  77,
+  92,
+  107,
+  124,
+  139,
+  154,
+  169,
+  184,
+  198,
+  212,
+  227,
+  242,
+  257,
+  272,
+  287,
+  302,
+  317,
+  332,
+  347,
+  362,
+  377,
+  392,
+  407,
+  422,
+  437,
+  452
+ ],
+ "url": "https://www.bilibili.com/video/BV1ZnpG6dE8g"
+}

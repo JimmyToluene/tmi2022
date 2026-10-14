@@ -1,79 +1,105 @@
-# BV1ZnpG6dE8g 场景重建（Blender）
+# BV1ZnpG6dE8g 场景重建与 VMD 动作（Blender + mmd_tools）
 
-《意气风发啊大肥鱼，但可别高兴得太早》里的夜店场景：贵宾包厢栏杆、下沉舞池、圆形小舞台、带台灯的卡座阶梯、玻璃栏杆夹层、顶光束与烟雾、城市夜景、人群，以及三个镜头的摄影机运动。**两位角色不建模**：场景里只放了 MMD 模型的落位点和中性灰色替身，导入你们自己的 MMD 模型后对位即可。
+《意气风发啊大肥鱼，但可别高兴得太早》（B站 BV1ZnpG6dE8g）的夜店场景重建，外加三个 MMD 动作文件。场景包括：
 
-## 文件
+- 贵宾包厢和"船头"形扶手
+- 下沉舞池与圆形小舞台
+- 四级卡座阶梯和 17 张台灯小桌
+- 带玻璃栏杆的夹层
+- 顶光束、烟雾、城市夜景
+- 约 400 人的人群
+- 从画面反解出的三个镜头的摄影机运动
 
-| 文件 | 用途 |
+**两位角色不建模。** 场景里只放了灰色人台，由 VMD 驱动；换成你们自己的 MMD 模型，加载同一份 VMD 即可。
+
+## 最终交付
+
+| 文件 | 内容 |
 |---|---|
-| `scene_spec.json` | 场景的全部度量参数（米 / 度 / 十六进制颜色）。改场景就改这里，然后重新生成。 |
-| `build_scene.py` | 从 `scene_spec.json` 生成 `.blend`。 |
-| `pose_reference.json` | 逐帧标注的 2D 关键点经对应镜头反投影得到的 3D 关节参考点。 |
-| `pose_reference.py` | 生成上面的文件。 |
-| `render_checks.py` | 渲染指定帧，与原片并排、半透明叠加、描边对比。 |
-| `camera_math.py` | 统一的摄影机约定与投影函数；与 Blender 的 `world_to_camera_view` 误差 < 0.002 px。 |
-| `checks/` | 重建场景各关键帧的渲染图和对位误差表。含原片的对比图不放进仓库；用自己拆出的原片帧运行 `render_checks.py` 即可在本地生成（原片｜渲染｜50% 叠加｜渲染边缘描在原片上）。 |
+| `vmd/camera.vmd` | 三个镜头的摄影机（MMD 相机），MMD 第 0 帧 = 原片 f1，切镜为相邻两帧跳变。 |
+| `vmd/DS.vmd` | DS（大肥鱼）的骨骼动作和表情 morph，452 帧。 |
+| `vmd/CL.vmd` | CL（克劳德）的骨骼动作和表情 morph，452 帧。 |
+| `blend/BV1ZnpG6dE8g_set_with_mannequins.blend` | 完整场景，已用 mmd_tools 把两个 VMD 加载到灰色人台上，打开即可播放预览。 |
+| `blend/BV1ZnpG6dE8g_set.blend` | 只有场景和摄影机，没有人台。 |
+| `scene_spec.json` | 场景的全部度量参数，单位为米 / 度 / 十六进制颜色。改场景就改这个文件，然后重新生成。 |
+| `posefit/pose_DS.json`、`pose_CL.json` | 逐帧姿势拟合结果（骨骼旋转和每帧重投影误差），VMD 由它们导出。 |
+| `../data/` | 逐帧标注、事件、人物关系、摄影机解算等分析数据（不含原片画面和弹幕）。 |
 
-生成（Blender 4.2 以上，或 `pip install bpy`）：
+## 在 Blender 里使用
 
-```bash
-blender -b -P build_scene.py -- scene_spec.json BV1ZnpG6dE8g_set.blend --pose pose_reference.json
-# 或
-python build_scene.py scene_spec.json BV1ZnpG6dE8g_set.blend --pose pose_reference.json --engine EEVEE
-```
+需要 Blender 5.0 或更高版本（文件由 5.2 保存），并安装 MMD Tools 扩展（编辑 › 偏好设置 › 获取扩展，搜索"MMD Tools"）。
+
+1. 打开 `BV1ZnpG6dE8g_set_with_mannequins.blend`。
+2. 导入角色：文件 › 导入 › MikuMikuDance Model (.pmx)，缩放保持 0.08。
+3. 选中 MMD Tools 生成的模型根物体，再加选 `MMD_DS_Root`，执行 物体 › 父级 › 物体（无反向），然后把模型根物体的位置和旋转清零。CL 同样处理，父级改为 `MMD_CL_Root`。
+4. 选中模型，MMD Tools 面板 › 导入 VMD，选择 `DS.vmd` 或 `CL.vmd`。缩放 0.08，帧偏移 0。
+5. 隐藏或删除对应的灰色人台：`DS_mannequin` 层级（`DS_mannequin_arm`、`DS_mannequin_mesh`），CL 同理。只隐藏父级空物体不会隐藏子物体。
+6. 可选：如果想用 MMD 相机代替场景里的 `CAM_Shot1/2/3`，新建一个相机，用 MMD Tools 导入 `camera.vmd`。它和场景相机逐帧一致：回读校验误差中位数为 0.2 px，最大 0.9 px。
+
+镜头之间的站位变化（DS 在镜头 2 探身越过栏杆）已经写在"全ての親"和姿势里。模型挂到落位点一次即可，不需要按镜头移动。
+
+## 动作是怎么做出来的
+
+1. **逐帧标注**：452 帧逐帧标注了 18 个关节点、头部偏航 / 俯仰 / 滚转、眼睛、嘴、手。每 36 帧一块，由另一个代理独立复核并修正。
+2. **姿势拟合**：在一副标准 MMD 骨架上做拟合。骨骼包括全ての親、センター、下半身、上半身、首、頭、左右的肩、腕、ひじ、手首、足、ひざ、足首，以及足ＩＫ。拟合方法是：通过反解出的摄影机，把骨架投影到画面上，对每一帧求骨骼旋转，使投影与核实过的关键点和头部角度尽量吻合。同时加上关节先验和时间平滑；镜头 1、2 里还约束了 DS 的前臂必须搭在扶手上。拟合完成后再做时间平滑。
+3. **补帧节奏**：原片在某些帧上停住不动。镜头 1 每 5 帧有 2 帧重复，镜头 2、3 每 5 帧有 1 帧重复。VMD 在这些帧上同样停住。
+4. **表情**：按核实过的时间线写入 morph。
+   - DS：开场 f1–12 张嘴大笑（あ、笑い、にこり）。f13–29 收成闭唇笑。f59 起笑容收窄，f86 嘴角拉平，f89 起微微下撇（∧、困る）。
+   - CL：镜头 2 闭眼或几乎闭眼（まばたき 0.85）。镜头 3 半垂眼、闭口微笑（まばたき 0.35、にこり 0.55）。
+   - 两人全程都不眨眼。
+
+### 实测精度
+
+| 项目 | 结果 |
+|---|---|
+| 重投影误差中位数（DS 镜头 1 / DS 镜头 2 / CL 镜头 2 / CL 镜头 3） | 6.8 / 6.9 / 3.1 / 8.1 px（画面 1080×1920） |
+| VMD 回读（mmd_tools 导入到新骨架后的关节位置） | 0.0 cm |
+| camera.vmd 回读（镜头 1 / 2 / 3，中位数） | 0.22 / 0.05 / 0.59 px |
+| 场景摄影机重投影（勘测汇总） | 镜头 1 中位 4.2 px；布局检查点中位 6.2 px |
+
+## 需要知道的局限
+
+- **静止姿势假设**：VMD 里的旋转是相对模型静止姿势的。这里假设手臂静止时向下约 40°，如果你们模型的静止手臂角度不同，手臂会整体差这个角度。最准的做法是把两个角色的 `.pmx` 发来，用它们自己的骨架重新拟合（`pose_fit.py` 可以换骨架）。
+- **表情名称**：表情用的是标准 morph 名（まばたき、あ、笑い、にこり、∧、困る）。模型里没有的 morph 会被跳过；名字不同的，在 MMD Tools 的 morph 列表里改名即可。
+- **深度精度**：动作来自单目画面。头部、躯干和手臂的大方向可靠；前后深度和手指细节是近似值。画面上看不到的部分（镜头 1 里 DS 的腿，镜头 3 里 CL 膝盖以下）保持站立，由足ＩＫ固定。
+- **原片本身不一致**：原片是 AI 生成的，三个镜头在几何上并不完全一致。为了拼成同一个空间，汇总时做了这些取舍：
+  - 镜头 1 的摄影机悬在舞池上空，左下角那个虚化的前景人头无法存在，所以没有搭建。
+  - 镜头 2 前段，摄影机位于 DS 直立时头部所在的空间，所以她必须探身约 40° 越过栏杆，VMD 已包含这个动作。
+  - 镜头 3 的 247 mm 焦距是一个折中：AI 画的 CL 头比 MMD 比例大约 26%，匹配头部大约需要 275 mm，匹配身体宽度大约需要 210 mm。
+  - 舞台光斑在镜头 2 是亮白色，在镜头 3 是暗蓝色，所以按镜头分开打光。
+  - 少数背景人物没有搭建，以免挡住主体。
 
 ## 约定
 
-- 1 Blender 单位 = 1 米，Z 轴向上。
-- 原点在圆形舞台中心的舞池地面（z = 0）。+Y 从 DS 的包厢指向对面，包厢在 −Y 一侧。
-- 帧率 30 fps，帧号与原视频完全一致（f1–f452）。原片不是每帧都在动：
-  - 镜头 2、3：每 5 帧中 `f % 5 == 2` 那一帧重复上一帧，相当于 24 fps。
-  - 镜头 1：`f % 5` 余 2 和余 3 两帧都重复，每 5 帧只有 3 张新画面，相当于 18 fps。
+- 1 Blender 单位 = 1 米，Z 轴向上。原点在舞台圆盘中心的舞池地面上；+Y 从 DS 的包厢指向对面。
+- 帧率 30 fps，帧号与原片完全一致（f1–f452）。时间轴标记 `Shot1` / `Shot2` / `Shot3` 位于 f1 / f149 / f304，各自绑定对应摄影机。`beat` 标记是配乐节拍：120 BPM，每 15 帧一拍。
+- 摄影机使用 36 mm 竖向传感器，镜头 1 / 2 / 3 分别为 50 / 36 / 247 mm。VMD 只存整数视角，取整误差用相机距离补偿，补偿量最大 4%。
+- 如需用原片做背景对位：先用 `ffmpeg -i 原视频.mp4 -vsync 0 -q:v 2 plates/f%04d.jpg` 拆帧，生成场景时加上 `--plates plates`。`.blend` 只记录帧的路径，不打包画面。
+- 声音：原片配乐有版权，`.blend` 和预览视频里都没有放。
 
-  `scene_spec.json` 的 `meta.hold_residues` 记录了这套规则，摄影机在这些帧会停住，与原片逐帧对齐。想要平滑运动就删掉这一项再重新生成。
-- 用原片做背景对位：用 `ffmpeg -i 原视频.mp4 -vsync 0 -q:v 2 plates/f%04d.jpg` 拆帧，生成时加 `--plates plates`。三台摄影机的视口背景会显示对应帧（只记录路径，不打包进 .blend）。
-- 时间轴标记 `Shot1` / `Shot2` / `Shot3` 分别位于 f1、f149、f304，并绑定了对应摄影机，播放时会自动切换镜头。`beat` 标记是配乐节拍（120 BPM，每 15 帧一拍）。
-- 摄影机使用 36 mm 竖向传感器（`sensor_fit = VERTICAL`），竖向视角 = 2·atan(18 / 焦距)。
+## 重新生成
 
-## 集合
-
-| 集合 | 内容 |
-|---|---|
-| Architecture | 舞池地面、舞台、阶梯、包厢、栏杆与玻璃、夹层、墙体、天花 |
-| Props | 卡座桌与台灯（自发光加少量点光）、城市夜景背板、镜头 3 的漂浮光点 |
-| Lights | 顶光束、氛围蓝光、各镜头的主光与轮廓光（按镜头开关，已打关键帧） |
-| Atmosphere | 体积雾（Principled Volume） |
-| Crowd / CrowdVariants | 通用人台的集合实例：12 种变体（垂手 / 举手 / 坐姿 × 不同节拍相位），按节拍上下律动；颜色由 Object Info › Random 从调色板取 |
-| Cameras | `CAM_Shot1/2/3`，位置、朝向、滚转、焦距、对焦距离逐关键帧 |
-| MMD anchors | `MMD_DS_Root`、`MMD_CL_Root`（脚底落位点，已朝向目标）与头部参考点 |
-| Stand-ins | 中性灰色替身，导入 MMD 后隐藏 |
-| Pose reference | `POSE_<角色>_<关节>` 动画空物体，仅视口可见，不参与渲染 |
-
-## 导入 MMD 模型
-
-1. 安装 MMD Tools 扩展（Blender 4.2+：编辑 › 偏好设置 › 获取扩展，搜索 “MMD Tools”）。
-2. 文件 › 导入 › MikuMikuDance Model (.pmx)，缩放保持 0.08，使模型身高约为 1.6 m。
-3. 选中 MMD Tools 生成的模型根物体，再加选 `MMD_DS_Root`，执行 物体 › 父级 › 物体（无反向）。然后把模型根物体的位置和旋转清零，模型就站在落位点上并朝向正确。MMD 模型导入后默认面向 −Y，落位点已按此旋转。
-4. CL 的模型同样处理，对 `MMD_CL_Root` 操作。
-5. 隐藏 `Stand-ins` 集合。
-6. 动作有两种做法：
-   - 导入 VMD 动作。
-   - 对照 `Pose reference` 里的关节点手动摆姿势。参考点在画面里与原片逐帧重合，深度方向是近似值，落在通过角色根部、正对镜头的竖直平面上。
-
-### 镜头里的角色调度
-
-- 镜头 1（f1–148）：DS 站在包厢栏杆后，面向摄影机，双前臂交叠搭在扶手上，身体略前倾。摄影机从舞池一侧的半空推近（dolly，不是变焦）。
-- 镜头 2（f149–303）：摄影机在 DS 身后偏上，越过她的肩看向舞池。CL 在舞台中央，面向包厢方向随节拍扭胯。
-- 镜头 3（f304–452）：摄影机在 CL 前方、略高于她的视线，向下看，手持式左右摇摆。
-
-## 渲染
-
-- 默认使用 EEVEE，已开启体积阴影和光线追踪；也可切换到 Cycles。
-- 色彩管理为 AgX，曝光值见 `scene_spec.json` 的 `world.exposure`。
-- 对位检查：
+依赖：`pip install bpy`（5.2），以及 mmd_tools 源码，路径记为 `<mmd_tools>`，需要额外安装它自带的 `opencc` wheel。
 
 ```bash
-python render_checks.py BV1ZnpG6dE8g_set.blend <原片帧目录> checks 1,74,148,200,260,303,304,380,452
+python build_scene.py scene_spec.json blend/BV1ZnpG6dE8g_set.blend                     # 场景
+python pose_fit.py ../data/annotations_verified.json scene_spec.json posefit            # 姿势拟合
+python export_motion_vmd.py posefit scene_spec.json <mmd_tools> vmd --check 1            # DS.vmd / CL.vmd
+python export_camera_vmd.py blend/BV1ZnpG6dE8g_set.blend scene_spec.json <mmd_tools> vmd/camera.vmd --check cam_check.json
+python assemble_vmd_preview.py blend/BV1ZnpG6dE8g_set.blend vmd <mmd_tools> blend/BV1ZnpG6dE8g_set_with_mannequins.blend
+python render_video.py blend/BV1ZnpG6dE8g_set_with_mannequins.blend render --scale 0.333   # 预览视频（无声）
 ```
 
-<!-- MEASURED-SECTION -->
+| 脚本 | 作用 |
+|---|---|
+| `camera_math.py` | 统一的摄影机约定和投影函数（与 Blender 的误差 < 0.002 px） |
+| `build_scene.py` | 由规格文件生成场景 |
+| `mmd_skeleton.py` | 标准骨架和人台 |
+| `pose_fit.py` | 逐帧姿势拟合 |
+| `export_motion_vmd.py` | 导出角色 VMD |
+| `export_camera_vmd.py` | 导出相机 VMD |
+| `assemble_vmd_preview.py` | 把 VMD 加载到人台上 |
+| `render_video.py` | 按原片节奏逐帧渲染 |
+| `render_checks.py` | 和原片对比（需要你自己拆出的原片帧） |
+| `camera_curves.py` | 逐帧摄影机参数 |
+| `pose_reference.py` | 2.5D 关节参考点 |
