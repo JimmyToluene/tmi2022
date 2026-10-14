@@ -1,6 +1,6 @@
 """Fit the MMD-standard skeleton to the verified per-frame annotations through the solved shot cameras.
 
-Usage: python pose_fit.py <annotations_verified.json> <scene_spec.json> <out_dir> [--chars DS,CL]
+Usage: python pose_fit.py <annotations_verified.json> <scene_spec.json> <out_dir> [--chars DS,CL] [--waist cl_shot3_waist_track.json]
 
 For each character and each unique (non-duplicate) annotated frame, solve with robust least squares:
   - reprojection of skeleton joints/face points against the verified 2D keypoints (pixels, per-shot sigma)
@@ -8,6 +8,10 @@ For each character and each unique (non-duplicate) annotated frame, solve with r
   - a pose prior per shot (templates below, built from the verified descriptions), joint-limit-ish priors
   - temporal smoothness to the previous solved frame, small センター offset
   - contact: DS's forearms rest on the balcony handrail in shots 1-2
+  - optional (--waist, CL shot 3): the tracked corset from track_cl_waist.py. The annotated hips there sit under
+    the skirt and are noisy, so the corset position/tilt drives the waist instead: a first pass calibrates the
+    corset-to-skeleton offset (shot mean), a second pass fits the waist joint and hip line to the corset track
+    and down-weights the annotated hips. This keeps her lower body moving with her upper body as in the source.
 Frames are solved in order with warm starts, then each bone's rotation is smoothed over time.
 Output: pose_<CHAR>.json with per-frame local rotations (armature axes, quaternion w,x,y,z), the センター
 offset (metres, armature axes), the per-shot anchor (world location + yaw) and per-frame residuals.
@@ -142,7 +146,18 @@ def prior_sigma(char, bone):
     return PRIOR_SIG[bone]
 
 
-def solve_frame(sk, char, shot, rec, cam, anchor, prior, prev, rail):
+WAIST_SIG_PX, HIPROLL_SIG_DEG, HIP_KP_WEIGHT_WITH_WAIST = 8.0, 2.5, 0.3
+
+
+def waist_and_hip_roll(sk, rots, center, loc, Ra, cam):
+    """Projected waist joint (上半身 head) and image angle of the hip line (right hip -> left hip, degrees, y down)."""
+    _, head, _ = sk.fk(rots, center)
+    uv = project(np.array([loc + Ra.apply(head[b]) for b in ("上半身", "左足", "右足")]), cam)
+    d = uv[1] - uv[2]
+    return uv[0], math.degrees(math.atan2(d[1], d[0]))
+
+
+def solve_frame(sk, char, shot, rec, cam, anchor, prior, prev, rail, waist=None):
     loc, yaw = np.asarray(anchor["location"], float), anchor["yaw"]
     Ra = Rot.from_euler("z", yaw)
     obs = {k: np.array([v[0] * W, v[1] * H]) for k, v in (rec.get("kp") or {}).items()
@@ -165,7 +180,13 @@ def solve_frame(sk, char, shot, rec, cam, anchor, prior, prev, rail):
             uv = project(Pw, cam)
             for k, p in zip(keys, uv):
                 w = {"head_top": 0.25, "l_hand_tip": 0.5, "r_hand_tip": 0.5}.get(k, 1.0)
+                if waist is not None and k in ("l_hip", "r_hip"):
+                    w = HIP_KP_WEIGHT_WITH_WAIST
                 r.extend(((p - obs[k]) / sig * w).tolist())
+        if waist is not None:
+            wp, roll = waist_and_hip_roll(sk, rots, center, loc, Ra, cam)
+            r.extend(((wp - waist["px"]) / WAIST_SIG_PX * waist["w"]).tolist())
+            r.append((roll - waist["roll"]) / HIPROLL_SIG_DEG * waist["w"])
         if hdirs is not None:
             fw = Ra.apply(G["頭"].apply([0, -1, 0]))
             upv = Ra.apply(G["頭"].apply([0, 0, 1]))
@@ -226,7 +247,26 @@ def smooth(frames, key_rots):
     return out
 
 
-def fit_character(ann, spec, char, out_dir):
+def waist_observations(sk, spec, anchor, frames, rots_list, centers, track):
+    """Corset track -> per-frame waist/hip-line targets, offset-calibrated on the first-pass fit (shot means)."""
+    by_f = {r["f"]: r for r in track["tracks"]["corset"]}
+    loc, Ra = np.asarray(anchor["location"], float), Rot.from_euler("z", anchor["yaw"])
+    fit, meas = [], []
+    for f, rots, ce in zip(frames, rots_list, centers):
+        if f in by_f:
+            wp, roll = waist_and_hip_roll(sk, rots, ce, loc, Ra, camera_at(spec, f))
+            fit.append([wp[0], wp[1], roll])
+            meas.append([by_f[f]["x"], by_f[f]["y"], by_f[f]["rot_deg"]])
+    off = (np.array(fit) - np.array(meas)).mean(0)
+    obs = {}
+    for f, r in by_f.items():
+        cc = r.get("cc", 1.0)
+        w = 0.0 if not np.isfinite(cc) else float(np.clip((cc - 0.55) / 0.2, 0.0, 1.0))
+        obs[f] = {"px": np.array([r["x"] + off[0], r["y"] + off[1]]), "roll": r["rot_deg"] + off[2], "w": w}
+    return obs, off
+
+
+def fit_character(ann, spec, char, out_dir, waist_track=None):
     height = spec["characters"][char].get("height_m", 1.6)
     sk = Skeleton(height)
     anchors = anchors_for(spec, char)
@@ -240,19 +280,30 @@ def fit_character(ann, spec, char, out_dir):
         if c is None or not (c.get("kp") or {}):
             continue
         by_shot.setdefault(rec["shot"], []).append((rec["f"], c))
-    for shot, items in sorted(by_shot.items()):
-        prior = template(char, shot, sk.rp)
+
+    def run_shot(shot, items, prior, waist_obs=None):
         prev = None
         frames, rots_list, centers, errs_list = [], [], [], []
         for f, c in items:
             cam = camera_at(spec, f)
             use_rail = rail if (char == "DS" and shot in (1, 2)) else None
-            rots, center, errs = solve_frame(sk, char, shot, c, cam, anchors[shot], prior, prev, use_rail)
+            wo = (waist_obs or {}).get(f)
+            rots, center, errs = solve_frame(sk, char, shot, c, cam, anchors[shot], prior, prev, use_rail, wo)
             prev = (rots, center)
             frames.append(f)
             rots_list.append(rots)
             centers.append(center)
             errs_list.append(errs)
+        return frames, rots_list, centers, errs_list
+
+    for shot, items in sorted(by_shot.items()):
+        prior = template(char, shot, sk.rp)
+        frames, rots_list, centers, errs_list = run_shot(shot, items, prior)
+        if waist_track is not None and char == "CL" and shot == 3:
+            obs, off = waist_observations(sk, spec, anchors[shot], frames, rots_list, centers, waist_track)
+            print(f"CL shot 3: corset track calibrated (offset x {off[0]:.1f} px, y {off[1]:.1f} px, roll {off[2]:.1f} deg); "
+                  f"refitting with the waist driven by the corset")
+            frames, rots_list, centers, errs_list = run_shot(shot, items, prior, obs)
         rots_s = smooth(frames, rots_list)
         cen = np.array(centers)
         if len(cen) >= 7:
@@ -272,11 +323,12 @@ def fit_character(ann, spec, char, out_dir):
     return out
 
 
-def main(ann_json, spec_json, out_dir, chars="DS,CL"):
+def main(ann_json, spec_json, out_dir, chars="DS,CL", waist_json=None):
     ann = json.load(open(ann_json, encoding="utf-8"))
     spec = json.load(open(spec_json, encoding="utf-8"))
+    waist = json.load(open(waist_json, encoding="utf-8")) if waist_json else None
     for ch in chars.split(","):
-        fit_character(ann, spec, ch, out_dir)
+        fit_character(ann, spec, ch, out_dir, waist)
 
 
 if __name__ == "__main__":
@@ -289,4 +341,4 @@ if __name__ == "__main__":
         else:
             pos.append(argv[i])
             i += 1
-    main(pos[0], pos[1], pos[2], opts.get("--chars", "DS,CL"))
+    main(pos[0], pos[1], pos[2], opts.get("--chars", "DS,CL"), opts.get("--waist"))
