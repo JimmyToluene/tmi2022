@@ -320,7 +320,7 @@ def mannequin_bmesh(height, arms_up=False, seated=False):
     top = hip_z + 0.55
     limb((0, 0, hip_z), (0, 0, top), 0.16)
     head = bmesh.ops.create_uvsphere(bm, u_segments=12, v_segments=8, radius=0.11 * s)
-    bmesh.ops.translate(bm, vec=(0, 0, (top + 0.2) * s), verts=head["verts"])
+    bmesh.ops.translate(bm, vec=(0, 0, (top + 0.13) * s), verts=head["verts"])
     sh = top - 0.03
     if arms_up:
         limb((-0.2, 0, sh), (-0.3, -0.05, sh + 0.55), 0.045)
@@ -683,6 +683,7 @@ def build(spec_path, out_blend, pose_path=None, engine="EEVEE", plates_dir=None)
         build_pose_reference(json.load(open(pose_path)), root)
     render_settings(spec, engine)
     bpy.context.scene["source_video"] = "https://www.bilibili.com/video/BV1ZnpG6dE8g"
+    bpy.context.scene["hold_residues"] = json.dumps(spec["meta"].get("hold_residues", {}))
     bpy.context.scene["notes"] = "\n".join(spec.get("notes", []))
     bpy.ops.wm.save_as_mainfile(filepath=os.path.abspath(out_blend), compress=True)
     print("saved", out_blend)
