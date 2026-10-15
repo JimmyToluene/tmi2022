@@ -1,0 +1,550 @@
+{
+ "verdict": "pass-with-patches",
+ "patches": [
+  {
+   "path": "cameras.1.keys",
+   "value_json": "[{\"f\":149,\"location\":[-0.569,-7.325,5.456],\"target\":[1.81,1.609,1.555],\"roll_deg\":1.66,\"lens_mm\":36.0},{\"f\":150,\"location\":[-0.566,-7.332,5.457],\"target\":[1.801,1.61,1.566],\"roll_deg\":1.55,\"lens_mm\":36.0},{\"f\":151,\"location\":[-0.563,-7.339,5.458],\"target\":[1.774,1.613,1.569],\"roll_deg\":1.38,\"lens_mm\":36.0},{\"f\":153,\"location\":[-0.56,-7.345,5.46],\"target\":[1.726,1.619,1.565],\"roll_deg\":1.16,\"lens_mm\":36.0},{\"f\":154,\"location\":[-0.556,-7.352,5.461],\"target\":[1.675,1.622,1.554],\"roll_deg\":0.92,\"lens_mm\":36.0},{\"f\":155,\"location\":[-0.553,-7.358,5.462],\"target\":[1.636,1.619,1.538],\"roll_deg\":1.03,\"lens_mm\":36.0},{\"f\":156,\"location\":[-0.55,-7.364,5.464],\"target\":[1.623,1.608,1.519],\"roll_deg\":1.65,\"lens_mm\":36.0},{\"f\":158,\"location\":[-0.546,-7.37,5.465],\"target\":[1.593,1.604,1.506],\"roll_deg\":1.99,\"lens_mm\":36.0},{\"f\":159,\"location\":[-0.542,-7.374,5.466],\"target\":[1.557,1.606,1.497],\"roll_deg\":2.04,\"lens_mm\":36.0},{\"f\":160,\"location\":[-0.538,-7.379,5.467],\"target\":[1.52,1.608,1.489],\"roll_deg\":2.02,\"lens_mm\":36.0},{\"f\":161,\"location\":[-0.534,-7.384,5.468],\"target\":[1.496,1.606,1.482],\"roll_deg\":2.06,\"lens_mm\":36.0},{\"f\":163,\"location\":[-0.531,-7.39,5.469],\"target\":[1.454,1.607,1.474],\"roll_deg\":2.04,\"lens_mm\":36.0},{\"f\":164,\"location\":[-0.527,-7.397,5.47],\"target\":[1.415,1.608,1.469],\"roll_deg\":2.01,\"lens_mm\":36.0},{\"f\":165,\"location\":[-0.524,-7.402,5.472],\"target\":[1.38,1.61,1.468],\"roll_deg\":1.9,\"lens_mm\":36.0},{\"f\":166,\"location\":[-0.52,-7.407,5.473],\"target\":[1.357,1.614,1.473],\"roll_deg\":1.66,\"lens_mm\":36.0},{\"f\":168,\"location\":[-0.515,-7.411,5.473],\"target\":[1.313,1.615,1.461],\"roll_deg\":1.49,\"lens_mm\":36.0},{\"f\":169,\"location\":[-0.51,-7.413,5.474],\"target\":[1.269,1.617,1.446],\"roll_deg\":1.3,\"lens_mm\":36.0},{\"f\":170,\"location\":[-0.504,-7.414,5.474],\"target\":[1.231,1.623,1.44],\"roll_deg\":1.07,\"lens_mm\":36.0},{\"f\":171,\"location\":[-0.498,-7.414,5.474],\"target\":[1.213,1.633,1.451],\"roll_deg\":0.82,\"lens_mm\":36.0},{\"f\":173,\"location\":[-0.492,-7.414,5.474],\"target\":[1.185,1.641,1.454],\"roll_deg\":0.66,\"lens_mm\":36.0},{\"f\":174,\"location\":[-0.486,-7.415,5.474],\"target\":[1.157,1.647,1.454],\"roll_deg\":0.53,\"lens_mm\":36.0},{\"f\":175,\"location\":[-0.48,-7.418,5.475],\"target\":[1.126,1.65,1.45],\"roll_deg\":0.41,\"lens_mm\":36.0},{\"f\":176,\"location\":[-0.475,-7.421,5.475],\"target\":[1.107,1.649,1.446],\"roll_deg\":0.39,\"lens_mm\":36.0},{\"f\":178,\"location\":[-0.474,-7.423,5.476],\"target\":[1.076,1.649,1.439],\"roll_deg\":0.33,\"lens_mm\":36.0},{\"f\":179,\"location\":[-0.471,-7.425,5.476],\"target\":[1.05,1.649,1.434],\"roll_deg\":0.3,\"lens_mm\":36.0},{\"f\":180,\"location\":[-0.468,-7.426,5.477],\"target\":[1.026,1.649,1.427],\"roll_deg\":0.27,\"lens_mm\":36.0},{\"f\":181,\"location\":[-0.464,-7.427,5.478],\"target\":[1.008,1.648,1.42],\"roll_deg\":0.32,\"lens_mm\":36.0},{\"f\":183,\"location\":[-0.463,-7.427,5.478],\"target\":[0.976,1.65,1.413],\"roll_deg\":0.43,\"lens_mm\":36.0},{\"f\":184,\"location\":[-0.459,-7.427,5.478],\"target\":[0.946,1.653,1.408],\"roll_deg\":0.57,\"lens_mm\":36.0},{\"f\":185,\"location\":[-0.456,-7.427,5.479],\"target\":[0.918,1.657,1.409],\"roll_deg\":0.59,\"lens_mm\":36.0},{\"f\":186,\"location\":[-0.452,-7.428,5.479],\"target\":[0.899,1.659,1.407],\"roll_deg\":0.6,\"lens_mm\":36.0},{\"f\":188,\"location\":[-0.45,-7.429,5.479],\"target\":[0.863,1.663,1.405],\"roll_deg\":0.51,\"lens_mm\":36.0},{\"f\":189,\"location\":[-0.446,-7.43,5.48],\"target\":[0.83,1.666,1.404],\"roll_deg\":0.43,\"lens_mm\":36.0},{\"f\":190,\"location\":[-0.443,-7.431,5.48],\"target\":[0.802,1.667,1.4],\"roll_deg\":0.34,\"lens_mm\":36.0},{\"f\":191,\"location\":[-0.439,-7.433,5.48],\"target\":[0.787,1.665,1.394],\"roll_deg\":0.37,\"lens_mm\":36.0},{\"f\":193,\"location\":[-0.436,-7.434,5.48],\"target\":[0.759,1.669,1.399],\"roll_deg\":0.21,\"lens_mm\":36.0},{\"f\":194,\"location\":[-0.432,-7.436,5.48],\"target\":[0.73,1.675,1.405],\"roll_deg\":-0.06,\"lens_mm\":36.0},{\"f\":195,\"location\":[-0.427,-7.437,5.479],\"target\":[0.702,1.68,1.407],\"roll_deg\":-0.39,\"lens_mm\":36.0},{\"f\":196,\"location\":[-0.423,-7.439,5.479],\"target\":[0.679,1.683,1.409],\"roll_deg\":-0.68,\"lens_mm\":36.0},{\"f\":198,\"location\":[-0.419,-7.439,5.478],\"target\":[0.648,1.688,1.411],\"roll_deg\":-1.01,\"lens_mm\":36.0},{\"f\":199,\"location\":[-0.415,-7.44,5.477],\"target\":[0.612,1.696,1.421],\"roll_deg\":-1.26,\"lens_mm\":36.0},{\"f\":200,\"location\":[-0.41,-7.441,5.477],\"target\":[0.581,1.704,1.43],\"roll_deg\":-1.28,\"lens_mm\":36.0},{\"f\":201,\"location\":[-0.406,-7.442,5.477],\"target\":[0.556,1.709,1.438],\"roll_deg\":-1.29,\"lens_mm\":36.0},{\"f\":203,\"location\":[-0.403,-7.442,5.476],\"target\":[0.529,1.707,1.428],\"roll_deg\":-1.28,\"lens_mm\":36.0},{\"f\":204,\"location\":[-0.4,-7.443,5.476],\"target\":[0.501,1.706,1.422],\"roll_deg\":-1.3,\"lens_mm\":36.0},{\"f\":205,\"location\":[-0.396,-7.444,5.477],\"target\":[0.48,1.705,1.416],\"roll_deg\":-1.27,\"lens_mm\":36.0},{\"f\":206,\"location\":[-0.393,-7.445,5.477],\"target\":[0.463,1.704,1.414],\"roll_deg\":-1.36,\"lens_mm\":36.0},{\"f\":208,\"location\":[-0.392,-7.445,5.477],\"target\":[0.435,1.702,1.405],\"roll_deg\":-1.39,\"lens_mm\":36.0},{\"f\":209,\"location\":[-0.389,-7.445,5.478],\"target\":[0.41,1.7,1.398],\"roll_deg\":-1.42,\"lens_mm\":36.0},{\"f\":210,\"location\":[-0.387,-7.445,5.478],\"target\":[0.389,1.7,1.393],\"roll_deg\":-1.44,\"lens_mm\":36.0},{\"f\":211,\"location\":[-0.384,-7.445,5.478],\"target\":[0.374,1.699,1.39],\"roll_deg\":-1.55,\"lens_mm\":36.0},{\"f\":213,\"location\":[-0.383,-7.444,5.478],\"target\":[0.349,1.696,1.38],\"roll_deg\":-1.56,\"lens_mm\":36.0},{\"f\":214,\"location\":[-0.379,-7.445,5.478],\"target\":[0.327,1.693,1.371],\"roll_deg\":-1.53,\"lens_mm\":36.0},{\"f\":215,\"location\":[-0.376,-7.445,5.478],\"target\":[0.309,1.69,1.364],\"roll_deg\":-1.48,\"lens_mm\":36.0},{\"f\":216,\"location\":[-0.373,-7.446,5.479],\"target\":[0.298,1.687,1.36],\"roll_deg\":-1.4,\"lens_mm\":36.0},{\"f\":218,\"location\":[-0.373,-7.446,5.479],\"target\":[0.273,1.684,1.351],\"roll_deg\":-1.35,\"lens_mm\":36.0},{\"f\":219,\"location\":[-0.37,-7.447,5.479],\"target\":[0.248,1.681,1.344],\"roll_deg\":-1.35,\"lens_mm\":36.0},{\"f\":220,\"location\":[-0.367,-7.448,5.48],\"target\":[0.226,1.679,1.338],\"roll_deg\":-1.43,\"lens_mm\":36.0},{\"f\":221,\"location\":[-0.364,-7.449,5.48],\"target\":[0.214,1.675,1.331],\"roll_deg\":-1.35,\"lens_mm\":36.0},{\"f\":223,\"location\":[-0.363,-7.449,5.481],\"target\":[0.188,1.67,1.321],\"roll_deg\":-1.3,\"lens_mm\":36.0},{\"f\":224,\"location\":[-0.36,-7.451,5.481],\"target\":[0.162,1.666,1.315],\"roll_deg\":-1.28,\"lens_mm\":36.0},{\"f\":225,\"location\":[-0.358,-7.452,5.482],\"target\":[0.14,1.664,1.311],\"roll_deg\":-1.31,\"lens_mm\":36.0},{\"f\":226,\"location\":[-0.355,-7.453,5.482],\"target\":[0.125,1.661,1.306],\"roll_deg\":-1.28,\"lens_mm\":36.0},{\"f\":228,\"location\":[-0.354,-7.453,5.483],\"target\":[0.098,1.657,1.298],\"roll_deg\":-1.27,\"lens_mm\":36.0},{\"f\":229,\"location\":[-0.352,-7.454,5.484],\"target\":[0.073,1.653,1.291],\"roll_deg\":-1.28,\"lens_mm\":36.0},{\"f\":230,\"location\":[-0.349,-7.454,5.484],\"target\":[0.057,1.649,1.284],\"roll_deg\":-1.25,\"lens_mm\":36.0},{\"f\":231,\"location\":[-0.346,-7.455,5.485],\"target\":[0.048,1.646,1.279],\"roll_deg\":-1.22,\"lens_mm\":36.0},{\"f\":233,\"location\":[-0.346,-7.454,5.485],\"target\":[0.033,1.64,1.268],\"roll_deg\":-1.2,\"lens_mm\":36.0},{\"f\":234,\"location\":[-0.343,-7.455,5.486],\"target\":[0.019,1.635,1.259],\"roll_deg\":-1.19,\"lens_mm\":36.0},{\"f\":235,\"location\":[-0.341,-7.455,5.486],\"target\":[0.008,1.631,1.251],\"roll_deg\":-1.18,\"lens_mm\":36.0},{\"f\":236,\"location\":[-0.339,-7.456,5.487],\"target\":[-0.002,1.627,1.246],\"roll_deg\":-1.18,\"lens_mm\":36.0},{\"f\":238,\"location\":[-0.338,-7.456,5.487],\"target\":[-0.017,1.62,1.234],\"roll_deg\":-1.15,\"lens_mm\":36.0},{\"f\":239,\"location\":[-0.336,-7.457,5.488],\"target\":[-0.031,1.613,1.224],\"roll_deg\":-1.15,\"lens_mm\":36.0},{\"f\":240,\"location\":[-0.335,-7.458,5.488],\"target\":[-0.039,1.607,1.213],\"roll_deg\":-1.06,\"lens_mm\":36.0},{\"f\":241,\"location\":[-0.332,-7.459,5.489],\"target\":[-0.045,1.602,1.206],\"roll_deg\":-0.99,\"lens_mm\":36.0},{\"f\":243,\"location\":[-0.331,-7.459,5.489],\"target\":[-0.061,1.595,1.194],\"roll_deg\":-1.03,\"lens_mm\":36.0},{\"f\":244,\"location\":[-0.328,-7.46,5.49],\"target\":[-0.079,1.59,1.185],\"roll_deg\":-1.16,\"lens_mm\":36.0},{\"f\":245,\"location\":[-0.325,-7.46,5.49],\"target\":[-0.093,1.585,1.177],\"roll_deg\":-1.22,\"lens_mm\":36.0},{\"f\":246,\"location\":[-0.323,-7.461,5.491],\"target\":[-0.103,1.581,1.171],\"roll_deg\":-1.25,\"lens_mm\":36.0},{\"f\":248,\"location\":[-0.322,-7.461,5.491],\"target\":[-0.119,1.576,1.162],\"roll_deg\":-1.3,\"lens_mm\":36.0},{\"f\":249,\"location\":[-0.319,-7.461,5.492],\"target\":[-0.131,1.57,1.152],\"roll_deg\":-1.29,\"lens_mm\":36.0},{\"f\":250,\"location\":[-0.318,-7.461,5.492],\"target\":[-0.137,1.565,1.143],\"roll_deg\":-1.22,\"lens_mm\":36.0},{\"f\":251,\"location\":[-0.316,-7.462,5.492],\"target\":[-0.14,1.559,1.135],\"roll_deg\":-1.14,\"lens_mm\":36.0},{\"f\":253,\"location\":[-0.316,-7.462,5.492],\"target\":[-0.15,1.552,1.124],\"roll_deg\":-1.1,\"lens_mm\":36.0},{\"f\":254,\"location\":[-0.311,-7.466,5.494],\"target\":[-0.16,1.544,1.118],\"roll_deg\":-1.15,\"lens_mm\":36.0},{\"f\":255,\"location\":[-0.307,-7.47,5.497],\"target\":[-0.167,1.534,1.112],\"roll_deg\":-1.2,\"lens_mm\":36.0},{\"f\":256,\"location\":[-0.302,-7.476,5.501],\"target\":[-0.171,1.523,1.105],\"roll_deg\":-1.16,\"lens_mm\":36.0},{\"f\":258,\"location\":[-0.302,-7.48,5.506],\"target\":[-0.18,1.51,1.097],\"roll_deg\":-1.13,\"lens_mm\":36.0},{\"f\":259,\"location\":[-0.303,-7.485,5.512],\"target\":[-0.193,1.501,1.094],\"roll_deg\":-1.26,\"lens_mm\":36.0},{\"f\":260,\"location\":[-0.305,-7.488,5.519],\"target\":[-0.203,1.492,1.093],\"roll_deg\":-1.38,\"lens_mm\":36.0},{\"f\":261,\"location\":[-0.31,-7.49,5.526],\"target\":[-0.206,1.484,1.089],\"roll_deg\":-1.35,\"lens_mm\":36.0},{\"f\":263,\"location\":[-0.317,-7.491,5.533],\"target\":[-0.207,1.475,1.08],\"roll_deg\":-1.23,\"lens_mm\":36.0},{\"f\":264,\"location\":[-0.324,-7.491,5.539],\"target\":[-0.211,1.467,1.073],\"roll_deg\":-1.18,\"lens_mm\":36.0},{\"f\":265,\"location\":[-0.331,-7.491,5.544],\"target\":[-0.216,1.462,1.067],\"roll_deg\":-1.12,\"lens_mm\":36.0},{\"f\":266,\"location\":[-0.337,-7.491,5.548],\"target\":[-0.221,1.459,1.065],\"roll_deg\":-1.1,\"lens_mm\":36.0},{\"f\":268,\"location\":[-0.341,-7.491,5.551],\"target\":[-0.228,1.454,1.06],\"roll_deg\":-1.14,\"lens_mm\":36.0},{\"f\":269,\"location\":[-0.339,-7.492,5.553],\"target\":[-0.235,1.448,1.055],\"roll_deg\":-1.18,\"lens_mm\":36.0},{\"f\":270,\"location\":[-0.333,-7.497,5.554],\"target\":[-0.239,1.441,1.05],\"roll_deg\":-1.2,\"lens_mm\":36.0},{\"f\":271,\"location\":[-0.324,-7.502,5.555],\"target\":[-0.241,1.432,1.046],\"roll_deg\":-1.21,\"lens_mm\":36.0},{\"f\":273,\"location\":[-0.315,-7.508,5.557],\"target\":[-0.242,1.421,1.039],\"roll_deg\":-1.19,\"lens_mm\":36.0},{\"f\":274,\"location\":[-0.305,-7.515,5.558],\"target\":[-0.243,1.41,1.032],\"roll_deg\":-1.15,\"lens_mm\":36.0},{\"f\":275,\"location\":[-0.297,-7.521,5.559],\"target\":[-0.246,1.402,1.029],\"roll_deg\":-1.17,\"lens_mm\":36.0},{\"f\":276,\"location\":[-0.292,-7.524,5.561],\"target\":[-0.25,1.395,1.026],\"roll_deg\":-1.24,\"lens_mm\":36.0},{\"f\":278,\"location\":[-0.289,-7.525,5.563],\"target\":[-0.256,1.388,1.018],\"roll_deg\":-1.3,\"lens_mm\":36.0},{\"f\":279,\"location\":[-0.289,-7.526,5.565],\"target\":[-0.263,1.382,1.01],\"roll_deg\":-1.35,\"lens_mm\":36.0},{\"f\":280,\"location\":[-0.292,-7.526,5.568],\"target\":[-0.267,1.377,1.004],\"roll_deg\":-1.35,\"lens_mm\":36.0},{\"f\":281,\"location\":[-0.297,-7.526,5.572],\"target\":[-0.27,1.373,1.001],\"roll_deg\":-1.33,\"lens_mm\":36.0},{\"f\":283,\"location\":[-0.305,-7.527,5.579],\"target\":[-0.277,1.365,0.994],\"roll_deg\":-1.33,\"lens_mm\":36.0},{\"f\":284,\"location\":[-0.314,-7.529,5.587],\"target\":[-0.284,1.356,0.988],\"roll_deg\":-1.32,\"lens_mm\":36.0},{\"f\":285,\"location\":[-0.324,-7.531,5.597],\"target\":[-0.289,1.346,0.984],\"roll_deg\":-1.29,\"lens_mm\":36.0},{\"f\":286,\"location\":[-0.335,-7.535,5.607],\"target\":[-0.294,1.337,0.983],\"roll_deg\":-1.26,\"lens_mm\":36.0},{\"f\":288,\"location\":[-0.344,-7.537,5.617],\"target\":[-0.301,1.325,0.977],\"roll_deg\":-1.26,\"lens_mm\":36.0},{\"f\":289,\"location\":[-0.353,-7.54,5.627],\"target\":[-0.309,1.314,0.972],\"roll_deg\":-1.27,\"lens_mm\":36.0},{\"f\":290,\"location\":[-0.361,-7.543,5.634],\"target\":[-0.316,1.305,0.968],\"roll_deg\":-1.33,\"lens_mm\":36.0},{\"f\":291,\"location\":[-0.365,-7.545,5.639],\"target\":[-0.319,1.298,0.964],\"roll_deg\":-1.32,\"lens_mm\":36.0},{\"f\":293,\"location\":[-0.366,-7.547,5.641],\"target\":[-0.32,1.292,0.957],\"roll_deg\":-1.31,\"lens_mm\":36.0},{\"f\":294,\"location\":[-0.365,-7.548,5.641],\"target\":[-0.321,1.287,0.948],\"roll_deg\":-1.28,\"lens_mm\":36.0},{\"f\":295,\"location\":[-0.361,-7.551,5.642],\"target\":[-0.323,1.281,0.945],\"roll_deg\":-1.3,\"lens_mm\":36.0},{\"f\":296,\"location\":[-0.355,-7.553,5.642],\"target\":[-0.325,1.276,0.94],\"roll_deg\":-1.33,\"lens_mm\":36.0},{\"f\":298,\"location\":[-0.346,-7.557,5.64],\"target\":[-0.325,1.268,0.931],\"roll_deg\":-1.35,\"lens_mm\":36.0},{\"f\":299,\"location\":[-0.335,-7.561,5.637],\"target\":[-0.326,1.261,0.922],\"roll_deg\":-1.38,\"lens_mm\":36.0},{\"f\":300,\"location\":[-0.321,-7.565,5.633],\"target\":[-0.322,1.256,0.917],\"roll_deg\":-1.33,\"lens_mm\":36.0},{\"f\":301,\"location\":[-0.305,-7.569,5.628],\"target\":[-0.316,1.252,0.913],\"roll_deg\":-1.3,\"lens_mm\":36.0},{\"f\":303,\"location\":[-0.287,-7.575,5.622],\"target\":[-0.307,1.25,0.911],\"roll_deg\":-1.25,\"lens_mm\":36.0}]",
+   "reason": "The VIP handrail is rigid and close to the camera, and it contradicts the hair-bow-driven 0.6 m arc. Measured rail top-edge rows at x=800 are 1766 (f190), 1775 (f210) and 1779 (f220); the spec projects 2085, 1963 and 1908, so the rail is out of frame in f170-190. The prow corner, where DS's wrist rests and the rail disappears under her sleeve, projects at x=1479 at f200, but the visible rail end is at x≈780. Fix: move each location along the right-wing direction u=(0.896,-0.445,0) by s = 0.20 m (f149-176), 0.159 (f200), 0.095 (f230), 0.032 (f260) and 0.006 (f303), with targets and rolls unchanged. Result: rail median 4-5 px (max 21), corner at the visible rail end, lamps ≤9 px, fascia ≤1 px, beam unchanged, CL head blob median 5.2 / max 25.3 px. Verified in a bpy build with world_to_camera_view."
+  },
+  {
+   "path": "cameras.0.keys",
+   "value_json": "[{\"f\":1,\"location\":[-0.5146,-5.668,5.4792],\"target\":[-0.5146,-7.1491,5.2587],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":7,\"location\":[-0.5143,-5.6907,5.4822],\"target\":[-0.5143,-7.15,5.265],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":13,\"location\":[-0.511,-5.7193,5.4838],\"target\":[-0.511,-7.1509,5.2706],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":19,\"location\":[-0.5097,-5.7518,5.4815],\"target\":[-0.5097,-7.1514,5.2737],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":25,\"location\":[-0.5076,-5.7885,5.4834],\"target\":[-0.5076,-7.1531,5.283],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":31,\"location\":[-0.5019,-5.8274,5.4846],\"target\":[-0.5019,-7.1552,5.2932],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":37,\"location\":[-0.4989,-5.8676,5.4859],\"target\":[-0.4989,-7.1574,5.304],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":43,\"location\":[-0.4962,-5.9082,5.4875],\"target\":[-0.4962,-7.1592,5.3139],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":49,\"location\":[-0.4939,-5.9487,5.488],\"target\":[-0.4939,-7.1605,5.3216],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":55,\"location\":[-0.493,-5.9892,5.4905],\"target\":[-0.493,-7.162,5.3308],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":61,\"location\":[-0.4952,-6.0292,5.4915],\"target\":[-0.4952,-7.1634,5.3393],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":67,\"location\":[-0.4948,-6.0685,5.491],\"target\":[-0.4948,-7.165,5.3475],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":73,\"location\":[-0.4948,-6.1071,5.4901],\"target\":[-0.4948,-7.1667,5.3556],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":74,\"location\":[-0.4952,-6.1134,5.4902],\"target\":[-0.4952,-7.167,5.3571],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":79,\"location\":[-0.4974,-6.1451,5.4914],\"target\":[-0.4974,-7.1684,5.3652],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":85,\"location\":[-0.4985,-6.1819,5.4909],\"target\":[-0.4985,-7.1697,5.3722],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":91,\"location\":[-0.4991,-6.2176,5.4892],\"target\":[-0.4991,-7.1706,5.3774],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":97,\"location\":[-0.4984,-6.2525,5.4899],\"target\":[-0.4984,-7.1717,5.3841],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":103,\"location\":[-0.4981,-6.2866,5.494],\"target\":[-0.4981,-7.173,5.394],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":109,\"location\":[-0.4983,-6.3189,5.4963],\"target\":[-0.4983,-7.1741,5.4018],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":111,\"location\":[-0.4982,-6.3292,5.4966],\"target\":[-0.4982,-7.1744,5.4038],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":115,\"location\":[-0.4974,-6.3493,5.4979],\"target\":[-0.4974,-7.1751,5.4085],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":121,\"location\":[-0.4965,-6.3775,5.5028],\"target\":[-0.4965,-7.1763,5.4181],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":127,\"location\":[-0.4956,-6.4025,5.5074],\"target\":[-0.4956,-7.1774,5.427],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":133,\"location\":[-0.4946,-6.4232,5.5093],\"target\":[-0.4946,-7.1782,5.4327],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":139,\"location\":[-0.494,-6.4387,5.5116],\"target\":[-0.494,-7.1789,5.4382],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":145,\"location\":[-0.4941,-6.4475,5.5135],\"target\":[-0.4941,-7.1794,5.4426],\"roll_deg\":1.0,\"lens_mm\":50.0},{\"f\":148,\"location\":[-0.4944,-6.449,5.5142],\"target\":[-0.4944,-7.1797,5.4442],\"roll_deg\":1.0,\"lens_mm\":50.0}]",
+   "reason": "The shot-1 camera absorbed DS's sideways drift, so the sharp chrome clamp post at the prow corner drifts off its source position. Measured post neck columns: 184 (f1), 145 (f49), 81 (f73), 34 (f85). The spec projects 190, 234, 198 and 147, errors of 89, 117 and 113 px; the cheat note claims only 20-45 px. Her forearms stay about 0.10 m from the post all shot, so the set is rigid and her head is what moves. Fix: shift each key in X (location and target together) by -0.003 to -0.047 m so the post lands on its measured column, held at -0.041 m after f85. Post error drops to ≤5.7 px. Rail rows and the skyline are unchanged, since the shift is along the rail."
+  },
+  {
+   "path": "characters.DS.shot1_face_drift_x",
+   "value_json": "[[1,-0.003],[7,-0.001],[13,-0.005],[19,-0.02],[25,-0.026],[31,-0.035],[37,-0.037],[43,-0.037],[49,-0.041],[55,-0.042],[61,-0.047],[67,-0.044],[73,-0.044],[79,-0.042],[85,-0.041],[91,-0.042],[97,-0.04],[103,-0.042],[109,-0.04],[115,-0.042],[121,-0.043],[127,-0.041],[133,-0.043],[139,-0.044],[145,-0.043]]",
+   "reason": "New extension key, documentation only. With the set-locked CAM_Shot1, DS's face point F moves by this X offset in metres (her head and upper body slide to her left, -X, while her forearms stay on the rail). With it the face boxes are reproduced at median 3.0 px / max 9.3 px. A still head would be off by about 110-155 px from f55."
+  },
+  {
+   "path": "characters.DS.shot2_anchor_points.right_hair_bow_track",
+   "value_json": "[[150,[-0.336,-6.775,5.345]],[175,[-0.336,-6.778,5.346]],[200,[-0.371,-6.762,5.347]],[230,[-0.424,-6.735,5.345]],[258,[-0.467,-6.706,5.35]]]",
+   "reason": "New extension key. With the rail-consistent CAM_Shot2, the template-tracked hair bow pixels (810,553) f150, (632,535) f175, (433,523) f200, (240,497) f230 and (88,465) f258 back-project to these points, at the same lens distance as before (0.61-0.81 m). Over the shot her head slides about 13 cm to her left. The old static bow (-0.502,-6.692,5.344) is valid only with the old arc camera."
+  },
+  {
+   "path": "cameras.1.dof.focus_keys",
+   "value_json": "[{\"f\":149,\"focus\":[-0.336,-6.775,5.345]},{\"f\":176,\"focus\":[-0.336,-6.778,5.346]},{\"f\":200,\"focus\":[0.12,0.42,1.4]},{\"f\":303,\"focus\":[0.12,0.42,1.4]}]",
+   "reason": "The rack-focus start point follows the moved bow. The focus distance is 0.61 m at f149, 0.67 m at f176 and 8.87 m to CL at f200."
+  },
+  {
+   "path": "characters.DS.lean_note",
+   "value_json": "\"VIP balcony prow, floor z 4.05; feet 0.14 m to -X of the prow corner post (-0.32,-7.105), 0.18 m behind the front rail axis (y -7.105, tube top z 5.115). Faces +Y (the pit/stage). SHOT 1 (f1-148): near-upright, torso tipped 5-10 deg forward, forearms crossed on the rail (her hands stay ~0.10 m from the corner clamp post all shot). CAM_Shot1 is locked to that post, so her own drift is HER animation: face-box centre (between eyes and nose tip) at F=(-0.46,-7.185,5.50) = feet+(0,0.10,1.45) at f1-13, then head/upper body slide to her left (-X) by shot1_face_drift_x: -0.020 m f19, -0.037 m f37, -0.041..-0.047 m f49-148, forearms staying on the rail. If an upright 1.58 m MMD model puts F at ~1.42 m, raise the root 0.03 m (do not move the rail). Head turned ~14 deg to her left (screen-right) at f1, facing the lens by ~f45; +2.4 deg body roll f15-60; the ~4 cm sink f100-148 is still absorbed by the camera keys. SHOT 2 (f149-303): same feet, leaning ~40-45 deg over the rail, right forearm on the rail at the prow corner (right wrist ~(-0.33,-7.10,5.12); the visible rail disappears under this sleeve in every frame); the right hair bow follows shot2_anchor_points.right_hair_bow_track (+-5 cm): (-0.336,-6.775,5.345) f150-175 -> (-0.371,-6.762,5.347) f200 -> (-0.424,-6.735,5.345) f230 -> (-0.467,-6.706,5.350) f258, i.e. her head slides ~13 cm to her left; head centre ~bow+(-0.08,+0.02,+0.04), facing ~13 deg right of +Y. CAM_Shot2 sits just behind/above where an upright head would be, so hide the upright stand-in for shot 2. SHOT 3: off-screen (CAM_Shot3 looks past her from behind).\"",
+   "reason": "Moves the shot-1 drift and the shot-2 bow parallax into DS's animation, which the user animates anyway, instead of into the cameras, so the rigid set lines up."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_00].center",
+   "value_json": "[-4.25,10.35,3.788]",
+   "reason": "All 12 soffit downlights (y 10.41-10.49, z 3.776-3.80) sit inside BackRiserWall (y 10.4-14.0, z 0-3.8). Ray casts in a bpy build show each one blocked by BackRiserWall. y 10.35 places them in the open soffit strip between the fascia front (10.3) and the riser face (10.4). They then project at rows 165-187 at f303, where the source shows glints under the fascia."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_01].center",
+   "value_json": "[-3.45,10.35,3.788]",
+   "reason": "Same as GalleryDownlight_00: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_02].center",
+   "value_json": "[-2.65,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_03].center",
+   "value_json": "[-1.85,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_04].center",
+   "value_json": "[-1.05,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_05].center",
+   "value_json": "[-0.25,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_06].center",
+   "value_json": "[0.55,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_07].center",
+   "value_json": "[1.35,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_08].center",
+   "value_json": "[2.15,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_09].center",
+   "value_json": "[2.95,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_10].center",
+   "value_json": "[3.75,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "geometry[name=GalleryDownlight_11].center",
+   "value_json": "[4.55,10.35,3.788]",
+   "reason": "Same: buried in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown00]",
+   "value_json": "{\"name\":\"GalleryDown00\",\"type\":\"SPOT\",\"location\":[-4.25,10.35,3.76],\"target\":[-4.25,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "The spot at (x,10.45,3.76) is enclosed in BackRiserWall. In a bpy build, rays from the light toward -Y hit the wall at 0.05 m, so none of its light leaves the box. Moved with its downlight to y 10.35, keeping the aim angle. After the patch, rays reach tier 4 at 1.36 m."
+  },
+  {
+   "path": "lights[name=GalleryDown01]",
+   "value_json": "{\"name\":\"GalleryDown01\",\"type\":\"SPOT\",\"location\":[-3.45,10.35,3.76],\"target\":[-3.45,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown02]",
+   "value_json": "{\"name\":\"GalleryDown02\",\"type\":\"SPOT\",\"location\":[-2.65,10.35,3.76],\"target\":[-2.65,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown03]",
+   "value_json": "{\"name\":\"GalleryDown03\",\"type\":\"SPOT\",\"location\":[-1.85,10.35,3.76],\"target\":[-1.85,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown04]",
+   "value_json": "{\"name\":\"GalleryDown04\",\"type\":\"SPOT\",\"location\":[-1.05,10.35,3.76],\"target\":[-1.05,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown05]",
+   "value_json": "{\"name\":\"GalleryDown05\",\"type\":\"SPOT\",\"location\":[-0.25,10.35,3.76],\"target\":[-0.25,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown06]",
+   "value_json": "{\"name\":\"GalleryDown06\",\"type\":\"SPOT\",\"location\":[0.55,10.35,3.76],\"target\":[0.55,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown07]",
+   "value_json": "{\"name\":\"GalleryDown07\",\"type\":\"SPOT\",\"location\":[1.35,10.35,3.76],\"target\":[1.35,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown08]",
+   "value_json": "{\"name\":\"GalleryDown08\",\"type\":\"SPOT\",\"location\":[2.15,10.35,3.76],\"target\":[2.15,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown09]",
+   "value_json": "{\"name\":\"GalleryDown09\",\"type\":\"SPOT\",\"location\":[2.95,10.35,3.76],\"target\":[2.95,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown10]",
+   "value_json": "{\"name\":\"GalleryDown10\",\"type\":\"SPOT\",\"location\":[3.75,10.35,3.76],\"target\":[3.75,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "lights[name=GalleryDown11]",
+   "value_json": "{\"name\":\"GalleryDown11\",\"type\":\"SPOT\",\"location\":[4.55,10.35,3.76],\"target\":[4.55,10.1,2.4],\"color\":\"#e6edff\",\"energy_w\":15,\"spot_size_deg\":50,\"spot_blend\":0.6,\"size_m\":0.04,\"volume_factor\":1.0,\"shots\":[2]}",
+   "reason": "Same: enclosed in BackRiserWall."
+  },
+  {
+   "path": "notes.3",
+   "value_json": "\"CAM_Shot1 (f1-148): the shot-1 solve translated onto F = (-0.46,-7.185,5.50), then re-locked laterally to the rigid set: every key is shifted in X (location and target together) so the rail clamp post at the prow corner (-0.32,-7.105) lands on its measured column (184 f1, 145 f49, 81 f73, 34 f85; shift -0.003 -> -0.047 m, held at -0.041 m after f85 when the post leaves frame). 50 mm, roll +1.0 constant, horizontal dolly toward -Y at DS eye level: 1.52 m -> 0.74 m from F, pitch -8.5 -> -5.5 deg, camera x -0.515 -> -0.494. DS's ~4 cm sideways head drift is character motion (characters.DS.shot1_face_drift_x), not camera motion. The camera hangs over the pit void 1.44 m -> 0.66 m in front of the rail, 1.43-1.46 m above the VIP floor (crane/drone position) - keep that air empty. DOF f/2.8 on F. Other lenses: offsets x lens/50 and pitch -atan(397 px / f_px).\"",
+   "reason": "Matches the set-locked camera patch."
+  },
+  {
+   "path": "notes.4",
+   "value_json": "\"CAM_Shot2 (f149-303): bundle-adjusted orientations on every unique frame (f%5==2 duplicates re-created by hold_residues), 36 mm fixed: pan left 16.1 deg, tilt down 5.1 deg (pitch -23.0 -> -28.1), roll +1.66 -> -1.25. Positions re-solved against the rigid VIP rail: each bundle-adjusted location moved along the prow right-wing direction u=(0.896,-0.445,0) by s = 0.20 m (f149-176) -> 0.159 (f200) -> 0.095 (f230) -> 0.032 (f260) -> 0.006 (f303), targets unchanged, so the wing rail top matches the measured rail edge f170-f303 (median 4-5 px; the old arc put it 130-390 px low / out of frame in f170-220) and the prow corner (DS's right wrist) sits at the visible rail end under her sleeve. The camera now travels ~0.3 m (x -0.57 -> -0.29), 1.41-1.57 m above the VIP floor, 0.22-0.47 m behind the rail; the remaining hair-bow parallax is DS's head motion (shot2_anchor_points.right_hair_bow_track). The x1.15 push / +12 deg roll / 390 px drift in measured.json are ORB features on DS's hair and the dancing crowd, not the camera (background lamps give x1.03, +3.45 deg image rotation).\"",
+   "reason": "Matches the rail-consistent CAM_Shot2 patch."
+  },
+  {
+   "path": "notes.5",
+   "value_json": "\"CAM_Shot2 depth of field: dof.focus_keys (extension) holds the rack focus DS hair bow (f149-176) -> CL (f200-303). build_scene.py reads only dof.focus (= CL, (0.12,0.42,1.40)); to get the pull, key Camera.dof.focus_distance 0.61 m at f149, 0.67 m at f176 -> 8.87 m at f200.\"",
+   "reason": "Focus distances recomputed for the patched camera and bow track."
+  },
+  {
+   "path": "notes.8",
+   "value_json": "\"CHARACTERS: DS root (-0.46,-7.285,4.05) facing +Y; shot-1 face point F (-0.46,-7.185,5.50) = root+(0,0.10,1.45) at f1-13, drifting by shot1_face_drift_x (to x ~-0.50 from f37); rail axis 0.08 m in front of F, rail top 0.385 m below it. Shot 2 needs her leaning ~40-45 deg over the rail, right forearm on the prow corner, with the right hair bow on right_hair_bow_track ((-0.336,-6.775,5.345) at f150 -> (-0.467,-6.706,5.350) at f258). CL root (0.12,0.42,0.15) on the disc top, 0.42 m behind the disc centre, facing the balcony; shot-2 head point (0.12,0.41,1.50) (bent forward), shot-3 face point (0.12,0.42,1.60). If an MMD model's proportions put these points elsewhere, move the model root, not the cameras.\"",
+   "reason": "Keeps the character note consistent with the camera patches."
+  },
+  {
+   "path": "notes.17",
+   "value_json": "\"CHEAT: Shot 1: the camera is locked to the rigid set (rail clamp post <=6 px), so DS's own ~4 cm drift to screen-right (f13-40, kept to f148) must be keyed on her upper body/head (shot1_face_drift_x); with a still head the face box would be off by ~110-155 px from f55. The ~4 cm sink f100-148 is still folded into the camera keys (rail out of frame by then). Her +2.4 deg roll is body roll, not camera roll. The rail tube renders 15-25 px above the source tube in f1-103 and leaves frame ~f110 instead of ~f105.\"",
+   "reason": "The old note understated the post error (20-45 px claimed, 89-117 px measured) and described the superseded trade-off."
+  },
+  {
+   "path": "notes.19",
+   "value_json": "\"CHEAT: Shot 2: CAM_Shot2 sits 0.2-0.5 m behind/above where an upright DS head would be for f149-260; DS must lean ~40-45 deg over the rail with her right forearm on the prow corner and the hair bow on right_hair_bow_track. If the MMD pose cannot reach that, adjust the pose rather than the camera: the near rail and the corner pin CAM_Shot2's position to a few cm (moving it 0.35 m in -Y would put the rail far off).\"",
+   "reason": "The old advice to move the camera 0.35 m back would break the rail alignment."
+  }
+ ],
+ "findings": [
+  "Overall: all three character anchors reproduce as reported. With the builder-faithful camera (euler interpolation plus hold bake) I measured shot-1 DS face 4.2/9.3 px, shot-2 CL head blob 6.2/20.4 px and shot-3 CL face 12.0/25.9 px (median/max). bpy world_to_camera_view matches. The schema is valid: 8 supported geometry types, every material exists, names are unique, and camera keys cover 1-148, 149-303 and 304-452. The cadence holds are justified: frame-to-frame differences are 0.00-0.07 for f%5==2 against 7-12 for the other frames, and 1.38 for f%5==3 in shot 1. The problems are near, rigid set elements that the cameras were bent to avoid, plus one geometry bug. All fixes are in the patches, and the patched spec builds and checks clean.",
+  "MAJOR - Shot 2 VIP handrail, f160-f250 (only f303 was checked before). The source shows the chrome rail as a diagonal at the lower right from f160 on. Fitted top-edge rows at x=800: 1766 (f190), 1775 (f210), 1779 (f220), 1787 (f250), 1785 (f260), 1774 (f280). The spec projects 2085, 1963, 1908, 1791, 1781 and 1783: the rail is out of frame for f170-f190 and 130-190 px low at f210-f220. The prow corner, where DS's right wrist rests and the rail disappears under her sleeve, projects at x=1479 at f200 and 836 at f240, against visible rail ends at ≈780 and ≈580. Cause: the 0.6 m camera arc was solved from the parallax of DS's hair bow, which belongs to a moving character. The extended wing line already passes through the measured rail, so only motion along the rail is wrong. Patch: move each location along u=(0.896,-0.445,0) by 0.20 m (f149-176) down to 0.006 m (f303), with targets unchanged. Result: rail median 4-5 px (max 21), corner at the sleeve edge, CL blob median 5.2 / max 25.3 px, lamps ≤9 px, fascia ≤1 px, beam unchanged. DS's bow then follows a track that slides about 13 cm to her left (in the patch).",
+  "MAJOR - Shot 1 clamp post at the prow corner. I tracked its chrome neck: 184 (f1), 178 (f13), 166 (f25), 145 (f49), 113 (f61), 81 (f73), 34 (f85). The spec gives 190-234, so the error is 52 px at f25, 89 px at f49 and 117 px at f73, staying above 100 px until the post leaves frame around f91. The note's '20-45 px in f1-69' understates this. DS's hands stay about 0.10 m from the post while her face moves about 4 cm toward screen-right, so the drift is hers, not the set's. The skyline at infinity moves only about -20 px. Patch: shift the camera in X by -0.003 to -0.047 m to lock the post (≤5.7 px), and carry the drift as characters.DS.shot1_face_drift_x. Face anchors with the drift: median 3.0 / max 9.3 px.",
+  "BUG - All 12 GalleryDownlight_* emitters (y 10.41-10.49, z 3.776-3.80) and all 12 GalleryDown* spot lights (y 10.45, z 3.76) are inside BackRiserWall (x ±4.7, y 10.4-14.0, z 0-3.8). Ray casts in a bpy build: every camera ray at f260/f303 is blocked by BackRiserWall, and light rays toward -Y hit the wall at 0.05 m, so these lights do nothing. They are meant to sit at the source's glints under the fascia (projected rows 165-187 at f303; glints near x 900-1015, row ~185). Patch: y 10.35, in the 10 cm soffit strip between the fascia front (10.3) and the riser face (10.4). After the patch all are visible and the spots light tier 4.",
+  "MINOR - Shot 1 rail height: measured tube centres at x=960 are 1280, 1363, 1491 and 1647 (f1/25/49/73); the spec axis gives 1264, 1338, 1475 and 1625, so the rail is 15-25 px too high. The source rail leaves frame around f104-105 (f106 is empty to row 1919); the spec's tube top is still at 1877 at f106 and leaves around f110. The consolidator's check put the brightest highlight row at z 5.085, which is the bottom of the tube. Lowering the rail about 9 mm would fix shot 1 but worsen shot 2 at f280 by about 10-20 px, so it stays as a documented cheat.",
+  "MINOR - Shot 1, left of the corner post: the source rail runs straight to the frame edge (highlight row flat at 1269-1271 over x 10-130 at f1). The spec's right wing recedes from the post and rises 15-40 px by the left edge. Source inconsistency; I accept it.",
+  "MINOR crowd clipping, found by replicating build_crowd's RNG exactly (322 members): a Tier4_Filler member at (-1.96,10.35) has its head at 4.16 m, inside the GalleryBack fascia and BackRiserWall. Table_15_Guests (-2.44,10.2) has its head at 3.96 m, inside the fascia. Table_03_Guests (4.46,4.24) stands at z 0.6 inside RightTerrace2 (top 1.2). Members at Tier1 y 5.79-5.85, Terrace1_R x 4.26-4.29 and Table_01 (4.27,1.70) overlap risers by 0.1-0.15 m, and VIP_Standing_L (-3.18,-9.83) clips sofa A. Fix by trimming rects (Tier4_Filler and Table_15_Guests to y ≤10.1, Table_03_Guests to x ≤4.35). That reshuffles every later zone, so re-run crowd/make_crowd.py and checks.py; I gave no patch.",
+  "MINOR lights: GalleryBlue is a 9 m square centred at y 12.2, so about 30% of it (y 14.0-16.7) lies outside the back wall. The BlueWash_Pit, BlueWash_Tiers and BlueWash_Shot3 area planes at z 9.0 cut through LightingTruss (z 8.95-9.25, y 2.09-2.39). CL_Fill (a 2 m area at (2.02,-1.58,1.75)) sits inside the Pit_Front_R crowd at head height, out of the shot-3 frame. Energies were calibrated with this layout, so the impact is low.",
+  "BUILDER caveat, not a spec bug: build_crowd keys bounce every period_frames//2 frames. With period 30, t advances by π per key, so variants with phase 0 or 15 never bounce (sin=0 at every key) and half the crowd is bounce-free. Any even period has the same problem. Use an odd period (29 or 31) or key every period//4.",
+  "Verified OK, measured on the frames: back-gallery fascia band at f303 rises at row ~80 and falls at ~175 for x=600 (spec 85.7/171.8), and 73/163 for x=1040 (spec 76/162). Stage beam centre at f303 measures 641/640/640 at rows 10/210/410 (spec 639/634/629), and 625/612 at f262 (spec 615/612). The lit stage pool's left edge at f280 is 448 against the disc's leftmost point at 426, and its far edge is consistent. Lamps match the source by eye at f175, f210 and f303. Shot 3: the feet of the row behind CL (y 2.4-2.95) project at rows 846-1141, against the source's shoe line at about 1000-1150. Knee-to-floor spans 507 px against about 550, and the CL face box (322 px, 0.218 m at 8.94 m) is consistent with the 0.215 m note.",
+  "Scale check on the 0.23 m face box: DS's shoulders span 620 px at f1, giving 0.35 m at the 0.23 m scale and 0.26 m at 0.17 m. The rail tube is 52-76 px tall, giving about 0.03 m. Both support the consolidator's 0.23 m choice over the 0.17 m prior.",
+  "Artifacts: patched spec /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/critic/spec_patched.json, which contains every patch above; it builds with build_scene.py to /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/critic/patched.blend. Check suite: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/critic/mycheck.py, with results in chk_orig.json and chk_patched.json in the same folder. Overlays: posts.jpg, rail2b.jpg, rail2c.jpg and railend.jpg (DS's sleeve occluding the rail end) in the same folder."
+ ],
+ "anchor_checks": [
+  {
+   "what": "S1 DS face-box centre vs F (spec as submitted)",
+   "f": 1,
+   "expected_px": [
+    456,
+    527
+   ],
+   "projected_px": [
+    456.4,
+    524
+   ],
+   "err_px": 3
+  },
+  {
+   "what": "S1 DS face-box centre vs F (spec as submitted)",
+   "f": 145,
+   "expected_px": [
+    575.5,
+    758.5
+   ],
+   "projected_px": [
+    570.1,
+    751.4
+   ],
+   "err_px": 8.9
+  },
+  {
+   "what": "S1 rail clamp post neck column (prow corner post, z 5.0), measured by column profile (spec as submitted)",
+   "f": 49,
+   "expected_px": [
+    145
+   ],
+   "projected_px": [
+    233.6
+   ],
+   "err_px": 88.6
+  },
+  {
+   "what": "S1 rail clamp post neck column (spec as submitted)",
+   "f": 73,
+   "expected_px": [
+    81
+   ],
+   "projected_px": [
+    197.6
+   ],
+   "err_px": 116.6
+  },
+  {
+   "what": "S1 rail clamp post neck column (spec as submitted)",
+   "f": 85,
+   "expected_px": [
+    34
+   ],
+   "projected_px": [
+    147.1
+   ],
+   "err_px": 113.1
+  },
+  {
+   "what": "S1 rail clamp post neck column (PATCHED set-locked camera)",
+   "f": 73,
+   "expected_px": [
+    81
+   ],
+   "projected_px": [
+    86.7
+   ],
+   "err_px": 5.7
+  },
+  {
+   "what": "S1 DS face-box centre with shot1_face_drift_x (PATCHED)",
+   "f": 145,
+   "expected_px": [
+    575.5,
+    758.5
+   ],
+   "projected_px": [
+    575.9,
+    751.5
+   ],
+   "err_px": 7.1
+  },
+  {
+   "what": "S1 rail tube centre (measured top/bottom edges) vs axis z 5.099 at x=960",
+   "f": 1,
+   "expected_px": [
+    1280
+   ],
+   "projected_px": [
+    1264.2
+   ],
+   "err_px": 15.8
+  },
+  {
+   "what": "S1 rail tube centre vs axis at x=960",
+   "f": 73,
+   "expected_px": [
+    1647
+   ],
+   "projected_px": [
+    1625.4
+   ],
+   "err_px": 21.6
+  },
+  {
+   "what": "S2 CL head blob vs (0.12,0.41,1.50) (spec as submitted)",
+   "f": 191,
+   "expected_px": [
+    455,
+    1066
+   ],
+   "projected_px": [
+    436,
+    1058.6
+   ],
+   "err_px": 20.4
+  },
+  {
+   "what": "S2 CL head blob (spec as submitted)",
+   "f": 227,
+   "expected_px": [
+    557,
+    1035
+   ],
+   "projected_px": [
+    557.8,
+    1035.1
+   ],
+   "err_px": 0.8
+  },
+  {
+   "what": "S2 CL head blob (PATCHED camera)",
+   "f": 191,
+   "expected_px": [
+    455,
+    1066
+   ],
+   "projected_px": [
+    431.6,
+    1056.6
+   ],
+   "err_px": 25.3
+  },
+  {
+   "what": "S2 VIP rail top at x=800, measured edge fit (spec as submitted; rail out of frame)",
+   "f": 190,
+   "expected_px": [
+    1766
+   ],
+   "projected_px": [
+    2084.5
+   ],
+   "err_px": 318.5
+  },
+  {
+   "what": "S2 VIP rail top at x=800 (spec as submitted)",
+   "f": 210,
+   "expected_px": [
+    1775
+   ],
+   "projected_px": [
+    1962.8
+   ],
+   "err_px": 187.8
+  },
+  {
+   "what": "S2 VIP rail top at x=800 (spec as submitted)",
+   "f": 220,
+   "expected_px": [
+    1779
+   ],
+   "projected_px": [
+    1907.6
+   ],
+   "err_px": 128.6
+  },
+  {
+   "what": "S2 VIP rail top at x=800 (spec as submitted)",
+   "f": 260,
+   "expected_px": [
+    1785
+   ],
+   "projected_px": [
+    1780.5
+   ],
+   "err_px": 4.5
+  },
+  {
+   "what": "S2 VIP rail top at x=800 (PATCHED)",
+   "f": 220,
+   "expected_px": [
+    1779
+   ],
+   "projected_px": [
+    1781.9
+   ],
+   "err_px": 2.9
+  },
+  {
+   "what": "S2 VIP rail top at x=800 (PATCHED)",
+   "f": 190,
+   "expected_px": [
+    1766
+   ],
+   "projected_px": [
+    1787.4
+   ],
+   "err_px": 21.4
+  },
+  {
+   "what": "S2 prow corner / DS wrist column vs visible rail end under her sleeve (spec as submitted)",
+   "f": 200,
+   "expected_px": [
+    780
+   ],
+   "projected_px": [
+    1479
+   ],
+   "err_px": 699
+  },
+  {
+   "what": "S2 prow corner column vs visible rail end (PATCHED)",
+   "f": 200,
+   "expected_px": [
+    780
+   ],
+   "projected_px": [
+    780.1
+   ],
+   "err_px": 0.1
+  },
+  {
+   "what": "S2 back-gallery fascia top edge z 4.48 at x=600 (my band-edge measurement)",
+   "f": 303,
+   "expected_px": [
+    600,
+    80
+   ],
+   "projected_px": [
+    600,
+    85.7
+   ],
+   "err_px": 5.7
+  },
+  {
+   "what": "S2 back-gallery fascia bottom edge z 3.80 at x=600",
+   "f": 303,
+   "expected_px": [
+    600,
+    175
+   ],
+   "projected_px": [
+    600,
+    171.8
+   ],
+   "err_px": 3.2
+  },
+  {
+   "what": "S2 StageSpot beam centreline at row 410",
+   "f": 303,
+   "expected_px": [
+    639.6,
+    410
+   ],
+   "projected_px": [
+    628.9,
+    410
+   ],
+   "err_px": 10.7
+  },
+  {
+   "what": "S2 StageSpot beam centreline at row 10",
+   "f": 262,
+   "expected_px": [
+    624.7,
+    10
+   ],
+   "projected_px": [
+    615,
+    10
+   ],
+   "err_px": 9.7
+  },
+  {
+   "what": "S2 stage disc r0.85 leftmost point vs lit-pool left edge",
+   "f": 280,
+   "expected_px": [
+    448,
+    1258
+   ],
+   "projected_px": [
+    425.8,
+    1257.6
+   ],
+   "err_px": 22.2
+  },
+  {
+   "what": "S2 GalleryDownlight_09 (spec: occluded by BackRiserWall; projected position vs source glint)",
+   "f": 303,
+   "expected_px": [
+    906,
+    185
+   ],
+   "projected_px": [
+    897,
+    168
+   ],
+   "err_px": 19.2
+  },
+  {
+   "what": "S3 CL face-box centre vs (0.12,0.42,1.60), locked camera",
+   "f": 304,
+   "expected_px": [
+    562.5,
+    505.5
+   ],
+   "projected_px": [
+    566,
+    491
+   ],
+   "err_px": 14.9
+  },
+  {
+   "what": "S3 CL face-box centre",
+   "f": 382,
+   "expected_px": [
+    565,
+    490
+   ],
+   "projected_px": [
+    566,
+    491
+   ],
+   "err_px": 1.4
+  },
+  {
+   "what": "S3 CL face-box centre",
+   "f": 448,
+   "expected_px": [
+    557.5,
+    466.5
+   ],
+   "projected_px": [
+    566,
+    491
+   ],
+   "err_px": 25.9
+  }
+ ]
+}

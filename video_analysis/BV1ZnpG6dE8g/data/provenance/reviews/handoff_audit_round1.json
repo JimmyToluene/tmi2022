@@ -1,0 +1,417 @@
+[
+ {
+  "auditor": "restore",
+  "checked": [
+   "Checksums: sha256 and size of all 4 files match MANIFEST.json. handoff/HANDOFF.md is byte-identical to the committed video_analysis/BV1ZnpG6dE8g/HANDOFF.md.",
+   "git bundle verify reports 'is okay' for both bundles when run inside a repo. Heads: branch b1907d07 in both; the full bundle also carries main 0d395a16. The incremental bundle requires 0d395a1.",
+   "Incremental path works as written in HANDOFF section 3. I ran git clone --branch main --single-branch file:///home/user/tmi2022 base, then the exact fetch command from line 56. The branch head is b1907d0761b6ac695ecdce1000ca925d92de9979, equal to MANIFEST branch_head. main..HEAD has 11 commits, matching the MANIFEST list. The tree is identical to the full restore.",
+   "Workdir tarball extracts to workdir/ with 734 files, equal to MANIFEST workdir_files. It contains no jpg/png/mp4/wav and no cookies or tokens (searched for SESSDATA, buvid3, bili_jct, ghp_, sk-ant-). All 36 .blend files inside pack only CitySkyline_img and reference no external files.",
+   "Every repo path named in HANDOFF sections 2, 4, 6, 7, 8 and 9 exists in the restored repo (all scripts, data/*.json, vmd, blend, posefit, report.html, figures/timeline_measured.png). final/, consol/{scene_spec,cheats}.json, the survey dirs, cv/digest/audio, posefit_final, vmd_final, blend and session_records/{workflows,journals} exist in workdir. All 9 workflow run IDs in the section 10 table are present.",
+   "Workdir copies match the repo. posefit_final, vmd_final and blend/{set,set_with_mannequins}.blend are byte-identical to the repo. data/*.json equals final/*.json except meta.json, which only drops the danmaku key. consol/scene_spec.json differs from the final spec only by rail_top_z 5.115.",
+   "py_compile passes for all 23 .py files under video_analysis/BV1ZnpG6dE8g. json.load passes for all 18 .json files in data/, blender/, blender/vmd and blender/posefit.",
+   "VMD headers. All three files carry the magic 'Vocaloid Motion Data 0002' and parse with 0 trailing bytes.",
+   "DS.vmd: model DS, 7232 bone keys (16 bones x 452, frames 0-451), 2712 morph keys over 6 morphs x 452 (あ max 0.45, 笑い 0.5, にこり 1.0, ∧ 0.4, 困る 0.2, まばたき 0.0), 0 camera keys.",
+   "CL.vmd: model CL, 7232 bone keys (16 x 452, frames 0-451), 904 morph keys (まばたき max 0.85, にこり max 0.55).",
+   "camera.vmd: model カメラ・照明, 452 camera keys over frames 0-451, FOVs {40, 53, 8}, perspective flag 0, 0 bone keys.",
+   "Both .blend files: frame range 1-452, 30 fps, 1080x1920. Shot1/Shot2/Shot3 markers sit at 1/149/304 and are bound to CAM_Shot1/2/3, plus 31 beat markers. Lenses are 50/36/247.4 mm on a 36 mm VERTICAL sensor.",
+   "MMD_DS_Root is at (-0.46, -7.285, 4.05) with rotZ 180, and MMD_CL_Root is at (0.12, 0.42, 0.15). The only image is CitySkyline_img (packed). There are no movie clips, sounds or libraries, and report_missing_files finds nothing.",
+   "set_with_mannequins.blend contains DS_mannequin, DS_mannequin_arm, DS_mannequin_mesh and the CL_ equivalents. The mannequins animate without mmd_tools registered.",
+   "DS.vmd and CL.vmd imported onto fresh mmd_skeleton.build_mmd_model rigs at frame 1 produce actions over 1-452, and 19 of 22 pose bones differ between f1 and f200. camera.vmd imported onto a fresh camera gives an MMD_Camera action over 1-452.",
+   "Rebuilding the scene and VMDs from the bundle with the section 7B commands (in blender/) reproduces the committed outputs exactly. build_scene.py gives a set.blend whose objects, 452-frame camera matrices, markers, materials and scene props match the committed file (570 objects).",
+   "export_camera_vmd.py gives camera.vmd and camera_check.json byte-identical to the committed files. export_motion_vmd.py --check 1 gives DS.vmd and CL.vmd byte-identical, with a 0.0 cm round-trip.",
+   "pose_fit.py (56 s for CL, 75 s for DS) gives pose_CL.json and pose_DS.json byte-identical to the committed files. assemble_vmd_preview.py gives a with_mannequins.blend whose signature matches the committed one (576 objects).",
+   "Analysis reproducibility from the tarball. merge_annotations, kinematics, relations and measured reproduce final/{annotations_verified, events_verified, patch_log, kinematics, relations, measured}.json byte-identically.",
+   "build_report.py run on workdir final/ rebuilds report.html byte-identical to the repo copy. plot_timeline.py run on workdir final/camera_solved.json rebuilds timeline_measured.png byte-identically.",
+   "HANDOFF section 5 numbers recompute exactly. camera_check: 151 frames, median 0.206, p95 0.687, max 0.908 px; per shot 0.221/0.908, 0.049, 0.594. Pose reprojection median/p90: DS shot 1 6.8/23.7, DS shot 2 6.9/53.5, CL shot 2 3.1/10.6, CL shot 3 8.1/19.3. Integer-FOV distance rescale maximum is 4.05%.",
+   "Section 2 relationship counts check out: 56 edges (6 confirmed, 47 plausible, 3 refuted) and 16 refuted_claims. relations.json has 56 intervals. analysis_model keys match section 9.",
+   "The mmd_tools clone is commit e321bd02 (manifest 4.5.14), and the opencc wheel is at blender_mmd_tools/mmd_tools/wheels/."
+  ],
+  "findings": [
+   {
+    "severity": "blocker",
+    "where": "HANDOFF.md section 3, lines 50-51 (bundle table) and lines 60-65 (新建仓库 recipe); make_handoff_bundle.py line 46; MANIFEST.json",
+    "problem": "tmi2022_full.bundle was made from a shallow repo: /home/user/tmi2022/.git/shallow contains 64ee88867250fcc06e9752704a8fcdb95d37bb89. Because of that, the documented clone command fails. The table claim that it is the 整个分支，包含 main 的历史 is also false: it holds 67 main commits, while GitHub main has 121. Even after a manual workaround, the restored repo cannot be pushed to a new empty repo.",
+    "evidence": "Running `git clone -b claude/video-character-analysis-v6hpo4 tmi2022_full.bundle BV1ZnpG6dE8g` gives: `error: Could not read 830edc22a2eed4f5aa602ec3ddc3d952bf0c5328 / fatal: Failed to traverse parents of commit 64ee888... / fatal: remote did not send all necessary objects`. `--depth 1` fails the same way. The workaround (git init, write the boundary SHA to .git/shallow, then git fetch the bundle 'refs/heads/*:refs/heads/*') restores b1907d0. But pushing that repo to an empty bare repo is rejected with `! [remote rejected] ... (shallow update not allowed)`. GitHub rejects such pushes the same way.",
+    "fix": "Replace lines 62-65 with a recipe I tested end to end: `git clone https://github.com/JimmyToluene/tmi2022 BV1ZnpG6dE8g && cd BV1ZnpG6dE8g && git fetch /path/to/tmi2022_branch_incremental.bundle claude/video-character-analysis-v6hpo4:claude/video-character-analysis-v6hpo4 && git checkout claude/video-character-analysis-v6hpo4 && git remote set-url origin git@github.com:<你>/<新仓库>.git && git push -u origin claude/video-character-analysis-v6hpo4`. This gives a non-shallow 121-commit main, head b1907d0, and the push to an empty remote succeeds. Change table line 51 to: `浅历史（main 只到 64ee888），不能直接 git clone；离线恢复用：git init → echo 64ee88867250fcc06e9752704a8fcdb95d37bb89 > .git/shallow → git fetch <bundle> 'refs/heads/*:refs/heads/*'（此仓库不能推到新空仓库）`. Better still, in make_handoff_bundle.py run `git fetch --unshallow origin` before `git bundle create` (GitHub read access works: git ls-remote and a full clone both succeeded). Also add `\"full_bundle_shallow_boundary\": \"64ee88867250fcc06e9752704a8fcdb95d37bb89\"` to MANIFEST until the bundle is rebuilt."
+   },
+   {
+    "severity": "major",
+    "where": "video_analysis/BV1ZnpG6dE8g/data/camera_solved.json (also workdir final/camera_solved.json, figures/timeline_measured.png, report.html); HANDOFF.md section 9 camera_camera_solved.json row (line 228); section 6 item 3 (lines 125-127)",
+    "problem": "camera_solved.json is described as 由 spec 逐帧求出, but it was not computed from the delivered blender/scene_spec.json. It is the output of the pre-consolidation preview spec (workdir blend/preview_spec.json). The committed timeline figure and report.html were built from this stale file, and analysis_model.json still says 235 mm in 3 places. The fix in section 6 item 3 (edit status.json only) does not correct the embedded camera data.",
+    "evidence": "`python3 blender/camera_curves.py blender/scene_spec.json out.json` differs from data/camera_solved.json on all 452 frames. At f1 location is [-0.5112,-5.668,5.4792] vs committed [-0.1221,-5.5352,5.4242]. At f304 lens_mm is 247.4 vs 235.0. Yaw differs by up to 331 deg. camera_curves.py run on workdir/blend/preview_spec.json is byte-identical to data/camera_solved.json. plot_timeline.py and build_report.py on that stale file reproduce the committed PNG and report.html byte-for-byte. grep '235 mm' hits data/analysis_model.json 3 times and final/status.json once.",
+    "fix": "From the repo root, with R=video_analysis/BV1ZnpG6dE8g: `python3 $R/blender/camera_curves.py $R/blender/scene_spec.json $R/data/camera_solved.json && cp $R/data/camera_solved.json $S/final/camera_solved.json`. Then replace '235 mm' with '247 mm' in data/analysis_model.json and final/analysis_model.json, and also fix status.json. Then run `python3 $R/scripts/plot_timeline.py $S/digest/frame_signals.json $S/cv/shots.json $S/audio/audio_metrics.json $S/final/camera_solved.json $R/figures/timeline_measured.png` and `python3 $R/scripts/build_report.py $S/final $R/scripts/report_template.html $R/report.html`. If this is not redone, change the section 9 row to: `camera_solved.json：由汇总前的预览 spec（工作包 blend/preview_spec.json，镜头 3 235 mm）求出，与 blender/scene_spec.json 不一致；时间轴图和报告也基于它`."
+   },
+   {
+    "severity": "major",
+    "where": "blender/README.md 在 Blender 里使用 step 4 (line 35) and step 6 (line 37); HANDOFF.md section 8 line 199 and section 11 line 276",
+    "problem": "mmd_tools places VMD frame 0 at scene.frame_current (mmd_tools/core/vmd/importer.py line 276: `self.__frame_start = bpy.context.scene.frame_current`). README line 22 invites the user to play the preview first. If they then import from any frame other than 1, the motion is shifted. Step 4 also names a non-existent option 帧偏移; the option is 'Margin'. The section 11 pitfall (在已打开的 .blend 里导入时动画不生效) misdiagnoses this behaviour as an opened-file problem.",
+    "evidence": "Importing CL.vmd after the scene was left at frame 452 produced action CL_bone with frame_range (452, 903), so frames 1-452 showed no motion. Importing at frame 1 gives (1, 452). Importing camera.vmd into the opened set_with_mannequins.blend at frame 1 works: the action covers 1-452 and the shot 2 error is 0.03 px.",
+    "fix": "Change README step 4 to: `4. 先把时间轴当前帧设回第 1 帧（mmd_tools 以当前帧作为 VMD 第 0 帧），再选中模型，MMD Tools 面板 › 导入 VMD，选择 DS.vmd 或 CL.vmd。Scale 0.08，Margin 0。`. Add the same 先回到第 1 帧 sentence to step 6. Change HANDOFF line 276 to: `VMD 导入以 scene.frame_current 为第 0 帧：导入前必须把当前帧设为 1（factory reset 后默认为 1，所以新场景里不出问题）；在已打开的 .blend 里只要当前帧为 1 也能正常导入。相机 VMD 要导到相机物体上，不能导到 rig 根上。`"
+   },
+   {
+    "severity": "major",
+    "where": "blender/README.md step 6 (line 37)",
+    "problem": "Following step 6 as written does not swap in the MMD camera. The Shot1/2/3 timeline markers are bound to CAM_Shot1/2/3, so on every frame change Blender switches scene.camera back to those cameras, for both playback and render.",
+    "evidence": "I imported camera.vmd onto a new camera in set_with_mannequins.blend and set scene.camera to it. frame_set(50/200/400) then gave active cameras CAM_Shot1, CAM_Shot2 and CAM_Shot3. After `for m in scene.timeline_markers: m.camera = None`, the new camera stayed active on all three frames.",
+    "fix": "Append to step 6: `然后解除标记绑定：删除 Shot1/Shot2/Shot3 三个标记，或在 Python 控制台执行 for m in C.scene.timeline_markers: m.camera = None，再把 MMD 相机设为活动相机；否则播放和渲染仍会切回 CAM_Shot1/2/3。`"
+   },
+   {
+    "severity": "minor",
+    "where": "blender/README.md 重新生成 line 88; HANDOFF.md section 7B line 172",
+    "problem": "The README export_camera_vmd command writes its check report to blender/cam_check.json. The committed file, which HANDOFF section 4 line 79 and section 6 item 1 step 3 compare against, is vmd/camera_check.json. HANDOFF also claims its commands are identical to the README, but they differ.",
+    "evidence": "README: `--check cam_check.json`. HANDOFF: `--check vmd/camera_check.json`. README also omits `--chars DS,CL` (harmless default), omits `--samples 10 --frames 1-452 --label 1` on render_video, and omits `[--render ...]` and `[--plates ...]`.",
+    "fix": "README line 88: change `--check cam_check.json` to `--check vmd/camera_check.json`. Then either paste the HANDOFF section 7B block into README unchanged, or change HANDOFF line 172 to `README 的\"重新生成\"是同一流程的默认参数版（render_video 默认 --samples 12）。`"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 6 item 2, lines 121-122",
+    "problem": "The render command has no interpreter and the wrong .blend path when run from blender/. The stated output size is also wrong.",
+    "evidence": "No BV1ZnpG6dE8g_set_with_mannequins.blend exists in blender/; it is in blender/blend/. render_video.py sets resolution_percentage = round(0.333*100) = 33. The running render writes 356x633 PNGs (render_final/frames/r0001.png), and ffmpeg's trunc-to-even filter gives a 356x632 MP4, not 360x640.",
+    "fix": "Line 121: `python3 render_video.py blend/BV1ZnpG6dE8g_set_with_mannequins.blend render_final --scale 0.333 --samples 10 --frames 1-452 --label 1`（在 blender/ 下执行）. Line 122: change `输出 360×640 的无声 H.264 MP4` to `输出 render_final/BV1ZnpG6dE8g_set_with_mannequins.mp4，356×632，无声 H.264`."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 7A line 160 (collect_journals) and section 6 item 3 line 126 (build_report)",
+    "problem": "The journal path in the collect_journals command does not exist in the bundle. The section 6 build_report command mixes workdir-relative and repo-relative paths, and from either root one of them is missing.",
+    "evidence": "The tarball stores journals as workdir/session_records/journals/<runId>.journal.jsonl. No */journal.jsonl tree exists. With the corrected glob, collect_journals.py reproduces all 31 files in raw/ byte-identically.",
+    "fix": "Line 160: `python3 $R/scripts/collect_journals.py $S/raw $S/session_records/journals/*.journal.jsonl`. Line 126: `python3 $R/scripts/build_report.py $S/final $R/scripts/report_template.html $R/report.html`（仓库根目录执行，S=解包后的 workdir）. With these, the report rebuilds byte-identically."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 7A, lines 150-151 and 167",
+    "problem": "Followed literally, the 7A pipeline stops before build_report. ffmpeg will not create $S/frames or $S/audio. build_report.py also needs files in $S/final that no listed command produces.",
+    "evidence": "The section 7A build_report command fails with `FileNotFoundError: .../final/frame_signals.json`, because build_digest writes frame_signals.json to $S/digest/. build_report also loads meta.json, analysis_model.json, context_cards.json and method_cards.json from final_dir, and no 7A command writes them. final/analysis_model.json is identical to raw/integrate_model.json as output by collect_journals.",
+    "fix": "Insert `mkdir -p $S/frames $S/audio` before line 150. Insert before line 167: `cp $S/digest/frame_signals.json $S/final/ && cp $S/raw/integrate_model.json $S/final/analysis_model.json   # meta.json、context_cards.json、method_cards.json、status.json 为手工整理，直接用数据包 final/ 中的版本`."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 2 lines 27-29; blender/README.md line 45",
+    "problem": "Section 2 contradicts itself. If shot 1 repeated every frame with f%5 in {2,3}, the clip would have 331 unique images, not 360. The data shows that only f%5==2 frames are pixel repeats in shot 1. The extra hold at f%5==3 is a camera-only hold taken from the survey.",
+    "evidence": "annotations_verified dup_of in shot 1: 31 duplicates (30 with f%5==2, 1 with f%5==3). measured.json cadence: rule 'f % 5 == 2 repeat f-1', n_unique 360. scene_spec meta.hold_residues = {\"1\":[2,3],\"2\":[2],\"3\":[2]}, from survey_cam1 ('image only moves on 3 of every 5 frames'). DS.vmd holds the pose on all 30 shot-1 frames with f%5==3, discarding 29 solved poses at those frames.",
+    "fix": "HANDOFF line 28: `镜头 1：f % 5 == 2 的帧与前一帧完全相同；勘测发现推轨在 f % 5 == 3 也不动，所以摄影机和 VMD 在 f % 5 ∈ {2,3} 上保持（VMD 因此丢弃了 29 个 f%5==3 的姿势解）`. README line 45: change `镜头 1 每 5 帧有 2 帧重复` to `镜头 1 每 5 帧有 1 帧完全重复，摄影机另在 1 帧上停住`."
+   },
+   {
+    "severity": "minor",
+    "where": "blender/README.md step 6, line 37 (它和场景相机逐帧一致：回读校验误差中位数为 0.2 px，最大 0.9 px)",
+    "problem": "The 0.2/0.9 px figure only holds for probe points near the subject (export_camera_vmd.py PROBES, all within about 0.5 m of DS's face or CL's head). Because of the integer-FOV distance rescale, scenery at other depths is offset several to tens of px at the frame edges.",
+    "evidence": "Independent check: I unprojected a 3x3 image grid through the scene cameras at several depths and reprojected it through the imported camera.vmd. At the subject plane the error is 0.00 px. At half or 3x the subject depth, or at 20 m, the maximum is 11 px in shot 1, 2.8 px in shot 2, and 37 px in shot 3 (21.8 px at 20 m).",
+    "fix": "Append: `（这是主体附近探针点的误差。VMD 只存整数视角并用距离补偿，所以前后远离主体的背景在画面边缘会偏：镜头 1 约 10 px，镜头 3 约 20–37 px。）`"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 11 line 278 (玻璃反射伪影)",
+    "problem": "The stated glass fix is not in the delivered set. It only exists in the old preview spec.",
+    "evidence": "workdir blend/preview_spec.json has glass roughness 0.35, alpha 0.14. blender/scene_spec.json and both delivered .blend files have glass roughness 0.04, alpha 0.25 and window_glass 0.02, 0.12.",
+    "fix": "Either set scene_spec.json materials.glass to {\"roughness\": 0.35, \"alpha\": 0.14} and rebuild, or change the line to: `玻璃反射伪影：预览 spec 曾用粗糙度 0.35 / alpha 0.14；最终 scene_spec.json 为 glass 0.04 / 0.25、window_glass 0.02 / 0.12。`"
+   },
+   {
+    "severity": "minor",
+    "where": "blender/README.md line 26 ((不含原片画面和弹幕)); HANDOFF.md section 9 meta.json row (line 233)",
+    "problem": "The repo still contains danmaku text despite the claim that it was removed.",
+    "evidence": "report.html embeds data.meta.danmaku with all 80 entries, because it was built from workdir final/meta.json; for example {\"t\":0.0,\"text\":\"依旧澳大利亚\"}. data/annotations_verified.json env text quotes danmaku 52 times, for example \"Danmaku at this frame: '依旧澳大利亚'\".",
+    "fix": "Before rebuilding the report, run `cp $R/data/meta.json $S/final/meta.json` (this copy has no danmaku), and in scripts/build_report.py change `\"danmaku\": s[\"danmaku_here\"]` to `\"danmaku\": len(s[\"danmaku_here\"])`. Otherwise change the README and HANDOFF wording to: `data/meta.json 不含弹幕列表；report.html 和标注的 env 描述里仍引用弹幕原文`."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 10 table (lines 249-258)",
+    "problem": "Several paths the table promises are absent or different in the tarball.",
+    "evidence": "render_final/ is absent: the render is still running at about 302/452 frames, and the bundler keeps only render_final/*.mp4. raw/ holds 4 survey_*.json files (arch, cam1, cam2, cam3), not 6. c01/, c03/ and c07/ are absent (image-only; their scripts are top-level c01_*.py and c07_gen.py). session_records/workflows/scripts/ holds only bv1znpg6de8g-set-survey-wf_f416f09c-07e.js. The other runs' scripts exist only inside the wf_*.json \"script\" field and as workdir/wf1_subset.js, wf1_verify_only.js and wf2_relationships.js.",
+    "fix": "raw/ row: `13 块标注、核查补丁、4 个勘测片段（survey_arch/cam1/cam2/cam3.json）、语境调研；survey_crowd/light 用 collect_journals.py 从 session_records/journals 重新生成`. c01…c13 row: `c02、c04–c06、c08–c13/（c01、c03、c07 只有图片，已去掉；脚本在根目录 c0*_*.py）`. session_records/workflows row: `运行记录 wf_*.json（script 字段内含完整脚本）；scripts/ 只有 set-survey 的 .js；根目录另有 wf1_subset.js、wf1_verify_only.js、wf2_relationships.js`. render_final row: `交接时未包含（渲染未完成）`."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 3 line 44",
+    "problem": "The claim that the remote branch still sits at the baseline is wrong: the branch does not exist on GitHub at all.",
+    "evidence": "`git ls-remote https://github.com/JimmyToluene/tmi2022` lists only HEAD and refs/heads/main, both at 0d395a1. The only trace is a stale local tracking ref, origin/claude/video-character-analysis-v6hpo4, at 0d395a1.",
+    "fix": "`GitHub 上没有这条分支（只有 main = 0d395a1）；本地的 origin/claude/video-character-analysis-v6hpo4 跟踪引用指向 0d395a1。`"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 7 环境 (lines 134-141); blender/README.md 重新生成 依赖 (line 82)",
+    "problem": "Two system packages are needed but not listed, and the <mmd_tools> argument is ambiguous. render_video.py with the default --label 1 hard-codes a DejaVu font for ffmpeg drawtext, so it fails at the ffmpeg step after the whole render. plot_timeline.py calls addfont on a hard-coded WenQuanYi path, which raises if the font is missing. Passing the inner mmd_tools/ package directory as <mmd_tools> breaks `import mmd_tools`.",
+    "evidence": "render_video.py line 50 uses /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf (package fonts-dejavu-mono). plot_timeline.py line 25 uses /usr/share/fonts/truetype/wqy/wqy-zenhei.ttc (package fonts-wqy-zenhei). The scripts run sys.path.insert(0, <mmd_tools>) followed by import mmd_tools.",
+    "fix": "Add to section 7 环境: `apt-get install -y ffmpeg fonts-dejavu-mono fonts-wqy-zenhei（或渲染时用 --label 0）`. Change README line 82 to: `<mmd_tools> = git clone 得到的 blender_mmd_tools 目录（里面有 mmd_tools/ 包；提交 e321bd02），不是 mmd_tools/ 包本身`."
+   }
+  ]
+ },
+ {
+  "auditor": "accuracy",
+  "checked": [
+   "meta: 1080x1920, 30 fps, 452 frames, 15.07 s. Shots are f1-148 / f149-303 / f304-452, with hard cuts at f149 and f304 (meta.json, measured.json, .blend markers Shot1/2/3 at f1/149/304, each bound to CAM_Shot1/2/3).",
+   "Unique frames = 360 (92 dups in annotations_verified dup_of and frame_signals dup_of_prev). Native fps estimate is 24.",
+   "Lens per shot is 50 / 36 / 247.4 mm in scene_spec and in both .blend files. camera.vmd integer FOV: 40 deg x148, 53 deg x155, 8 deg x149.",
+   "Integer-FOV compensation re-derived: 50 mm -1.09%, 36 mm +0.28%, 247.4 mm +4.05%, so the max is 4% (matches the exporter log of 4.05%). At 235 mm it would have been 2.68%.",
+   "camera_check.json: 151 frames (f1,4,...,451). Overall median 0.206, p95 0.687 (script index convention), max 0.908. Shot 1 max 0.908, shot 2 median 0.049 (max 0.074), shot 3 constant 0.594.",
+   "Pose-fit median/p90 recomputed over all keypoint residuals: DS s1 6.8/23.7 (117 frames), DS s2 6.9/53.5 (124), CL s2 3.1/10.6 (92), CL s3 8.1/19.3 (119). All match HANDOFF and README.",
+   "DS.vmd/CL.vmd round trip is 0.0 cm, measured on 8 frames (1,60,120,200,260,330,400,452) per the transcript log.",
+   "Anchors: MMD_DS_Root is at (-0.46,-7.285,4.05), rot Z 180 deg, so the model faces +Y. MMD_CL_Root is at (0.12,0.42,0.15), rot Z -4.36 deg. These match pose_*.json anchors and scene_spec.characters.",
+   "camera.vmd targets: DS face = feet + 0.10*(+Y) + 1.45 = (-0.46,-7.185,5.50). CL head = feet + 1.45 = (0.12,0.42,1.60). Both match export_camera_vmd.subject_points and scene_spec.",
+   "VMD frame 0 = Blender f1. DS.vmd and CL.vmd have keys on MMD frames 0-451 (452 frames). camera.vmd has 452 keys.",
+   "Bone names match mmd_skeleton.BONES: 全ての親, センター, 下半身, 上半身, 首, 頭, 左右 肩/腕/ひじ/手首/足/ひざ/足首, and 左右足ＩＫ. The VMD keys only 16 bones: legs are IK-driven and 足ＩＫ offset is 0.",
+   "Morph names in the VMD are exactly まばたき, あ, 笑い, にこり, ∧, 困る. DS timeline (あ 0.45, 笑い 0.5, にこり 1.0 to f12; ramps f12-29; narrowing from f59; flat at f86; ∧ 0 to 0.4 and 困る 0 to 0.2 over f89-148; まばたき 0) matches README L47. CL まばたき 0.85 for shot 2 and 0.35 for shot 3, にこり 0.55 for shot 3.",
+   "HAND_TIP_UNITS = 2.1 (0.168 m on a 1.6 m figure). Fit weights are head_top 0.25 and hand_tip 0.5. The DS rail constraint applies in shots 1-2 (pose_fit.py L249).",
+   "Rest arm: upper arm 左腕/右腕 slopes atan(1.9/2.3) = 39.6 deg below horizontal, so 'about 40 deg' holds. Forearm and hand are 45 deg.",
+   "1 MMD unit = 0.08 m; Blender (x,y,z) = MMD (x,z,y)*0.08; model faces -Y (mmd_skeleton.py docstring). Pose basis = Rest^-1 R Rest (export_motion_vmd.py).",
+   "Beat markers: 31 in the .blend, matching meta.beat_frames f3..f452. Nominal 120 BPM = 15 frames.",
+   "analysis_model: 56 edges (6 confirmed, 47 plausible, 3 refuted). refuted_claims = 16. relations.json has 56 intervals. 13 chunks of 36 frames.",
+   "Annotation keypoint schema is 18 named points (head_top, nose, chin, neck + L/R shoulder, elbow, wrist, hand_tip, hip, knee, ankle).",
+   "Shot-3 lens history: consol/scene_spec.json already has 247.4. Only rail_top_z = 5.115 differs between consol and final spec. preview_spec.json and camera_solve_shot3.json have 235.",
+   "Cheats in consol/cheats.json match the README/HANDOFF summaries: CAM_Shot1 floats over the pit, the shot-2 lean of about 40-45 deg, 247 mm as a compromise between 275 mm (head) and 210 mm (body) with a 26% larger head, split shot 2/3 lighting, and omitted dancer/foreground head.",
+   "camera_math project() vs Blender measured 0.0014 px (transcript), so '< 0.002 px' holds.",
+   "Environment: Python 3.13.16, bpy 5.2.2, mediapipe 1.1.0, librosa 1.0.0, scipy 1.18.1, numpy 2.5.3, Pillow 12.3.0, yt-dlp 2026.08.19, ffmpeg 6.1.1. mmd_tools commit is e321bd02 (v4.5.14) with the bundled opencc_python_reimplemented wheel.",
+   "Git: main and origin/claude/video-character-analysis-v6hpo4 are both 0d395a1. Both bundles head b1907d0. The HANDOFF copy in handoff/ is identical to the repo copy.",
+   "Repo deliverables (.blend, pose json, vmd, data/* except the danmaku-stripped meta.json) are byte-identical to the scratch final copies.",
+   "Rendering takes about 6.2 s per rendered frame (measured from render_final mtimes)."
+  ],
+  "findings": [
+   {
+    "severity": "major",
+    "where": "HANDOFF.md section 2, lines 27-29; README.md section 动作是怎么做出来的 item 3, line 45",
+    "problem": "Shot-1 cadence is misstated, and it contradicts the '360 unique' figure in the same list. Only f%5==2 frames, plus f3 (= f1), are exact duplicates in shot 1. f%5==3 frames are near-static but not duplicates. Holding {2,3} in shot 1 gives 88+124+119 = 331 images, not 360. scene_spec meta.hold_residues {\"1\":[2,3]} is applied by the camera, the VMD bones and render_video.py, so the VMD and render freeze 29 frames that are real (if tiny) motion in the source. The DS pose fit solved those frames and the export discards them.",
+    "evidence": "annotations_verified dup_of: shot 1 has 31 dups = 30 at f%5==2 plus f3 (dup_of 1). Shots 2 and 3 have only f%5==2 (31 and 30). frame_signals dup_of_prev gives the same counts, total 92, so unique = 360. measured.cadence.rule is 'f % 5 == 2 repeat f-1'. Shot-1 absdiff_prev median by residue: r2 0.06, r3 1.12, others 6.4-11.1. events_verified: 'f%5==2 frames are exact duplicates and f%5==3 frames are near-static'. set.blend CAM_Shot1 and DS.vmd 上半身 are held on 29/29 and 30/30 f%5==3 frames.",
+    "fix": "Replace HANDOFF L27-29 with: '镜头 1–3：凡 f%5==2 的帧都与前一帧完全相同（镜头 1 另有 f3 重复 f1）。镜头 1 的 f%5==3 帧几乎不动（帧差中位 1.1，完全重复约 0.06，正常帧 6–11），场景、camera.vmd、DS/CL.vmd 和渲染器按 scene_spec meta.hold_residues={1:[2,3]} 把它们也当停帧处理。全片按完全重复计有 360 张独立画面；按停帧规则渲染 331 张。' Replace README L45 with: '镜头 1–3 每 5 帧有 1 帧完全重复（f%5==2）；镜头 1 的 f%5==3 帧几乎不动，也按停帧处理。VMD 的骨骼在这些帧上同样停住（表情 morph 不停）。' Or change hold_residues['1'] to [2] if the intent is to match exact duplicates only."
+   },
+   {
+    "severity": "major",
+    "where": "HANDOFF.md section 7 line 187, section 6 item 3 line 125, section 9 line 228 (camera_solved.json row)",
+    "problem": "The HANDOFF says the old 235 mm value survives only in the report's shot-3 paragraph and status.json. In fact data/camera_solved.json (embedded in report.html) was generated from a pre-final spec and is stale for all 452 frames. Rebuilding the report after editing status.json therefore leaves 235 mm in place: in analysis_model.json (3 strings), in the embedded per-frame camera signals, and in timeline_measured.png.",
+    "evidence": "data/camera_solved.json has lens_mm 235.0 on all 149 shot-3 frames and f1 yaw -151.201 at location (-0.1221,-5.5352,5.4242). Re-running camera_curves.py on the final scene_spec gives f1 yaw 180.0 at (-0.5112,-5.668,5.4792), f304 lens 247.4, pitch 28.226 (old 28.821), distance 8.95 m (old 9.11). All 452 rows differ. report.html embeds \"lens\":235.0 x149. 235 mm strings: analysis_model.thesis ('镜头 3（f304–452）用 235 mm 长焦…'), analysis_model.nodes[3].desc ('镜头 3：235 mm 锁定长焦…'), analysis_model.phases[6].relationship_state ('镜头是 235 mm 锁定长焦…'). Also scripts/plot_timeline.py L47 label '镜头3  同一位置长焦 · 235 mm' (and so figures/timeline_measured.png), and final/status.json items[2]. camera_solve_shot3.json keeps 235 as a historical survey value.",
+    "fix": "Replace L187 with: '镜头 3 的焦距在汇总阶段从 235 mm 调整为 247.4 mm。旧值 235 mm 仍留在：data/analysis_model.json 的 thesis、nodes[3].desc、phases[6].relationship_state；final/status.json；scripts/plot_timeline.py 第 47 行（因此 figures/timeline_measured.png 也是旧值）；data/camera_solved.json（由旧 spec 生成，镜头 3 lens_mm=235，镜头 1 机位和偏航也是旧值，已嵌入 report.html）。' Extend item 3 at L125 to: 重跑 camera_curves.py scene_spec.json → final/camera_solved.json, fix the three analysis_model strings and plot_timeline.py L47, re-run plot_timeline.py, then build_report.py. Change L228 to '由旧版 spec 求出（需按最终 scene_spec.json 重算）'."
+   },
+   {
+    "severity": "major",
+    "where": "HANDOFF.md section 11, line 278",
+    "problem": "The glass values stated as the fix for the reflection artefact are not in the final spec or the delivered .blend. 0.35/0.14 were applied only to the old scratchpad/blend/preview_spec.json.",
+    "evidence": "blender/scene_spec.json materials.glass is roughness 0.04, alpha 0.25, transmission 1.0. Both .blend files have material 'glass' with Roughness 0.04 and Alpha 0.25. The transcript command set s['materials']['glass']={...roughness 0.35, alpha 0.14} on blend/preview_spec.json only.",
+    "fix": "Either state the real values: '玻璃材质（scene_spec materials.glass）：roughness 0.04、alpha 0.25、transmission 1.0；0.35/0.14 只在旧的 preview_spec.json 预览里用过，最终版未采用。' Or, if the artefact fix is wanted, set materials.glass.roughness=0.35 and alpha=0.14 in scene_spec.json and rebuild."
+   },
+   {
+    "severity": "major",
+    "where": "README.md intro list, line 10",
+    "problem": "The crowd size is wrong.",
+    "evidence": "scene_spec crowd.zones: 48 zones summing to 322. The scene_spec note reads 'CROWD: 322 parametric mannequins in 48 zones'. The .blend 'Crowd' collection has 322 objects.",
+    "fix": "约 400 人的人群 → 322 人的人群（48 个分区）"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 6 item 2, line 122",
+    "problem": "The output resolution is wrong. Also, the renderer renders 331 frames, not the 360 unique ones, because it copies f%5==3 frames in shot 1 too.",
+    "evidence": "render_video.py sets resolution_percentage = round(0.333*100) = 33, so frames are 356x633 (verified on render_final/frames/r0001.png). The ffmpeg filter trunc(iw/2)*2:trunc(ih/2)*2 then gives a 356x632 MP4. Holds per hold_residues: 60+31+30 = 92+29, so 331 rendered.",
+    "fix": "输出 356×632 的无声 H.264 MP4（PNG 帧 356×633）；共渲染 331 帧，其余 121 帧按停帧复制。"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 8 line 202 (每个镜头的站位写在\"全ての親\"上); README.md line 39",
+    "problem": "全ての親 carries nothing. All three per-shot anchors are identical, so 全ての親 is zero on all 452 frames in both VMDs. DS's shot-2 lean lives only in センター and the upper-body pose bones.",
+    "evidence": "pose_DS.json anchors 1/2/3 are all (-0.46,-7.285,4.05), yaw pi. pose_CL.json anchors are all (0.12,0.42,0.15), yaw -0.0761. Parsed DS.vmd/CL.vmd: 全ての親 position abs max (0,0,0) and rotation 0 deg. DS 上半身 rotation median is 22.4 deg in shot 1 and 37.8 deg in shot 2 (max 52.4). センター moves up to 0.19 m.",
+    "fix": "HANDOFF L202: '三个镜头共用同一落位（pose_*.json 的 anchors 1/2/3 相同），全ての親 全程为零；如以后给某镜头加 per_shot 落位，差值会写进全ての親。' README L39: '镜头 2 的探身（DS 越过栏杆）已经写在センター和上半身等姿势骨骼里（全ての親 全程为零）。'"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 5 line 99; README.md 实测精度 table line 57",
+    "problem": "Shot-1 median 0.22 is the script's upper-median (errs[n//2]) on an even count (n=50). The true median is 0.2135, which rounds to 0.21. Overall p95 0.69 is the index convention; linear interpolation gives 0.67.",
+    "evidence": "Shot-1 sorted middle pair is 0.206 and 0.221, mean 0.2135. numpy percentile(95) is 0.6735; errs[int(0.95*151)] is 0.687.",
+    "fix": "Either write '镜头 1 中位 0.21' (true median), or keep 0.22/0.69 and add '（按脚本的上中位/索引分位计算）'. Overall median 0.21 and max 0.91 are correct either way."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 8 line 208",
+    "problem": "The 19.6 px figure is a shot-1 median from a run with two simultaneous causes, not from the feet-axis target alone. The max in that run was 70.9 px.",
+    "evidence": "Transcript log: 'camera shot 1 median 19.59 px max 70.90 px' (overall median 1.621, p95 54.437, max 70.896). The session's own note says: 'Causes: the target was at the feet axis rather than the face, and a probe sat 0.35 m from the lens.'",
+    "fix": "早期一次校验里目标点在脚底轴线、且有一个探针离镜头仅 0.35 m，镜头 1 中位误差 19.6 px、最大 70.9 px；改为对准脸部并用主体上的探针后降到中位 0.22 / 最大 0.91 px。"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 5 line 106; README.md 实测精度 table line 58",
+    "problem": "'布局检查点中位 6.2 px' is the shot-1 set checks only (n=7). As written it reads as an overall figure, and shots 2 and 3 are omitted.",
+    "evidence": "consol/checks_out.txt: shot 1 anchors n=25 median 4.2 max 9.3, set checks n=7 median 6.2 max 13.3. Shot 2 anchors n=24 median 6.2 max 20.4, set checks n=28 median 3.0 max 20.0. Shot 3 anchors n=25 median 12.0 max 25.9.",
+    "fix": "镜头 1：锚点中位 4.2 px、布局检查点中位 6.2 px（n=7）；镜头 2：锚点中位 6.2 px、布局检查点中位 3.0 px（n=28）；镜头 3：锚点中位 12.0 px（含 CL 自身头部运动）。"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 10 table, line 250 (raw/ row)",
+    "problem": "The survey fragment count is wrong.",
+    "evidence": "The tarball and scratchpad raw/ contain only survey_arch.json, survey_cam1.json, survey_cam2.json and survey_cam3.json. Light and crowd results are in light/, light2/ and crowd/ plus the journals.",
+    "fix": "4 个勘测片段（survey_arch/cam1/cam2/cam3.json；灯光、人群的结果在 light/、light2/、crowd/ 和 journal 里）"
+   },
+   {
+    "severity": "minor",
+    "where": "README.md 表情 item, line 48",
+    "problem": "CL's shot-2 morph values are incomplete.",
+    "evidence": "export_motion_vmd.morph_timeline sets CL to まばたき 0.85 and にこり 0.4 for f<=303. CL.vmd has にこり values {0.4, 0.55}.",
+    "fix": "CL：镜头 2 闭眼或几乎闭眼、微笑（まばたき 0.85、にこり 0.4）。镜头 3 …（まばたき 0.35、にこり 0.55）。"
+   },
+   {
+    "severity": "minor",
+    "where": "README.md line 45 (VMD 在这些帧上同样停住); HANDOFF.md section 8 line 196",
+    "problem": "Only bone keys hold on the repeated frames. Morph keys are evaluated every frame and keep changing.",
+    "evidence": "export_motion_vmd applies hold_rule to bone poses only; morph_timeline(char, f) has no hold. In DS.vmd, あ goes 0.344 → 0.318 across f16 → f17 (f17 is a dup frame). 20 dup frames have changing DS morphs.",
+    "fix": "VMD 的骨骼在这些帧上同样停住（表情 morph 不停）。"
+   },
+   {
+    "severity": "minor",
+    "where": "README.md 局限 list, line 67",
+    "problem": "The lean angle is understated relative to the source cheat and to HANDOFF L215.",
+    "evidence": "consol/cheats.json: 'DS must lean ~40-45 deg over the rail'. HANDOFF L215 says 40–45°.",
+    "fix": "她必须探身约 40–45° 越过栏杆"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 6 item 1, line 114",
+    "problem": "Only one of the two shot-1 DS motions folded into the camera keys is mentioned.",
+    "evidence": "consol/cheats.json: '~3 cm drift to screen-right (f1-50) and ~4 cm sink (f100-148) are folded into the camera keys… clamp post is off by up to ~20-45 px in f1-69'.",
+    "fix": "DS 自身约 3 cm 的右移（f1–50）和约 4 cm 的下沉（f100–148）被折算进了摄影机关键帧，导致 f1–69 栏杆立柱最多偏 20–45 px。"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 2 line 34; README.md 约定 line 75",
+    "problem": "'每 15 帧一拍' is nominal. The 31 beat markers are the detected beats, not an exact 15-frame grid.",
+    "evidence": "meta.beat_frames and the .blend beat markers: 31 beats f3..f452 with intervals 15 x26, 14 x3, 17 x1 (mean 14.97).",
+    "fix": "120 BPM（约 15 帧一拍）；31 个 beat 标记取自检测到的节拍，f3 起，间隔 14–17 帧。"
+   },
+   {
+    "severity": "minor",
+    "where": "README.md 重新生成 code block, line 88",
+    "problem": "The check output path differs from the delivered file and from HANDOFF L178.",
+    "evidence": "The committed check file is blender/vmd/camera_check.json. HANDOFF uses --check vmd/camera_check.json; README uses --check cam_check.json.",
+    "fix": "--check vmd/camera_check.json"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 4 line 83 and README.md line 25 (posefit 逐帧)",
+    "problem": "The pose files cover only the unique annotated frames of each character, not every frame.",
+    "evidence": "pose_DS.json has 241 frames, f1–303 (117 in shot 1, 124 in shot 2). pose_CL.json has 211 frames, f189–451 (92 in shot 2, 119 in shot 3). The VMD fills the other frames by hold or nearest pose.",
+    "fix": "每个角色可见的独立帧（DS 241 帧 f1–303，CL 211 帧 f189–451）的骨骼旋转和重投影误差；VMD 其余帧按停帧/最近帧补齐。"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md section 7 环境, line 134",
+    "problem": "The OpenCV package name and version are not what is installed.",
+    "evidence": "Installed: opencv-python-headless 5.0.0.93 and opencv-contrib-python 5.0.0.93. opencv-python is not installed.",
+    "fix": "opencv-python-headless / opencv-contrib-python 5.0.0.93"
+   }
+  ]
+ },
+ {
+  "auditor": "complete",
+  "checked": [
+   "Transcript: extracted all 17 human messages, including the queued '你再看看 实在不行创建一个新的repo' (18:05), the AskUserQuestion answers (21:43: '镜头 + 两个角色动作 (推荐)', 'Blender + mmd_tools (推荐)') and all assistant replies. HANDOFF §1–§3 match the original requests, branch name, 403 diagnosis, artifact URL https://claude.ai/artifact/GYHgT1SjBS67qESgYBmHqj (v3) and the run IDs. Resumed runs kept the same IDs (wf_f416f09c-07e, wf_18ade5f9-3e5).",
+   "HANDOFF §11 covers most gotchas from the transcript: ORB artefact, pending merge, per-chunk AUD ids, MediaPipe blink/smile at 0, factory-reset VMD check, camera-object import, opencc wheel, the 'already registered' error, the f230 black frame, glass settings, HAND_TIP_UNITS and session sleep.",
+   "Incremental bundle: fetched into a fresh --depth 1 clone of github.com/JimmyToluene/tmi2022 and gave b1907d0 with no errors. Origin is readable from the session (git ls-remote works).",
+   "render_final command in HANDOFF §6.2 matches the command actually run at 22:51. About 6 s per frame is consistent: about 290 unique frames rendered in 28 min.",
+   "Tarball: 734 entries, 52.5 MB uncompressed, largest file 2.18 MB (workdir/trial/annotations_verified.json). No jpg/jpeg/png/gif/webp/bmp/mp4/mkv/mov/wav/mp3/m4a/aac/flac files and no base64 images (data:image, iVBORw0KGgo, /9j/4AAQ). No render_final/ directory, which is consistent with the HANDOFF's 'if already rendered'.",
+   "Tarball .npy files are numeric tracks: face_track (148×4), crowd tracks and residuals (43×951×2), world points, and s3cam/rowprof.npy and rowblue.npy (75×1920 per-row background means). None is an image. light2/beamobs.npy is a pickled object array; I did not load it.",
+   "Credential scan of the tarball and the branch tree found nothing for buvid, SESSDATA, bili_jct, DedeUserID, Authorization, api_key, password, cookie files, PRIVATE KEY, ghp_, github_pat_, sk-, sk-ant- or Bearer. cmd_history.txt has no cookie or curl lines. Personal data found: only the uploader's public UID (mid=5328517 in final/context.md, raw/context.md and journals), plus the session URL in commit trailers.",
+   "All 38 .blend files (36 in the tarball, 2 in the repo) were opened with bpy 5.2.2. The only packed datablock is CitySkyline_img, which build_scene.py skyline_image() generates procedurally (np.random, im.pack()). No sounds, movie clips, sequencer strips or camera background images, so no source frames are packed.",
+   "Branch tree (52 files): the only new image is figures/timeline_measured.png, a plot. The other images in history are the lab's pre-existing tmi2022 figures. No blob over 5 MB (largest is annotations_verified.json at 1.92 MB). No data:image in any committed version of report.html. data/meta.json has no danmaku in any commit.",
+   "Accuracy claims spot-checked: camera_check.json gives 151 frames, median 0.206, p95 0.687, max 0.908 px, matching HANDOFF §5. Final scene_spec.json has shot 3 at 247.4 mm and rail_top_z 5.115, matching §7."
+  ],
+  "findings": [
+   {
+    "severity": "blocker",
+    "where": "handoff/tmi2022_full.bundle; HANDOFF.md §3 (new-repo recipe); MANIFEST.json; assistant message 23:03",
+    "problem": "The repo /home/user/tmi2022 is a shallow clone, grafted at 64ee88867250fcc06e9752704a8fcdb95d37bb89. The 'full' bundle is therefore not self-contained, but `git bundle verify` still prints 'The bundle records a complete history'. The §3 command `git clone -b claude/video-character-analysis-v6hpo4 tmi2022_full.bundle ...` fails. Restoring it with a hand-written .git/shallow works, but `git push` to an empty repo is then rejected with 'shallow update not allowed'. The new-repo path, which the user explicitly asked for, does not work.",
+    "evidence": "git clone of the bundle in audit_complete/ gives 'fatal: Failed to traverse parents of commit 64ee88867250fcc06e9752704a8fcdb95d37bb89 / fatal: remote did not send all necessary objects'. `git rev-parse --is-shallow-repository` returns true. Push of the restored repo to a local bare repo gives '! [remote rejected] ... (shallow update not allowed)'.",
+    "fix": "Rebuild the bundle so it is standalone and verify it by cloning and pushing, not by `git bundle verify`. Option A (tested in audit_complete/: 2.7 MB, 11 commits, clones and pushes to an empty bare repo): `git -C /home/user/tmi2022 subtree split -P video_analysis/BV1ZnpG6dE8g -b bv-standalone && git -C /home/user/tmi2022 bundle create <handoff>/BV1ZnpG6dE8g_standalone.bundle bv-standalone`. Then replace the §3 new-repo recipe with `git clone -b bv-standalone BV1ZnpG6dE8g_standalone.bundle BV1ZnpG6dE8g && cd BV1ZnpG6dE8g && git remote set-url origin git@github.com:<你>/<新仓库>.git && git push -u origin bv-standalone:main`. Option B: `git -C /home/user/tmi2022 fetch --unshallow origin` (read access works), then recreate tmi2022_full.bundle. Fix the MANIFEST and the user message that said the full bundle 'passed git bundle verify' and 'can create a new repo directly'."
+   },
+   {
+    "severity": "major",
+    "where": "HANDOFF.md §1 table row '场景独立复核' and §6.1; tarball workdir/session_records/workflows/wf_f416f09c-07e.json and journals/wf_f416f09c-07e.journal.jsonl; workdir/critic/",
+    "problem": "The critic finished at 23:18:29, after the bundle was built at 23:02, with verdict 'pass-with-patches' and 36 patches. The HANDOFF still says the critic is running. The bundled run record is the stale 'killed' snapshot, and the journal holds no result. The critic outputs are not in the tarball: only cam.py, cam1_keys_postlocked.json and ov2.py are there.",
+    "evidence": "/root/.claude/projects/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/workflows/wf_f416f09c-07e.json has status 'completed' and result.check.verdict 'pass-with-patches'. Patches: cameras.0.keys, cameras.1.keys, cameras.1.dof.focus_keys, characters.DS.shot1_face_drift_x, characters.DS.shot2_anchor_points.right_hair_bow_track, characters.DS.lean_note, 12× geometry[name=GalleryDownlight_NN].center, 12× lights[name=GalleryDownNN], notes.3/4/5/8/17/19. Also scratchpad/critic_result.json and critic/spec_patched.json, chk_orig.json, chk_patched.json, k1.json, k2.json and mycheck.py exist. The tarball's journal has 0 occurrences of 'pass-with-patches'.",
+    "fix": "Rewrite §6.1 as: '复核已完成（23:18，verdict pass-with-patches，36 个补丁，结果在 critic_result.json / scratchpad/critic/spec_patched.json）'. List the substance: (1) shot-1 camera shifted in X by −0.003 to −0.047 m so the clamp post lands at ≤5.7 px; (2) shot-2 camera moved along u=(0.896,−0.445,0) by 0.20→0.006 m so the rail is at median 4–5 px; (3) all 12 GalleryDownlight_* and 12 GalleryDown* lights moved to y=10.35, because they sat inside BackRiserWall and did nothing; (4) unpatched minors: crowd clipping (trim Tier4_Filler/Table_15_Guests to y≤10.1 and Table_03_Guests to x≤4.35, then rerun crowd/make_crowd.py), build_crowd even-period bug (use period 29 or 31), GalleryBlue/BlueWash planes. Then copy critic/*.json, critic/*.py and critic_result.json (NOT critic/*.jpg, which are overlays of source frames) and the refreshed run record and journal into the tarball, and rerun make_handoff_bundle.py."
+   },
+   {
+    "severity": "major",
+    "where": "HANDOFF.md §6.1 bullets '内容' and '如果它给出补丁' steps 1 and 3",
+    "problem": "Several statements are wrong. (1) The post error is not 20–45 px. (2) Patch paths are not only dotted paths. (3) '见第 8 节' points to nothing: §8 has no stanchion entry. (4) The current code ignores the critic's extension keys, so applying the patches as described cannot move DS's drift into her animation. (5) The acceptance test is wrong: camera_check.json only compares the VMD camera with the scene camera, so it does not measure set alignment.",
+    "evidence": "Critic finding: 'error is 52 px at f25, 89 px at f49 and 117 px at f73, staying above 100 px until the post leaves frame around f91. The note's 20-45 px understates this.' Patch paths include 'geometry[name=GalleryDownlight_00].center' and 'lights[name=GalleryDown00]'. pose_fit.py has no reference to shot1_face_drift_x or right_hair_bow_track (DS centre prior σ 0.06 m at line 178). build_scene.py lines 493–511 read only dof.focus, not dof.focus_keys.",
+    "fix": "Replace with: '镜头 1 立柱误差实测 f25 52 px、f49 89 px、f73 117 px，f91 前一直 >100 px'. Add: '补丁路径有三种：点号路径（cameras.0.keys、notes.17）、按名字选（geometry[name=…].center、lights[name=…]）、新增扩展键（characters.DS.shot1_face_drift_x、characters.DS.shot2_anchor_points.right_hair_bow_track、cameras.1.dof.focus_keys）。扩展键目前没有代码读取：build_scene.py 只读 dof.focus，pose_fit.py 不读 drift/bow 轨迹，要生效需要改代码'. Replace the acceptance rule with: '用 scratchpad/critic/mycheck.py 比较 chk_orig.json 和 chk_patched.json 看场景对位；再比较 DS、CL 各镜头姿势拟合的中位数和 p90；camera_check.json 只验证 VMD 与场景相机一致'. Remove '见第 8 节'."
+   },
+   {
+    "severity": "major",
+    "where": "HANDOFF.md §6 (missing item)",
+    "problem": "The user's '加声音' request (19:40) is not in the HANDOFF. The user interrupted the reply, and the audio question is still unanswered. The assistant asked again at 19:42, 19:45, 21:21 and 22:42, and said the default is silent.",
+    "evidence": "Assistant 19:42: original synced track (120 BPM, drums at 6.0 s/f181 +10 dB, transition hits at 4.93 s and 10.10 s) or a local ffmpeg merge. Assistant 22:42: '不回复的话，我就默认视频保持无声'. No audio-track script was written.",
+    "fix": "Add §6.5 '声音（用户未答复）': '用户 19:40 说“加声音”后打断了回复。选项 A：Claude 做一条原创同步音轨（120 BPM，6.0 s/f181 鼓点进入 +10 dB，4.93 s 和 10.10 s 转场音效），尚未开始，没有脚本。选项 B：用户在本地用自己的原视频合原声：`ffmpeg -i BV1ZnpG6dE8g_set_preview.mp4 -i 原视频.mp4 -map 0:v -map 1:a -c:v copy -c:a aac -shortest 预览_带原声.mp4`。未答复时默认无声。约束：任何交付文件都不能混入原片音频。'"
+   },
+   {
+    "severity": "major",
+    "where": "HANDOFF.md (missing section: files already sent / pending delivery)",
+    "problem": "The HANDOFF does not list what the user already has, which of it is superseded, or that the handoff package itself has not been sent. As of 23:03 the assistant said '还没发给你…等它们回来、我改完问题后，一次性发给你' and 'I'll send the bundle once the three checks finish'. Earlier the user was also told Blender 4.2+, but the .blend files need 5.0+.",
+    "evidence": "SendUserFile calls: 18:06 tmi2022-video-analysis.bundle (2 commits, 281 KB); 18:41 pkg/BV1ZnpG6dE8g_中期.zip (970 KB, placeholder .blend, told 'Blender 4.2 或更高'); 18:44 seven screenshots in scratchpad/shots/; 19:39 render_preview/BV1ZnpG6dE8g_set_preview.mp4 (placeholder venue, static stand-ins); 22:07 deliver_vmd_preview/{camera,DS,CL}.vmd + blend/BV1ZnpG6dE8g_preview_vmd.blend; 22:57 deliver/BV1ZnpG6dE8g_VMD_Blender.zip. Artifact versions v1 (18:41), v2 (18:56), v3 (22:22).",
+    "fix": "Add a section '已发给用户的文件' listing the items above with times. Mark the 22:07 preview VMDs and preview_vmd.blend as superseded by the 22:57 zip, and the 22:57 zip as superseded if the critic patches are applied. Add to §6: '交接包（HANDOFF.md、bundle、workdir.tar.gz）尚未发给用户；修完后用 SendUserFile 发送，并告诉用户哪些旧文件作废、.blend 需要 Blender 5.0+（之前说的 4.2 不对）'."
+   },
+   {
+    "severity": "major",
+    "where": "HANDOFF.md §6.3 and §9 (camera_solved.json row); repo data/camera_solved.json; scripts/plot_timeline.py line 47; figures/timeline_measured.png; report.html",
+    "problem": "camera_solved.json, the timeline figure and the report were built from a pre-consolidation spec. §6.3 only says to fix status.json and rebuild the report. Following §6.3 leaves 235 mm and the old shot-1 camera path in the data, the figure and the per-frame report tags. §9 implies camera_solved.json comes from the final spec.",
+    "evidence": "data/camera_solved.json has f304 lens_mm 235.0 and f1 location (-0.1221,-5.5352,5.4242). Running camera_curves.py on blender/scene_spec.json gives 247.4 and (-0.5112,-5.668,5.4792). Distances to CL: f149 8.779 vs 8.616 m, f304 9.112 vs 8.950 m. plot_timeline.py:47 hardcodes '镜头3  同一位置长焦 · 235 mm'. report.html contains '235 mm' 4 times.",
+    "fix": "Make §6.3: (1) `python3 blender/camera_curves.py blender/scene_spec.json data/camera_solved.json` (also copy to $S/final/camera_solved.json); (2) change plot_timeline.py:47 to '镜头3  同一位置长焦 · 247 mm' and rerun plot_timeline.py to figures/timeline_measured.png; (3) update final/status.json; (4) `python3 scripts/build_report.py final scripts/report_template.html report.html`; (5) republish to https://claude.ai/artifact/GYHgT1SjBS67qESgYBmHqj. If the critic patches are applied, do this after the new spec is in place. Fix §9 to say camera_solved.json must be regenerated from the final spec."
+   },
+   {
+    "severity": "minor",
+    "where": "repo video_analysis/BV1ZnpG6dE8g/report.html line 239; scripts/build_report.py line 52; committed report.html blobs e648cfc, cba080d, 53ffa47",
+    "problem": "The danmaku list removed from data/meta.json is still in the repo inside report.html: meta.danmaku has 80 timed entries, and each frame record has a 'danmaku' field. All three committed versions have it. This contradicts HANDOFF §9 ('meta.json…已去掉弹幕') and the 22:57 message ('data/ 下，不含原片画面和弹幕'). Strictly, the list is not under data/. data/annotations_verified.json also quotes danmaku in 43 inter.desc strings; these are quotes, not a list.",
+    "evidence": "report.html has '\"danmaku\":[{\"t\":0.0,\"text\":\"依旧澳大利亚\"},…' with 80 entries. build_report.py:52 has '\"danmaku\": s[\"danmaku_here\"]'.",
+    "fix": "If the repo is meant to carry no danmaku list, change build_report.py to drop meta.danmaku and the per-frame 'danmaku' field (keep counts only), rebuild report.html, and, because none of the 11 commits is on the remote yet, rewrite the branch before pushing so the old report.html blobs are gone. Otherwise add to HANDOFF §9: 'report.html 内嵌 80 条公开弹幕文本（data/ 不含）'."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md §2 '生成方式' bullets",
+    "problem": "'镜头 1：f%5 ∈ {2,3} 的帧都重复' contradicts '全片共 360 张独立画面' and the data. In the source, only f%5==2 frames (plus f3) are exact repeats. In shot 1, f%5==3 frames are only near-static; the rebuild holds the camera on them.",
+    "evidence": "data/measured.json cadence: rule 'frames with f % 5 == 2 repeat f-1', 92 duplicates, n_unique 360. annotations_verified dup_of counts: f%5==2 is 91 frames, f%5==3 is 1 (f3). Critic: frame diff 1.38 for f%5==3 in shot 1 vs 7–12 for new frames. Spec meta.hold_residues is {\"1\":[2,3],\"2\":[2],\"3\":[2]}.",
+    "fix": "Replace with: '原片完全重复的是 f%5==2 的帧（另加 f3），共 92 帧，独立画面 360 张。镜头 1 里 f%5==3 的帧与前一帧几乎相同（差异 1.38，正常帧 7–12），所以重建摄影机在镜头 1 的 f%5∈{2,3}、镜头 2/3 的 f%5==2 上停住（hold_residues）。'"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md §8 '静止姿势假设' (same claim in blender/README.md line 62)",
+    "problem": "'pose_fit.py 支持换骨架' / '可以换骨架' is false. pose_fit.py's only option is --chars, and the skeleton is hardcoded in mmd_skeleton.BONES (arms about 40° down). There is no .pmx input. The user was offered a .pmx refit (22:42, 22:57), so a successor would rely on this.",
+    "evidence": "pose_fit.py usage: '<annotations_verified.json> <scene_spec.json> <out_dir> [--chars DS,CL]'. It imports BONES from mmd_skeleton. grep finds no pmx/armature loading.",
+    "fix": "Change to: 'pose_fit.py 目前只用 mmd_skeleton.py 里写死的标准骨架。要按用户 .pmx 重新拟合，需要先用 mmd_tools 导入 .pmx，读出各骨骼的静止位置替换 mmd_skeleton.BONES（或给 pose_fit.py 加一个骨架参数），这部分还没实现。'"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md §6 / new '待用户决定' list",
+    "problem": "Several open questions and offers to the user are not listed as open. The user's request to create a new repo is unfulfilled (create_repository returned 403), and the assistant recommended a separate repo; repo name and GitHub access are still pending. The .pmx refit offer is unanswered. 30 fps was used as the default (18:01) and never confirmed. The offer to translate the 452 English per-frame records into Chinese (18:41) is unanswered.",
+    "evidence": "User 18:05 '你再看看 实在不行创建一个新的repo'. Assistant 18:06: tmi2022 is the user's fork of the lab's whole-slide-image graph-transformer code, so a separate repo is cleaner; create an empty repo and add it to the Claude app's access. Assistant 18:01: '帧率：默认用 30 fps…如果你们做 MMD 习惯 24 或 60 fps，告诉我'. Assistant 18:41: '要的话，我可以把 452 帧的记录整体翻成中文'.",
+    "fix": "Add '待用户决定（均未答复）': (1) 声音 A/B（见 §6.5）; (2) GitHub：给 Claude App 开 tmi2022 写权限，或自建空仓库并告知名字（推荐独立仓库）; (3) 是否提供 DS/CL 的 .pmx 以重新拟合; (4) 帧率默认 30 fps; (5) 是否把逐帧记录译成中文。"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md (missing '约束' list); §3 fix steps",
+    "problem": "Constraints and diagnosis details a successor needs are missing or scattered. Missing: no PR unless the user asks; reply to the user in Chinese; the full copyright rule set; the session-sleep warning given to the user. The §3 GitHub fix steps are vaguer than the diagnosis given to the user at 18:06.",
+    "evidence": "System branch rule: 'Do NOT create a pull request unless the user explicitly asks for one.' All user messages are in Chinese. Copyright rules from the transcript: no source frames, crops or audio in any deliverable; comparison overlays stay local; characters never modelled or drawn, only grey mannequins; plates attached by path only. Assistant 21:21 asked the user to keep the window open because sleep kills background jobs. Assistant 18:06: the App recognises account JimmyToluene and can read; the fix is at https://github.com/settings/installations → Claude → Configure → accept the pending permission request → add tmi2022 → Save, then https://claude.ai/customize/connectors?auth_start=github&auth_start_force=1.",
+    "fix": "Add §8a '约束': 不建 PR，除非用户要求; 用中文回复用户; 不分发原片画面、裁图、音频，对比叠图只留本地; 不建角色模型，只用灰色人台; .blend 只按路径挂背景帧，不打包; 会话休眠会杀后台任务，续跑用 resumeFromRunId。Replace §3 steps 1–2 with the 18:06 steps and URLs above."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md §6.2 '最终预览视频'",
+    "problem": "Two promises to the user are not covered. At 19:39 and 19:45 the assistant promised a higher-resolution final video ('render the final version at higher resolution with the full layout' / '再出一版分辨率更高的正式视频'), but the final render uses --scale 0.333 (360×640), the same as the preview. §6.2 also does not say to send the MP4 to the user, or that the running render uses the unpatched spec.",
+    "evidence": "The 22:51 command uses `--scale 0.333 --samples 10`; the 19:50 preview used the same settings.",
+    "fix": "Add to §6.2: '渲染完核对 452 帧 / 15.07 s 后用 SendUserFile 发给用户。该渲染基于未打补丁的 spec，采用复核补丁后要重渲。曾答应出更高分辨率的正式版（例如 --scale 0.5 → 540×960，约 2.3 倍耗时）；不做的话需要告诉用户。'"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md §10 table rows 'raw/' and 'session_records/workflows/'; §7A comment '脚本在 session_records/workflows/'",
+    "problem": "There are not six survey fragments in raw/, only four (arch, cam1, cam2, cam3); the light and crowd results exist only in the journal and the run result. session_records/workflows/ holds only one .js script; the other scripts are embedded in the wf_*.json 'script' field or sit at the workdir root.",
+    "evidence": "Tarball raw/ has survey_arch.json, survey_cam1.json, survey_cam2.json and survey_cam3.json. session_records/workflows/scripts/ has only bv1znpg6de8g-set-survey-wf_f416f09c-07e.js. wf1_subset.js, wf1_verify_only.js and wf2_relationships.js are at the workdir root. Every wf_*.json has a 'script' key.",
+    "fix": "raw/ row: '4 个勘测片段（survey_arch/cam1/cam2/cam3.json）；灯光、人群片段只在 session_records/journals/wf_f416f09c-07e.journal.jsonl 和运行结果的 fragments_summary 里'. session_records/workflows/ row: '各运行的记录 wf_*.json，脚本源码在其 script 字段；另有 workdir/wf1_subset.js、wf1_verify_only.js、wf2_relationships.js'."
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md §3 paragraph 2",
+    "problem": "'远端这条分支仍停在基线 0d395a1' is wrong. The branch does not exist on GitHub. origin/claude/video-character-analysis-v6hpo4 is only a local tracking ref.",
+    "evidence": "`git ls-remote https://github.com/JimmyToluene/tmi2022` returns only HEAD and refs/heads/main, both at 0d395a1.",
+    "fix": "Replace with: 'GitHub 上没有这条分支（远端只有 main，0d395a1）；本地的 origin/claude/video-character-analysis-v6hpo4 只是指向 0d395a1 的跟踪引用。'"
+   },
+   {
+    "severity": "minor",
+    "where": "HANDOFF.md §1 list item 3",
+    "problem": "It does not record that the user wrote 'VMX' and that the format and scope were settled by AskUserQuestion. A successor might ask again or wonder about a PMX stage export.",
+    "evidence": "21:42 '最终deliverable是一个VMX别忘了'. 21:43 answers: '镜头 + 两个角色动作 (推荐)' and 'Blender + mmd_tools (推荐)'. The options 'MikuMikuDance 本体' and '两个都要' (PMX stage) were not chosen.",
+    "fix": "Append: '（用户原话“VMX”，21:43 经 AskUserQuestion 确认为 .vmd：镜头 + 两个角色动作，在 Blender + mmd_tools 里用；不需要 PMX 舞台或 MMD 本体版本。）'"
+   }
+  ]
+ }
+]

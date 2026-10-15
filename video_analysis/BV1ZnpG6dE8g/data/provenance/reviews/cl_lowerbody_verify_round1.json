@@ -1,0 +1,130 @@
+[
+ {
+  "role": "visual",
+  "user_point_addressed": "partly",
+  "new_better_than_old": "same",
+  "evidence": [
+   "Work dir: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify_cl_visualjudge/. Key images: thigh_evidence.jpg (f328, 351, 371, 401, 431, 446: new IK thighs vs FK thighs vs source skirt bows and hand tips), series.png (time series for all 119 unique frames), tilt_lines.jpg, render_cmp_mid.jpg, src_full6.jpg, lower3.jpg. Data: studs.json, bows.json, suns.json, proj.json, ikcheck.json. Scripts: studs.py, bows.py, suns.py, analyse.py, ikcheck.py.",
+   "What I looked at: the 13 overlays, both render sets (9 frames each), the source at f304, 310, 316, 321, 328, 331, 338, 340, 346, 350, 351, 355, 361, 363, 370, 371, 372, 378, 381, 389, 395, 401, 406, 410, 420, 423, 426, 431, 440, 441, 446 and 451, and numeric tracks on all 119 unique shot-3 frames.",
+   "I tracked features on my own, independent of the ECC tracker. The four gold corset studs agree with the ECC corset track (x corr 0.95, y corr 0.93). Corset x also follows the brooch (corr 0.96, slope 1.11), so the corset belongs to the upper body.",
+   "In the source, the visible lower body swings against the chest, not with it. Both skirt sunflower bows sit at thigh level under the hands; their midpoint follows the hand tips (corr 0.97), so the hands stay on the thighs. Bow-mid x has std 45 px, p5-p95 122 px (about 8.6 cm at 1413 px/m). It is anti-correlated with the brooch (-0.50, and -0.56 at a 10-sample lag) and with the corset studs (-0.33). Examples: at f328 bows 415 px and brooch 562 px; at f371 bows 536 px and brooch 526 px; at f431 bows 435 px and brooch 606 px. The whole body rocks about a pivot near the hips.",
+   "The new waist does follow the corset, checked against the independent studs. Waist x: corr 0.94, rms 11.0 px (old 0.68, 21.2 px). Waist y: corr 0.95, slope 0.91 (old 0.81). Hip roll against the independent bow line: corr 0.91, slope 0.59 (old 0.87, 0.55).",
+   "The new fit does not move the thighs. Hip-mid x against bow-mid x: corr 0.00 (old 0.15). The IK thigh x at bow height (legs as the VMD plays them, feet planted) has std 14.9 px against 45.3 px in the source, corr 0.00, rms 47.6 px (old 44.7 px).",
+   "Hand-tip to IK thigh-line horizontal offset, which should stay roughly constant if the hands stay on the thighs. New: L std 50 px (range -11 to +137), R std 73 px (range -133 to +58). Old: 47 and 71 px. Per frame (new, L/R): f328 -11/-133, f364 +137/+24, f376 +134/+58, f448 +1/-168. The hands slide about 10 cm across the mannequin's thighs, the same as before the fix.",
+   "The overlays overstate the fix. They draw FK legs that turn with 下半身: FK thigh lean std 7.5 deg, corr 0.93 with the source thigh swing. The rig uses IK with 足ＩＫ at rest, which cancels that lean: IK thigh lean std 1.2 deg (range 0.2-3.9 deg), corr 0.02. At f328 the L knee is at x 500 in FK but 644 in IK. The renders agree with IK: the mannequin's legs are vertical, and old and new look almost the same.",
+   "I loaded both CL.vmd files in bpy with the IK active (f304-452, every 2nd frame). New: the ankle misses its IK target by more than 1 cm in 112 of 150 leg samples (median 4.1 cm, max 9.4 cm), the ankles rise up to 7.9 cm off the floor, and the knees stay straight (median flex 0.3 deg). Old is similar: 117 of 150, max 9.9 cm. Shot-3 センター z runs from -0.8 to +8.5 cm, while shot 2 averages -10.1 cm at the same spot.",
+   "The source bob is a dip: from f350 to f410 the corset studs drop about 150 px (p5-p95 143 px), the hands about 135 px and the brooch about 90 px. The new fit gets the bob right in the image (waist y corr 0.95) but makes it by lifting the whole body off the floor. Only near the lowest frames (f400-424) do the feet touch.",
+   "Tilt: the claim that the corset counter-rotates against the chest comes from the ECC chest patch, which covers the brooch and the hanging ascot cloth. The sun emblems on the shoulder capes instead turn the same way as the bows (+0.50) and as the ECC corset tilt (+0.64). By eye at f328 and f371, both the shoulders and the bow line tilt the same way. In the new fit, hip roll against shoulder roll has corr -0.06, so it shows neither same-direction nor opposite tilt."
+  ],
+  "remaining_problems": [
+   {
+    "severity": "major",
+    "shot": 3,
+    "frames": "f316-451, worst f328-340, f364-388, f431-451",
+    "problem": "The visible lower body (hips, thighs, skirt, hands on the thighs) does not swing. In the source it moves against the chest with a large amplitude. The new fit pins the hips to the corset, which moves with the chest, so the hips now move in phase with the chest by only about +-20 px. At thigh level the result is no better than the old fit, and the hands slide across the thighs.",
+    "measured": "Source bow-mid x: std 45 px, p5-p95 122 px. Corr with hands 0.97, with brooch -0.50, with studs -0.33. New hip-mid x against bows: corr 0.00 (old 0.15). New IK thigh x at bow height: std 15 px, rms 47.6 px (old 44.7). Hand-tip minus IK thigh offset: L -11 to +137 px, R -133 to +58 px (std 50 and 73; old 47 and 71).",
+    "proposed_fix": "In pose_fit.py, add a thigh-level target: the mean x of the two skirt bows and the two hand tips (bows.json tracks). Drive センター x and 下半身 from it, not from the corset. Keep the corset as a target on the 上半身 head plus a 上半身 lateral bend, so the chest and corset stay on their tracks while the pelvis swings the other way. Add a hand-on-thigh contact residual: hand-tip x minus the IK thigh x at the same height, held near its shot mean (sigma about 15 px). Compute the IK thigh with an analytic two-bone IK to the planted 足ＩＫ targets, as the rig does."
+   },
+   {
+    "severity": "major",
+    "shot": 3,
+    "frames": "all, e.g. f316, f328, f340, f436, f448",
+    "problem": "The solver and the overlays use FK legs that turn with 下半身, but the exported VMD uses IK legs planted at rest. The thigh lean seen in the evidence overlays is therefore removed in playback, and the mannequin's legs stay vertical. The overlay evidence overstates what the VMD does.",
+    "measured": "FK thigh lean: std 7.5 deg, corr 0.93 with the source thigh swing. IK thigh lean (actual rig): std 1.2 deg, range 0.2-3.9 deg, corr 0.02. At f328 the L knee x is 500 in FK and 644 in IK (144 px apart).",
+    "proposed_fix": "Use the same IK leg model in the solve and in the overlays: two-bone IK to 足ＩＫ, with the knee bending forward. Either fit the 足ＩＫ positions (stance width and a fixed foot spot for the shot) so the thighs lean with the hip shift, or move センター laterally against the planted feet so the IK thighs reach the bow and hand positions."
+   },
+   {
+    "severity": "major",
+    "shot": 3,
+    "frames": "f304-398 and f430-452 (feet only touch near f400-424)",
+    "problem": "The vertical bob is made by levitating the whole body with straight legs, not by bending the knees. In MMD the feet lift off the stage in most frames. In the source she sinks about 10-12 cm (f350 to f410) and comes back up, which takes knee flexion.",
+    "measured": "Blender-evaluated new CL.vmd: ankle-to-IK gap over 1 cm in 112 of 150 leg samples, median 4.1 cm, max 9.4 cm. Ankle z up to 0.175 m against 0.096 at rest. Knee flex median 0.3 deg. Shot-3 センター z -0.8 to +8.5 cm, against -10.1 cm average in shot 2 at the same spot. Source corset y p5-p95 143 px, hand y about 135 px.",
+    "proposed_fix": "Add a reach constraint in solve_frame so the hip-to-ankle distance stays at or below 0.97 x the leg length (hard penalty). Re-baseline shot 3 so the highest frame (about f350-360) has nearly straight legs and the f400-424 dip comes from knee bend. Fix the vertical mismatch through the anchor, the figure height, or 上半身 pitch, not through a positive センター z. Then re-check with ikcheck.py: the gap should be 0 in every frame."
+   },
+   {
+    "severity": "minor",
+    "shot": 3,
+    "frames": "f316-345, f420-451",
+    "problem": "The hip roll has the right phase but is under-sized compared with the thigh-level (bow) line. It peaks at about +15 deg where the bow line reaches +20 to +23 deg.",
+    "measured": "New hip roll against bow-line tilt: corr 0.91, slope 0.59, rms 5.4 deg. Fit std 7.0 deg against source 10.9 deg. Source p95 +22.6 deg against fit about +15 deg. The ECC corset rotation is itself about 0.76x the bow tilt (slope 1.31 the other way).",
+    "proposed_fix": "Use a blend of the bow-line tilt and the ECC corset rotation (for example 0.5/0.5, or the bow line alone) as the target for 下半身 roll, and raise its weight. Check by eye on f328 and f441 that the hip line stays parallel to the bows."
+   },
+   {
+    "severity": "minor",
+    "shot": 3,
+    "frames": "f316-340, f364-388, f436-451",
+    "problem": "The shoulder tilt against hip tilt relation is unresolved, and the fit has neither coupling. The counter-rotation premise comes from the ECC chest patch, which covers the brooch and the swinging ascot cloth. An independent shoulder-cape emblem line turns the same way as the hips, which fits a whole-body roll about the hips.",
+    "measured": "Cape emblem line against bow tilt: +0.50; against ECC corset rotation: +0.64. ECC chest rotation against bow tilt: -0.30. Annotated shoulder tilt against bow tilt: -0.54, but the annotation is piecewise constant. New fit hip roll against shoulder roll: -0.06. Fit shoulder roll std 4.6 deg against cape line 9.2 deg (corr 0.34). Caveat: the emblem tracks have median cc 0.58 and are hidden by hair around f393-399 and f436-443.",
+    "proposed_fix": "Build a shoulder-roll track from rigid shoulder features (the cape sun emblems or the tops of the sleeve puffs), not the ascot patch. Confirm the tilt direction by hand at f328, f371 and f441. If it holds, add a weak prior that keeps 上半身 roll on the same side as 下半身 roll (whole-body rock), instead of fitting a counter-rotation."
+   }
+  ]
+ },
+ {
+  "role": "measure",
+  "user_point_addressed": "partly",
+  "new_better_than_old": "yes",
+  "evidence": [
+   "Independent shot-3 measurements, all in /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify_cl_measurer/. (1) Four corset studs tracked one by one with NCC 0.81-0.95 (studs_s3.json; check image studs_chk.jpg). (2) Chained LK+RANSAC on chest and corset (track_s3.json). (3) The two sunflower ornaments on the skirt at upper-thigh height, tracked with LK, checked by eye in fl1.jpg (flowers_s3.json). (4) Annotated wrists, since the hands rest on the thighs. All signals are in signals_s3.json.",
+   "The stud track partly validates the corset ECC track. Tilt agrees well: r=0.96, rms 2.2 deg, rotation sign correct. Corset y also agrees: r=1.00. But ECC under-reads lateral motion: x amplitude (p5-p95) 66 px vs 87 px from the studs. The x error is above 10 px in f409-439 (max 25.7 px at f418). The tilt error is above 4 deg in f339-348, f355-360 and f399-404 (max 6.9 deg at f345), which is the window where ECC cc is only 0.60-0.75.",
+   "The waist does move with the upper body: stud x vs chest x r=+0.95; stud tilt vs chest tilt r=-0.86 (the corset counter-rotates against the chest, confirmed).",
+   "The hip/upper-thigh level, by contrast, swings opposite to the chest. Ornament midpoint x moves 151 px (11.4 cm at 1319 px/m), against 82 px for the chest. Its correlation with chest x is r=-0.49 at lag 0 (minimum -0.59 with the hips 14 f behind). It agrees with the wrist midpoint at r=+0.98 (149 px).",
+   "The skirt-ornament line roll follows the corset tilt but lags it: r=1.00 at a 7-frame lag, with 1.4x the amplitude (32.3 vs 23.0 deg). Wrist-line roll agrees (r=0.96, 38 deg). The offset between the ornaments and the corset is 92% explained by rotation about the corset with a 455 px lever. So in the source the lower body rolls with the waist and counter-sways the chest.",
+   "New fit vs measurements, shot 3. Waist x vs studs r=0.94 (old 0.68), but amplitude 65 vs 87 px. Waist y r=0.99 (old 0.63). Hip roll vs studs r=0.96 (old 0.91). Hip roll vs ornament line r=0.91 (old 0.88), but amplitude 21.7 vs 32.3 deg, and the fit leads the hip level by 5 f. Hip-joint midpoint x vs ornament x r=0.03 (old 0.16), amplitude 58 vs 151 px. Hip y amplitude 128 px vs 92 px at the ornaments (it copies the corset's 154 px bob).",
+   "Rendered legs, shot 3: the mannequin's leg midpoint at rows 1450-1650 in /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/v3/check/vmd_F*.png has r=0.00 with the source ornament x, range 35 vs 150 px. The old VMD gives r=0.32, range 47 px. The visible legs do not swing in either version (blend images: render_vs_src.jpg).",
+   "Floating feet, checked in Blender on the v3 set blend with the VMD-driven CL armature (feet_bpy.json). Shot-3 ankles sit above their IK targets: 9.37 cm (right) at f340, 8.47 cm (left) at f360, 4-6 cm at f304, f440 and f452; 0 at f400. Shot-2 frames show 0. A reach emulation over all shot-3 frames (legreach.py) gives >1 cm float in 82/119 left-leg and 96/119 right-leg frames, max 9.4 cm; the old fit is similar. Cause: センター z is -0.8 to +8.5 cm above rest, while the rest legs are straight (slack only 1.2 mm).",
+   "Shot-2 measurements (camera-independent, relative to the chest). LK track of a hip-level region on 4x upsampled ROIs (s2_track.json, signals_s2.json, s2_side.jpg; camera roll is near-constant at -1.2 to -1.55 deg, 195 px/m). The hip region moves -25 px against the chest in f211-226 and -34 px by f301, relative to f250 (about 13-17 cm). The fit's hip offset against its own neck stays within -1 to -5 px (r=0.59, amplitude 34 vs 8 px). The wrist midpoint against the neck moves -20 to -22 px in f289-301. The annotated hips move only 8 px, and the fit follows those.",
+   "Shot-2 hip roll, relative to f250. The hip region rolls +10.7 deg at f221 and +15.1 at f301; the wrist line +7.8 at f219 and +22 at f301. The fit rolls -1.2 to -4.9 deg in f211-226 (wrong sign) and +5.6 to +8 at f264-303. Maximum difference 13.4 deg at f218; above 6 deg in f211-233 and f293-303.",
+   "The evidence overlays in /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/clsway/overlays draw the legs as FK bones fixed to 下半身, so they lean with the hip roll. The VMD plays IK legs with planted feet, and the renders show vertical, straight legs. The overlays overstate how much the legs swing."
+  ],
+  "remaining_problems": [
+   {
+    "severity": "major",
+    "shot": 3,
+    "frames": "f304-395 and f420-452 (worst f334-365)",
+    "problem": "In the VMD, the shot-3 hip joints are out of reach of the planted feet. The IK cannot bend the knees: the legs lock straight and the feet float. So the lower body cannot sway by bending, and the floating feet show up in MMD.",
+    "measured": "Blender (VMD-driven CL armature): ankle-to-IK-target gap 9.37 cm at f340 (right), 8.47 cm at f360 (left), 4.3-4.6 cm at f304, 5.7-6.5 cm at f452. Reach emulation over 119 frames: >1 cm float in 82 (left) and 96 (right) frames, median +3.3/+4.6 cm, max 9.4 cm. Shot-3 センター z ranges -0.8 to +8.5 cm, rest legs are straight (slack 1.2 mm). Shot 2 is fine (センター z -7 to -14 cm).",
+    "proposed_fix": "Add a leg-reach term to solve_frame in pose_fit.py: a soft barrier when |足 head - 足ＩＫ rest| > (thigh+shin - 0.015 m). Raise CL's shot-3 per-shot anchor (spec.characters.CL.per_shot['3'].location z) by about +0.10 m so the fitted センター z lands near -0.10..-0.01 and the bob is made by knee bend. Shot 3 never shows the floor or her feet. Do not lower the shot-3 camera instead: at ~15 m with 1319 px/m, a 10 cm move shifts the background crowd by about 100+ px."
+   },
+   {
+    "severity": "major",
+    "shot": 3,
+    "frames": "f321-340, f359-394, f424-451",
+    "problem": "At thigh height the source swings opposite to the chest. Neither the new fit's hip joints nor its rendered legs reproduce that swing. The new fit ties the hips to the waist, which moves in phase with the chest.",
+    "measured": "Ornament midpoint x: 151 px (11.4 cm) p5-p95, r=-0.49 with chest x, r=+0.98 with the wrist midpoint (149 px). New hip-joint midpoint x: 58 px, r=0.03 with the ornaments, r=+0.74 with its own neck x. Rendered leg midpoint: r=0.00, range 35 px vs 150 px (old r=0.32, 47 px). Deviation from the source is above 40 px in the listed frames, max 101 px at f374.",
+    "proposed_fix": "Add a hip-level observation for shot 3 from flowers_s3.json, or from the wrist midpoint (these agree at r=0.98). Use offset-calibrated targets for the midpoint x and roll of the two thigh points at about 0.30 of the hip-to-knee length, computed with the planted-foot IK (or the 足 heads plus a fixed offset), with sigma about 10 px. Let センター x move laterally, opposite to the chest, with 上半身 counter-rolling to keep the neck and shoulders on their keypoints. Optionally add a hand-on-thigh contact term."
+   },
+   {
+    "severity": "major",
+    "shot": 2,
+    "frames": "f211-234 and f264-303",
+    "problem": "The unchanged shot-2 fit misses CL's hip sway. In the source the hips shift toward screen-left relative to the chest and roll clockwise, twice. The fit keeps the hips under the neck: it follows the annotated hip keypoints, which sit under the skirt and barely move.",
+    "measured": "Hip region relative to chest x (versus f250): -25 px in f211-226 and -34 px at f301 (13-17 cm at 195 px/m). Fit hip offset relative to its neck: -1 to -5 px (r=0.59, amplitude 8 vs 34 px). Wrists relative to neck: -20 to -22 px in f289-301. Hip roll: source +10.7 deg (f221) and +15.1 (f301), wrists +7.8 and +22; fit -1.2..-4.9 in f211-226 (wrong sign) and +5.6..+8 at the end. Max roll difference 13.4 deg at f218.",
+    "proposed_fix": "Give shot 2 the same treatment as shot 3. Turn s2_track.json 'hips' (x relative to chest, rot) and/or the wrist midpoint relative to neck into waist observations: hip-midpoint x relative to the fitted neck with sigma 3 px, hip-line roll = fitted roll at f250 + tracked rot with sigma 2.5 deg, offsets calibrated on a first pass. Down-weight the shot-2 annotated hips to 0.3. The knees are already bent in shot 2 (センター z -7 to -14 cm), so the IK can absorb a 10-15 cm lateral pelvis shift."
+   },
+   {
+    "severity": "minor",
+    "shot": 3,
+    "frames": "f388-413, f438-451 (and the f350 spike)",
+    "problem": "The hip roll is too small and too early. The fit copies the corset tilt, but the hip-level line rolls 1.4x more and about 7 frames later.",
+    "measured": "Ornament-line roll -10.5..+22.7 deg (32.3 p5-p95) vs new hip roll -6.8..+16.4 (21.7). The ornament roll lags the corset (studs) tilt by 7 f at r=1.00. The new hip roll leads the ornament roll by 5 f. Deviation above 6 deg in the listed frames, max 14.9 deg at f451.",
+    "proposed_fix": "Use the ornament-line roll (or the wrist-line roll) for the hip-roll target instead of the corset tilt, or use a blend such as 0.5*(corset tilt + ornament roll) with the corset term delayed about 5 frames. Keep the corset driving only the 上半身 head position."
+   },
+   {
+    "severity": "minor",
+    "shot": 3,
+    "frames": "f356-365, f386-398, f446-451",
+    "problem": "The pelvis height copies the corset's vertical bob, which is about 1.7x larger than the bob of both the chest and the hip level. The corset slides between them by ±30 px, which looks like AI morphing. This raises the pelvis in f334-365, the same frames where the feet float most.",
+    "measured": "Bob amplitude (p5-p95): corset 154 px, chest 90 px, hip ornaments 92 px; new hip y 128 px. Chest-to-hip distance stays constant (689 vs 684 px at f341 and f401). Hip y deviation above 25 px in the listed frames, max 35 px at f363. Driving the hip height from the ornaments would cut the hip-height range from 9.2 to 6.4 cm.",
+    "proposed_fix": "In waist_observations, take the y target from the hip-level ornaments (or the mean of chest and ornament y), offset-calibrated, and keep only the corset x and tilt."
+   },
+   {
+    "severity": "minor",
+    "shot": 3,
+    "frames": "f339-348, f355-360, f399-404 (tilt); f409-439 (x)",
+    "problem": "The corset ECC track the new fit uses is biased. The 400 px patch takes in sleeves, hair and the sash: tilt is wrong in the low-ECC window and the lateral waist motion is under-read.",
+    "measured": "Against the 4-stud track: tilt error above 4 deg in the listed frames, max 6.9 deg at f345, where cc is 0.60-0.75. x amplitude 66 vs 87 px; x error above 10 px in f409-439, max 25.7 px at f418. The new fit's waist x amplitude is 65 vs 87 px.",
+    "proposed_fix": "Feed pose_fit.py --waist from the stud track (studs_s3.json: cx, cy, tilt, with the constant +5 px template offset removed), or shrink the ECC corset box to x 360-590, y 900-1040 so it covers only the black corset. Validation showed KLT x within 2.9 px rms of the studs."
+   }
+  ]
+ }
+]

@@ -1,0 +1,203 @@
+[
+ {
+  "role": "visual",
+  "user_point_addressed": "partly",
+  "new_better_than_old": "yes",
+  "regressions": [
+   "Feet-to-floor gap got bigger: the 0.00 cm ankle-to-target gap was reached by raising 全ての親 and the IK targets, so the gap now sits between the targets and the floor instead. Ray-cast from the ankles to the set floor: CL in shot 3 now hovers 10.5 cm above StageDisc in every frame (ankle-floor 0.201 m against 0.096 when grounded; old was 0.5-7 cm and varied). DS hovers 11.0 cm above VIPProwCentre through shot 1 (old 7-10 cm) and 8.2 cm through shot 2 (old 0-6 cm). The feet are off-frame in these shots, but the float is baked into the VMD. CL also jumps 10.5 cm at the f303/f304 cut because only shot 3 is lifted.",
+   "The knees never straighten. In CL shot 3 the leg extension tops out at 0.961 of reach, so the knee bend never drops below ~32 deg (median 45-51 deg, knees 13-17 cm ahead of the hips while the torso stays upright). DS shot 2 has a median 48 deg bend while leaning on the rail (old: straight legs). This baseline bend comes from lifting the anchor to the barrier, not from anything in the image. The part that does follow the source is the change in bend, which tracks the bob (r = -0.99 against neck height).",
+   "The skirt stand-in in the preview looks worse than it measures. The legs, modelled with a 6 cm radius, poke out of the cone in 129 of 149 shot-3 frames (worst 13.4 cm, median 6.1 cm) and in 47 of 98 shot-2 frames: the knees come through the front, and the screen-right leg leaves the right side at f316, f328, f346, f394, f424, f294 and f302. In the 25% Cycles renders the translucent cone reads as a diagonal light wedge (f316, f328, f424, f436), not as a skirt.",
+   "Minor: CL shot 3 left hand moved slightly further from its thigh axis (median 9.0 vs 6.9 cm, p95 16.1 vs 13.1). The right hand improved (9.9 vs 12.7)."
+  ],
+  "evidence": [
+   "Workbench composites of source vs new vs old for shot 3, every 24 f: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/c3_a.jpg and c3_b.jpg. Lower-body crops: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/hem_lag.jpg. In the new fit the hands land on the source hands and the pelvis now visibly rolls, where old had vertical post legs. At f370 the cone hem swings right and at f424 far left, while the source hem is near centre in both.",
+   "Kymographs and row tracking: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/kymo_src_s3.jpg and lag_plot.png. Lateral swing in the source grows downward and is anti-phase to the waist: p5-p95 77 px at the chest, 152 at y=1350, 212 at y=1650, 250 at y=1800, 281 at y=1880. The lower skirt lags the ornaments by ~20 f.",
+   "Rechecked claims. Waist x vs studs: r 1.00, amplitude 88 vs 87 px (confirmed; old r 0.68). Hip-joint line vs ornament line: r 0.93 (claimed 0.97), amplitude 33.7 vs 30.2 deg. The 下半身 bone's own image tilt has zero-lag r of only 0.67 with the ornament line (0.94 once the ornaments are allowed to lag by 10 f). IK legs at y=1350: r 0.44, 61 vs 152 px (matches the claimed 0.50/66/151).",
+   "Stand-in hem centroid vs source lower skirt: at zero lag r 0.13 (y=1800) and -0.07 (y=1880). Shifting the source back by 18 f gives r 0.91 / 0.80. Amplitude 306 vs 221-259 px. The IK knees, by contrast, are in phase with the lower skirt (r 0.74-0.87) but swing only 67-114 px.",
+   "Corset stud-grid tilt in the source (+cw) runs -8.2..14.8 deg and correlates 0.85 with the ornament line (0.98 with a 6 f lag). The model hip-joint line follows the studs (r 0.95, best at a 3 f lag) but spans 33.7 deg vs 23.0. Model 上半身 roll spans only 1.3..6.4 deg and is uncorrelated with the corset (r -0.24). See /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/corset_tilt.jpg: the hip line visually matches the corset tilt at f326, f371 and f439.",
+   "Shot 2 zoomed skeletons: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/s2_legs_a.jpg and s2_legs_b.jpg. The boots are visible at f278-303, ~78 px apart (≈0.39 m). The model's ankles are ~31 px (0.155 m) apart, identical in old and new. The hip sway has the right sign: source hip region rotates +14 deg cw relative to f250 by f296; model 下半身 changes -18 deg (bottom-left, the same rotation in my sign convention). Hip offset from the neck: -15 px in the model vs -21 px in the source.",
+   "Composites /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/s2_a.jpg and s2_b.jpg: at f294 and f302 the cone tilts ~11 deg bottom-left while the source skirt hem is level and roughly centred (about 4 deg). The screen-right leg comes out of the cone.",
+   "Floor ray-casts from bl_floor.py, as described in the floor-gap regression above.",
+   "Side and front ortho views: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/views_CL.jpg and views_DS.jpg. Knees bend forward, never backward. CL shot 3: torso pitch -7.5..+8 deg, hips over the ankles, knees 13-17 cm forward. CL shot 2: torso pitch -2..+6 deg (upright) with hips 10-11 cm ahead of the ankles, while the source looks slightly bowed. DS knees are now bent forward 5-12 cm (old had them 1.6-5.5 cm behind the hips).",
+   "Vertical bob: the source collar brooch moves 87 px p5-p95 vs 66 px for the model neck (r 0.87; old was the same at 67 px). Knee bend tracks neck height at r -0.99, so the dip does read as a knee bend. No IK pop around f337 (bends 48-51 / 37-40 deg).",
+   "DS: the upper body did not change. Silhouette IoU new vs old is 0.88-0.995 at f1-303. Elbow heights over the handrail match old within 0.6 cm (e.g. f1 right elbow 2.7 cm, f110 5.6/3.8 cm, f303 5.3 cm). The forearm-on-rail contact in shot 1 is intact. See /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_visualjudge/ds_a.jpg, ds_b.jpg and ds_c.jpg.",
+   "The overlays are honest: proj_v5.json bone projections match my own Blender evaluation of the v5 .blend exactly (0 px). The red legs in ikov_f*.jpg really are the IK-evaluated legs.",
+   "Hands vs thighs: the hand tips sit 6-8.5 cm outside the thigh axes laterally (shot 3 median 9.0 / 9.9 cm from the axis), so they rest on the outer side of the thighs. The narrow 15.2 cm stance is the main cause."
+  ],
+  "remaining_problems": [
+   {
+    "severity": "major",
+    "char": "CL",
+    "shot": 3,
+    "frames": "f304-452 (worst f340-352, f370, f418-430)",
+    "problem": "Below the ornaments the lower skirt does not move like the source. In the source the lower skirt keeps swinging after the waist and ornaments, about 15-20 f later and with a larger swing (pendulum / cloth). The stand-in cone is rigid on 下半身, so its hem reaches its extremes 12-18 f too early and overshoots. In the bottom third of the frame the stand-in is out of phase, so it is not evidence that the swing matches. On a real model the result depends on skirt physics.",
+    "measured": "Source row shift p5-p95: 212 px (y=1650), 250 (y=1800), 281 (y=1880). Cone hem centroid: 306 px. Zero-lag r with source: 0.13 (y=1800), -0.07 (y=1880). Best r 0.91 / 0.80 with the source shifted back 18 f. At the ornament level the match holds (row 1350 vs flower track coherent; skirt-mid r 0.99 as claimed).",
+    "proposed_fix": "Stop presenting the rigid cone as a skirt match below y≈1400. In the preview, hang the skirt on a damped secondary bone or spring with about 15-18 f lag and about 0.8x the cone's swing, or give the stand-in a short physics bone chain. In the handoff, state that the hem lag is expected to come from the target model's skirt physics, and test the VMD on a model with skirt rigid bodies."
+   },
+   {
+    "severity": "major",
+    "char": "CL",
+    "shot": 2,
+    "frames": "f278-303 (feet visible); stance affects all of shot 2",
+    "problem": "In shot 2 the visible feet are much further apart than the planted 足ＩＫ feet: the source stance is wide (or one foot forward), the model's is narrow and parallel. Because the hips sway over narrow feet, the legs lean as one unit, the thighs pass inside the hands, and the -11 deg pelvis roll pushes the screen-right leg out of the skirt stand-in.",
+    "measured": "Source boots ~78 px apart at the hem (≈0.39 m at ~200 px/m). Model ankles 31 px apart (0.155 m). Each model foot is 22-25 px inboard of the source foot. Same in old and new. Right hand tip sits 11.7 cm from the right thigh axis (median).",
+    "proposed_fix": "Place CL's 足ＩＫ targets for shot 2 from the visible boots (per-shot target XY, possibly with one foot forward given the oblique camera) and refit. Reuse that stance in shot 3 unless the evidence contradicts it. A wider stance would also put the thighs under the hands."
+   },
+   {
+    "severity": "major",
+    "char": "CL",
+    "shot": 3,
+    "frames": "f304-452",
+    "problem": "The IK thighs and knees swing in the right direction but at about half the source amplitude. Because the hands follow the ornaments and the thighs do not, the hands slide sideways over the thighs, resting on the outer side of the thighs instead of on top. The narrow planted feet cause this.",
+    "measured": "IK legs x vs source: y=1350 r 0.44, 61 vs 152 px. y=1500 r 0.80, 84 vs 175 px. y=1650 r 0.87, 114 vs 212 px. Hand tips 5.6-8.5 cm laterally outside the thigh axes; p95 distance from the thigh axis 16-22 cm.",
+    "proposed_fix": "Widen the stance (see the shot 2 problem). Let the IK targets pivot or slide slightly (heel-toe weight shift, a few cm) so the thighs can reach the ornament-level amplitude. Add a hand-on-thigh term to the fit."
+   },
+   {
+    "severity": "major",
+    "char": "CL+DS",
+    "shot": 3,
+    "frames": "CL shot 3 f304-452; DS shot 1 f1-148 and shot 2 f149-303",
+    "problem": "The anchor lift hides the reach problem rather than fixing it. The feet now hover above the set floor for whole shots, and the extra lift plus the reach barrier keeps the knees bent at all times (≥32 deg for CL in shot 3, median 48 deg for DS in shot 2 while she leans on the rail). The underlying problem is that the fitted hips are too high for the rig's legs relative to the set floor: body scale, camera, or floor/rail height is off. It is invisible in these shots but present in the VMD for any other camera.",
+    "measured": "Ankle-to-floor: CL shot 3 0.201 m (grounded 0.096), i.e. 10.5 cm float in every frame (old 0.5-7 cm). DS shot 1 11.0 cm (old 7-10). DS shot 2 8.2 cm (old 0-6). CL leg extension max 0.961, minimum knee bend ~32 deg; the fit only needs ~6.5 cm of lift for straight legs at the top of the bob (hip z max 1.111 vs 1.046 with straight legs and feet on the floor).",
+    "proposed_fix": "Report the floor gap next to the ankle-to-target gap. Shrink the lift to the actual shortfall so the knees reach ~0 deg at the top of the bob. Better: fix the cause (rig leg length vs fitted body scale, or DS's balcony floor or rail height) so the anchors stay on the floor. At least document the per-shot 全ての親 offsets in the handoff."
+   },
+   {
+    "severity": "minor",
+    "char": "CL",
+    "shot": 3,
+    "frames": "f304-452",
+    "problem": "The pelvis is over-rotated. The fit takes its roll from the cloth ornaments, which roll more than the rigid corset does, and with a real skirt's physics on top the motion will overshoot. Separately, 上半身 does not follow the corset's roll at all, so on a real model the corset area will roll less than in the source.",
+    "measured": "Hip-joint line roll 33.7 deg p5-p95 vs corset stud tilt 23.0 deg (r 0.95) and ornament line 30.2 deg. Model 上半身 roll range 5 deg, r -0.24 with the corset tilt.",
+    "proposed_fix": "Fit 下半身 roll to the stud-grid tilt (rigid) and down-weight the ornament line, letting the skirt chain add the extra swing. Consider letting 上半身 carry part of the corset roll, with 上半身2 or the neck counter-rolling to keep the shoulders level."
+   },
+   {
+    "severity": "minor",
+    "char": "CL",
+    "shot": 3,
+    "frames": "f304-452",
+    "problem": "The vertical bob is still too small. This is unchanged from old.",
+    "measured": "Source collar brooch y 87 px p5-p95 vs model neck 66 px (r 0.87).",
+    "proposed_fix": "Weight the vertical neck/head keypoints more in shot 3, or check the fit's vertical damping."
+   },
+   {
+    "severity": "minor",
+    "char": "CL",
+    "shot": 2,
+    "frames": "f210-216",
+    "problem": "The right knee straightens quickly as the hips swing left. This is plausible, but it is the only fast leg change in the clip, so check that it matches the source sway.",
+    "measured": "Right knee bend goes 59 -> 24 deg over 6 f (up to 9.3 deg/f). Old version: 59 -> 54 deg.",
+    "proposed_fix": "Check against the shot 2 perf crops. If needed, smooth the hip lateral offset around f210-216."
+   },
+   {
+    "severity": "minor",
+    "char": "DS",
+    "shot": 2,
+    "frames": "f210, f230 (pre-existing, unchanged)",
+    "problem": "DS's near arm reaches out over the rail toward the stage, where the source shows the sleeve lower at bottom-left. The reach/lift change did not cause this; it was already in old.",
+    "measured": "Same in new and old (silhouette IoU 0.876 at f210 and 0.942 at f230, the lowest pair of the DS checks).",
+    "proposed_fix": "Re-check the DS shot 2 arm keypoints at f206-235. Low priority."
+   }
+  ]
+ },
+ {
+  "role": "measure",
+  "user_point_addressed": "partly",
+  "new_better_than_old": "yes",
+  "regressions": [
+   "CL shot 2 (f221-303): the waist now moves sideways against the neck by 27.7 px (14.6 cm) p5-p95, against 8.7 px (4.6 cm) in the old fit. In the source, the corset moves only 13.0 px (6.8 cm) against the chest, and model vs source correlate at just 0.32. The rigid skirt points now overshoot: 46 px (24 cm) against my thigh-level measurement of 30 px (16 cm); old was 13.9 px.",
+   "下半身 yaw is now 35.6 deg p5-p95 (-18.6..+18.1), up from 9.7 deg. About a quarter of the fitted skirt-mid sideways motion comes from this unobserved twist acting on the 8 cm forward skirt offset: an axis point 0.30 m below the waist moves only 116 px, against 154 px for the skirt points. The knee bend direction now swings by +-18 deg.",
+   "Feet float more in world space: the float was moved into 全ての親 rather than removed. CL shot 3 ankles sit 20.1 cm above the stage (10.5 cm float in every frame; old was 0-9.9 cm). DS shot 1 floats 11.0 cm in every frame (old 6.6-10.6 cm), DS shot 2 8.2 cm. The 0.00 cm ankle-to-target gap holds only because the targets themselves are lifted.",
+   "DS shot 1 upper body, Blender-evaluated: neck median error 9.6 -> 15.2 px (mostly downward, +14.8 px), r_shoulder 8.7 -> 16.2 px, all keypoints p90 27.9 -> 34.8 px. That is a bigger regression than claimed (24.1 -> 28.0), though at about 272 px per 10 cm it is only about 2-3 mm.",
+   "Hands on thighs got less consistent: palm-to-thigh-axis distance in shot 3 now ranges 2.9-16.0 cm (left) and 3.0-20.9 cm (right), p5-p95 12.3 and 16.8 cm. Old was 3.1-13.9 and 8.1-22.4 cm (p5-p95 9.2 and 12.6 cm).",
+   "DS shot 3 (off-screen): 全ての親 drops to 0 at f304 while センター stays put, so DS crouches with 45.4 deg knees. Harmless only while she stays off-screen.",
+   "CL hip keypoints in shot 3 moved away from the annotations: median 10.4 -> 29.0 px, p90 14.7 -> 57.6 px. This was intended (the hips were down-weighted); the shot 3 vertical-bob finding below shows the annotated hip y lags the studs by 14-15 f."
+  ],
+  "evidence": [
+   "My own source tracking used DIS dense optical flow with a forward-backward check, moving each region box frame by frame, plus rotation-searched colour NCC re-anchoring (flow and NCC agree within a few px). Shot 3 regions: face, brooch, chest, corset, the two skirt ornaments, mid skirt, lower skirt and hem. Shot 2 used 3x crops. Files: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_measurer/src/flowtrack.py, nccrefine.py, s3_signals.json, s2_signals.json. Track overlays: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_measurer/look/tr_a.jpg and s2_tr.jpg.",
+   "Cross-check against the pipeline trackers. My corset x vs studs cx: corr 0.998, amplitude 79 vs 87 px. My corset y vs studs cy: corr 0.999, 152 vs 154 px. My screen-left ornament x vs theirs: corr 0.999, 153 vs 153 px. My screen-right ornament: corr 0.93, 170 vs 211 px.",
+   "Shot 3 source amplitudes (p5-p95 px, about 1434 px/m sideways and 1266 px/m vertically at the waist; camera 9.2 m away, looking down 28.7 deg). Sideways: brooch 79, corset 79, ornament-mid 153, lower skirt 175, hem 241, face 26. Ornament-mid vs brooch: corr -0.48 at lag 0 and +0.94 at -40 f, i.e. the chest follows the skirt level about 40 f later. The lower skirt lags the ornaments by 12 f and the hem by 18 f (r 0.99). Ornament-line roll 32.6 deg (-7.5..25.8). Vertical: corset 152, brooch 88, face 50.",
+   "Blender-evaluated over all 452 frames, both .blend files (/tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_measurer/bl/eval_all.py and ikreach.py). New: ankle-to-足ＩＫ gap max 0.01 cm for DS and CL in every shot. Old: DS shot 1 9.16 cm median gap (296/296 samples over 1 cm); CL shot 3 3.24 cm median, max 9.94 cm. New knee bend medians: DS 24.0 / 47.3 deg (shots 1/2; ranges 22.4-38.6 and 22.6-53.9). CL 54.3 / 50.0 deg (shots 2/3; ranges 22.5-65.0 and 32.2-62.8). Knees always bend forward (offset 11-21 cm).",
+   "VMD parse (/tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_measurer/vmdread.py): the 全ての親 lifts are carried as described. CL.vmd: Y 1.314 MMD units (0.105 m) from VMD frame 303 (Blender f304). DS.vmd: Y 1.373 (0.110 m) for f0-147, 1.024 (0.082 m) for f148-302, then 0. Every bone has a key on every frame, so there is no slide between keys. 足ＩＫ keys are all zero, so the targets are fixed at rest.",
+   "Shot 3, new vs old, in source px. Waist x vs corset: corr 1.00 vs 0.70, amplitude 88 vs 79 (model about 11% high). Skirt-mid (rigid 下半身 points) vs ornament-mid: corr 0.98 (old 0.83), amplitude 154 vs 153, lag -3 f, RMS 11.1 px (old 31.8). Pendulum (skirt level minus waist): amplitude 209 vs 201, corr 0.99 (old 0.87). IK thigh-mid: corr 0.51, amplitude 63 vs 153 (old 0.10, 56). Knee-mid: amplitude 135, lagging the ornaments by +9 f. Hip-line roll: corr 0.96 (old 0.87), amplitude 33.6 vs 32.6 deg (old 19.8), but shifted by about -6 deg (model -14..21, source -7.5..26).",
+   "Vertical, shot 3. Model waist y vs corset studs y: corr 0.83, amplitude 100 vs 152 px, best lag +9 f (old 153 px, +15 f). The annotated hips lag the studs by 14-15 f (r_hip and l_hip correlate 0.83 and 0.93 at that lag), and the model waist follows the annotated hips (corr 0.90, lag -2). Model nose vs face: corr 0.91, amplitude 33 vs 26 px; vs annotated nose RMS 6.2 px, same in both fits.",
+   "Shot 2 (f221-303, 190 px/m). My thigh-level skirt minus chest x: amplitude 30.2 px (15.9 cm). New hip-mid minus neck: amplitude 30.5 px, corr 0.92, but lagging by +6 f. The pipeline hips-chest track lags my thigh-level track by 5 f (r 0.997). Their polygon includes the lower skirt, which lags the thigh level by 8 f in my data. Perf crops are frame-aligned (checked with NCC). Hip roll is 15.0 deg in the model against a 23.9 deg thigh-level region rotation (camera roll only 1.6 deg); the same flow method gives 21 deg against 33 deg for the ornament line in shot 3, so 23.9 is if anything low.",
+   "Shot 2 legs, same in both fits. The visible right ankle (35 annotated frames, f260-303) is 41.6 px from the model ankle; the model ankle is 38.5 px higher in the image and 19 px to the side. Annotated hip-to-ankle length is 142 px, the model's bent IK leg 113 px, and a straight vertical leg would be 137 px. The model ankles sit at the skirt hem while the source shins and shoes show below it (/tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_measurer/look/s2_feet.jpg).",
+   "CL keypoints without hips, Blender-evaluated: shot 3 8.2/20.8 -> 8.1/21.3 px; shot 2 3.9/13.1 -> 3.9/12.6 px. DS rail contact is unchanged: forearm-midpoint z minus 5.115 is +3.2 cm (left) and +5.3 cm (right) median in shot 1 in both fits, and about 0.0 (range -2.5..+0.8 cm) in shot 2. DS shot 2 all keypoints 5.4/37.8 -> 5.8/37.5 px.",
+   "Signals plot: /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_measurer/look/s3_signals.png. Comparison scripts in /tmp/claude-0/-home-user-tmi2022/15258eef-8986-57e2-bae2-19a7d6419b6e/scratchpad/verify2_cl_measurer: cmp_s3.py, cmp_s2.py, chk_vert.py, ds_check.py, cl_reproj.py, knee_dir.py, decomp.py, ankle_s2.py."
+  ],
+  "remaining_problems": [
+   {
+    "severity": "major",
+    "char": "CL",
+    "shot": 3,
+    "frames": "304-452 (worst f371-374)",
+    "problem": "The swing exists only on the rigid 下半身 skirt points and the preview cone. The IK legs barely follow, and the knees swing late. A real MMD model whose skirt or thigh mesh is weighted to the 足 bones would show less than half the source swing. Hands resting on the thighs would alternately sink in (about 3 cm from the thigh axis) and float off (16-21 cm).",
+    "measured": "IK thigh-mid x vs ornament-mid: corr 0.51, amplitude 63 vs 153 px (4.4 vs 10.7 cm), worst residual -87 px at f374. Knee-mid amplitude 135 px, lagging +9 f. Palm-to-thigh-axis distance 2.9-16.0 cm (left) and 3.0-20.9 cm (right).",
+    "proposed_fix": "Feet are out of frame in shot 3, so let the 足ＩＫ targets slide or shift per frame (or widen and offset the stance) and fit the IK thigh points (THIGH_FRAC) to the ornaments, not only rigid 下半身 points. Alternatively, state in the handoff that the swing requires a skirt rigged to 下半身 (physics), and check hand-to-thigh distance on a real model."
+   },
+   {
+    "severity": "major",
+    "char": "CL",
+    "shot": 3,
+    "frames": "330-370 (rise), 385-420 (drop)",
+    "problem": "The vertical bob of the waist is too small and late. The fit follows the annotated hips, whose y lags the corset studs by 14-15 frames. The studs' cy is already tracked but not used.",
+    "measured": "Corset studs y 152 px p5-p95 (about 12 cm) vs model waist y 100 px (about 7.9 cm). Corr 0.83, best lag +9 f, worst residual 59 px at f450. Model waist world z range is only 6.3 cm (1.096-1.159 m).",
+    "proposed_fix": "Add the studs cy as a waist-y target with offset calibration (sigma about 6 px). Drop or zero the annotated hip y in shot 3, keeping hip x down-weighted as now."
+   },
+   {
+    "severity": "major",
+    "char": "CL",
+    "shot": 2,
+    "frames": "260-303 (also implies 304-452)",
+    "problem": "The 50-54 deg knee bends are fitting artifacts, not observed. In shot 2 the visible right leg is nearly straight and the foot sits about 38 px below the model's planted ankle; the model ankles are at the hem while the source shins show below it. Shot 3 instead needed a +10.5 cm lift taken from a single maximum frame. The CL anchor and stage height disagree with the cameras by roughly 10-20 cm between shots, and the fixed 足ＩＫ targets cannot absorb the ankle observations (the ankle residual is constant). Same as the old fit, so not a regression.",
+    "measured": "Annotated hip-to-ankle 142 px vs model IK leg 113 px (straight leg 137 px). r_ankle error 41.6 px (model ankle 38.5 px too high, 19 px lateral). Knee bend median 54.3 deg (22.5-65.0) in shot 2 and 50.0 deg (32.2-62.8) in shot 3. Lift = max(cz) + 0.01 = 0.105 m.",
+    "proposed_fix": "Place shot 2 足ＩＫ targets and the anchor height or depth from the visible ankle keypoints (per-shot target offset keys). Re-check CL anchor depth and height against both camera solves. Derive the shot 3 lift from a percentile instead of the maximum, and loosen the センター prior toward straight-leg standing so the knees settle at roughly 10-25 deg."
+   },
+   {
+    "severity": "major",
+    "char": "CL",
+    "shot": 2,
+    "frames": "221-303 (largest gaps f257-287)",
+    "problem": "Shot 2 hip sway has the right size but the wrong split and timing. The pipeline's large hips polygon mixes in the lower skirt, which lags the thigh level, so the model pelvis is about 5-6 f late. The fit gets the hip offset by bending the torso sideways (waist away from neck) instead of keeping the waist with the chest and swinging below it. The rigid skirt points overshoot, and hip roll is too small.",
+    "measured": "Hip-mid minus neck: 30.5 vs 30.2 px, corr 0.92, lag +6 f. Waist minus neck: 27.7 px (14.6 cm) vs source corset minus chest 13.0 px (6.8 cm), corr 0.32. Skirt points: 46 vs 30 px (24 vs 16 cm). Hip roll 15.0 deg vs 23.9 deg thigh-level region rotation.",
+    "proposed_fix": "Re-track shot 2 with a thigh-level-only region (the band just below the corset, without the lower skirt). Constrain corset x relative to chest separately so the waist stays with the chest. Fit the skirt points (as in shot 3), not the hip joints, to the thigh-level track, and add the region roll at full weight."
+   },
+   {
+    "severity": "minor",
+    "char": "CL",
+    "shot": 3,
+    "frames": "304-452",
+    "problem": "Below the thigh level the source skirt is a lagging, growing pendulum. The rigid cone in the preview swings in phase with 下半身, so the preview overstates how well a real skirt will match unless the model's skirt physics produces this lag.",
+    "measured": "Lower skirt lags the ornaments by 12 f with 175 px amplitude; hem lags by 18 f with 241 px (r 0.99 at those lags). The cone hem has no lag; its centre x vs source hem: corr 0.28 at lag 0.",
+    "proposed_fix": "Note in the handoff that the hem motion has to come from the model's skirt physics. Optionally add skirt bones keyed with the measured 12-18 f lag, or show a physics skirt in the preview instead of a rigid cone."
+   },
+   {
+    "severity": "minor",
+    "char": "CL",
+    "shot": 3,
+    "frames": "304-452",
+    "problem": "The pelvis twist is unconstrained. Part of the 2D skirt targets is met by 下半身 yaw acting on the 8 cm forward skirt offset, and nothing in the source measures that yaw. Ornament separation, the only yaw cue, does not correlate either way.",
+    "measured": "下半身 yaw 35.6 deg p5-p95 (old 9.7 deg); roll 23.1 deg; pitch 17.4 deg. An axis point 0.30 m below the waist moves 116 px vs 154 px for the fitted skirt points. Model ornament-separation change 3% vs source 10%, corr -0.01.",
+    "proposed_fix": "Add a yaw prior on 下半身 (sigma about 8 deg), or put the skirt targets on the bone axis so the swing has to come from roll and translation."
+   },
+   {
+    "severity": "minor",
+    "char": "DS",
+    "shot": 1,
+    "frames": "1-148 (worst f75, f101-105)",
+    "problem": "Small upper-body reprojection regression after the lift and reach change. The torso is more upright (median tilt 19.4 -> 16.2 deg) and the neck sits lower. Rail contact is unchanged.",
+    "measured": "Neck median 9.6 -> 15.2 px (mean error +14.8 px downward). r_shoulder 8.7 -> 16.2 px. l_shoulder p90 22.1 -> 34.9 px. All keypoints p90 27.9 -> 34.8 px. At 272 px per 10 cm this is about 2-3 mm. Forearm-midpoint z minus rail: +3.2 / +5.3 cm in both fits.",
+    "proposed_fix": "Raise the neck and shoulder weight, or relax the DS センター prior around -lift (sigma 0.06 m) so the torso tilt can return to about 19 deg."
+   },
+   {
+    "severity": "minor",
+    "char": "DS/CL",
+    "shot": 1,
+    "frames": "DS 1-303, CL 304-452",
+    "problem": "The 'no floating feet' claim is misleading. The IK targets reach the ankles, but the targets ride on a lifted 全ての親 in absolute MMD units, so the character stands 8-11 cm above the floor. That shows from any other camera and changes with a different model's leg length.",
+    "measured": "CL shot 3: ankles 20.1 cm above the stage (rest 9.6 cm). DS: 20.5 cm in shot 1 and 17.7 cm in shot 2 above the 4.05 m floor (rest 9.5 cm). VMD 全ての親 Y: 1.314 / 1.373 / 1.024 units.",
+    "proposed_fix": "Fix the anchor and camera geometry instead of lifting (see the shot 2 knee problem). Otherwise document the per-shot root lift in the handoff and how to remove it for other cameras or models."
+   }
+  ]
+ }
+]

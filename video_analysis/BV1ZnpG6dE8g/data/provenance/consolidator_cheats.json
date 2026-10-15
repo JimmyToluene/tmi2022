@@ -1,0 +1,11 @@
+[
+ "Shot 1: CAM_Shot1 floats over the pit void outside the balustrade (crane/drone position). The blurred dark crowd head at the lower left of f1-50 (0.5-0.8 m from the lens) cannot exist there and is not built; parent a dark blurred card to CAM_Shot1 for f1-50 if needed.",
+ "Shot 1: DS's own ~3 cm drift to screen-right (f1-50) and ~4 cm sink (f100-148) are folded into the camera keys so a still head matches; the sharp rail clamp post is off by up to ~20-45 px in f1-69 as a result. Her +2.4 deg roll is body roll, not camera roll.",
+ "Shot 1: the AI-drawn VIP guests behind DS drift ~100 px against the dolly; the built guests match them only to 50-130 px.",
+ "Shot 2: CAM_Shot2 occupies the space of an upright DS head for f149-260; DS must lean ~40-45 deg over the rail (hair bow at (-0.50,-6.69,5.34)). If the MMD pose cannot reach that, move CAM_Shot2 back ~0.35 m in -Y for f149-260 and re-check the rail lines.",
+ "Shot 2: the AI image stacks the left table rows more steeply than a buildable bank; upper-tier lamps render 15-25% smaller than the source (raise lamp size of Table_10..15 by 1.2x if it matters). Defocused early frames f149-200 drift 15-25 px on lamps.",
+ "Shot 2/3 cut: one dancer seen right behind CL's head at ~(0.50,1.45) in f303 is omitted so that no torso fills the shot-3 frame edge; the front-centre crowd strip has no raised arms so no hands rise over CL's skirt in shot 3.",
+ "Shot 2/3 lighting: the stage spot pool is bright white in shot 2 but the disc reads dark glossy blue behind CL in shot 3, so the beam spot is shot-2 only and shot 3 uses a narrowed top spot without haze scatter plus a front follow spot.",
+ "Shot 3: CL is drawn with a head ~26% larger relative to her body than MMD proportions; the 247 mm lens is a head/body compromise (~275 mm matches the drawn head, ~210 mm the body widths). Its source background darkens toward f304 (bg L 9 vs 35 at f380); not keyed (animate BlueWash_Shot3 1500 -> 2600 W over f304-330 if wanted).",
+ "Venue: the side galleries for y < 4, the left half of the hall (mirrored), the ceiling height and the beam source height are not observed; the gallery ring (4.48) and the VIP floor (4.05) are kept at different levels; some boxes overlap invisibly at the prow wings."
+]
