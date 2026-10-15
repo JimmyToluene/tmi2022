@@ -20,12 +20,13 @@ HEIGHTS = {"DS": 1.58, "CL": 1.6}
 
 
 def add_skirt(arm, height, _mat):
-    """A plain cone skirt rigidly parented to 下半身, so the preview shows how a model's skirt follows the pelvis
-    swing (generic shape; an imported MMD model brings its own skirt bones/physics)."""
+    """A short cone (waist to upper thigh) rigidly parented to 下半身, so the preview shows the pelvis/upper-skirt
+    swing the VMD carries. It stops at the ornament level on purpose: below it the source skirt swings later and
+    wider like cloth (12-18 f lag), which an imported model's skirt physics has to supply."""
     k = height / 1.6
     bone = arm.pose.bones["下半身"]
-    depth = 0.78 * k
-    bpy.ops.mesh.primitive_cone_add(vertices=24, radius1=0.34 * k, radius2=0.13 * k, depth=depth, end_fill_type="NOTHING")
+    depth = 0.40 * k
+    bpy.ops.mesh.primitive_cone_add(vertices=24, radius1=0.27 * k, radius2=0.13 * k, depth=depth, end_fill_type="NOTHING")
     sk = bpy.context.object
     sk.name = f"{arm.name.replace('_arm', '')}_skirt"
     smat = bpy.data.materials.new(f"{sk.name}_mat")      # half transparent so the legs stay readable

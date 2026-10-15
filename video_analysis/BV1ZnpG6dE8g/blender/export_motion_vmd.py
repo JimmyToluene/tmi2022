@@ -97,8 +97,9 @@ def export_character(spec, pose, char, out_vmd):
         c = Vector(fr["center_m"])
         pb["センター"].location = rest_rot["センター"].inverted() @ c
         pb["センター"].keyframe_insert("location", frame=f)
-        # per-shot placement relative to the shot-1 anchor, carried by 全ての親
-        an = anchors.get(shot, a1)
+        # per-shot placement relative to the set placement, carried by 全ての親; off-screen frames hold the pose of
+        # the nearest solved frame, so they also take that frame's shot placement and stance
+        an = anchors.get(fr["shot"], a1)
         d = Vector(an["location"]) - Vector(a1["location"])
         local = Matrix.Rotation(-a1["yaw"], 3, "Z") @ d
         dyaw = an["yaw"] - a1["yaw"]
@@ -108,7 +109,8 @@ def export_character(spec, pose, char, out_vmd):
         pb["全ての親"].keyframe_insert("location", frame=f)
         pb["全ての親"].keyframe_insert("rotation_quaternion", frame=f)
         for side in ("左", "右"):
-            pb[f"{side}足ＩＫ"].location = (0, 0, 0)
+            off = Vector((an.get("feet") or {}).get(side, (0.0, 0.0, 0.0)))   # planted foot, armature axes
+            pb[f"{side}足ＩＫ"].location = rest_rot[f"{side}足ＩＫ"].inverted() @ off
             pb[f"{side}足ＩＫ"].keyframe_insert("location", frame=f)
         kb = mesh.data.shape_keys.key_blocks
         for name, val in morph_timeline(char, f).items():

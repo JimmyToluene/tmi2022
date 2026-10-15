@@ -1,6 +1,6 @@
 """Track CL's waist and thigh-level features on the source frames, for the pose fit.
 
-Usage: python track_cl_body.py <frames_dir> <annotations_verified.json> <performer_track.json> <out_json>
+Usage: python track_cl_body.py <frames_dir> <annotations_verified.json> <out_json>
 
 Why: CL's annotated hips sit under her skirt and wander +-80 px against her rigid corset, and the legs are not
 visible, so the fit had no real signal for her lower body. In the source her pelvis swings against her chest
@@ -10,8 +10,8 @@ Shot 3 (f304-452, locked camera), every unique frame, all relative to f304 templ
   studs   - the four gold corset studs, chained LK then rotation-searched NCC; centre and tilt of the stud grid
   flowers - the two sunflower ornaments on the skirt at upper-thigh height (under her hands), NCC template
             search with rotation/scale, warm-started from the previous frame
-Shot 2 (f206-303, CL is ~200 px tall): chained LK + RANSAC similarity on 4x upsampled crops around her
-(performer_track.json), for her chest and hip regions, tracked forward and backward from f250.
+Shot 2 (f221-303, CL is ~300 px tall): DIS dense optical flow on a 3x upsampled crop for her chest, corset and the
+thigh-level skirt band just below the corset.
 Output in full-frame pixels (1080x1920); rotations in degrees, + = clockwise on screen.
 """
 import json
@@ -121,80 +121,81 @@ def track_flowers(frames_dir, frames):
 
 
 # ------------------------------------------------------------------ shot 2
-S2_REF = 250
-S2_REGIONS = {"chest": [[600, 330], [780, 330], [780, 480], [600, 480]],      # f250 crop coords (4x)
-              "hips": [[520, 640], [960, 640], [960, 860], [520, 860]]}
+# boxes at f221 (full-res px): chest, corset, and the skirt band just below the corset (thigh level). The band
+# excludes the lower skirt, which lags the thigh level by ~8 frames.
+S2_START, S2_END = 221, 303
+S2_BOXES = {"chest": [518, 1050, 572, 1095], "corset": [510, 1100, 568, 1130], "thigh": [500, 1138, 580, 1182]}
+S2_CROP, S2_SCALE = [420, 860, 780, 1320], 3.0
 
 
-def track_shot2(frames_dir, frames, perf):
+def track_shot2(frames_dir, keep):
+    """DIS dense optical flow on a 3x upsampled crop, forward-backward checked; each box moves by the median flow of
+    a point grid inside it, and accumulates the in-plane rotation of a RANSAC partial affine."""
     def load(f):
-        g = gray(frames_dir, f)
-        x0, y0, _, _ = perf[f]["crop_xyxy"]
-        x0 = min(max(0, x0), g.shape[1] - 360)
-        y0 = min(max(0, y0), g.shape[0] - 360)
-        return cv2.resize(g[y0:y0 + 360, x0:x0 + 360], None, fx=4, fy=4, interpolation=cv2.INTER_CUBIC), np.array([x0, y0], float)
+        g = gray(frames_dir, f)[S2_CROP[1]:S2_CROP[3], S2_CROP[0]:S2_CROP[2]]
+        return cv2.resize(g, None, fx=S2_SCALE, fy=S2_SCALE, interpolation=cv2.INTER_CUBIC)
 
-    to_full = lambda p, o: p / 4 + o
-    to_crop = lambda p, o: (p - o) * 4
-    lk = dict(winSize=(31, 31), maxLevel=4, criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 50, 0.01),
-              flags=cv2.OPTFLOW_USE_INITIAL_FLOW)
+    def samp(flow, p):
+        m = cv2.remap(flow, p[:, 0].astype(np.float32).reshape(-1, 1), p[:, 1].astype(np.float32).reshape(-1, 1),
+                      cv2.INTER_LINEAR)
+        return m.reshape(-1, 2)
 
-    def run(seq):
-        im0, o0 = load(seq[0])
-        polys = {k: to_full(np.array(v, float), o0) for k, v in S2_REGIONS.items()}
-        c0 = {k: polys[k].mean(0) for k in S2_REGIONS}
-        Mc = {k: np.eye(3) for k in S2_REGIONS}
-        out = {k: {seq[0]: {"x": float(c0[k][0]), "y": float(c0[k][1]), "rot": 0.0}} for k in S2_REGIONS}
-        prev = (im0, o0)
-        for f in seq[1:]:
-            im, o = load(f)
-            pim, po = prev
-            for k in S2_REGIONS:
-                m = np.zeros(pim.shape, np.uint8)
-                cv2.fillPoly(m, [to_crop(polys[k], po).astype(np.int32)], 255)
-                pts = cv2.goodFeaturesToTrack(pim, 300, 0.005, 8, mask=m)
-                M = np.eye(3)
-                if pts is not None and len(pts) >= 8:
-                    P0 = to_full(pts[:, 0], po)
-                    guess = to_crop(P0, o).astype(np.float32)[:, None]
-                    p1, st, _ = cv2.calcOpticalFlowPyrLK(pim, im, pts, guess.copy(), **lk)
-                    back = to_crop(to_full(p1[:, 0], o), po).astype(np.float32)[:, None]
-                    p0r, st2, _ = cv2.calcOpticalFlowPyrLK(im, pim, p1, back.copy(), **lk)
-                    ok = (st.ravel() == 1) & (st2.ravel() == 1) & (np.linalg.norm(p0r - pts, axis=2).ravel() < 1.5)
-                    if ok.sum() >= 8:
-                        A, _ = cv2.estimateAffinePartial2D(P0[ok], to_full(p1[ok, 0], o), method=cv2.RANSAC,
-                                                           ransacReprojThreshold=0.6)
-                        if A is not None:
-                            M[:2] = A
-                Mc[k] = M @ Mc[k]
-                polys[k] = cv2.transform(polys[k][None], M[:2])[0]
-                c = Mc[k][:2, :2] @ c0[k] + Mc[k][:2, 2]
-                out[k][f] = {"x": round(float(c[0]), 2), "y": round(float(c[1]), 2),
-                             "rot": round(math.degrees(math.atan2(Mc[k][1, 0], Mc[k][0, 0])), 3)}
-            prev = (im, o)
-        return out
+    tf = lambda p: (np.asarray(p, float) - S2_CROP[:2]) * S2_SCALE
+    dis = cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_MEDIUM)
+    ctr = {k: tf([(b[0] + b[2]) / 2, (b[1] + b[3]) / 2]) for k, b in S2_BOXES.items()}
+    half = {k: (tf(b[2:]) - tf(b[:2])) / 2 for k, b in S2_BOXES.items()}
+    ang = {k: 0.0 for k in S2_BOXES}
+    out = {k: [] for k in S2_BOXES}
+    back = lambda c: c / S2_SCALE + S2_CROP[:2]
 
-    i = frames.index(S2_REF)
-    fw, bw = run(frames[i:]), run(frames[i::-1])
-    return {k: [dict(f=f, **v) for f, v in sorted({**bw[k], **fw[k]}.items())] for k in S2_REGIONS}
+    def emit(f):
+        if f in keep:
+            for k in S2_BOXES:
+                x, y = back(ctr[k])
+                out[k].append({"f": f, "x": round(float(x), 2), "y": round(float(y), 2), "rot": round(ang[k], 3)})
+
+    prev = load(S2_START)
+    emit(S2_START)
+    for f in range(S2_START + 1, S2_END + 1):
+        cur = load(f)
+        fw, bw = dis.calc(prev, cur, None), dis.calc(cur, prev, None)
+        h_, w_ = prev.shape
+        for k in S2_BOXES:
+            c, h = ctr[k], half[k]
+            gx, gy = np.meshgrid(np.linspace(c[0] - h[0], c[0] + h[0], 24), np.linspace(c[1] - h[1], c[1] + h[1], 24))
+            p = np.stack([gx.ravel(), gy.ravel()], 1)
+            p = p[(p[:, 0] > 2) & (p[:, 0] < w_ - 3) & (p[:, 1] > 2) & (p[:, 1] < h_ - 3)]
+            d = samp(fw, p)
+            q = p + d
+            ok = (q[:, 0] > 2) & (q[:, 0] < w_ - 3) & (q[:, 1] > 2) & (q[:, 1] < h_ - 3)
+            p, q, d = p[ok], q[ok], d[ok]
+            fb = np.linalg.norm(q + samp(bw, q) - p, axis=1)
+            good = fb < 1.0 * S2_SCALE
+            if good.sum() < 20:
+                good = fb < np.percentile(fb, 50)
+            M, _ = cv2.estimateAffinePartial2D(p[good].astype(np.float32), q[good].astype(np.float32),
+                                               method=cv2.RANSAC, ransacReprojThreshold=1.0 * S2_SCALE)
+            ctr[k] = c + np.median(d[good], 0)
+            ang[k] += float(np.degrees(np.arctan2(M[1, 0], M[0, 0]))) if M is not None else 0.0
+        emit(f)
+        prev = cur
+    return out
 
 
-def main(frames_dir, ann_json, perf_json, out_json):
+def main(frames_dir, ann_json, out_json):
     ann = json.load(open(ann_json, encoding="utf-8"))
-    perf = {r["frame"]: r for r in json.load(open(perf_json))}
     s3 = [r["f"] for r in ann if r["shot"] == 3 and not r.get("dup_of")]
-    s2 = [r["f"] for r in ann if r["shot"] == 2 and not r.get("dup_of") and r["f"] >= 206
-          and (perf.get(r["f"]) or {}).get("crop_xyxy")]
+    s2 = {r["f"] for r in ann if r["shot"] == 2 and not r.get("dup_of") and S2_START <= r["f"] <= S2_END}
     studs = track_studs(frames_dir, s3)
     flowers = track_flowers(frames_dir, s3)
-    shot2 = track_shot2(frames_dir, s2, perf)
+    shot2 = track_shot2(frames_dir, s2)
     json.dump({"shot3": {"studs": studs, "flowers": flowers}, "shot2": shot2}, open(out_json, "w"), indent=0)
     sx = np.array([r["cx"] for r in studs])
     fm = np.array([(a["x"] + b["x"]) / 2 for a, b in zip(flowers["scr_left"], flowers["scr_right"])])
     print(f"shot 3: {len(s3)} frames; studs x p5-p95 {np.ptp(np.percentile(sx, [5, 95])):.0f} px; "
           f"flower-mid x p5-p95 {np.ptp(np.percentile(fm, [5, 95])):.0f} px; corr {np.corrcoef(sx, fm)[0, 1]:.2f}")
-    print(f"shot 2: {len(s2)} frames tracked from f{S2_REF}")
+    print(f"shot 2: {len(shot2['chest'])} unique frames tracked f{S2_START}-{S2_END}")
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:5])
+    main(*sys.argv[1:4])

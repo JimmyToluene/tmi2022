@@ -91,6 +91,7 @@ class Skeleton:
     def __init__(self, height):
         self.rp = rest_positions(height)
         self.height = height
+        self.ik_off = {"左": np.zeros(3), "右": np.zeros(3)}   # planted foot (足ＩＫ) offset from rest, per shot
 
     def fk(self, rots, center):
         """rots: bone -> rotvec (local delta in parent's posed axes). Returns global rotations and posed heads/tails
@@ -156,14 +157,14 @@ def prior_sigma(char, bone):
 
 HIP_KP_WEIGHT_WITH_BODY = 0.3
 THIGH_FRAC = 0.35          # thigh point (skirt ornament / hand rest height) as a fraction of hip -> knee
-REACH_MARGIN_M = 0.015     # keep the hip at least this far inside full leg extension
+REACH_MARGIN_M = 0.006     # keep the hip at least this far inside full leg extension (knee ~13 deg at most reach)
 REACH_SIG_M = 0.003
 
 
 def leg_ik(sk, G, head, side):
     """Knee position and reach excess for one leg, solved like the rig: two-bone IK from the hip (足 head) to the
     planted 足ＩＫ target at its rest position, knee bending toward the pelvis's forward (-Y)."""
-    hip, tgt = head[f"{side}足"], sk.rp[f"{side}足ＩＫ"][0]
+    hip, tgt = head[f"{side}足"], sk.rp[f"{side}足ＩＫ"][0] + sk.ik_off[side]
     a = np.linalg.norm(sk.rp[f"{side}ひざ"][0] - sk.rp[f"{side}足"][0])
     b = np.linalg.norm(sk.rp[f"{side}足首"][0] - sk.rp[f"{side}ひざ"][0])
     v = tgt - hip
@@ -182,7 +183,7 @@ def ik_leg_points(sk, pts, G, head):
     """Replace the FK knee/ankle keypoints by the IK legs the VMD plays (ankle stays on its planted target)."""
     for side, kk, ka in (("左", "l_knee", "l_ankle"), ("右", "r_knee", "r_ankle")):
         knee, _ = leg_ik(sk, G, head, side)
-        pts[kk], pts[ka] = knee, sk.rp[f"{side}足ＩＫ"][0]
+        pts[kk], pts[ka] = knee, sk.rp[f"{side}足ＩＫ"][0] + sk.ik_off[side]
     return pts
 
 
@@ -194,7 +195,9 @@ def thigh_points(sk, G, head):
     return out
 
 
-SKIRT_OFF = {"左": (0.12, -0.08, -0.30), "右": (-0.12, -0.08, -0.30)}   # m in 下半身's frame at 1.6 m (left = +X)
+SKIRT_OFF = {"左": (0.12, 0.0, -0.30), "右": (-0.12, 0.0, -0.30)}   # m in 下半身's frame at 1.6 m (left = +X), on the
+                                                                   # bone axis so the swing comes from roll/shift, not yaw
+YAW_SIG = math.radians(10.0)   # 下半身 twist about the vertical is not observed; keep it near the pose prior
 
 
 def body_measures(sk, pts, G, head, loc, Ra, cam):
@@ -246,13 +249,14 @@ def solve_frame(sk, char, shot, rec, cam, anchor, prior, prev, rail, body=None, 
             uv = project(Pw, cam)
             for k, p in zip(keys, uv):
                 w = {"head_top": 0.25, "l_hand_tip": 0.5, "r_hand_tip": 0.5}.get(k, 1.0)
+                w = np.array([w, w])
                 if body is not None and k in ("l_hip", "r_hip"):
-                    w = HIP_KP_WEIGHT_WITH_BODY
+                    w = np.array(body.get("hip_w", (HIP_KP_WEIGHT_WITH_BODY, HIP_KP_WEIGHT_WITH_BODY)))
                 r.extend(((p - obs[k]) / sig * w).tolist())
         if body is not None:
             m = body_measures(sk, pts, G, head, loc, Ra, cam)
-            for key, (target, s_px) in body.get("abs", {}).items():          # e.g. waist x, thighR xy
-                r.extend(((m[key][:len(target)] - target) / s_px).tolist())
+            for key, (target, s_px) in body.get("abs", {}).items():          # e.g. waist xy, skirtR xy
+                r.extend(((m[key][:len(target)] - target) / np.asarray(s_px)).tolist())
             for (a_key, b_key), (target, s_px) in body.get("rel", {}).items():  # e.g. thigh - hand, hipmid - neck
                 diff = m[a_key] - m[b_key]
                 r.extend(((diff[:len(target)] - target) / s_px).tolist())
@@ -268,6 +272,9 @@ def solve_frame(sk, char, shot, rec, cam, anchor, prior, prev, rail, body=None, 
             upv = Ra.apply(G["頭"].apply([0, 0, 1]))
             r.extend(((fw - hdirs[0]) / 0.25).tolist())
             r.extend(((upv - hdirs[1]) / 0.30).tolist())
+        if body is not None:
+            twist = (Rot.from_rotvec(prior["下半身"]).inv() * Rot.from_rotvec(rots["下半身"])).as_rotvec()[2]
+            r.append(twist / YAW_SIG)
         for b in SOLVE_BONES:
             r.extend(((rots[b] - prior[b]) / prior_sigma(char, b)).tolist())
             if prev is not None:
@@ -339,27 +346,72 @@ def body_observations(sk, spec, anchor, shot, frames, rots_list, centers, tracks
         flower = {r["f"]: r for r in tracks["shot3"]["flowers"]["scr_left"]}   # skirt ornament on her right side
         fs = [f for f in frames if f in studs and f in flower and f in (wrists or {})]
         fl = {f: np.array([flower[f]["x"], flower[f]["y"]]) for f in fs}
-        off_w = float(np.mean([first[f]["waist"][0] - studs[f]["cx"] for f in fs]))
+        st = {f: np.array([studs[f]["cx"], studs[f]["cy"]]) for f in fs}
+        off_w = np.mean([first[f]["waist"] - st[f] for f in fs], 0)
+        off_r = float(np.mean([first[f]["roll"] - studs[f]["tilt"] for f in fs]))
         off_s = np.mean([first[f]["skirtR"] - fl[f] for f in fs], 0)
         off_m = np.mean([first[f]["skirtmid"] - wrists[f] for f in fs], 0)
         for f in fs:
-            obs[f] = {"abs": {"waist": (np.array([studs[f]["cx"] + off_w]), 6.0),
-                              "skirtR": (fl[f] + off_s, 10.0),
-                              "skirtmid": (wrists[f] + off_m, 12.0)}}
-        report = {"waist_x_off_px": round(off_w, 1), "skirt_flower_off_px": np.round(off_s, 1).tolist(),
-                  "skirt_wrist_off_px": np.round(off_m, 1).tolist()}
+            # the rigid corset drives the waist (x, y) and the pelvis roll; the skirt ornament and the hands on the
+            # skirt add the swing below the waist; annotated hip y (it lags the corset ~15 f) is dropped
+            obs[f] = {"abs": {"waist": (st[f] + off_w, np.array([6.0, 8.0])),
+                              "skirtR": (fl[f] + off_s, 14.0),
+                              "skirtmid": (wrists[f] + off_m, 16.0)},
+                      "roll": (studs[f]["tilt"] + off_r, 3.0),
+                      "hip_w": (HIP_KP_WEIGHT_WITH_BODY, 0.0)}
+        report = {"waist_off_px": np.round(off_w, 1).tolist(), "roll_off_deg": round(off_r, 1),
+                  "skirt_flower_off_px": np.round(off_s, 1).tolist(), "skirt_wrist_off_px": np.round(off_m, 1).tolist()}
     elif shot == 2:
         chest = {r["f"]: r for r in tracks["shot2"]["chest"]}
-        hips = {r["f"]: r for r in tracks["shot2"]["hips"]}
-        fs = [f for f in frames if f in chest and f in hips]
-        rel = {f: hips[f]["x"] - chest[f]["x"] for f in fs}
-        off_x = np.mean([(first[f]["hipmid"] - first[f]["neck"])[0] - rel[f] for f in fs])
-        off_r = np.mean([first[f]["roll"] - hips[f]["rot"] for f in fs])
+        corset = {r["f"]: r for r in tracks["shot2"]["corset"]}
+        thigh = {r["f"]: r for r in tracks["shot2"]["thigh"]}
+        fs = [f for f in frames if f in chest and f in corset and f in thigh]
+        rc = {f: corset[f]["x"] - chest[f]["x"] for f in fs}
+        rt = {f: thigh[f]["x"] - chest[f]["x"] for f in fs}
+        off_c = float(np.mean([(first[f]["waist"] - first[f]["neck"])[0] - rc[f] for f in fs]))
+        off_t = float(np.mean([(first[f]["skirtmid"] - first[f]["neck"])[0] - rt[f] for f in fs]))
+        off_r = float(np.mean([first[f]["roll"] - thigh[f]["rot"] for f in fs]))
         for f in fs:
-            obs[f] = {"rel": {("hipmid", "neck"): (np.array([rel[f] + off_x]), 3.0)},
-                      "roll": (hips[f]["rot"] + off_r, 2.5)}
-        report = {"hip_rel_off_px": round(off_x, 1), "roll_off_deg": round(off_r, 1)}
+            # waist stays with the chest (corset track); the thigh-level skirt band swings below it and sets the roll
+            obs[f] = {"rel": {("waist", "neck"): (np.array([rc[f] + off_c]), 3.0),
+                              ("skirtmid", "neck"): (np.array([rt[f] + off_t]), 4.0)},
+                      "roll": (thigh[f]["rot"] + off_r, 3.0)}
+        report = {"waist_rel_off_px": round(off_c, 1), "thigh_rel_off_px": round(off_t, 1), "roll_off_deg": round(off_r, 1)}
     return obs, report
+
+
+def pixel_ray(cam, uv):
+    """World ray (origin, unit direction) through an image pixel, inverse of project()."""
+    loc, tgt, roll, lens = cam
+    R = look_at(loc, tgt, roll)
+    f_px = lens / SENSOR_H * H
+    d = R @ np.array([(uv[0] - W / 2) / f_px, -(uv[1] - H / 2) / f_px, -1.0])
+    return np.asarray(loc, float), d / np.linalg.norm(d)
+
+
+def stance_from_ankles(sk, spec, anchor, items, kp="r_ankle", side="右"):
+    """Planted-foot offsets (armature axes) from an annotated ankle: each frame's camera ray through the ankle is cut
+    with the ankle-height plane over the character's floor; the median point gives that foot, the other foot is
+    mirrored about the body's midline. None if the ankle is annotated in fewer than 8 frames."""
+    loc, Ra = np.asarray(anchor["location"], float), Rot.from_euler("z", anchor["yaw"])
+    rest = sk.rp[f"{side}足ＩＫ"][0]
+    z_plane = loc[2] + rest[2]
+    pts = []
+    for f, c in items:
+        uv = (c.get("kp") or {}).get(kp)
+        if not uv:
+            continue
+        o, d = pixel_ray(camera_at(spec, f), (uv[0] * W, uv[1] * H))
+        if abs(d[2]) < 1e-6:
+            continue
+        pts.append(Ra.inv().apply(o + d * (z_plane - o[2]) / d[2] - loc))
+    if len(pts) < 8:
+        return None
+    off = np.median(np.array(pts), 0) - rest
+    off[2] = 0.0
+    off = np.clip(off, -0.40, 0.40)
+    other = "左" if side == "右" else "右"
+    return {side: off, other: np.array([-off[0], off[1], 0.0])}
 
 
 def fit_character(ann, spec, char, out_dir, body_tracks=None):
@@ -394,15 +446,33 @@ def fit_character(ann, spec, char, out_dir, body_tracks=None):
 
     base_anchor = {"location": list(anchors[1]["location"]), "yaw": anchors[1]["yaw"]}
     lifts = {}
+    # stance: where the planted feet are, from annotated ankles where the feet are visible (CL in shot 2); shots
+    # without visible feet reuse the nearest measured stance
+    stance = {}
+    for shot, items in sorted(by_shot.items()):
+        st = stance_from_ankles(sk, spec, anchors[shot], items)
+        if st is not None:
+            stance[shot] = st
+    for shot in by_shot:
+        if shot not in stance and stance:
+            # feet not visible: keep the measured stance width; the fore-aft offset seen in an oblique shot (hips sat
+            # back in a forward lean) is not carried into a shot that gives no evidence for it
+            src = stance[min(stance, key=lambda s: abs(s - shot))]
+            stance[shot] = {k: np.array([v[0], 0.0, 0.0]) for k, v in src.items()}
     for shot, items in sorted(by_shot.items()):
         prior = template(char, shot, sk.rp)
-        # pass A (no reach): how high does the free fit put the pelvis? Raise the shot's anchor so the planted feet
-        # can reach the hips with slightly bent knees (feet are out of frame in every shot of this clip).
+        sk.ik_off = {k: np.asarray(v, float) for k, v in stance.get(shot, {"左": np.zeros(3), "右": np.zeros(3)}).items()}
+        anchors[shot]["feet"] = {k: np.round(v, 4).tolist() for k, v in sk.ik_off.items()}
+        # pass A (no reach): how far do the free-fit hips sit beyond the planted feet's reach? Raise the shot's
+        # anchor by that shortfall only (the feet are out of frame wherever this happens in this clip)
         frames, rots_list, centers, errs_list = run_shot(shot, items, prior, reach=False)
-        cz = np.array([c[2] for c in centers])
-        lift = max(0.0, float(cz.max()) + 0.01)
+        excess = []
+        for r_, c_ in zip(rots_list, centers):
+            _, G, head, _ = sk.points(r_, c_)
+            excess.append(max(leg_ik(sk, G, head, side)[1] for side in ("左", "右")))
+        lift = max(0.0, float(np.max(excess)) + 0.004)
         lifts[shot] = round(lift, 3)
-        if lift > 0.005:
+        if lift > 0.003:
             anchors[shot]["location"][2] += lift
         anchors[shot]["lift_m"] = round(lift, 3)
         # pass B: with the reach barrier at the (possibly raised) anchor
@@ -438,7 +508,8 @@ def fit_character(ann, spec, char, out_dir, body_tracks=None):
         if allerr:
             print(f"{char} shot {shot}: {len(frames)} frames, reprojection median {np.median(allerr):.1f} px, "
                   f"p90 {np.percentile(allerr, 90):.1f} px")
-    print(f"{char}: per-shot anchor lift (m) {lifts}")
+    print(f"{char}: per-shot anchor lift (m) {lifts}; planted-foot offsets (m) "
+          f"{ {s: anchors[s].get('feet') for s in by_shot} }")
     out = {"char": char, "height_m": height, "base_anchor": base_anchor,
            "anchors": {str(k): v for k, v in anchors.items()}, "frames": results}
     Path(out_dir).mkdir(parents=True, exist_ok=True)
