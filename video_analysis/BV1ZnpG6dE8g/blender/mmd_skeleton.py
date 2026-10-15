@@ -73,6 +73,8 @@ def rest_positions(height_m=1.6):
 def build_mmd_model(name, height_m, collection=None):
     """Create an mmd_tools model (root + armature with Japanese bone names + mannequin mesh with morph shape
     keys) in the current Blender scene. Requires mmd_tools to be registered. Returns (root, armature, mesh)."""
+    import math
+
     import bmesh
     import bpy
     from mathutils import Vector
@@ -105,7 +107,11 @@ def build_mmd_model(name, height_m, collection=None):
         c = arm.pose.bones[ankle].constraints.new("IK")
         c.target, c.subtarget, c.chain_count = arm, ik, 2
         c.use_tail = False
-        arm.pose.bones[knee].lock_ik_y = arm.pose.bones[knee].lock_ik_z = True
+        kb = arm.pose.bones[knee]
+        kb.lock_ik_y = kb.lock_ik_z = True
+        # knees bend one way only, as in MMD models; without it Blender's IK can stick at a straight leg
+        kb.use_ik_limit_x = True
+        kb.ik_min_x, kb.ik_max_x = math.radians(0.5), math.radians(180.0)
     bpy.ops.object.mode_set(mode="OBJECT")
 
     # mannequin: one capsule per bone, rigidly weighted, plus morph shape keys

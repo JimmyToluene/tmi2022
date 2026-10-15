@@ -6,8 +6,8 @@ Usage: python export_motion_vmd.py <pose_dir> <scene_spec.json> <mmd_tools_dir> 
   frames where the character is not annotated (off-screen) hold the nearest solved pose.
 - Fitted rotations are local deltas in armature axes (R); Blender pose-bone rotations are R expressed in the
   bone's rest frame: Q = Rest^-1 R Rest. mmd_tools converts those to VMD.
-- The character is placed once in Blender with MMD_<ID>_Root at its shot-1 anchor. Placement changes between
-  shots (DS moves along the rail for shot 2) go into 全ての親 keys relative to that first anchor.
+- The character is placed once in Blender with MMD_<ID>_Root at its shot-1 anchor from the spec. Placement changes
+  between shots, including the per-shot height lift from pose_fit.py, go into 全ての親 keys relative to it.
 - Morph weights follow the verified expression timeline (standard morph names; models may name them
   differently, see README).
 - --check re-imports each VMD onto a fresh skeleton and reports joint-position differences.
@@ -74,7 +74,8 @@ def export_character(spec, pose, char, out_vmd):
     by_f = {fr["f"]: fr for fr in pose["frames"]}
     solved = sorted(by_f)
     anchors = {int(k): v for k, v in pose["anchors"].items()}
-    a1 = anchors[min(anchors)] if char == "CL" else anchors[1]
+    # placement of MMD_<ID>_Root in the set (the spec's shot-1 anchor, without any per-shot lift)
+    a1 = pose.get("base_anchor") or (anchors[min(anchors)] if char == "CL" else anchors[1])
     holds = hold_rule(spec)
 
     def nearest(f):

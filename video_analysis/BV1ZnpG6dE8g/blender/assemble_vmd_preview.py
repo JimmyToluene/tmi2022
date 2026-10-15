@@ -6,6 +6,7 @@ Usage: python assemble_vmd_preview.py <set.blend> <vmd_dir> <mmd_tools_dir> <out
 The mannequins are the generic skeleton from mmd_skeleton.py (no character likeness); swap them for the
 real MMD models by importing the .pmx with mmd_tools and loading the same VMD onto it.
 """
+import math
 import os
 import sys
 from pathlib import Path
@@ -16,6 +17,31 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from mmd_skeleton import MMD_SCALE, build_mmd_model  # noqa: E402
 
 HEIGHTS = {"DS": 1.58, "CL": 1.6}
+
+
+def add_skirt(arm, height, _mat):
+    """A plain cone skirt rigidly parented to 下半身, so the preview shows how a model's skirt follows the pelvis
+    swing (generic shape; an imported MMD model brings its own skirt bones/physics)."""
+    k = height / 1.6
+    bone = arm.pose.bones["下半身"]
+    depth = 0.78 * k
+    bpy.ops.mesh.primitive_cone_add(vertices=24, radius1=0.34 * k, radius2=0.13 * k, depth=depth, end_fill_type="NOTHING")
+    sk = bpy.context.object
+    sk.name = f"{arm.name.replace('_arm', '')}_skirt"
+    smat = bpy.data.materials.new(f"{sk.name}_mat")      # half transparent so the legs stay readable
+    smat.use_nodes = True
+    bsdf = smat.node_tree.nodes["Principled BSDF"]
+    bsdf.inputs["Base Color"].default_value = (0.75, 0.70, 0.62, 1)
+    bsdf.inputs["Alpha"].default_value = 0.45
+    sk.data.materials.append(smat)
+    sk.parent, sk.parent_type, sk.parent_bone = arm, "BONE", "下半身"
+    # bone-parent space: origin at the bone tail, Y along the bone (下半身 points down from the waist)
+    length = bone.bone.length
+    sk.matrix_parent_inverse.identity()
+    sk.location = (0.0, -length + depth / 2 - 0.02 * k, 0.0)
+    sk.rotation_euler = (math.radians(90.0), 0.0, 0.0)
+    bpy.ops.object.shade_smooth()
+    return sk
 
 
 def main(blend, vmd_dir, mmd_tools_dir, out_blend, render_dir=None, frames=None):
@@ -42,6 +68,8 @@ def main(blend, vmd_dir, mmd_tools_dir, out_blend, render_dir=None, frames=None)
         mat.use_nodes = True
         mat.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = (0.55, 0.57, 0.62, 1)
         mesh.data.materials.append(mat)
+        if char == "CL":
+            add_skirt(arm, h, mat)
     bpy.ops.wm.save_as_mainfile(filepath=os.path.abspath(out_blend), compress=True)
     print("saved", out_blend)
     if render_dir:
